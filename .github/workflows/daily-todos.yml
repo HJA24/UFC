@@ -1,0 +1,53 @@
+name: Daily TODOs
+
+on:
+  schedule:
+    # Run at 7 AM UTC (8 AM CET / 9 AM CEST)
+    - cron: '0 7 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  generate-todos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Create todos directory
+        run: mkdir -p .claude/todos
+
+      - name: Generate Daily TODOs
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          LINEAR_API_KEY: ${{ secrets.LINEAR_API_KEY }}
+        run: |
+          claude -p "Run /product-manager daily todos. Generate TODO files for all agents based on the current Linear sprint." \
+            --dangerously-skip-permissions \
+            --max-turns 20
+
+      - name: Commit and push TODOs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Check if there are changes to commit
+          if git diff --quiet .claude/todos/; then
+            echo "No changes to TODO files"
+            exit 0
+          fi
+
+          git add .claude/todos/
+          git commit -m "chore: daily TODOs $(date +%Y-%m-%d)"
+          git push

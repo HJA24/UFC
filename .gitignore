@@ -31,3 +31,6 @@ src/database/digital_ocean.ini
 
 # Logs
 *.log
+
+# Large database files
+data/db/octagon.db
