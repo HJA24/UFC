@@ -1,0 +1,78 @@
+name: Database Backup
+
+on:
+  workflow_run:
+    workflows: ["Collect UFC Data"]
+    types:
+      - completed
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  backup:
+    # Run if DataProcessor succeeded (which only runs Mondays) or manual trigger
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Create backup
+        env:
+          PGHOST: ${{ secrets.DB_HOST }}
+          PGPORT: ${{ secrets.DB_PORT }}
+          PGUSER: ${{ secrets.DB_USER }}
+          PGPASSWORD: ${{ secrets.DB_PASSWORD }}
+          PGDATABASE: ${{ secrets.DB_NAME }}
+        run: |
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+          BACKUP_FILE="mmarkov_${TIMESTAMP}.dump"
+
+          echo "Starting backup: ${BACKUP_FILE}"
+          pg_dump \
+            --format=custom \
+            --compress=9 \
+            --file="${BACKUP_FILE}"
+
+          echo "Backup size: $(du -h ${BACKUP_FILE} | cut -f1)"
+          echo "BACKUP_FILE=${BACKUP_FILE}" >> $GITHUB_ENV
+
+      - name: Upload to S3
+        env:
+          S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        run: |
+          aws s3 cp "${BACKUP_FILE}" "s3://${S3_BUCKET}/weekly/${BACKUP_FILE}"
+          echo "Uploaded to s3://${S3_BUCKET}/weekly/${BACKUP_FILE}"
+
+      - name: Verify backup
+        run: |
+          echo "Verifying backup integrity..."
+          pg_restore --list "${BACKUP_FILE}" > /dev/null
+          echo "Backup verified successfully"
+
+      - name: Cleanup
+        run: rm -f "${BACKUP_FILE}"
+
+      - name: Summary
+        run: |
+          echo "## Database Backup Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **File**: ${BACKUP_FILE}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Destination**: s3://\${{ secrets.AWS_S3_BUCKET }}/weekly/" >> $GITHUB_STEP_SUMMARY
+          echo "- **Triggered by**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY

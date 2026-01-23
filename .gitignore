@@ -25,6 +25,7 @@ mmarkov.com/.angular/
 
 # Database credentials
 src/database/digital_ocean.ini
+src/database/aws.ini
 
 # Jupyter
 .ipynb_checkpoints/
