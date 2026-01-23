@@ -32,6 +32,41 @@ jobs:
           cd src/ufc
           python scrape.py
 
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Upload fights JSON to S3
+        run: |
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+
+          if [ -d "data/fights/ufc" ]; then
+            cd data/fights
+            zip -r "fights_${TIMESTAMP}.zip" ufc/
+            aws s3 cp "fights_${TIMESTAMP}.zip" "s3://mmarkov-data-fights/fights_${TIMESTAMP}.zip"
+            echo "Uploaded fights_${TIMESTAMP}.zip to s3://mmarkov-data-fights/"
+            rm "fights_${TIMESTAMP}.zip"
+          else
+            echo "No fights directory found"
+          fi
+
+      - name: Upload events JSON to S3
+        run: |
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+
+          if [ -d "data/events" ]; then
+            cd data
+            zip -r "events_${TIMESTAMP}.zip" events/
+            aws s3 cp "events_${TIMESTAMP}.zip" "s3://mmarkov-data-events/events_${TIMESTAMP}.zip"
+            echo "Uploaded events_${TIMESTAMP}.zip to s3://mmarkov-data-events/"
+            rm "events_${TIMESTAMP}.zip"
+          else
+            echo "No events directory found"
+          fi
+
       - name: Upload SQLite database artifact
         uses: actions/upload-artifact@v4
         with:
@@ -48,3 +83,7 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- **Triggered**: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
           echo "- **Event**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### S3 Uploads" >> $GITHUB_STEP_SUMMARY
+          echo "- fights → s3://mmarkov-data-fights/" >> $GITHUB_STEP_SUMMARY
+          echo "- events → s3://mmarkov-data-events/" >> $GITHUB_STEP_SUMMARY
