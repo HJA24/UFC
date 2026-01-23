@@ -31,15 +31,15 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: ${{ vars.AWS_REGION }}
 
       - name: Create backup
         env:
-          PGHOST: ${{ secrets.DB_HOST }}
-          PGPORT: ${{ secrets.DB_PORT }}
-          PGUSER: ${{ secrets.DB_USER }}
+          PGHOST: ${{ vars.DB_HOST }}
+          PGPORT: ${{ vars.DB_PORT }}
+          PGUSER: ${{ vars.DB_USER }}
           PGPASSWORD: ${{ secrets.DB_PASSWORD }}
-          PGDATABASE: ${{ secrets.DB_NAME }}
+          PGDATABASE: ${{ vars.DB_NAME }}
         run: |
           TIMESTAMP=$(date +%Y%m%d_%H%M%S)
           BACKUP_FILE="mmarkov_${TIMESTAMP}.dump"
@@ -55,10 +55,10 @@ jobs:
 
       - name: Upload to S3
         env:
-          S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          S3_BUCKET: ${{ vars.AWS_S3_BUCKET }}
         run: |
-          aws s3 cp "${BACKUP_FILE}" "s3://${S3_BUCKET}/weekly/${BACKUP_FILE}"
-          echo "Uploaded to s3://${S3_BUCKET}/weekly/${BACKUP_FILE}"
+          aws s3 cp "${BACKUP_FILE}" "s3://${S3_BUCKET}/${BACKUP_FILE}"
+          echo "Uploaded to s3://${S3_BUCKET}/${BACKUP_FILE}"
 
       - name: Verify backup
         run: |
@@ -74,5 +74,5 @@ jobs:
           echo "## Database Backup Complete" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- **File**: ${BACKUP_FILE}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Destination**: s3://\${{ secrets.AWS_S3_BUCKET }}/weekly/" >> $GITHUB_STEP_SUMMARY
+          echo "- **Destination**: s3://${{ vars.AWS_S3_BUCKET }}/" >> $GITHUB_STEP_SUMMARY
           echo "- **Triggered by**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
