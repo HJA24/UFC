@@ -1,16 +1,15 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatrixTableComponent } from '../matrix/matrix-table.component';
 
 @Component({
   selector: 'app-transition-matrix-table',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatTooltipModule],
+  imports: [CommonModule, MatrixTableComponent],
   templateUrl: './transition-matrix-table.component.html',
   styleUrls: ['./transition-matrix-table.component.css'],
 })
-export class TransitionMatrixTableComponent implements OnInit, OnChanges {
+export class TransitionMatrixTableComponent implements OnChanges {
   @Input({ required: true }) Q!: (number | string)[][];
   @Input({ required: true }) R!: (number | string)[][];
   @Input({ required: true }) showTooltips!: boolean;
@@ -20,18 +19,25 @@ export class TransitionMatrixTableComponent implements OnInit, OnChanges {
   @Input() highlightCell?: { i: number; j: number } | null;
 
   data: (number | string)[][] = [];
-  displayedColumns: string[] = [];
-  colIndices: number[] = [];
-  dataSource: Array<{ i: number; row: (number | string)[] }> = [];
 
-  ngOnInit(): void {
-    this.buildMatrix();
-    this.initializeTable();
-  }
+  // Arrow function to maintain correct `this` context when passed to child component
+  regionHighlightFn = (i: number, j: number): boolean => {
+    if (!this.highlightRegion) return false;
+
+    const n = this.Q?.length ?? 0; // transient states count
+
+    // P[i][j] = P(to i | from j): row = to, col = from
+    switch (this.highlightRegion) {
+      case 'Q': return i < n && j < n;      // transient → transient
+      case 'O': return i < n && j >= n;     // absorbing → transient (impossible)
+      case 'R': return i >= n && j < n;     // transient → absorbing
+      case 'I': return i >= n && j >= n;    // absorbing → absorbing
+      default: return false;
+    }
+  };
 
   ngOnChanges(): void {
     this.buildMatrix();
-    this.initializeTable();
   }
 
   private buildMatrix(): void {
@@ -56,47 +62,4 @@ export class TransitionMatrixTableComponent implements OnInit, OnChanges {
     ];
   }
 
-  private initializeTable(): void {
-    const rowCount = this.data?.length ?? 0;
-    const colCount = rowCount > 0 ? (this.data[0]?.length ?? 0) : 0;
-
-    this.dataSource = Array.from({ length: rowCount }, (_, i) => ({
-      i,
-      row: this.data[i] ?? [],
-    }));
-
-    this.colIndices = Array.from({ length: colCount }, (_, j) => j);
-    this.displayedColumns = this.colIndices.map(j => `c${j}`);
-  }
-
-  value(i: number, j: number): number | string {
-    return this.data[i][j];
-  }
-
-  tooltip(i: number, j: number): string {
-    // P[i][j] = P(to i | from j)
-    const fromLabel = this.labels?.[j] ?? j.toString();
-    const toLabel = this.labels?.[i] ?? i.toString();
-    return `P(${fromLabel}, ${toLabel}) = ${this.data[i][j]}`;
-  }
-
-  isHighlighted(i: number, j: number): boolean {
-    // Check for specific cell highlighting first
-    if (this.highlightCell) {
-      return i === this.highlightCell.i && j === this.highlightCell.j;
-    }
-
-    if (!this.highlightRegion) return false;
-
-    const n = this.Q?.length ?? 0; // transient states count
-
-    // P[i][j] = P(to i | from j): row = to, col = from
-    switch (this.highlightRegion) {
-      case 'Q': return i < n && j < n;      // transient → transient
-      case 'O': return i < n && j >= n;     // absorbing → transient (impossible)
-      case 'R': return i >= n && j < n;     // transient → absorbing
-      case 'I': return i >= n && j >= n;    // absorbing → absorbing
-      default: return false;
-    }
-  }
 }

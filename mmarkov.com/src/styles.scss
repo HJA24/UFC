@@ -239,7 +239,7 @@ app-transition-matrix-table .mat-mdc-table {
   padding: 0 6px;
 }
 
-app-transition-matrix-table .mat-mdc-cell {
+app-matrix-table .mat-mdc-cell {
   padding: 5px 10px;
   min-width: 0;
   border: none;
@@ -249,11 +249,11 @@ app-transition-matrix-table .mat-mdc-cell {
   transition: background-color 0.2s ease;
 }
 
-app-transition-matrix-table .mat-mdc-cell.highlighted {
+app-matrix-table .mat-mdc-cell.highlighted {
   background-color: rgba(210, 210, 210, 0.3);
 }
 
-app-transition-matrix-table {
+app-matrix-table {
   @include mat.tooltip-overrides((
     container-color: #ffffff,
     supporting-text-color: #333,

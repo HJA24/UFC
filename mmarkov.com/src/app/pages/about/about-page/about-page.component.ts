@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { TransitionMatrixTableComponent } from "src/app/components/tables/transition-matrix/transition-matrix-table.component";
 import { MarkovChainSimulatorComponent } from "src/app/components/markov-chain-simulator/markov-chain-simulator.component";
-import { KatexPipe } from "src/app/pipes/katex.pipe";
+import { FundamentalMatrixAccordionComponent } from "src/app/components/fundamental-matrix-accordion/fundamental-matrix-accordion.component";
 
 @Component({
   selector: 'app-about-page',
@@ -13,7 +13,7 @@ import { KatexPipe } from "src/app/pipes/katex.pipe";
     MatIconModule,
     TransitionMatrixTableComponent,
     MarkovChainSimulatorComponent,
-    KatexPipe,
+    FundamentalMatrixAccordionComponent,
   ],
   templateUrl: './about-page.component.html',
   styleUrl: './about-page.component.css',
