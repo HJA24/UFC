@@ -1,0 +1,272 @@
+@use '@angular/material' as mat;
+
+
+@font-face {
+  font-family: "UFCSans";
+  src: url("/assets/fonts/UFCSans-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "UFCSans";
+  src: url("/assets/fonts/UFCSans-Bold.woff2") format("woff2");
+  font-weight: bold;
+}
+
+
+:root {
+  --red:  #bf0700ff;
+  --blue: #0045b9ff;
+}
+
+body {
+  font-family: "UFCSans", sans-serif;
+}
+
+.page {
+  min-height: calc(100vh - 64px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(250, 250, 250, 0.3);
+}
+
+p, li {
+  line-height: 1.65;
+  color: rgb(50, 50, 50);
+}
+
+
+/* =========================
+   MAT-MENU PANEL (overlay)
+========================= */
+.cdk-overlay-pane .mat-mdc-menu-panel {
+  background-color: #ffffff !important;
+  color: #111111;
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  border-radius: 6px !important;
+  box-shadow: none;
+  font-family: "UFCSans", sans-serif;
+
+  /* Critical for exact width math */
+  box-sizing: border-box;
+
+  /* Remove Material min width */
+  min-width: unset !important;
+}
+
+
+/* =========================
+   Menu content spacing
+========================= */
+.mat-mdc-menu-content {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* =========================
+   Menu items (base)
+========================= */
+.mat-mdc-menu-item {
+  position: relative;
+  overflow: hidden;
+  height: 32px;
+  line-height: 32px;
+  margin: 0 !important;
+  padding-left: 8px;
+  padding-right: 4px;
+}
+
+/* Text inside menu items */
+.cdk-overlay-pane .mat-mdc-menu-item-text,
+.cdk-overlay-pane .mdc-list-item__primary-text {
+  font-family: "UFCSans", sans-serif !important;
+  font-size: 17px !important;
+  color: rgb(50, 50, 50);
+}
+
+/* Hover background */
+.cdk-overlay-pane .mat-mdc-menu-item:hover {
+  background-color: rgba(200, 200, 200, 0.33) !important;
+}
+
+
+.mat-mdc-form-field {
+  --mat-form-field-filled-container-color: rgba(200, 200, 200, 0.3) !important;
+  --mat-form-field-filled-focus-active-indicator-color: rgb(50, 50, 50, 0.3);
+  --mat-form-field-filled-hover-active-indicator-color: rgba(100, 100, 100, 0.3);
+  --mat-form-field-filled-caret-color: rgba(50, 50, 50, 0.3);
+}
+
+.mat-mdc-form-field * {
+    color: rgb(50, 50, 50) !important;
+    font-family: "UFCSans", sans-serif;
+}
+
+.mat-mdc-form-field input  {
+  font-weight: bold !important;
+}
+
+
+
+:host {
+  display: block;
+  background: white;
+  color: black;
+  width: 100%;
+}
+
+
+
+/* Layout */
+.dual-bars {
+  display: flex;
+  gap: 2px;
+  width: 100%;
+}
+
+.dual-bars mat-progress-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* --- BLUE (left) --- */
+.dual-bars mat-progress-bar.blue .mdc-linear-progress__bar-inner {
+  border-color: #1976d2 !important;            /* moving bar */
+}
+
+.dual-bars mat-progress-bar.blue .mdc-linear-progress__buffer-bar {
+  background-color: rgba(25, 118, 210, 0.25) !important; /* track */
+}
+
+/* --- RED (right) --- */
+.dual-bars mat-progress-bar.red .mdc-linear-progress__bar-inner {
+  border-color: #d32f2f !important;
+}
+
+.dual-bars mat-progress-bar.red .mdc-linear-progress__buffer-bar {
+  background-color: rgba(211, 47, 47, 0.25) !important;
+}
+
+
+app-graph-data-table {
+  @include mat.table-overrides((
+    background-color: white,
+    header-headline-color: black,
+    header-headline-weight: bold,
+    header-headline-font: 'UFCSans, sans-serif',
+    header-headline-line-height: 1,
+    header-headline-tracking: 0,
+    header-container-height: 35px,
+
+    row-item-label-text-font: 'UFCSans, sans-serif',
+    row-item-label-text-size: 14px,
+    row-item-label-text-color: #222,
+    row-item-label-text-weight: 500,
+    row-item-label-text-line-height: 1,
+    row-item-label-text-tracking: 0,
+    row-item-container-height: 30px,
+  ));
+
+  @include mat.paginator-overrides((
+    container-background-color: white,
+  ));
+}
+
+
+app-graph-data-table tr.mat-mdc-header-row,
+app-graph-data-table th.mat-mdc-header-cell {
+  background-color: rgba(225, 225, 225, 0.3) !important;
+}
+
+app-graph-data-table th.mat-mdc-header-cell.mat-column-fighter {
+  border-bottom: 2px solid var(--blue);
+}
+
+/* Opponent column → RED */
+app-graph-data-table th.mat-mdc-header-cell.mat-column-opponent {
+  border-bottom: 2px solid var(--red);
+}
+
+/* All other columns → GRAY */
+app-graph-data-table th.mat-mdc-header-cell:not(.mat-column-fighter):not(.mat-column-opponent) {
+  border-bottom: 2px solid rgba(175, 175, 175, 0.3);
+}
+
+app-graph-data-table
+td.mat-mdc-cell.mat-column-outcome,
+app-graph-data-table
+td.mat-mdc-cell.mat-column-rounds,
+app-graph-data-table
+td.mat-mdc-cell.mat-column-clock {
+  text-align: center;
+}
+
+
+
+.mat-mdc-icon-button {
+  --mdc-icon-button-state-layer-size: 0px;
+  background: transparent;
+  border: none;
+}
+
+/* Kill hover / active circle */
+.mat-mdc-icon-button:hover,
+.mat-mdc-icon-button:active {
+  background: transparent;
+}
+
+
+app-transition-matrix-table {
+  @include mat.table-overrides((
+    background-color: transparent,
+    row-item-container-height: 35px,
+    row-item-outline-width: 40px,
+    row-item-label-text-size: 15px,
+    row-item-label-text-color: #333,
+    row-item-label-text-tracking: 0.05em,
+    row-item-label-text-line-height: 1.3
+  ));
+}
+
+app-transition-matrix-table .mat-mdc-table {
+  width: auto;
+  box-shadow: none;
+  border-image: linear-gradient(90deg, #000 4px, #0000 0 calc(100% - 5px), #000 0) 1/1.5px;
+  border-collapse: separate;
+  padding: 0 6px;
+}
+
+app-transition-matrix-table .mat-mdc-cell {
+  padding: 5px 10px;
+  min-width: 0;
+  border: none;
+  text-align: center;
+  font-style: italic;
+  font-family: "UFCSans", sans-serif;
+  transition: background-color 0.2s ease;
+}
+
+app-transition-matrix-table .mat-mdc-cell.highlighted {
+  background-color: rgba(210, 210, 210, 0.3);
+}
+
+app-transition-matrix-table {
+  @include mat.tooltip-overrides((
+    container-color: #ffffff,
+    supporting-text-color: #333,
+  ));
+}
+
+.mat-mdc-tooltip .mdc-tooltip__surface {
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  white-space: nowrap;
+  max-width: none !important;
+  font-family: 'UFCSans', sans-serif;
+  font-size: 15px;
+  color: #333;
+}

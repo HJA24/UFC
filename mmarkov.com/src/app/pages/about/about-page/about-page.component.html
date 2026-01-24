@@ -1,0 +1,75 @@
+<div class="page">
+
+  <h2>Markov chains</h2>
+  <p>
+    A fight between fighters <i>blue</i> and <i>red</i> can be represented as a Markov chain.
+    Although a real-world fight is significantly more complex, let's assume that in a fight the following actions and
+    states are possible:
+  </p>
+  <ul>
+    <li><i>standing</i></li>
+    <li><i>strike attempt by <span class="blue">blue</span></i></li>
+    <li><i>strike attempt by <span class="red">red</span></i></li>
+    <li><i>strike landed by <span class="blue">blue</span></i></li>
+    <li><i>strike landed by <span class="red">red</span></i></li>
+    <li><i>knockout landed by <span class="blue">blue</span></i></li>
+    <li><i>knockout landed by <span class="red">red</span></i></li>
+  </ul>
+  <p>
+    A transition matrix shows the probabilities of moving between different states.
+    The fight starts in the <i>standing</i>-state where there is a 30% chance that <span class="blue">blue</span> will
+    attempt a strike, a 10% chance that <span class="red">red</span> will attempt a strike and a 60% chance that they
+    will manoeuvre around each other .
+    This means that there is a probability of 60% that they will remain in the same state.
+
+    The transition matrix, <span class="T">T</span>, of the simplified fight looks as follows:
+  </p>
+  <div class="equation">
+    <span class="T">T</span>
+    <span class="equals">=</span>
+    <app-transition-matrix-table [Q]="Q" [R]="R" [labels]="labels" [showTooltips]="true" [highlightRegion]="highlightRegion"></app-transition-matrix-table>
+  </div>
+  <p>
+    The first column represents the transition probabilities from <i>standing</i> to other states.
+    There are two absorbing states; <i>knockout landed by blue</i> and <i>knockout landed by red</i>. When the chain
+    visits such as state, it remains here forever.
+    The other states can be defined as transient states.
+
+    A transition matrix can be written in the following canonical form:
+  </p>
+  <div class="equation">
+    <span class="T">T</span>
+    <span class="equals">=</span>
+    <span class="canonical-matrix">
+      <span class="matrix-row">
+        <span class="Q" (mouseenter)="setHighlight('Q')" (mouseleave)="clearHighlight()">Q</span>
+        <span class="O" (mouseenter)="setHighlight('O')" (mouseleave)="clearHighlight()">O</span>
+      </span>
+      <span class="matrix-row">
+        <span class="R" (mouseenter)="setHighlight('R')" (mouseleave)="clearHighlight()">R</span>
+        <span class="I" (mouseenter)="setHighlight('I')" (mouseleave)="clearHighlight()">I</span>
+      </span>
+    </span>
+  </div>
+  <p>
+    The elements are described as follows:
+  </p>
+  <ul>
+    <li>
+      <span class="Q" (mouseenter)="setHighlight('Q')" (mouseleave)="clearHighlight()">Q</span> holds the probabilities of moving from a transient state to another transient state
+    </li>
+    <li>
+      <span class="R" (mouseenter)="setHighlight('R')" (mouseleave)="clearHighlight()">R</span> holds the probabilities of moving from a transient state to an absorbing state
+    </li>
+    <li>
+      <span class="O" (mouseenter)="setHighlight('O')" (mouseleave)="clearHighlight()">O</span> holds the probabilities of moving from an absorbing state to a transient state (which is impossible)
+    </li>
+    <li>
+      <span class="I" (mouseenter)="setHighlight('I')" (mouseleave)="clearHighlight()">I</span> holds the probabilities of moving between absorbing states (which is also impossible)
+    </li>
+  </ul>
+  <p>
+    A basic property about an absorbing Markov chain is the expected number of visits to a transient state <i>j</i> starting from a transient state <i>i</i> (before being absorbed).
+    This can be inferred from the fundamental matrix, <span class="N">N</span>, which is defined as follows:
+  </p>
+</div>
