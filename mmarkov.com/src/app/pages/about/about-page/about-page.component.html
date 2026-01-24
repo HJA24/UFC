@@ -34,7 +34,29 @@
     There are two absorbing states; <i>knockout landed by blue</i> and <i>knockout landed by red</i>. When the chain
     visits such as state, it remains here forever.
     The other states can be defined as transient states.
+    Let's simulate a fight using this Markov chain
+    <mat-icon class="simulation-icon" (click)="onSimulationIconClick()">
+      @if (isSimulating()) {
+        replay
+      } @else {
+        play_arrow
+      }
+    </mat-icon>
+  </p>
 
+  @if (isSimulating()) {
+    <div class="simulation-container" @fadeIn>
+      <div class="state-list-container" #stateList>
+        <mat-chip-set class="state-list">
+          @for (stateIndex of simulationStates; track $index) {
+            <mat-chip>{{ labels[stateIndex] }}</mat-chip>
+          }
+        </mat-chip-set>
+      </div>
+    </div>
+  }
+
+  <p>
     A transition matrix can be written in the following canonical form:
   </p>
   <div class="equation">

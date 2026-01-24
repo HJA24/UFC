@@ -63,3 +63,54 @@ h2, p, ul {
   min-width: 20px;
   text-align: center;
 }
+
+.simulation-container {
+  width: 100%;
+  margin: 24px 0;
+}
+
+.simulation-icon {
+  cursor: pointer;
+  vertical-align: middle;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  margin-left: 4px;
+  transition: color 0.2s ease;
+}
+
+.simulation-icon:hover {
+  color: #1976d2;
+}
+
+.state-list-container {
+  overflow-x: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  background: #fafafa;
+  width: 100%;
+}
+
+.state-list {
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
+  width: max-content;
+}
+
+::ng-deep .state-list .mdc-evolution-chip-set__chips {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+}
+
+.state-list mat-chip {
+  flex-shrink: 0;
+}
+
+.state-empty {
+  color: #999;
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+}
