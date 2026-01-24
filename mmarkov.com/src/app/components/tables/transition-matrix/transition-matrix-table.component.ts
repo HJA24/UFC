@@ -17,6 +17,7 @@ export class TransitionMatrixTableComponent implements OnInit, OnChanges {
 
   @Input() labels?: string[];
   @Input() highlightRegion?: 'Q' | 'R' | 'O' | 'I' | null;
+  @Input() highlightCell?: { i: number; j: number } | null;
 
   data: (number | string)[][] = [];
   displayedColumns: string[] = [];
@@ -76,6 +77,11 @@ export class TransitionMatrixTableComponent implements OnInit, OnChanges {
   }
 
   isHighlighted(i: number, j: number): boolean {
+    // Check for specific cell highlighting first
+    if (this.highlightCell) {
+      return i === this.highlightCell.i && j === this.highlightCell.j;
+    }
+
     if (!this.highlightRegion) return false;
 
     const n = this.Q?.length ?? 0; // transient states count
