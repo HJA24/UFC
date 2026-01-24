@@ -35,21 +35,24 @@ export class TransitionMatrixTableComponent implements OnInit, OnChanges {
   }
 
   private buildMatrix(): void {
-    const n = this.Q?.length ?? 0; // transient states
-    const m = this.R?.length ?? 0; // absorbing states
+    // P[i][j] = P(to i | from j), columns sum to 1
+    // Q: n×n (transient → transient)
+    // R: m×n (transient → absorbing)
+    const n = this.Q?.length ?? 0;                    // transient states count
+    const m = this.R?.length ?? 0;                    // absorbing states count
 
-    // Build O: n x m zero matrix
+    // Build O: n×m zero matrix (absorbing → transient, impossible)
     const O: (number | string)[][] = Array.from({ length: n }, () => Array(m).fill(0));
 
-    // Build I: m x m identity matrix
+    // Build I: m×m identity matrix (absorbing → absorbing, stays)
     const I: (number | string)[][] = Array.from({ length: m }, (_, i) =>
       Array.from({ length: m }, (_, j) => (i === j ? 1 : 0))
     );
 
-    // Combine into full matrix: [Q | O] on top, [R | I] on bottom
+    // Full matrix T = [Q O; R I], columns sum to 1
     this.data = [
-      ...this.Q.map((row, i) => [...row, ...O[i]]),
-      ...this.R.map((row, i) => [...row, ...I[i]]),
+      ...this.Q.map((row, i) => [...row, ...O[i]]),  // [Q | O]
+      ...this.R.map((row, i) => [...row, ...I[i]]),  // [R | I]
     ];
   }
 
@@ -71,6 +74,7 @@ export class TransitionMatrixTableComponent implements OnInit, OnChanges {
   }
 
   tooltip(i: number, j: number): string {
+    // P[i][j] = P(to i | from j)
     const fromLabel = this.labels?.[j] ?? j.toString();
     const toLabel = this.labels?.[i] ?? i.toString();
     return `P(${fromLabel}, ${toLabel}) = ${this.data[i][j]}`;
@@ -85,13 +89,13 @@ export class TransitionMatrixTableComponent implements OnInit, OnChanges {
     if (!this.highlightRegion) return false;
 
     const n = this.Q?.length ?? 0; // transient states count
-    const m = this.R?.length ?? 0; // absorbing states count
 
+    // P[i][j] = P(to i | from j): row = to, col = from
     switch (this.highlightRegion) {
-      case 'Q': return i < n && j < n;
-      case 'O': return i < n && j >= n;
-      case 'R': return i >= n && j < n;
-      case 'I': return i >= n && j >= n;
+      case 'Q': return i < n && j < n;      // transient → transient
+      case 'O': return i < n && j >= n;     // absorbing → transient (impossible)
+      case 'R': return i >= n && j < n;     // transient → absorbing
+      case 'I': return i >= n && j >= n;    // absorbing → absorbing
       default: return false;
     }
   }

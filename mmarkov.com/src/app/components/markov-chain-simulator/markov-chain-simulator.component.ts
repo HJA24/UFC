@@ -45,8 +45,11 @@ export class MarkovChainSimulatorComponent {
   }
 
   private buildFullMatrix(): number[][] {
+    // P[i][j] = P(to i | from j), columns sum to 1
+    // Q: n×n, R: m×n, O: n×m, I: m×m
     const n = this.Q.length;
     const m = this.R.length;
+
     const O = Array.from({ length: n }, () => Array(m).fill(0));
     const I = Array.from({ length: m }, (_, i) =>
       Array.from({ length: m }, (_, j) => (i === j ? 1 : 0))
@@ -60,14 +63,14 @@ export class MarkovChainSimulatorComponent {
 
   private sampleNextState(currentState: number): number {
     const matrix = this.buildFullMatrix();
-    const row = matrix[currentState];
     const random = Math.random();
     let cumulative = 0;
 
-    for (let j = 0; j < row.length; j++) {
-      cumulative += row[j];
+    // P[i][j] = P(to i | from j), so read column currentState
+    for (let nextState = 0; nextState < matrix.length; nextState++) {
+      cumulative += matrix[nextState][currentState];
       if (random < cumulative) {
-        return j;
+        return nextState;
       }
     }
     return currentState;
@@ -85,6 +88,7 @@ export class MarkovChainSimulatorComponent {
     }
     const fromState = this.simulationStates[this.simulationStates.length - 2];
     const toState = this.simulationStates[this.simulationStates.length - 1];
+    // P[i][j] = P(to i | from j), so i = to, j = from
     this.highlightCellChange.emit({ i: toState, j: fromState });
   }
 
@@ -110,7 +114,6 @@ export class MarkovChainSimulatorComponent {
     const nextState = this.sampleNextState(this.currentStateIndex);
     this.simulationStates.push(nextState);
 
-    // Flash effect: clear highlight briefly, then set new cell
     this.highlightCellChange.emit(null);
     setTimeout(() => {
       this.emitHighlightCell();
@@ -137,14 +140,6 @@ export class MarkovChainSimulatorComponent {
     this.isAbsorbed = false;
     this.isSimulating.set(false);
     this.isSimulatingChange.emit(false);
-  }
-
-  onSimulationIconClick(): void {
-    if (this.isSimulating()) {
-      this.resetSimulation();
-    } else {
-      this.startSimulation();
-    }
   }
 
   private scrollToEnd(): void {

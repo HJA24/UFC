@@ -22,19 +22,20 @@ export class AboutPageComponent {
   @ViewChild('simulator') simulatorRef!: MarkovChainSimulatorComponent;
   @Input() p_strike_blue: number = 0.1;
 
-  // Q: transient to transient (5x5)
+  // P[i][j] = P(to i | from j), columns sum to 1
+  // Q: transient → transient (5x5), column j = from state j
   Q: (number | string)[][] = [
-    [0.6, 0.7, 1 - this.p_strike_blue, 0.6, 0.8],
-    [0.3, 0,   0,   0,   0],
-    [0,   0.3, 0,   0,   0],
-    [0.1, 0,   0,   0,   0],
-    [0,   0,   0,   0.4, 0],
+    [0.6, 0.7, 1 - this.p_strike_blue, 0.6, 0.8],  // to standing
+    [0.3, 0,   0,                      0,   0  ],  // to strike attempted blue
+    [0,   0.3, 0,                      0,   0  ],  // to strike attempted red
+    [0.1, 0,   0,                      0,   0  ],  // to strike landed blue
+    [0,   0,   0,                      0.4, 0  ],  // to strike landed red
   ];
 
-  // R: absorbing from transient (2x5)
+  // R: transient → absorbing (2x5), column j = from transient state j
   R: (number | string)[][] = [
-    [0, 0, this.p_strike_blue, 0, 0],
-    [0, 0, 0, 0, 0.2],
+    [0, 0, this.p_strike_blue, 0, 0  ],  // to knockout blue
+    [0, 0, 0,                  0, 0.2],  // to knockout red
   ];
 
   labels: string[] = [
