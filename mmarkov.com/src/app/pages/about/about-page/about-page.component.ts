@@ -8,6 +8,7 @@ import { MarkovChainSimulatorComponent } from "src/app/components/markov-chain-s
 import { FundamentalMatrixAccordionComponent } from "src/app/components/fundamental-matrix-accordion/fundamental-matrix-accordion.component";
 import { MatrixTableComponent } from "src/app/components/tables/matrix/matrix-table.component";
 import { InvLogitChartComponent, invLogit } from "src/app/components/charts/inv-logit-chart/inv-logit-chart.component";
+import { StackedMatricesComponent } from "src/app/components/stacked-matrices/stacked-matrices.component";
 
 @Component({
   selector: 'app-about-page',
@@ -22,6 +23,7 @@ import { InvLogitChartComponent, invLogit } from "src/app/components/charts/inv-
     FundamentalMatrixAccordionComponent,
     MatrixTableComponent,
     InvLogitChartComponent,
+    StackedMatricesComponent,
   ],
   templateUrl: './about-page.component.html',
   styleUrl: './about-page.component.css',

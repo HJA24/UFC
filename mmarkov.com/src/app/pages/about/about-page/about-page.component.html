@@ -146,7 +146,7 @@
     <span class="simulated-as">~</span>
     <span class="distribution">Binomial(n, θ)</span>
   </div>
-  <p>The transition probabilities, <span class="theta">θ</span>, lie in the interval [0, 1] whereas the skill coefficients lie in the interval ℝ. By applying the inverse logit, real numbers are transformed into probabilities.</p>
+  <p>The success probability of the binomial, <span class="theta">θ</span>, lies in the interval [0, 1] whereas the skill coefficients lie in the interval ℝ. By applying the inverse logit, real numbers are transformed into probabilities.</p>
   <div class="transformation-container">
     <div class="sliders-and-chart">
       <div class="sliders">
@@ -176,7 +176,9 @@
   As a result, the properties of the Markov chain change accordingly, leading to different estimates for the number of actions and outcome probabilities within the fight.
   </p>
   <p>Using Bayesian inference, we obtain 5000 posterior samples of each fighter's skill coefficient.
-  For each sample, we construct a transition matrix based on the skills estimates of that particular sample and subsequently compute the properties of the resulting Markov chain. </p>
+  For each sample, we construct a transition matrix based on the skills estimates of that particular sample and, subsequently, compute the properties of the resulting Markov chain. </p>
+
+  <app-stacked-matrices></app-stacked-matrices>
 
   <p>
   This allows us to quantify the uncertainty in our predictions which is a extremely valuable piece of information.

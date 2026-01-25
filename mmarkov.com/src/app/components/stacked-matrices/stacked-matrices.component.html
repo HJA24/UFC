@@ -1,0 +1,19 @@
+<div class="equation">
+  <span class="T">T<sub>s</sub></span>
+  <span class="equals">=</span>
+  <div class="deck">
+    <!-- Card edges (only borders visible) -->
+    @for (i of edgeIndices; track i) {
+      <div class="card-edge" [style.--depth]="5 - i"></div>
+    }
+    <!-- Front card (fully visible matrix) -->
+    <div class="front-card">
+      <app-transition-matrix-table
+        [Q]="getQ(0)"
+        [R]="getR(0)"
+        [labels]="labels"
+        [showTooltips]="false"
+      ></app-transition-matrix-table>
+    </div>
+  </div>
+</div>

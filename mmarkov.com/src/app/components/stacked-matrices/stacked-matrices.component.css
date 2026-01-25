@@ -1,0 +1,46 @@
+.equation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.T {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: black;
+}
+
+.equals {
+  font-size: 1.25rem;
+}
+
+.deck {
+  position: relative;
+  display: inline-block;
+}
+
+.card-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 4px;
+  /* 45 degree offset: up and to the right */
+  transform: translate(
+    calc(var(--depth) * 3px),
+    calc(var(--depth) * -3px)
+  );
+  z-index: calc(0 - var(--depth));
+}
+
+.front-card {
+  position: relative;
+  background: white;
+  border-radius: 4px;
+  z-index: 10;
+}
