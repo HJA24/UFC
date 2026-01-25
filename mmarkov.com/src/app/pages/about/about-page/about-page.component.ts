@@ -7,7 +7,7 @@ import { TransitionMatrixTableComponent } from "src/app/components/tables/transi
 import { MarkovChainSimulatorComponent } from "src/app/components/markov-chain-simulator/markov-chain-simulator.component";
 import { FundamentalMatrixAccordionComponent } from "src/app/components/fundamental-matrix-accordion/fundamental-matrix-accordion.component";
 import { MatrixTableComponent } from "src/app/components/tables/matrix/matrix-table.component";
-import { InvLogitChartComponent } from "src/app/components/charts/inv-logit-chart/inv-logit-chart.component";
+import { InvLogitChartComponent, invLogit } from "src/app/components/charts/inv-logit-chart/inv-logit-chart.component";
 
 @Component({
   selector: 'app-about-page',
@@ -28,7 +28,6 @@ import { InvLogitChartComponent } from "src/app/components/charts/inv-logit-char
 })
 export class AboutPageComponent {
   @ViewChild('simulator') simulatorRef!: MarkovChainSimulatorComponent;
-  @Input() p_strike_blue: number = 0.1;
 
   lambdaBlue: number = 5;
   lambdaRed: number = 5;
@@ -37,21 +36,29 @@ export class AboutPageComponent {
     return this.lambdaBlue - this.lambdaRed;
   }
 
+  get theta(): number {
+    return invLogit(this.deltaSkill);
+  }
+
   // P[i][j] = P(to i | from j), columns sum to 1
   // Q: transient → transient (5x5), column j = from state j
-  Q: (number | string)[][] = [
-    [0.6, 0.7, 1 - this.p_strike_blue, 0.6, 0.8],  // to standing
-    [0.3, 0,   0,                      0,   0  ],  // to strike attempted blue
-    [0,   0.3, 0,                      0,   0  ],  // to strike attempted red
-    [0.1, 0,   0,                      0,   0  ],  // to strike landed blue
-    [0,   0,   0,                      0.4, 0  ],  // to strike landed red
-  ];
+  get Q(): (number | string)[][] {
+    return [
+      [0.6, 0.7, 1 - this.theta, 0.6, 0.8],  // to standing
+      [0.3, 0,   0,              0,   0  ],  // to strike attempted blue
+      [0,   0.3, 0,              0,   0  ],  // to strike attempted red
+      [0.1, 0,   0,              0,   0  ],  // to strike landed blue
+      [0,   0,   0,              0.4, 0  ],  // to strike landed red
+    ];
+  }
 
   // R: transient → absorbing (2x5), column j = from transient state j
-  R: (number | string)[][] = [
-    [0, 0, this.p_strike_blue, 0, 0  ],  // to knockout blue
-    [0, 0, 0,                  0, 0.2],  // to knockout red
-  ];
+  get R(): (number | string)[][] {
+    return [
+      [0, 0, this.theta, 0, 0  ],  // to knockout blue
+      [0, 0, 0,          0, 0.2],  // to knockout red
+    ];
+  }
 
   labels: string[] = [
     'standing',

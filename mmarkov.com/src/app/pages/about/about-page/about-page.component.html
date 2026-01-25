@@ -166,8 +166,30 @@
       <app-inv-logit-chart [deltaSkill]="deltaSkill"></app-inv-logit-chart>
     </div>
   </div>
+  <div class="equation">
+    <span class="T">T</span>
+    <span class="equals">=</span>
+    <app-transition-matrix-table [Q]="Q" [R]="R" [labels]="labels" [showTooltips]="false"></app-transition-matrix-table>
+  </div>
   <p>Logically, if the skill coefficients of the fighters are equal, there is a 50% probability of a successful strike.
-  The larger the relative difference of the fighters skills, the higher the probability that <i>strike attempted by blue</i> results in a <i>strike landed by blue</i>.</p>
+  The larger the difference of the fighters skills, the higher the probability that <i>strike attempted by blue</i> results in a <i>strike landed by blue</i>.
+  As a result, the properties of the Markov chain change accordingly, leading to different estimates for the number of actions and outcome probabilities within the fight.
+  </p>
+  <p>Using Bayesian inference, we obtain 5000 posterior samples of each fighter's skill coefficient.
+  For each sample, we construct a transition matrix based on the skills estimates of that particular sample and subsequently compute the properties of the resulting Markov chain. </p>
+
+  <p>
+  This allows us to quantify the uncertainty in our predictions which is a extremely valuable piece of information.
+  The uncertainty is expressed as a highest-density intervals (HDI) instead of a simple point estimate.
+  A 90% HDI means that 90% of the posterior samples fall within this interval, indicating the range of plausible outcomes.
+  <strong>mmarkov</strong> uses the following HDIs to express the uncertainty in its predictions.
+  </p>
+  <ul>
+    <li>50% - confident</li>
+    <li>75% - very confident</li>
+    <li>90% - highly confident</li>
+    <li>95% - extremely confident</li>
+  </ul>
 
   <div class="footnotes">
     <p><sup>1</sup> <strong>mmarkov</strong> uses a special reparameterization of the beta-binomial and the negative binomial distribution for all the skill models.</p>

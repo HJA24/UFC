@@ -39,7 +39,11 @@ export class MatrixTableComponent implements OnChanges {
   }
 
   value(i: number, j: number): number | string {
-    return this.data[i][j];
+    const val = this.data[i][j];
+    if (typeof val === 'number') {
+      return Math.round(val * 100) / 100;
+    }
+    return val;
   }
 
   tooltip(i: number, j: number): string {
