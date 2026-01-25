@@ -8,6 +8,11 @@ h2, p, ul {
   width: 100%;
 }
 
+app-fundamental-matrix-accordion {
+  display: block;
+  width: 100%;
+}
+
 .blue {
   font-style: italic;
 }
@@ -171,14 +176,16 @@ h2, p, ul {
 }
 
 .slider-row ::ng-deep .mat-mdc-slider .mdc-slider__thumb-knob {
-  width: 8px !important;
-  height: 8px !important;
+  width: 12px !important;
+  height: 12px !important;
   border-width: 6px !important;
+  border-radius: 50% !important;
 }
 
 .slider-row ::ng-deep .mat-mdc-slider {
-  --mdc-slider-handle-width: 8px;
-  --mdc-slider-handle-height: 8px;
+  --mdc-slider-handle-width: 12px;
+  --mdc-slider-handle-height: 12px;
+  --mdc-slider-handle-shape: 50%;
 }
 
 .slider-row ::ng-deep .mdc-slider__track--inactive {
@@ -201,4 +208,39 @@ h2, p, ul {
 .slider-row.red ::ng-deep .mdc-slider__thumb-knob {
   background-color: var(--red);
   border-color: var(--red);
+}
+
+.sliders-and-chart {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footnote-ref {
+  font-size: 0.75rem;
+  color: rgb(100, 100, 100);
+  cursor: default;
+}
+
+.footnotes {
+  width: 100%;
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 1px solid rgb(220, 220, 220);
+}
+
+.footnotes p {
+  font-size: 0.85rem;
+  color: rgb(100, 100, 100);
+  line-height: 1.5;
+}
+
+.footnotes sup {
+  margin-right: 4px;
 }

@@ -17,8 +17,8 @@
   </ul>
   <p>
     A transition matrix shows the probabilities of moving between different states.
-    The fight starts in the <i>standing</i>-state where there is a 30% chance that <span class="blue">blue</span> will
-    attempt a strike, a 10% chance that <span class="red">red</span> will attempt a strike and a 60% chance that they
+    The fight starts in the <i>standing</i>-state where there is a 30% chance that fighter <span class="blue">blue</span> will
+    attempt a strike, a 10% chance that fighter <span class="red">red</span> will attempt a strike and a 60% chance that they
     will manoeuvre around each other .
     This means that there is a probability of 60% that they will remain in the same state.
 
@@ -96,7 +96,7 @@
     <span class="equals">=</span>
     <app-matrix-table [data]="N_matrix" [highlightCell]="highlightNCell"></app-matrix-table>
   </div>
-  <p>So, as the fighters are starting in the <i>standing</i>-position, there are 30.77 and 7.69 strikes attempted by respectively <i>blue</i> and <i>red</i> before the fight ends in a knockout</p>
+  <p>So, as the fighters are starting in the <i>standing</i>-position, there are 30.77 and 7.69 strikes attempted by respectively fighter <i>blue</i> and <i>red</i> before the fight ends in a knockout</p>
   <p>Next, we can calculate the probability of each state after a "very long time"</p>
   <div class="equation">
     <span class="RN">RN</span>
@@ -138,8 +138,8 @@
   <p>
     The number of strikes landed by fighter <i>blue</i>, <span class="k">k</span>, depends on
     the number of strikes attempted by fighter <i>blue</i>, <span class="n">n</span>, and the corresponding skill parameters
-    of the fighters, <i>λ<sub>blue</sub></i>, and <i>λ<sub>red</sub></i>.
-    The striking accuracy is modelled with the help of the binomial distribution:
+    of the fighters, <i>λ<sub>blue</sub></i> and <i>λ<sub>red</sub></i>.
+    The striking accuracy can be modelled with the help of the binomial distribution<sup class="footnote-ref">1</sup>:
   </p>
   <div class="equation">
     <span class="k">k</span>
@@ -148,18 +148,28 @@
   </div>
   <p>The transition probabilities, <span class="theta">θ</span>, lie in the interval [0, 1] whereas the skill coefficients lie in the interval ℝ. By applying the inverse logit, real numbers are transformed into probabilities.</p>
   <div class="transformation-container">
-    <div class="slider-row blue">
-      <span class="slider-label">λ<sub>blue</sub> = {{ lambdaBlue | number:'1.1-1' }}</span>
-      <mat-slider min="0" max="10" step="0.1">
-        <input matSliderThumb [(ngModel)]="lambdaBlue">
-      </mat-slider>
-    </div>
-    <div class="slider-row red">
-      <span class="slider-label">λ<sub>red</sub>  = {{ lambdaRed | number:'1.1-1' }}</span>
-      <mat-slider min="0" max="10" step="0.1">
-        <input matSliderThumb [(ngModel)]="lambdaRed">
-      </mat-slider>
+    <div class="sliders-and-chart">
+      <div class="sliders">
+        <div class="slider-row blue">
+          <span class="slider-label">λ<sub>blue</sub> = {{ lambdaBlue | number:'1.1-1' }}</span>
+          <mat-slider min="0" max="10" step="0.1">
+            <input matSliderThumb [(ngModel)]="lambdaBlue">
+          </mat-slider>
+        </div>
+        <div class="slider-row red">
+          <span class="slider-label">λ<sub>red</sub> = {{ lambdaRed | number:'1.1-1' }}</span>
+          <mat-slider min="0" max="10" step="0.1">
+            <input matSliderThumb [(ngModel)]="lambdaRed">
+          </mat-slider>
+        </div>
+      </div>
+      <app-inv-logit-chart [deltaSkill]="deltaSkill"></app-inv-logit-chart>
     </div>
   </div>
+  <p>Logically, if the skill coefficients of the fighters are equal, there is a 50% probability of a successful strike.
+  The larger the relative difference of the fighters skills, the higher the probability that <i>strike attempted by blue</i> results in a <i>strike landed by blue</i>.</p>
 
+  <div class="footnotes">
+    <p><sup>1</sup> <strong>mmarkov</strong> uses a special reparameterization of the beta-binomial and the negative binomial distribution for all the skill models.</p>
+  </div>
 </div>

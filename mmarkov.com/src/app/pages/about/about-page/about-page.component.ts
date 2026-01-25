@@ -7,6 +7,7 @@ import { TransitionMatrixTableComponent } from "src/app/components/tables/transi
 import { MarkovChainSimulatorComponent } from "src/app/components/markov-chain-simulator/markov-chain-simulator.component";
 import { FundamentalMatrixAccordionComponent } from "src/app/components/fundamental-matrix-accordion/fundamental-matrix-accordion.component";
 import { MatrixTableComponent } from "src/app/components/tables/matrix/matrix-table.component";
+import { InvLogitChartComponent } from "src/app/components/charts/inv-logit-chart/inv-logit-chart.component";
 
 @Component({
   selector: 'app-about-page',
@@ -20,6 +21,7 @@ import { MatrixTableComponent } from "src/app/components/tables/matrix/matrix-ta
     MarkovChainSimulatorComponent,
     FundamentalMatrixAccordionComponent,
     MatrixTableComponent,
+    InvLogitChartComponent,
   ],
   templateUrl: './about-page.component.html',
   styleUrl: './about-page.component.css',
@@ -30,6 +32,10 @@ export class AboutPageComponent {
 
   lambdaBlue: number = 5;
   lambdaRed: number = 5;
+
+  get deltaSkill(): number {
+    return this.lambdaBlue - this.lambdaRed;
+  }
 
   // P[i][j] = P(to i | from j), columns sum to 1
   // Q: transient → transient (5x5), column j = from state j

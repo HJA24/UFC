@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  flex-shrink: 0;
+}
+
+::ng-deep .domain {
+  stroke: rgb(200, 200, 200);
+}
+
+::ng-deep .tick line {
+  stroke: rgb(200, 200, 200);
+}
+
+::ng-deep .tick text {
+  fill: rgb(120, 120, 120);
+  font-size: 11px;
+}
+
+::ng-deep .grid line {
+  stroke: rgb(200, 200, 200);
+  stroke-dasharray: 2, 2;
+}
+
+::ng-deep .grid .domain {
+  stroke: none;
+}
