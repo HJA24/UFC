@@ -1,21 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 import { TransitionMatrixTableComponent } from '../tables/transition-matrix/transition-matrix-table.component';
 import { invLogit } from '../charts/inv-logit-chart/inv-logit-chart.component';
 
 @Component({
   selector: 'app-stacked-matrices',
   standalone: true,
-  imports: [CommonModule, TransitionMatrixTableComponent],
+  imports: [CommonModule, MatIconModule, TransitionMatrixTableComponent],
   templateUrl: './stacked-matrices.component.html',
   styleUrl: './stacked-matrices.component.css'
 })
 export class StackedMatricesComponent implements OnInit {
-  readonly totalSamples = 5000;
-  readonly visibleEdges = 5;
+  readonly visibleCards = 10;
+  readonly visibleBackground = 10;
 
-  samples: number[] = [];
-  edgeIndices: number[] = [];
+  @Output() indexChange = new EventEmitter<number>();
+
+  currentIndex = 0;
+  currentSample = 0;
+
+  Q: (number | string)[][] = [];
+  R: (number | string)[][] = [];
 
   labels: string[] = [
     'standing',
@@ -27,36 +33,61 @@ export class StackedMatricesComponent implements OnInit {
     'knockout red',
   ];
 
-  ngOnInit(): void {
-    this.samples = this.generatePosteriorSamples();
-    this.edgeIndices = Array.from({ length: this.visibleEdges }, (_, i) => i);
-  }
-
-  private generatePosteriorSamples(): number[] {
-    const samples: number[] = [];
-    for (let i = 0; i < this.totalSamples; i++) {
-      const u1 = Math.random();
-      const u2 = Math.random();
-      const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
-      samples.push(z * 2);
+  get leftIndices(): number[] {
+    const indices: number[] = [];
+    for (let i = this.currentIndex - 1; i >= Math.max(0, this.currentIndex - this.visibleBackground); i--) {
+      indices.push(i);
     }
-    return samples;
+    return indices;
   }
 
-  getQ(sampleIndex: number): (number | string)[][] {
-    const theta = invLogit(this.samples[sampleIndex]);
-    return [
+  get rightIndices(): number[] {
+    const indices: number[] = [];
+    for (let i = this.currentIndex + 1; i <= Math.min(this.visibleCards - 1, this.currentIndex + this.visibleBackground); i++) {
+      indices.push(i);
+    }
+    return indices;
+  }
+
+  ngOnInit(): void {
+    this.simulate();
+    this.indexChange.emit(this.currentIndex);
+  }
+
+  prev(): void {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.simulate();
+      this.indexChange.emit(this.currentIndex);
+    }
+  }
+
+  next(): void {
+    if (this.currentIndex < this.visibleCards - 1) {
+      this.currentIndex++;
+      this.simulate();
+      this.indexChange.emit(this.currentIndex);
+    }
+  }
+
+  private simulate(): void {
+    // Box-Muller transform to generate normal sample
+    const u1 = Math.random();
+    const u2 = Math.random();
+    const z = Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+    this.currentSample = z * 2;
+
+    const theta = invLogit(this.currentSample);
+
+    this.Q = [
       [0.6, 0.7, 1 - theta, 0.6, 0.8],
       [0.3, 0,   0,         0,   0  ],
       [0,   0.3, 0,         0,   0  ],
       [0.1, 0,   0,         0,   0  ],
       [0,   0,   0,         0.4, 0  ],
     ];
-  }
 
-  getR(sampleIndex: number): (number | string)[][] {
-    const theta = invLogit(this.samples[sampleIndex]);
-    return [
+    this.R = [
       [0, 0, theta, 0, 0  ],
       [0, 0, 0,     0, 0.2],
     ];

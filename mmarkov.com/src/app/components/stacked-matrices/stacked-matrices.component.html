@@ -1,19 +1,39 @@
-<div class="equation">
-  <span class="T">T<sub>s</sub></span>
-  <span class="equals">=</span>
+<div class="container">
   <div class="deck">
-    <!-- Card edges (only borders visible) -->
-    @for (i of edgeIndices; track i) {
-      <div class="card-edge" [style.--depth]="5 - i"></div>
+    <!-- Cards before current (offset left) -->
+    @for (i of leftIndices; track i) {
+      <div class="card background-card left-card" [style.--depth]="currentIndex - i">
+        <app-transition-matrix-table
+          [Q]="Q"
+          [R]="R"
+          [labels]="labels"
+          [showTooltips]="false"
+        ></app-transition-matrix-table>
+      </div>
     }
-    <!-- Front card (fully visible matrix) -->
-    <div class="front-card">
+    <!-- Cards after current (offset right) -->
+    @for (i of rightIndices; track i) {
+      <div class="card background-card right-card" [style.--depth]="i - currentIndex">
+        <app-transition-matrix-table
+          [Q]="Q"
+          [R]="R"
+          [labels]="labels"
+          [showTooltips]="false"
+        ></app-transition-matrix-table>
+      </div>
+    }
+    <!-- Active card (front) -->
+    <div class="card active-card">
       <app-transition-matrix-table
-        [Q]="getQ(0)"
-        [R]="getR(0)"
+        [Q]="Q"
+        [R]="R"
         [labels]="labels"
         [showTooltips]="false"
       ></app-transition-matrix-table>
     </div>
+  </div>
+  <div class="nav-container">
+    <mat-icon class="nav-arrow" (click)="prev()" [class.disabled]="currentIndex === 0">arrow_back</mat-icon>
+    <mat-icon class="nav-arrow" (click)="next()" [class.disabled]="currentIndex === visibleCards - 1">arrow_forward</mat-icon>
   </div>
 </div>

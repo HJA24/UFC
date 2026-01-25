@@ -176,9 +176,13 @@
   As a result, the properties of the Markov chain change accordingly, leading to different estimates for the number of actions and outcome probabilities within the fight.
   </p>
   <p>Using Bayesian inference, we obtain 5000 posterior samples of each fighter's skill coefficient.
-  For each sample, we construct a transition matrix based on the skills estimates of that particular sample and, subsequently, compute the properties of the resulting Markov chain. </p>
+  For each sample <span class="s">s</span>, we construct transition matrix <span class="Ts">T<sub>s</sub></span> based on the skills estimates of that particular sample and, subsequently, compute the properties of the resulting Markov chain. </p>
 
-  <app-stacked-matrices></app-stacked-matrices>
+  <div class="equation">
+    <span class="T">T<sub>{{ stackedMatrixIndex + 1 }}</sub></span>
+    <span class="equals">=</span>
+    <app-stacked-matrices (indexChange)="onStackedMatrixIndexChange($event)"></app-stacked-matrices>
+  </div>
 
   <p>
   This allows us to quantify the uncertainty in our predictions which is a extremely valuable piece of information.

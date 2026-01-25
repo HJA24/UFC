@@ -92,6 +92,7 @@ export class AboutPageComponent {
   highlightNCell: { i: number; j: number } | null = null;
   highlightRNCell: { i: number; j: number } | null = null;
   isSimulating = false;
+  stackedMatrixIndex = 0;
 
   setHighlight(region: 'Q' | 'R' | 'O' | 'I'): void {
     this.highlightRegion = region;
@@ -131,5 +132,9 @@ export class AboutPageComponent {
     } else {
       this.simulatorRef.startSimulation();
     }
+  }
+
+  onStackedMatrixIndexChange(index: number): void {
+    this.stackedMatrixIndex = index;
   }
 }

@@ -21,13 +21,13 @@ app-fundamental-matrix-accordion {
   font-style: italic;
 }
 
-.T, .Q, .R, .I, .O, .N, .RN {
+.T, .Q, .R, .I, .O, .N, .RN, .Ts {
   font-style: italic;
   font-size: 1.1rem;
   color: black;
 }
 
-.k, .n, .theta {
+.k, .n, .theta, .s {
   font-style: italic;
   font-size: 1.1rem;
 }
