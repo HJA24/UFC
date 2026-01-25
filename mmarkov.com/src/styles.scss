@@ -231,7 +231,7 @@ app-transition-matrix-table {
   ));
 }
 
-app-transition-matrix-table .mat-mdc-table {
+app-matrix-table .mat-mdc-table {
   width: auto;
   box-shadow: none;
   border-image: linear-gradient(90deg, #000 4px, #0000 0 calc(100% - 5px), #000 0) 1/1.5px;
@@ -241,7 +241,9 @@ app-transition-matrix-table .mat-mdc-table {
 
 app-matrix-table .mat-mdc-cell {
   padding: 5px 10px;
-  min-width: 0;
+  width: 65px;
+  min-width: 65px;
+  max-width: 65px;
   border: none;
   text-align: center;
   font-style: italic;

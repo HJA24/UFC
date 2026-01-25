@@ -53,25 +53,6 @@ export class InvLogitChartComponent implements AfterViewInit, OnChanges {
       .domain([0, 1])
       .range([height, 0]);
 
-    // Add horizontal gridlines
-    g.append('g')
-      .attr('class', 'grid')
-      .call(d3.axisLeft(this.yScale)
-        .ticks(5)
-        .tickSize(-width)
-        .tickFormat(() => '')
-      );
-
-    // Add vertical gridlines
-    g.append('g')
-      .attr('class', 'grid')
-      .attr('transform', `translate(0,${height})`)
-      .call(d3.axisBottom(this.xScale)
-        .ticks(6)
-        .tickSize(-height)
-        .tickFormat(() => '')
-      );
-
     // Generate line data
     const lineData: [number, number][] = [];
     for (let x = -10; x <= 10; x += 0.1) {
@@ -95,7 +76,8 @@ export class InvLogitChartComponent implements AfterViewInit, OnChanges {
     // X axis
     g.append('g')
       .attr('transform', `translate(0,${height})`)
-      .call(d3.axisBottom(this.xScale).ticks(6));
+      .call(d3.axisBottom(this.xScale).ticks(6))
+      .style('font-family', 'UFCSans, sans-serif');
 
     // X axis label
     g.append('text')
@@ -103,13 +85,15 @@ export class InvLogitChartComponent implements AfterViewInit, OnChanges {
       .attr('y', height + 35)
       .attr('fill', 'rgb(80, 80, 80)')
       .attr('text-anchor', 'middle')
+      .style('font-family', 'UFCSans, sans-serif')
       .style('font-style', 'italic')
       .style('font-size', '12px')
       .text('Δλ');
 
     // Y axis
     g.append('g')
-      .call(d3.axisLeft(this.yScale).ticks(5));
+      .call(d3.axisLeft(this.yScale).ticks(5))
+      .style('font-family', 'UFCSans, sans-serif');
 
     // Y axis label
     g.append('text')
@@ -118,6 +102,7 @@ export class InvLogitChartComponent implements AfterViewInit, OnChanges {
       .attr('y', -35)
       .attr('fill', 'rgb(80, 80, 80)')
       .attr('text-anchor', 'middle')
+      .style('font-family', 'UFCSans, sans-serif')
       .style('font-style', 'italic')
       .style('font-size', '12px')
       .text('θ');

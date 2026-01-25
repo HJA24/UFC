@@ -1,24 +1,26 @@
 <div class="container">
-  <div class="deck">
+  <div class="deck" [style.transform]="'translateX(' + (currentIndex * 6) + 'px)'">
     <!-- Cards before current (offset left) -->
     @for (i of leftIndices; track i) {
-      <div class="card background-card left-card" [style.--depth]="currentIndex - i">
+      <div class="card background-card left-card" [style.--depth]="currentIndex - i + (i === 9 ? 8 : 0)">
         <app-transition-matrix-table
           [Q]="Q"
           [R]="R"
           [labels]="labels"
           [showTooltips]="false"
+          [lastColumn]="i === 9 ? dotsLastColumn : undefined"
         ></app-transition-matrix-table>
       </div>
     }
     <!-- Cards after current (offset right) -->
     @for (i of rightIndices; track i) {
-      <div class="card background-card right-card" [style.--depth]="i - currentIndex">
+      <div class="card background-card right-card" [style.--depth]="i - currentIndex + (i === 9 ? 8 : 0)">
         <app-transition-matrix-table
           [Q]="Q"
           [R]="R"
           [labels]="labels"
           [showTooltips]="false"
+          [lastColumn]="i === 9 ? dotsLastColumn : undefined"
         ></app-transition-matrix-table>
       </div>
     }

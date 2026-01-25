@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { TransitionMatrixTableComponent } from '../tables/transition-matrix/transition-matrix-table.component';
@@ -36,7 +36,7 @@ export class StackedMatricesComponent implements OnInit {
   get leftIndices(): number[] {
     const indices: number[] = [];
     for (let i = this.currentIndex - 1; i >= Math.max(0, this.currentIndex - this.visibleBackground); i--) {
-      indices.push(i);
+      if (i !== 9) indices.push(i); // Skip index 8 (gap before T_5000)
     }
     return indices;
   }
@@ -44,7 +44,7 @@ export class StackedMatricesComponent implements OnInit {
   get rightIndices(): number[] {
     const indices: number[] = [];
     for (let i = this.currentIndex + 1; i <= Math.min(this.visibleCards - 1, this.currentIndex + this.visibleBackground); i++) {
-      indices.push(i);
+      if (i !== 8) indices.push(i); // Skip index 8 (gap before T_5000)
     }
     return indices;
   }
@@ -54,9 +54,19 @@ export class StackedMatricesComponent implements OnInit {
     this.indexChange.emit(this.currentIndex);
   }
 
+  @HostListener('window:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent): void {
+    if (event.key === '<' || (event.key === ',' && event.shiftKey)) {
+      this.prev();
+    } else if (event.key === '>' || (event.key === '.' && event.shiftKey)) {
+      this.next();
+    }
+  }
+
   prev(): void {
     if (this.currentIndex > 0) {
       this.currentIndex--;
+      if (this.currentIndex === 8) this.currentIndex--; // Skip gap
       this.simulate();
       this.indexChange.emit(this.currentIndex);
     }
@@ -65,10 +75,14 @@ export class StackedMatricesComponent implements OnInit {
   next(): void {
     if (this.currentIndex < this.visibleCards - 1) {
       this.currentIndex++;
+      if (this.currentIndex === 8) this.currentIndex++; // Skip gap
       this.simulate();
       this.indexChange.emit(this.currentIndex);
     }
   }
+
+  // Last column for the last card (T_5000) showing "..."
+  readonly dotsLastColumn: (number | string)[] = ['', '', '', '...', '', '', ''];
 
   private simulate(): void {
     // Box-Muller transform to generate normal sample

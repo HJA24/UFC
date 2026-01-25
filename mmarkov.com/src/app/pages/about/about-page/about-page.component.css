@@ -27,6 +27,11 @@ app-fundamental-matrix-accordion {
   color: black;
 }
 
+.equation > .T,
+.equation > .equals {
+  align-self: center;
+}
+
 .k, .n, .theta, .s {
   font-style: italic;
   font-size: 1.1rem;
@@ -50,6 +55,10 @@ app-fundamental-matrix-accordion {
   justify-content: center;
   gap: 12px;
   margin: 24px 0;
+}
+
+.equation:has(app-stacked-matrices) {
+  margin-bottom: 72px;
 }
 
 .equals {
