@@ -90,4 +90,76 @@
     This can be inferred from the fundamental matrix, <span class="N">N</span>, which can be defined as summing <span class="Q">Q</span><sup><i>k</i></sup> for <i>k</i> = 0 to infinity.
   </p>
   <app-fundamental-matrix-accordion topic="derivation of the fundamental matrix" [startOpen]="false"></app-fundamental-matrix-accordion>
+  <p>In the simplified fight, this results in</p>
+  <div class="equation">
+    <span class="N">N</span>
+    <span class="equals">=</span>
+    <app-matrix-table [data]="N_matrix" [highlightCell]="highlightNCell"></app-matrix-table>
+  </div>
+  <p>So, as the fighters are starting in the <i>standing</i>-position, there are 30.77 and 7.69 strikes attempted by respectively <i>blue</i> and <i>red</i> before the fight ends in a knockout</p>
+  <p>Next, we can calculate the probability of each state after a "very long time"</p>
+  <div class="equation">
+    <span class="RN">RN</span>
+    <span class="equals">=</span>
+    <app-matrix-table [data]="RN_matrix" [highlightCell]="highlightRNCell"></app-matrix-table>
+  </div>
+
+  <p>With the help of the properties of a Markov chain, it is possible to infer probabilities of different types of outcomes and number of actions within a fight</p>
+
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="blue">blue</th>
+        <th class="red">red</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Number of strikes attempted</td>
+        <td (mouseenter)="setHighlightN(1, 0)" (mouseleave)="clearHighlightN()">{{ N_matrix[1][0] }}</td>
+        <td (mouseenter)="setHighlightN(2, 0)" (mouseleave)="clearHighlightN()">{{ N_matrix[2][0] }}</td>
+      </tr>
+      <tr>
+        <td>Numer of strikes landed</td>
+        <td (mouseenter)="setHighlightN(3, 0)" (mouseleave)="clearHighlightN()">{{ N_matrix[3][0] }}</td>
+        <td (mouseenter)="setHighlightN(4, 0)" (mouseleave)="clearHighlightN()">{{ N_matrix[4][0] }}</td>
+      </tr>
+      <tr>
+        <td>Probability of knockout</td>
+        <td (mouseenter)="setHighlightRN(0, 0)" (mouseleave)="clearHighlightRN()">{{ RN_matrix[0][0] | percent }}</td>
+        <td (mouseenter)="setHighlightRN(1, 0)" (mouseleave)="clearHighlightRN()">{{ RN_matrix[1][0] | percent }}</td>
+      </tr>
+    </tbody>
+  </table>
+<h2>Bayesian inference</h2>
+  <p>With the help of Bayesian inference, attack- and defence parameters are estimated for each of the fighters' skills.
+    These posterior estimates form the foundation of the probabilities in the transition matrix.</p>
+  <p>
+    The number of strikes landed by fighter <i>blue</i>, <span class="k">k</span>, depends on
+    the number of strikes attempted by fighter <i>blue</i>, <span class="n">n</span>, and the corresponding skill parameters
+    of the fighters, <i>λ<sub>blue</sub></i>, and <i>λ<sub>red</sub></i>.
+    The striking accuracy is modelled with the help of the binomial distribution:
+  </p>
+  <div class="equation">
+    <span class="k">k</span>
+    <span class="simulated-as">~</span>
+    <span class="distribution">Binomial(n, θ)</span>
+  </div>
+  <p>The transition probabilities, <span class="theta">θ</span>, lie in the interval [0, 1] whereas the skill coefficients lie in the interval ℝ. By applying the inverse logit, real numbers are transformed into probabilities.</p>
+  <div class="transformation-container">
+    <div class="slider-row blue">
+      <span class="slider-label">λ<sub>blue</sub> = {{ lambdaBlue | number:'1.1-1' }}</span>
+      <mat-slider min="0" max="10" step="0.1">
+        <input matSliderThumb [(ngModel)]="lambdaBlue">
+      </mat-slider>
+    </div>
+    <div class="slider-row red">
+      <span class="slider-label">λ<sub>red</sub>  = {{ lambdaRed | number:'1.1-1' }}</span>
+      <mat-slider min="0" max="10" step="0.1">
+        <input matSliderThumb [(ngModel)]="lambdaRed">
+      </mat-slider>
+    </div>
+  </div>
+
 </div>

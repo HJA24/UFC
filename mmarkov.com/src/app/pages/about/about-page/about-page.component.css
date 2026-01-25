@@ -16,7 +16,13 @@ h2, p, ul {
   font-style: italic;
 }
 
-.T, .Q, .R, .I, .O, .N {
+.T, .Q, .R, .I, .O, .N, .RN {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: black;
+}
+
+.k, .n, .theta {
   font-style: italic;
   font-size: 1.1rem;
 }
@@ -43,6 +49,15 @@ h2, p, ul {
 
 .equals {
   font-size: 1.25rem;
+}
+
+.simulated-as {
+  font-size: 1.25rem;
+}
+
+.distribution {
+  font-size: 1.1rem;
+  font-style: italic;
 }
 
 .canonical-matrix {
@@ -76,4 +91,114 @@ h2, p, ul {
 
 .simulation-icon:hover {
   color: #1976d2;
+}
+
+.summary-table {
+  width: auto;
+  border-collapse: collapse;
+  margin: 24px 0;
+  color: rgb(80, 80, 80);
+}
+
+.summary-table th,
+.summary-table td {
+  padding: 8px 24px 8px 0;
+  text-align: left;
+  border-bottom: 1px solid rgba(200, 200, 200, 0.4);
+}
+
+.summary-table th {
+  border-bottom: 2px solid rgba(200, 200, 200, 0.4);
+}
+
+.summary-table th.blue,
+.summary-table th.red {
+  text-align: center;
+}
+
+.summary-table th.blue {
+  border-bottom-color: var(--blue);
+}
+
+.summary-table th.red {
+  border-bottom-color: var(--red);
+}
+
+.summary-table tbody td {
+  color: rgb(80, 80, 80);
+}
+
+.summary-table tbody td:first-child {
+  color: rgb(50, 50, 50);
+}
+
+.summary-table tbody td:not(:first-child) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.95rem;
+  font-style: italic;
+  padding-left: 24px;
+  padding-right: 12px;
+}
+
+.summary-table th.blue,
+.summary-table th.red {
+  padding-left: 24px;
+  padding-right: 12px;
+}
+
+.transformation-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.slider-label {
+  min-width: 100px;
+  font-style: italic;
+  font-variant-numeric: tabular-nums;
+}
+
+.slider-row mat-slider {
+  width: 300px;
+}
+
+.slider-row ::ng-deep .mat-mdc-slider .mdc-slider__thumb-knob {
+  width: 8px !important;
+  height: 8px !important;
+  border-width: 6px !important;
+}
+
+.slider-row ::ng-deep .mat-mdc-slider {
+  --mdc-slider-handle-width: 8px;
+  --mdc-slider-handle-height: 8px;
+}
+
+.slider-row ::ng-deep .mdc-slider__track--inactive {
+  background-color: lightgray;
+}
+
+.slider-row.blue ::ng-deep .mdc-slider__track--active_fill {
+  border-color: var(--blue);
+}
+
+.slider-row.blue ::ng-deep .mdc-slider__thumb-knob {
+  background-color: var(--blue);
+  border-color: var(--blue);
+}
+
+.slider-row.red ::ng-deep .mdc-slider__track--active_fill {
+  border-color: var(--red);
+}
+
+.slider-row.red ::ng-deep .mdc-slider__thumb-knob {
+  background-color: var(--red);
+  border-color: var(--red);
 }
