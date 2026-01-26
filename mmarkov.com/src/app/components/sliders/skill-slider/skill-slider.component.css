@@ -1,0 +1,55 @@
+.skill-slider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.label {
+  min-width: 50px;
+}
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.slider-row mat-slider {
+  width: 300px;
+}
+
+.slider-row ::ng-deep .mat-mdc-slider .mdc-slider__thumb-knob {
+  width: 12px !important;
+  height: 12px !important;
+  border-width: 6px !important;
+  border-radius: 50% !important;
+}
+
+.slider-row ::ng-deep .mat-mdc-slider {
+  --mdc-slider-handle-width: 12px;
+  --mdc-slider-handle-height: 12px;
+  --mdc-slider-handle-shape: 50%;
+}
+
+.slider-row ::ng-deep .mdc-slider__track--inactive {
+  background-color: #d3d3d3;
+  opacity: 0.4;
+}
+
+.slider-blue ::ng-deep .mdc-slider__track--active_fill {
+  border-color: var(--blue);
+}
+
+.slider-blue ::ng-deep .mdc-slider__thumb-knob {
+  background-color: var(--blue);
+  border-color: var(--blue);
+}
+
+.slider-red ::ng-deep .mdc-slider__track--active_fill {
+  border-color: var(--red);
+}
+
+.slider-red ::ng-deep .mdc-slider__thumb-knob {
+  background-color: var(--red);
+  border-color: var(--red);
+}

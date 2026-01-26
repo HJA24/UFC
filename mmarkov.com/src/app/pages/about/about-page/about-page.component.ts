@@ -1,14 +1,14 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSliderModule } from '@angular/material/slider';
 import { TransitionMatrixTableComponent } from "src/app/components/tables/transition-matrix/transition-matrix-table.component";
-import { MarkovChainSimulatorComponent } from "src/app/components/markov-chain-simulator/markov-chain-simulator.component";
-import { FundamentalMatrixAccordionComponent } from "src/app/components/fundamental-matrix-accordion/fundamental-matrix-accordion.component";
+import { MarkovChainSimulatorComponent } from "src/app/components/simulations/markov-chain-simulator/markov-chain-simulator.component";
+import { TheoryFundamentalMatrixAccordionComponent } from "src/app/components/accordions/theory-fundamental-matrix-accordion/theory-fundamental-matrix-accordion.component";
 import { MatrixTableComponent } from "src/app/components/tables/matrix/matrix-table.component";
 import { InvLogitChartComponent, invLogit } from "src/app/components/charts/inv-logit-chart/inv-logit-chart.component";
 import { StackedMatricesComponent } from "src/app/components/stacked-matrices/stacked-matrices.component";
+import { SkillSliderComponent } from "src/app/components/sliders/skill-slider/skill-slider.component";
 
 @Component({
   selector: 'app-about-page',
@@ -17,13 +17,13 @@ import { StackedMatricesComponent } from "src/app/components/stacked-matrices/st
     CommonModule,
     FormsModule,
     MatIconModule,
-    MatSliderModule,
     TransitionMatrixTableComponent,
     MarkovChainSimulatorComponent,
-    FundamentalMatrixAccordionComponent,
+    TheoryFundamentalMatrixAccordionComponent,
     MatrixTableComponent,
     InvLogitChartComponent,
     StackedMatricesComponent,
+    SkillSliderComponent,
   ],
   templateUrl: './about-page.component.html',
   styleUrl: './about-page.component.css',
@@ -46,19 +46,19 @@ export class AboutPageComponent {
   // Q: transient → transient (5x5), column j = from state j
   get Q(): (number | string)[][] {
     return [
-      [0.6, 0.7, 1 - this.theta, 0.6, 0.8],  // to standing
-      [0.3, 0,   0,              0,   0  ],  // to strike attempted blue
-      [0,   0.3, 0,              0,   0  ],  // to strike attempted red
-      [0.1, 0,   0,              0,   0  ],  // to strike landed blue
-      [0,   0,   0,              0.4, 0  ],  // to strike landed red
+      [0.65, 0.7, 1 - this.theta, 0.8, 0.9],  // to standing
+      [0.25, 0,   0,              0,   0  ],  // to strike attempted blue
+      [0.1, 0,   0,              0,   0  ],  // to strike attempted red
+      [0,   0.3, 0,              0,   0  ],  // to strike landed blue
+      [0,   0,   this.theta,     0, 0  ],  // to strike landed red
     ];
   }
 
   // R: transient → absorbing (2x5), column j = from transient state j
   get R(): (number | string)[][] {
     return [
-      [0, 0, this.theta, 0, 0  ],  // to knockout blue
-      [0, 0, 0,          0, 0.2],  // to knockout red
+      [0, 0, 0, 0.2, 0  ],  // to knockout blue
+      [0, 0, 0, 0, 0.1],  // to knockout red
     ];
   }
 
@@ -74,17 +74,17 @@ export class AboutPageComponent {
 
   // Fundamental matrix N = (I - Q)^(-1)
   N_matrix: number[][] = [
-    [102.56, 101.28, 97.43, 96.41, 87.18],
-    [30.77, 31.38, 29.23, 28.92, 26.15],
-    [7.69, 7.85, 8.31, 7.23, 6.54],
-    [10.26, 10.13, 9.74, 10.64, 8.72],
-    [4.10, 4.05, 3.90, 4.26, 4.49]
+    [50, 47, 47.5, 40, 45],
+    [12.5, 12.75, 11.875, 10, 11.25],
+    [5, 4.7, 5.75, 4, 4.5],
+    [3.75, 3.825, 3.625, 4, 3.375],
+    [2.5, 2.35, 2.875, 2, 3.25]
   ];
 
   // Absorption probabilities RN = R * N
   RN_matrix: number[][] = [
-    [0.38, 0.39, 0.42, 0.36, 0.33],
-    [0.62, 0.61, 0.58, 0.64, 0.67]
+    [0.75, 0.765, 0.7125, 0.8, 0.675],
+    [0.25, 0.235, 0.2875, 0.2, 0.325]
   ];
 
   highlightRegion: 'Q' | 'R' | 'O' | 'I' | null = null;
@@ -136,5 +136,11 @@ export class AboutPageComponent {
 
   onStackedMatrixIndexChange(index: number): void {
     this.stackedMatrixIndex = index;
+  }
+
+  get stackedMatrixLabel(): string {
+    // Last card (index 11) shows 5000, others show 1-10
+    if (this.stackedMatrixIndex === 11) return '5000';
+    return String(this.stackedMatrixIndex + 1);
   }
 }

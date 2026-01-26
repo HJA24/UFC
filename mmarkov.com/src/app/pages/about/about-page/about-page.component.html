@@ -2,36 +2,36 @@
 
   <h2>Markov chains</h2>
   <p>
-    A fight between fighters <i>blue</i> and <i>red</i> can be represented as a Markov chain.
+    A fight between fighters <span class="fighter-blue">blue</span> and <span class="fighter-red">red</span> can be represented as a Markov chain.
     Although a real-world fight is significantly more complex, let's assume that in a fight the following actions and
     states are possible:
   </p>
   <ul>
     <li><i>standing</i></li>
-    <li><i>strike attempt by <span class="blue">blue</span></i></li>
-    <li><i>strike attempt by <span class="red">red</span></i></li>
-    <li><i>strike landed by <span class="blue">blue</span></i></li>
-    <li><i>strike landed by <span class="red">red</span></i></li>
-    <li><i>knockout landed by <span class="blue">blue</span></i></li>
-    <li><i>knockout landed by <span class="red">red</span></i></li>
+    <li><i>strike attempt by <span class="fighter-blue">blue</span></i></li>
+    <li><i>strike attempt by <span class="fighter-red">red</span></i></li>
+    <li><i>strike landed by <span class="fighter-blue">blue</span></i></li>
+    <li><i>strike landed by <span class="fighter-red">red</span></i></li>
+    <li><i>knockout landed by <span class="fighter-blue">blue</span></i></li>
+    <li><i>knockout landed by <span class="fighter-red">red</span></i></li>
   </ul>
   <p>
     A transition matrix shows the probabilities of moving between different states.
-    The fight starts in the <i>standing</i>-state where there is a 30% chance that fighter <span class="blue">blue</span> will
-    attempt a strike, a 10% chance that fighter <span class="red">red</span> will attempt a strike and a 60% chance that they
+    The fight starts in the <i>standing</i>-state where there is a 30%< chance that fighter <span class="fighter-blue">blue</span> will
+    attempt a strike, a 10%< chance that fighter <span class="fighter-red">red</span> will attempt a strike and a 60% chance that they
     will manoeuvre around each other .
     This means that there is a probability of 60% that they will remain in the same state.
 
     The transition matrix, <span class="T">T</span>, of the simplified fight looks as follows:
   </p>
-  <div class="equation">
+  <div #T class="equation">
     <span class="T">T</span>
     <span class="equals">=</span>
     <app-transition-matrix-table [Q]="Q" [R]="R" [labels]="labels" [showTooltips]="true" [highlightRegion]="highlightRegion" [highlightCell]="highlightCell"></app-transition-matrix-table>
   </div>
   <p>
     The first column represents the transition probabilities from <i>standing</i> to other states.
-    There are two absorbing states; <i>knockout landed by blue</i> and <i>knockout landed by red</i>. When the chain
+    There are two absorbing states; <i>knockout landed by <span class="fighter-blue">blue</span></i> and <i>knockout landed by <span class="fighter-red">red</span></i>. When the chain
     visits such as state, it remains here forever.
     The other states can be defined as transient states. Let's simulate a fight using this Markov chain
     <mat-icon class="simulation-icon" (click)="onSimulationIconClick()">
@@ -89,14 +89,14 @@
     A basic property about an absorbing Markov chain is the expected number of visits to a transient state <i>j</i> starting from a transient state <i>i</i> (before being absorbed).
     This can be inferred from the fundamental matrix, <span class="N">N</span>, which can be defined as summing <span class="Q">Q</span><sup><i>k</i></sup> for <i>k</i> = 0 to infinity.
   </p>
-  <app-fundamental-matrix-accordion topic="derivation of the fundamental matrix" [startOpen]="false"></app-fundamental-matrix-accordion>
+  <app-theory-fundamental-matrix-accordion #derivation [startOpen]="false"></app-theory-fundamental-matrix-accordion>
   <p>In the simplified fight, this results in</p>
   <div class="equation">
     <span class="N">N</span>
     <span class="equals">=</span>
     <app-matrix-table [data]="N_matrix" [highlightCell]="highlightNCell"></app-matrix-table>
   </div>
-  <p>So, as the fighters are starting in the <i>standing</i>-position, there are 30.77 and 7.69 strikes attempted by respectively fighter <i>blue</i> and <i>red</i> before the fight ends in a knockout</p>
+  <p>So, as the fighters are starting in the <i>standing</i>-position, there are 12.5 and 5 strikes attempted by respectively fighter <i>blue</i> and <i>red</i> before the fight ends in a knockout</p>
   <p>Next, we can calculate the probability of each state after a "very long time"</p>
   <div class="equation">
     <span class="RN">RN</span>
@@ -104,29 +104,29 @@
     <app-matrix-table [data]="RN_matrix" [highlightCell]="highlightRNCell"></app-matrix-table>
   </div>
 
-  <p>With the help of the properties of a Markov chain, it is possible to infer probabilities of different types of outcomes and number of actions within a fight</p>
+  <p>With the help of the properties of a Markov chain, it is possible to infer the probabilities of different types of outcomes and predict the number of certain actions within a fight</p>
 
   <table class="summary-table">
     <thead>
       <tr>
-        <th></th>
-        <th class="blue">blue</th>
-        <th class="red">red</th>
+        <th>variable</th>
+        <th class="fighter-blue">blue</th>
+        <th class="fighter-red">red</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Number of strikes attempted</td>
+        <td>number of strikes attempted</td>
         <td (mouseenter)="setHighlightN(1, 0)" (mouseleave)="clearHighlightN()">{{ N_matrix[1][0] }}</td>
         <td (mouseenter)="setHighlightN(2, 0)" (mouseleave)="clearHighlightN()">{{ N_matrix[2][0] }}</td>
       </tr>
       <tr>
-        <td>Numer of strikes landed</td>
+        <td>number of strikes landed</td>
         <td (mouseenter)="setHighlightN(3, 0)" (mouseleave)="clearHighlightN()">{{ N_matrix[3][0] }}</td>
         <td (mouseenter)="setHighlightN(4, 0)" (mouseleave)="clearHighlightN()">{{ N_matrix[4][0] }}</td>
       </tr>
       <tr>
-        <td>Probability of knockout</td>
+        <td>probability of knockout</td>
         <td (mouseenter)="setHighlightRN(0, 0)" (mouseleave)="clearHighlightRN()">{{ RN_matrix[0][0] | percent }}</td>
         <td (mouseenter)="setHighlightRN(1, 0)" (mouseleave)="clearHighlightRN()">{{ RN_matrix[1][0] | percent }}</td>
       </tr>
@@ -136,32 +136,20 @@
   <p>With the help of Bayesian inference, attack- and defence parameters are estimated for each of the fighters' skills.
     These posterior estimates form the foundation of the probabilities in the transition matrix.</p>
   <p>
-    The number of strikes landed by fighter <i>blue</i>, <span class="k">k</span>, depends on
-    the number of strikes attempted by fighter <i>blue</i>, <span class="n">n</span>, and the corresponding skill parameters
-    of the fighters, <i>λ<sub>blue</sub></i> and <i>λ<sub>red</sub></i>.
+    The number of strikes landed by fighter <span class="fighter-blue">blue</span>, <span class="k">k</span>, depends on
+    the number of strikes attempted by fighter <span class="fighter-blue">blue</span>, <span class="n">n</span>, and the corresponding skill parameters
+    of the fighters, <span>λ<sub class="fighter-blue">blue</sub></span> and <span>λ<sub class="fighter-red">red</sub></span> .
     The striking accuracy can be modelled with the help of the binomial distribution<sup class="footnote-ref">1</sup>:
   </p>
-  <div class="equation">
-    <span class="k">k</span>
-    <span class="simulated-as">~</span>
-    <span class="distribution">Binomial(n, θ)</span>
+  <div class="distribution">
+    <span>k ~ Binomial(n, θ)</span>
   </div>
-  <p>The success probability of the binomial, <span class="theta">θ</span>, lies in the interval [0, 1] whereas the skill coefficients lie in the interval ℝ. By applying the inverse logit, real numbers are transformed into probabilities.</p>
+  <p>The success probability of the binomial, <span class="theta">θ</span>, lies in the interval <span class="interval">[0, 1]</span> whereas the skill coefficients lie in the interval <span class="Real">ℝ</span>. By applying the inverse logit, real numbers are transformed into probabilities.</p>
   <div class="transformation-container">
     <div class="sliders-and-chart">
       <div class="sliders">
-        <div class="slider-row blue">
-          <span class="slider-label">λ<sub>blue</sub> = {{ lambdaBlue | number:'1.1-1' }}</span>
-          <mat-slider min="0" max="10" step="0.1">
-            <input matSliderThumb [(ngModel)]="lambdaBlue">
-          </mat-slider>
-        </div>
-        <div class="slider-row red">
-          <span class="slider-label">λ<sub>red</sub> = {{ lambdaRed | number:'1.1-1' }}</span>
-          <mat-slider min="0" max="10" step="0.1">
-            <input matSliderThumb [(ngModel)]="lambdaRed">
-          </mat-slider>
-        </div>
+        <app-skill-slider label="blue" color="blue" [(value)]="lambdaBlue"></app-skill-slider>
+        <app-skill-slider label="red" color="red" [(value)]="lambdaRed"></app-skill-slider>
       </div>
       <app-inv-logit-chart [deltaSkill]="deltaSkill"></app-inv-logit-chart>
     </div>
@@ -169,17 +157,17 @@
   <div class="equation">
     <span class="T">T</span>
     <span class="equals">=</span>
-    <app-transition-matrix-table [Q]="Q" [R]="R" [labels]="labels" [showTooltips]="false"></app-transition-matrix-table>
+    <app-transition-matrix-table class="compact" [Q]="Q" [R]="R" [labels]="labels" [showTooltips]="false"></app-transition-matrix-table>
   </div>
-  <p>Logically, if the skill coefficients of the fighters are equal, there is a 50% probability of a successful strike.
-  The larger the difference of the fighters skills, the higher the probability that <i>strike attempted by blue</i> results in a <i>strike landed by blue</i>.
+  <p>Logically, if the attack- and defence skill coefficients of the fighters are equal, there is a 50% probability of a successful strike.
+  The larger the difference of the fighters skills, the higher the probability that <i>strike attempted by <span class="fighter-blue">blue</span></i> results in a <i>strike landed by <span class="fighter-blue">blue</span></i>.
   As a result, the properties of the Markov chain change accordingly, leading to different estimates for the number of actions and outcome probabilities within the fight.
   </p>
   <p>Using Bayesian inference, we obtain 5000 posterior samples of each fighter's skill coefficient.
   For each sample <span class="s">s</span>, we construct transition matrix <span class="Ts">T<sub>s</sub></span> based on the skills estimates of that particular sample and, subsequently, compute the properties of the resulting Markov chain. </p>
 
   <div class="equation">
-    <span class="T">T<sub>{{ stackedMatrixIndex + 1 }}</sub></span>
+    <span class="T">T<sub>{{ stackedMatrixLabel }}</sub></span>
     <span class="equals">=</span>
     <app-stacked-matrices (indexChange)="onStackedMatrixIndexChange($event)"></app-stacked-matrices>
   </div>

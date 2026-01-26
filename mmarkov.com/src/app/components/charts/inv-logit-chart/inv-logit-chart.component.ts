@@ -69,21 +69,25 @@ export class InvLogitChartComponent implements AfterViewInit, OnChanges {
       .datum(lineData)
       .attr('class', 'inv-logit-line')
       .attr('fill', 'none')
-      .attr('stroke', 'rgb(200, 200, 200)')
-      .attr('stroke-width', 2)
+      .attr('stroke', '#d3d3d3')
+      .attr('stroke-width', 3)
+      .attr('opacity', 0.4)
       .attr('d', line);
 
     // X axis
-    g.append('g')
+    const xAxis = g.append('g')
       .attr('transform', `translate(0,${height})`)
       .call(d3.axisBottom(this.xScale).ticks(6))
-      .style('font-family', 'UFCSans, sans-serif');
+      .style('font-family', 'UFCSans, sans-serif')
+      .style('color', 'black');
+    xAxis.select('.domain').attr('stroke', 'black');
+    xAxis.selectAll('.tick line').attr('stroke', 'black');
 
     // X axis label
     g.append('text')
       .attr('x', width / 2)
       .attr('y', height + 35)
-      .attr('fill', 'rgb(80, 80, 80)')
+      .attr('fill', 'black')
       .attr('text-anchor', 'middle')
       .style('font-family', 'UFCSans, sans-serif')
       .style('font-style', 'italic')
@@ -91,16 +95,19 @@ export class InvLogitChartComponent implements AfterViewInit, OnChanges {
       .text('Δλ');
 
     // Y axis
-    g.append('g')
+    const yAxis = g.append('g')
       .call(d3.axisLeft(this.yScale).ticks(5))
-      .style('font-family', 'UFCSans, sans-serif');
+      .style('font-family', 'UFCSans, sans-serif')
+      .style('color', 'black');
+    yAxis.select('.domain').attr('stroke', 'black');
+    yAxis.selectAll('.tick line').attr('stroke', 'black');
 
     // Y axis label
     g.append('text')
       .attr('transform', 'rotate(-90)')
       .attr('x', -height / 2)
       .attr('y', -35)
-      .attr('fill', 'rgb(80, 80, 80)')
+      .attr('fill', 'black')
       .attr('text-anchor', 'middle')
       .style('font-family', 'UFCSans, sans-serif')
       .style('font-style', 'italic')
@@ -113,7 +120,7 @@ export class InvLogitChartComponent implements AfterViewInit, OnChanges {
       .attr('cx', this.xScale(this.deltaSkill))
       .attr('cy', this.yScale(this.theta))
       .attr('r', 5)
-      .attr('fill', 'rgb(200, 200, 200)');
+      .attr('fill', 'rgb(150, 150, 150)');
   }
 
   private updateScatterPoint(): void {

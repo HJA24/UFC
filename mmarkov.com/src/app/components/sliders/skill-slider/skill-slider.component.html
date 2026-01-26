@@ -1,0 +1,8 @@
+<div class="skill-slider" [class.slider-blue]="color === 'blue'" [class.slider-red]="color === 'red'">
+  <span class="label">λ<sub [class.fighter-blue]="color === 'blue'" [class.fighter-red]="color === 'red'">{{ label }}</sub></span>
+  <div class="slider-row">
+    <mat-slider [min]="min" [max]="max" [step]="step">
+      <input matSliderThumb [ngModel]="value" (ngModelChange)="onValueChange($event)">
+    </mat-slider>
+  </div>
+</div>

@@ -1,0 +1,157 @@
+@import './logo.css';
+
+/* =========================
+   Toolbar layout
+========================= */
+mat-toolbar {
+  margin-top: 13px;
+  position: relative;
+  margin-bottom: 13px;  /* space for the line */
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  color: rgb(50, 50, 50);
+}
+
+mat-toolbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -13px;
+  height: 1px;
+  background: rgba(200, 200, 200, 0.4);
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 45px;                 /* space between logo and text */
+}
+
+
+.logo-text {
+  font-family: "UFCSans", sans-serif;
+  font-weight: bold;
+  font-size: 20px;          /* adjust to taste */
+  letter-spacing: 1px;
+  color: rgb(50, 50, 50);
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* =========================
+   Material buttons
+========================= */
+mat-toolbar .mat-mdc-button {
+  font-family: "UFCSans", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 6px;
+  color: rgb(50, 50, 50)
+}
+
+/* Signup emphasis */
+.signup-item {
+  background-color: rgba(200, 200, 200, 0.3);
+  color: #ffffff;
+}
+
+mat-toolbar .signup-item.mat-mdc-button:hover {
+  background-color: rgba(100, 100, 100, 0.3);
+}
+
+/* Hover */
+mat-toolbar .mat-mdc-button:hover {
+  background-color: rgba(200, 200, 200, 0.3);
+}
+
+/* =========================
+   Spacer
+========================= */
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+/* =========================
+   Navigation buttons
+========================= */
+
+/* Fixed width for nav items */
+.nav-item {
+  flex: 0 0 80px;
+}
+
+
+mat-toolbar .nav-item.mat-mdc-button {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+mat-toolbar button.mat-mdc-button {
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* Center content INSIDE MDC button label */
+.nav-item .mdc-button__label {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Wrapper for text + icon */
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dropdown icon */
+.nav-dropdown-icon {
+  flex: 0 0 12px;             /* prevents layout shift */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Rotate icon when menu is open */
+.nav-dropdown-icon.open {
+  transform: rotate(180deg);
+}
+
+
+/* =========================
+   Auth buttons
+========================= */
+.auth-item {
+  flex: 0 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  margin-right: 4px;
+}
+
+
+.nav-dropdown-menu.mat-mdc-menu-panel {
+  width: 100px;
+  min-width: 100px;
+}
+
+.nav-dropdown-menu .mat-mdc-menu-item {
+  width: 100%;
+  text-align: left;
+}
+
+.mat-mdc-menu-item {
+  min-height: 34px;
+  height: 32px;
+  line-height: 32px;
+}

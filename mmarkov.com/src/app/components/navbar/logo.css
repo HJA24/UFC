@@ -1,0 +1,99 @@
+@property --_p {
+  syntax: "<angle>";
+  initial-value: 1turn;
+  inherits: false;
+}
+
+.logo {
+  --b: 2px; /* the border thickness */
+  --g: 5%; /* control the gap */
+  width: 23px; /* control the size */
+  aspect-ratio: 1;
+  display: inline-grid;
+  margin-left: 25px;
+  --_d: calc(100% / (2 * sin(22.5deg)) + var(--g));
+}
+
+.logo i {
+  grid-area: 1/1;
+  background: rgb(100, 100, 100, 0.3);
+
+  /* start centered, matching the 0% keyframe */
+  transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(0)
+             rotate(calc(var(--i) * -45deg - 22.5deg));
+  --o: calc(50% * tan(-22.5deg));
+  clip-path: polygon(
+    var(--o) 50%,
+    50% var(--o),
+    calc(100% - var(--o)) 50%,
+    50% calc(100% - var(--o))
+  );
+  animation: move 2s 1s alternate linear both; /* <- add 'both' (or 'backwards') */
+  will-change: transform;
+}
+
+@keyframes move {
+  0% {
+    transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(0px)
+      rotate(calc(var(--i) * -45deg - 22.5deg));
+  }
+  50%,100% {
+    transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
+      rotate(calc(var(--i) * -45deg - 22.5deg));
+  }
+}
+
+.logo:after {
+  content: "";
+  grid-area: 1/1;
+  background: rgba(255, 255, 255, 1);
+  margin: calc(50% - (var(--_d) + var(--b) / 2) * cos(22.5deg));
+  mask: conic-gradient(from 22.5deg, #000 var(--_p), #0000 0);
+  animation: fill 2s 1s linear both;
+  --o: calc(50% * tan(-22.5deg));
+  --x: calc(var(--b) * cos(22.5deg));
+  --y: calc(var(--b) * sin(22.5deg));
+  clip-path: polygon(
+    var(--o) 50%,
+    50% var(--o),
+    calc(100% - var(--o)) 50%,
+    50% calc(100% - var(--o)),
+    var(--o) 50%,
+    calc(50% + var(--o) + var(--y)) var(--x),
+    var(--x) calc(50% + var(--o) + var(--y)),
+    var(--x) calc(50% - var(--o) - var(--y)),
+    calc(50% + var(--o) + var(--y)) calc(100% - var(--x)),
+    calc(50% - var(--o) - var(--y)) calc(100% - var(--x)),
+    calc(100% - var(--x)) calc(50% - var(--o) - var(--y)),
+    calc(100% - var(--x)) calc(50% + var(--o) + var(--y)),
+    calc(50% - var(--o) - var(--y)) var(--x),
+    calc(50% + var(--o) + var(--y)) var(--x)
+  );
+}
+
+@keyframes fill {
+  0%,50% {
+    --_p: 0deg;
+  }
+  100% {
+    --_p: 360deg;
+  }
+}
+
+.logo i:nth-child(1) {--i:1}
+.logo i:nth-child(2) {--i:2}
+.logo i:nth-child(3) {--i:3}
+.logo i:nth-child(4) {--i:4}
+.logo i:nth-child(5) {--i:5}
+.logo i:nth-child(6) {--i:6}
+.logo i:nth-child(7) {--i:7}
+.logo i:nth-child(8) {--i:8}
+
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  color: white;
+}
