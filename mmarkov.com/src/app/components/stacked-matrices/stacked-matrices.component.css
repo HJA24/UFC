@@ -1,16 +1,16 @@
 :host {
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
+  position: relative;
 }
 
-.container {
+.matrices-container {
   position: relative;
+  cursor: ew-resize;
 }
 
 .deck {
   position: relative;
   display: inline-block;
-  margin-left: 12px;
 }
 
 .card {
@@ -25,15 +25,23 @@
 }
 
 .background-card ::ng-deep .mat-mdc-table {
-  border-image: linear-gradient(90deg, gray 4px, #0000 0 calc(100% - 5px), gray 0) 1/1.5px;
+  border-image: linear-gradient(90deg, rgba(150, 150, 150, 0.3) 4px, #0000 0 calc(100% - 5px), rgba(150, 150, 150, 0.3) 0) 1/1.5px;
+}
+
+.background-card ::ng-deep .mat-mdc-cell {
+  color: rgb(50, 50, 50);
 }
 
 .left-card {
-  transform: translateX(calc(var(--depth) * -6px));
+  transform: translateX(calc(var(--depth) * -8px));
 }
 
 .right-card {
-  transform: translateX(calc(var(--depth) * 6px));
+  transform: translateX(calc(var(--depth) * 8px));
+}
+
+.mirrored-card {
+  transform: translateX(calc(var(--depth) * -8px));
 }
 
 .active-card {
@@ -41,28 +49,3 @@
   z-index: 10;
 }
 
-.nav-container {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.nav-arrow {
-  cursor: pointer;
-  color: rgb(80, 80, 80);
-  transition: color 0.2s ease;
-}
-
-.nav-arrow:hover:not(.disabled) {
-  color: rgb(30, 30, 30);
-}
-
-.nav-arrow.disabled {
-  color: rgb(200, 200, 200);
-  cursor: default;
-}

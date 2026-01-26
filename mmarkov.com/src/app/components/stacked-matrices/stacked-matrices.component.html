@@ -1,26 +1,27 @@
-<div class="container">
-  <div class="deck" [style.transform]="'translateX(' + (currentIndex * 6) + 'px)'">
+<div class="matrices-container">
+  <div class="deck" [style.transform]="'translateX(' + (currentIndex * 8 + (currentIndex === 11 ? 40 : 0)) + 'px)'">
     <!-- Cards before current (offset left) -->
     @for (i of leftIndices; track i) {
-      <div class="card background-card left-card" [style.--depth]="currentIndex - i + (i === 9 ? 8 : 0)">
+      <div class="card background-card left-card" [style.--depth]="currentIndex - i + (i === 11 || (i === 9 && currentIndex === 11) ? 5 : 0)">
         <app-transition-matrix-table
-          [Q]="Q"
-          [R]="R"
+          [Q]="getQ(i)"
+          [R]="getR(i)"
           [labels]="labels"
           [showTooltips]="false"
-          [lastColumn]="i === 9 ? dotsLastColumn : undefined"
+          [lastColumn]="i === 11 || (i === 9 && currentIndex === 11) ? dotsLastColumn : undefined"
         ></app-transition-matrix-table>
       </div>
     }
-    <!-- Cards after current (offset right) -->
+    <!-- Cards after current (offset right, or mirrored left at index 11) -->
     @for (i of rightIndices; track i) {
-      <div class="card background-card right-card" [style.--depth]="i - currentIndex + (i === 9 ? 8 : 0)">
+      <div class="card background-card" [class.right-card]="currentIndex !== 11" [class.mirrored-card]="currentIndex === 11" [style.--depth]="currentIndex === 11 ? (currentIndex - i + 5) : (i - currentIndex + (i === 11 ? 5 : 0))">
         <app-transition-matrix-table
-          [Q]="Q"
-          [R]="R"
+          [Q]="(currentIndex === 11 && i === 9) ? blankQ : getQ(i)"
+          [R]="(currentIndex === 11 && i === 9) ? blankR : getR(i)"
           [labels]="labels"
           [showTooltips]="false"
-          [lastColumn]="i === 9 ? dotsLastColumn : undefined"
+          [firstColumn]="(currentIndex === 11 && i === 9) ? dotsFirstColumn : undefined"
+          [lastColumn]="i === 11 ? dotsLastColumn : undefined"
         ></app-transition-matrix-table>
       </div>
     }
@@ -33,9 +34,5 @@
         [showTooltips]="false"
       ></app-transition-matrix-table>
     </div>
-  </div>
-  <div class="nav-container">
-    <mat-icon class="nav-arrow" (click)="prev()" [class.disabled]="currentIndex === 0">arrow_back</mat-icon>
-    <mat-icon class="nav-arrow" (click)="next()" [class.disabled]="currentIndex === visibleCards - 1">arrow_forward</mat-icon>
   </div>
 </div>

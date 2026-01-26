@@ -1,1 +1,21 @@
-/* Styles are defined globally in styles.scss for app-matrix-table */
+:host {
+  display: inline-block;
+}
+
+
+::ng-deep .mat-mdc-table {
+  background: transparent !important;
+}
+
+td {
+  padding: 8px 10px;
+  font-variant-numeric: tabular-nums;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  font-size: 1rem;
+  color: rgb(80, 80, 80);
+  width: 55px;
+  min-width: 55px;
+  max-width: 55px;
+  text-align: center;
+}
