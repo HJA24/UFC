@@ -1,5 +1,10 @@
 @import './logo.css';
 
+/* Keep navbar visible during view transitions */
+:host {
+  view-transition-name: navbar;
+}
+
 /* =========================
    Toolbar layout
 ========================= */
@@ -59,7 +64,7 @@ mat-toolbar .mat-mdc-button {
 }
 
 mat-toolbar .signup-item.mat-mdc-button:hover {
-  background-color: rgba(100, 100, 100, 0.3);
+  background-color: rgba(150, 150, 150, 0.3);
 }
 
 /* Hover */

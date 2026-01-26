@@ -292,4 +292,67 @@ app-matrix-table {
   label-text-size: 0.9rem,
   label-text-weight: bold,
   label-text-color: rgb(50, 50, 50),
+  outline-color: rgba(150, 150, 150, 0.3),
 ));
+
+hr {
+  display: block;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
+
+/* =========================
+   VIEW TRANSITIONS (Card Expansion)
+========================= */
+
+/* Named elements: position animates over 600ms */
+::view-transition-group(*) {
+  animation-duration: 750ms !important;
+  animation-timing-function: ease-out;
+}
+
+/* Hide old snapshots - only new size is visible */
+::view-transition-old(*) {
+  animation: instant-hide 0ms forwards !important;
+}
+
+/* New snapshots visible immediately (no cross-fade, just position movement) */
+::view-transition-new(*) {
+  animation: none !important;
+}
+
+@keyframes instant-hide {
+  from, to { opacity: 0; }
+}
+
+/* ROOT: old page hidden, new page fades in at the end */
+::view-transition-old(root) {
+  animation: instant-hide 0ms forwards !important;
+}
+
+::view-transition-new(root) {
+  animation: fade-in-delayed 800ms ease-out forwards !important;
+}
+
+@keyframes fade-in-delayed {
+  0%, 99% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Navbar: stays visible and static */
+::view-transition-group(navbar) {
+  animation-duration: 0s !important;
+}
+
+::view-transition-old(navbar),
+::view-transition-new(navbar) {
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+

@@ -1,0 +1,21 @@
+<div class="page">
+<div class="fight-container">
+  <div class="fight-header">
+    <div class="fighter-name blue" [style.view-transition-name]="blueTransitionName">
+      {{ fight?.fighterBlue?.lastName ?? blueName }}
+    </div>
+
+    <div class="fighter-name red" [style.view-transition-name]="redTransitionName">
+      {{ fight?.fighterRed?.lastName ?? redName }}
+    </div>
+    <app-dual-progress-bar
+      [loading]="loadingService.loading()"
+      [style.view-transition-name]="progressBarTransitionName"
+    ></app-dual-progress-bar>
+  </div>
+</div>
+  <app-fight-menu></app-fight-menu>
+  <router-outlet></router-outlet>
+  <app-fight-tabs></app-fight-tabs>
+</div>
+
