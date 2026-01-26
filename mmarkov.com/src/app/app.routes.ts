@@ -1,0 +1,77 @@
+import { Routes } from '@angular/router';
+import { HomePageComponent } from "./pages/home/home-page.component";
+import { TiersPageComponent } from "./pages/tiers/tiers-page.component";
+import { VerifyAccountPageComponent } from "./pages/auth/verify-account/verify-account-page.component";
+import { PricingComponent } from "./components/pricing/pricing.component";
+import { EventsPageComponent } from "./pages/events/events-page.component";
+import { UpcomingEventsPageComponent } from "./pages/events/upcoming/upcoming-events-page.component";
+import { PastEventsPageComponent } from "./pages/events/past/past-events-page.component";
+import { FightsPageComponent } from "./pages/events/fights/fights-page.component";
+import { NetworkPageComponent } from "./pages/fight/network/network-page.component";
+import { JudgingPageComponent } from "./pages/fight/judging/judging-page.component";
+import { PredictionsPageComponent } from "./pages/fight/predictions/predictions-page.component";
+import { StatsPageComponent } from "./pages/fight/stats/stats-page.component";
+import { ContactPageComponent } from "./pages/contact/contact-page.component";
+import { LoginPageComponent } from "./pages/auth/login/login-page/login-page.component";
+import { SignupPageComponent } from "./pages/auth/signup/signup-page.component";
+import { TermsAndConditionsPageComponent } from "./pages/legal/terms-and-conditions/terms-and-conditions-page.component";
+import { CookiesPolicyPageComponent } from "./pages/legal/cookies-policy/cookies-policy-page.component";
+import { ForgotPasswordPageComponent } from "./pages/auth/forgot-password/forgot-password-page.component";
+import { ResetPasswordPageComponent } from "./pages/auth/reset-password/reset-password-page.component";
+import { FightcardsPageComponent } from "./pages/events/fightcards/fightcards-page.component";
+import { FightPageComponent } from "./pages/fight/fight-page.component";
+import { AboutPageComponent } from "./pages/about/about-page/about-page.component";
+
+
+
+export const routes: Routes = [
+  { path: '', component: HomePageComponent },
+  { path: 'login', component: LoginPageComponent },
+  { path: 'sign-up', component: SignupPageComponent },
+  { path: 'verify-account', component: VerifyAccountPageComponent },
+  { path: 'about', component: AboutPageComponent},
+  { path: 'reset-password',
+    component: ForgotPasswordPageComponent,
+    children: [
+      { path: ':token', component: ResetPasswordPageComponent }
+    ]
+  },
+  { path: 'contact-us', component: ContactPageComponent },
+  { path: 'terms-and-conditions', component: TermsAndConditionsPageComponent },
+  { path: 'cookies-policy', component: CookiesPolicyPageComponent },
+  { path: 'tiers', component: TiersPageComponent },
+  {
+    path: 'events',
+    children: [
+      {
+        path: '',
+        component: EventsPageComponent, // shows event-tabs
+        children: [
+          { path: '', redirectTo: 'upcoming', pathMatch: 'full' },
+          { path: 'upcoming', component: UpcomingEventsPageComponent },
+          { path: 'past', component: PastEventsPageComponent },
+        ],
+      },
+      {
+        path: ':eventId',
+        component: FightcardsPageComponent,
+        children: [
+          { path: '', redirectTo: 'main/fights', pathMatch: 'full' },
+          { path: ':fightCard/fights', component: FightsPageComponent },
+        ],
+      },
+    ],
+  },
+  {
+    path: 'fights/:fightId',
+    component: FightPageComponent,
+    children:[
+      { path: '', redirectTo: 'stats', pathMatch: 'full' },
+      { path: 'network', component: NetworkPageComponent },
+      { path: 'stats', component: StatsPageComponent },
+      { path: 'predictions', component: PredictionsPageComponent },
+      { path: 'judging', component: JudgingPageComponent },
+    ]
+  },
+  { path: 'pricing', component: PricingComponent }
+];

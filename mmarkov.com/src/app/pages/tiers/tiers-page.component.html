@@ -1,0 +1,42 @@
+<div class="page">
+  <div class="tiers-container">
+    <h2>
+      Explore our tiers
+    </h2>
+    <p>
+      Altogether, <strong>MMARKOV</strong> generates ... estimates per fight. All the estimates can be divided into the following categories:
+    </p>
+    <ul>
+      <li><i>winner</i></li>
+      <li><i>method of victory</i></li>
+      <li><i>duration</i></li>
+      <li><i>judging</i></li>
+      <li><i>stats</i></li>
+    </ul>
+    <p>
+      Within the <i>winner</i>-category the winner is predicted. These estimates are available at the fight, round, minute, and second level.<br>
+      The manner in which a fighter becomes the winner is addressed in the <i>method of victory</i>-category. This involves knockouts, submissions and judging decisions.
+      In the <i>duration</i>-category, the focus is on when the fight ends. The <i>judging</i>-category provides insights into the judges' scoring if the fight goes to the distance.
+      The <i>stats</i>-category breaks down fight-level performance metrics on an absolute and relative level.</p>
+    <p>
+      There are 4 different tiers and each tier has it owns granularity.
+    </p>
+    <mat-tab-group
+      animationDuration="1000ms"
+      [selectedIndex]="selectedIndex()"
+      (selectedIndexChange)="onTabChange($event)"
+    >
+      <mat-tab label="Strawweight"></mat-tab>
+      <mat-tab label="Lightweight"></mat-tab>
+      <mat-tab label="Middleweight"></mat-tab>
+      <mat-tab label="Heavyweight"></mat-tab>
+    </mat-tab-group>
+
+    @switch (selectedIndex()) {
+      @case (0) { <app-strawweight-page /> }
+      @case (1) { <app-lightweight-page /> }
+      @case (2) { <app-middleweight-page /> }
+      @case (3) { <app-heavyweight-page /> }
+    }
+  </div>
+</div>

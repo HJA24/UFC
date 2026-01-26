@@ -63,10 +63,10 @@
     #tiersMenu="matMenu"
     (closed)="tiersMenuOpen.set(false)"
   >
-    <button mat-menu-item routerLink="/tiers/strawweight">Strawweight</button>
-    <button mat-menu-item routerLink="/tiers/lightweight">Lightweight</button>
-    <button mat-menu-item routerLink="/tiers/middleweight">Middleweight</button>
-    <button mat-menu-item routerLink="/tiers/heavyweight">Heavyweight</button>
+    <button mat-menu-item (click)="navigateToTier(0)">Strawweight</button>
+    <button mat-menu-item (click)="navigateToTier(1)">Lightweight</button>
+    <button mat-menu-item (click)="navigateToTier(2)">Middleweight</button>
+    <button mat-menu-item (click)="navigateToTier(3)">Heavyweight</button>
   </mat-menu>
 
   <!-- PRICING -->
