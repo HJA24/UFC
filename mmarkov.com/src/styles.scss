@@ -284,3 +284,12 @@ app-matrix-table {
   font-size: 0.85rem;
   color: var(--red);
 }
+
+@include mat.chips-overrides((
+  elevated-container-color: rgba(200, 200, 200, 0.3),
+  container-shape-radius: 10px,
+  label-text-font: "UFCSans, sans-serif",
+  label-text-size: 0.9rem,
+  label-text-weight: bold,
+  label-text-color: rgb(50, 50, 50),
+));

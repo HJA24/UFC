@@ -104,11 +104,11 @@ export class InvLogitChartComponent implements AfterViewInit, OnChanges {
 
     // Y axis label
     g.append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('x', -height / 2)
-      .attr('y', -35)
+      .attr('x', -35)
+      .attr('y', height / 2)
       .attr('fill', 'black')
       .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
       .style('font-family', 'UFCSans, sans-serif')
       .style('font-style', 'italic')
       .style('font-size', '12px')

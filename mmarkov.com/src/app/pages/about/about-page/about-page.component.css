@@ -15,6 +15,13 @@ h2 {
   text-align: left;
 }
 
+.state {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: rgb(50, 50, 50);
+}
+
+
 
 app-theory-fundamental-matrix-accordion {
   display: block;
@@ -114,7 +121,7 @@ app-transition-matrix-table.compact ::ng-deep td {
 
 .summary-table {
   border-collapse: collapse;
-  color: rgb(80, 80, 80);
+  color: rgb(50, 50, 50);
   min-width: 320px;
 }
 
