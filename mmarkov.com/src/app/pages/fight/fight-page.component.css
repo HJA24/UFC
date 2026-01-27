@@ -1,6 +1,9 @@
 .page {
+  --page-max-width: 1500px;
+
   position: relative;
-  max-width: 1250px;
+  width: 100%;
+  max-width: var(--page-max-width);
   margin: 0 auto;
   border-radius: 5px;
   box-shadow:
@@ -9,12 +12,17 @@
   transform: translateY(-1px);
 }
 
+.nav-container {
+  display: flex;
+  justify-content: flex-end;
+  height: 40px;
+}
+
 .close-button {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 0;
+  right: 0;
   color: rgb(100, 100, 100);
-  z-index: 10;
 }
 
 .close-button:hover {
@@ -24,40 +32,36 @@
 .fight-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 100%;
 }
 
 .fight-header {
-  width: 100%;
-
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .fight-header app-dual-progress-bar {
   flex: 0 0 100%;
-  width: 100%;
 }
-
 
 .fighter-name {
   font-weight: 600;
   font-size: 1.5rem;
   text-transform: uppercase;
-  min-height: 1.5rem;
-  min-width: 100px;
 }
 
 .fighter-name.blue {
-  margin-right: 575px;
-  text-align: left;
+  text-align: right;
+  margin-left: 16px;
 }
 
 .fighter-name.red {
-  margin-left: 575px;
-  text-align: right;
+  text-align: left;
+  margin-right: 16px;
 }
 
 app-fight-tabs {

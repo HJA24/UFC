@@ -1,0 +1,96 @@
+<div class="table-card mat-elevation-z2">
+
+  <div class="table-wrap" [class.is-loading]="loading()">
+    <div class="loading-overlay-body" *ngIf="loading()">
+      <div class="loading-pill">Loading fights</div>
+    </div>
+    <table mat-table [dataSource]="dataSource" matSort class="fixed-table">
+
+      <!-- Fighter -->
+      <ng-container matColumnDef="fighter">
+        <th mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+        >
+          fighter
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.fighterBlue.lastName }}
+        </td>
+      </ng-container>
+
+      <!-- Opponent -->
+      <ng-container matColumnDef="opponent">
+        <th mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+        >
+          opponent
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.fighterRed.lastName }}
+        </td>
+      </ng-container>
+
+      <!-- Outcome -->
+      <ng-container matColumnDef="outcome">
+        <th mat-header-cell *matHeaderCellDef> outcome</th>
+
+        <td mat-cell *matCellDef="let row">
+          <ng-container *ngIf="iconName(row.outcome, row.winner) as icon; else noIcon">
+            <mat-icon
+              class="outcome-icon"
+              [svgIcon]="icon"
+              [title]="row.outcome">
+            </mat-icon>
+          </ng-container>
+
+          <ng-template #noIcon>
+            {{ row.outcome }}
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <!-- Rounds -->
+      <ng-container matColumnDef="rounds">
+        <th mat-header-cell *matHeaderCellDef> rounds</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.numberOfRounds }}
+        </td>
+      </ng-container>
+
+      <!-- Clock -->
+      <ng-container matColumnDef="clock">
+        <th mat-header-cell *matHeaderCellDef> clock</th>
+        <td mat-cell *matCellDef="let row">
+          {{ formatClock(row.numberOfSeconds) }}
+        </td>
+      </ng-container>
+
+      <!-- Event -->
+      <ng-container matColumnDef="event">
+        <th mat-header-cell *matHeaderCellDef> event</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.event.name }}
+        </td>
+      </ng-container>
+
+      <!-- Date -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> date</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.event.date | date:'dd-MM-yyyy' }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    </table>
+  </div>
+
+  <mat-paginator
+    [pageSize]="15"
+  >
+  </mat-paginator>
+</div>
