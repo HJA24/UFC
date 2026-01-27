@@ -150,76 +150,44 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
       .attr('fill', 'none')
       .attr('stroke-width', 1);
 
-    // Track vertical line positions for each depth
-    const verticalLines: Map<number, { startY: number; endY: number; available: boolean }[]> = new Map();
-
+    // For each node, find its parent and draw connecting lines
     nodes.forEach((node, i) => {
-      if (node.depth > 0) {
-        const y = marginTop + i * nodeSize;
-        const x = marginLeft + node.depth * nodeSize;
-        const parentX = marginLeft + (node.depth - 1) * nodeSize;
+      if (node.depth === 0) return;
 
-        // Horizontal line to node
+      const y = marginTop + i * nodeSize;
+      const x = marginLeft + node.depth * nodeSize;
+      const parentX = marginLeft + (node.depth - 1) * nodeSize;
+      const strokeColor = node.isAvailable ? 'rgb(150, 150, 150)' : 'rgb(220, 220, 220)';
+
+      // Find the parent node (last node with depth = current depth - 1)
+      let parentIdx = -1;
+      for (let j = i - 1; j >= 0; j--) {
+        if (nodes[j].depth === node.depth - 1) {
+          parentIdx = j;
+          break;
+        }
+      }
+
+      if (parentIdx >= 0) {
+        const parentY = marginTop + parentIdx * nodeSize;
+
+        // Vertical line from parent down to this node's level
+        lineGroup.append('line')
+          .attr('x1', parentX)
+          .attr('x2', parentX)
+          .attr('y1', parentY)
+          .attr('y2', y)
+          .attr('stroke', strokeColor);
+
+        // Horizontal line to the node
         lineGroup.append('line')
           .attr('x1', parentX)
           .attr('x2', x)
           .attr('y1', y)
           .attr('y2', y)
-          .attr('stroke', node.isAvailable ? 'rgb(150, 150, 150)' : 'rgb(220, 220, 220)');
+          .attr('stroke', strokeColor);
       }
     });
-
-    // Draw vertical connector lines
-    for (let depth = 0; depth < 10; depth++) {
-      let lineStart: number | null = null;
-      let lastAvailable = false;
-
-      nodes.forEach((node, i) => {
-        const y = marginTop + i * nodeSize;
-
-        if (node.depth === depth && node.hasChildren && node.isExpanded) {
-          lineStart = y;
-          lastAvailable = node.isAvailable;
-        } else if (node.depth === depth + 1 && lineStart !== null) {
-          // Continue the line
-        } else if (node.depth <= depth && lineStart !== null) {
-          // End the vertical line at the last child
-          const prevNode = nodes[i - 1];
-          if (prevNode && prevNode.depth > depth) {
-            const endY = marginTop + (i - 1) * nodeSize;
-            const x = marginLeft + depth * nodeSize;
-            lineGroup.append('line')
-              .attr('x1', x)
-              .attr('x2', x)
-              .attr('y1', lineStart)
-              .attr('y2', endY)
-              .attr('stroke', lastAvailable ? 'rgb(150, 150, 150)' : 'rgb(220, 220, 220)');
-          }
-          lineStart = null;
-        }
-      });
-
-      // Close any remaining open line
-      if (lineStart !== null) {
-        let lastChildIdx = -1;
-        for (let j = nodes.length - 1; j >= 0; j--) {
-          if (nodes[j].depth > depth) {
-            lastChildIdx = j;
-            break;
-          }
-        }
-        if (lastChildIdx >= 0) {
-          const endY = marginTop + lastChildIdx * nodeSize;
-          const x = marginLeft + depth * nodeSize;
-          lineGroup.append('line')
-            .attr('x1', x)
-            .attr('x2', x)
-            .attr('y1', lineStart)
-            .attr('y2', endY)
-            .attr('stroke', lastAvailable ? 'rgb(150, 150, 150)' : 'rgb(220, 220, 220)');
-        }
-      }
-    }
 
     // Nodes
     const nodeGroup = svg.append('g')
