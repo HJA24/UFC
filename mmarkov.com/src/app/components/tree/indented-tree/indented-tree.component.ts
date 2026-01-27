@@ -22,6 +22,7 @@ interface ProcessedNode {
   hasChildren: boolean;
   isAvailable: boolean;
   isExpanded: boolean;
+  path: string; // Unique path identifier for tracking collapsed state
 }
 
 const TIERS = ['strawweight', 'lightweight', 'middleweight', 'heavyweight'] as const;
@@ -48,6 +49,8 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
 
   private ready = false;
   private cachedData: TreeNode[] | null = null;
+  private manuallyCollapsed: Set<string> = new Set();
+  private manuallyExpanded: Set<string> = new Set();
 
   ngAfterViewInit(): void {
     this.ready = true;
@@ -233,6 +236,13 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
       .attr('fill', d => {
         if (!d.isAvailable) return 'rgb(210, 210, 210)';
         return d.hasChildren ? 'rgb(80, 80, 80)' : 'rgb(150, 150, 150)';
+      })
+      .style('cursor', d => d.hasChildren ? 'pointer' : 'default')
+      .on('click', (event, d) => {
+        if (d.hasChildren) {
+          event.stopPropagation();
+          this.toggleNode(d.path, d.isExpanded);
+        }
       });
 
     // Collapse indicator for nodes with hidden children
@@ -243,15 +253,42 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
       .attr('dy', '0.35em')
       .attr('fill', 'rgb(180, 180, 180)')
       .attr('font-size', '12px')
-      .text('▶');
+      .style('cursor', 'pointer')
+      .text('▶')
+      .on('click', (event, d) => {
+        event.stopPropagation();
+        this.toggleNode(d.path, d.isExpanded);
+      });
+
+    // Expand indicator for expanded nodes with children
+    nodeGroup.filter(d => d.hasChildren && d.isExpanded)
+      .append('text')
+      .attr('x', d => marginLeft + d.depth * nodeSize + 8)
+      .attr('y', 0)
+      .attr('dy', '0.35em')
+      .attr('fill', 'rgb(150, 150, 150)')
+      .attr('font-size', '12px')
+      .style('cursor', 'pointer')
+      .text('▼')
+      .on('click', (event, d) => {
+        event.stopPropagation();
+        this.toggleNode(d.path, d.isExpanded);
+      });
 
     // Node text
     nodeGroup.append('text')
-      .attr('x', d => marginLeft + d.depth * nodeSize + (d.hasChildren && !d.isExpanded ? 20 : 8))
+      .attr('x', d => marginLeft + d.depth * nodeSize + (d.hasChildren ? 20 : 8))
       .attr('y', 0)
       .attr('dy', '0.35em')
       .attr('fill', d => d.isAvailable ? 'rgb(50, 50, 50)' : 'rgb(180, 180, 180)')
-      .text(d => d.name);
+      .style('cursor', d => d.hasChildren ? 'pointer' : 'default')
+      .text(d => d.name)
+      .on('click', (event, d) => {
+        if (d.hasChildren) {
+          event.stopPropagation();
+          this.toggleNode(d.path, d.isExpanded);
+        }
+      });
 
     // Tier checkmarks (only for nodes with a tier property)
     nodeGroup.each((d, i, nodeElements) => {
@@ -278,19 +315,43 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
   }
 
   /**
+   * Toggle the expanded/collapsed state of a node
+   */
+  private toggleNode(path: string, currentlyExpanded: boolean): void {
+    if (currentlyExpanded) {
+      this.manuallyCollapsed.add(path);
+      this.manuallyExpanded.delete(path);
+    } else {
+      this.manuallyExpanded.add(path);
+      this.manuallyCollapsed.delete(path);
+    }
+    if (this.cachedData) {
+      this.render(this.cachedData);
+    }
+  }
+
+  /**
    * Process tree into flat list, only expanding nodes that have available descendants
    */
   private processTree(nodes: TreeNode[], tierIndex: number): ProcessedNode[] {
     const result: ProcessedNode[] = [];
 
-    const process = (nodeList: TreeNode[], depth: number) => {
+    const process = (nodeList: TreeNode[], depth: number, parentPath: string) => {
       for (const node of nodeList) {
+        const path = parentPath ? `${parentPath}/${node.name}` : node.name;
         const isAvailable = this.isNodeDirectlyAvailable(node, tierIndex);
         const hasAvailableDescendants = this.hasAvailableDescendants(node, tierIndex);
         const hasChildren = !!(node.children && node.children.length > 0);
 
-        // A node is expanded if it has available descendants
-        const isExpanded = hasAvailableDescendants;
+        // Default expansion based on tier availability
+        let isExpanded = hasAvailableDescendants;
+
+        // Override with manual state if set
+        if (this.manuallyCollapsed.has(path)) {
+          isExpanded = false;
+        } else if (this.manuallyExpanded.has(path)) {
+          isExpanded = true;
+        }
 
         result.push({
           name: node.name,
@@ -299,16 +360,17 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
           hasChildren,
           isAvailable: isAvailable || hasAvailableDescendants,
           isExpanded,
+          path,
         });
 
         // Only recurse into children if this node should be expanded
         if (hasChildren && isExpanded) {
-          process(node.children!, depth + 1);
+          process(node.children!, depth + 1, path);
         }
       }
     };
 
-    process(nodes, 0);
+    process(nodes, 0, '');
     return result;
   }
 
