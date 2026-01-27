@@ -1,4 +1,4 @@
-import { Component, input, output, signal, effect } from '@angular/core';
+import { Component, ElementRef, inject, input, output, signal, effect } from '@angular/core';
 
 @Component({
   selector: 'app-tiers-tabs',
@@ -8,6 +8,8 @@ import { Component, input, output, signal, effect } from '@angular/core';
   styleUrl: './tiers-tabs.component.scss',
 })
 export class TiersTabsComponent {
+  private elementRef = inject(ElementRef);
+
   selectedIndex = input<number>(0);
   selectedIndexChange = output<number>();
 
@@ -24,5 +26,7 @@ export class TiersTabsComponent {
 
     this.activeIndex.set(index);
     this.selectedIndexChange.emit(index);
+
+    this.elementRef.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
