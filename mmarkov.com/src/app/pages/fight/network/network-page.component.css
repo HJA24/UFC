@@ -1,0 +1,14 @@
+.network-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.network-chart {
+  align-self: center;
+  justify-self: center;
+}
+
+.network-table {
+  align-self: start;
+  margin-right: 10px;
+}
