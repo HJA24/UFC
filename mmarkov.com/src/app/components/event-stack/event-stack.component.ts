@@ -1,10 +1,10 @@
-import { Component, Input, Output, EventEmitter, signal, computed } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
+import { EventCardComponent } from '../cards/event/event-card.component';
 import type { EventDto } from '../../models/event.dto';
 
 @Component({
@@ -12,20 +12,17 @@ import type { EventDto } from '../../models/event.dto';
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    EventCardComponent
   ],
   templateUrl: './event-stack.component.html',
   styleUrls: ['./event-stack.component.css'],
 })
 export class EventStackComponent {
   @Input({ required: true }) events!: EventDto[];
-  @Output() eventSelected = new EventEmitter<EventDto>();
 
   currentIndex = signal(0);
-
-  current = computed(() => this.events[this.currentIndex()]);
 
   next(): void {
     if (this.currentIndex() < this.events.length - 1) {
@@ -41,9 +38,5 @@ export class EventStackComponent {
 
   select(index: number): void {
     this.currentIndex.set(index);
-  }
-
-  onCardClick(event: EventDto): void {
-    this.eventSelected.emit(event);
   }
 }

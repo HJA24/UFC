@@ -3,102 +3,38 @@
   flex-direction: column;
   align-items: center;
   gap: 24px;
+  width: 100%;
 }
 
 .stack {
   position: relative;
-  height: 160px;
+  height: 180px;
   width: 100%;
-  max-width: 400px;
 }
 
-.stack-card {
+.stack-item {
   position: absolute;
   width: 100%;
-  max-width: 360px;
   top: calc(var(--index) * 4px);
   left: calc(var(--index) * 4px);
   z-index: calc(10 - var(--index));
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  background: white;
-  border: 1px solid rgba(200, 200, 200, 0.5);
-  border-radius: 8px;
-  padding: 16px 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
   transform-origin: top left;
 }
 
-.stack-card.active {
+.stack-item.active {
   z-index: 20;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
-.stack-card.active:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.stack-card.dismissed {
+.stack-item.dismissed {
   transform: scale(0.96);
   opacity: 0.5;
   z-index: 0;
-  box-shadow: none;
+  cursor: pointer;
 }
 
-.stack-card.dismissed:hover {
+.stack-item.dismissed:hover {
   opacity: 0.7;
-}
-
-/* Card content */
-.card-header {
-  margin-bottom: 12px;
-}
-
-.event-title {
-  margin: 0 0 6px 0;
-  font-size: 1.2rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  line-height: 1.2;
-}
-
-.event-meta {
-  display: flex;
-  gap: 12px;
-  font-size: 0.85rem;
-  color: rgb(100, 100, 100);
-}
-
-.event-date {
-  font-weight: 500;
-}
-
-/* Action buttons */
-.card-actions {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(200, 200, 200, 0.3);
-}
-
-.card-actions a[mat-button] {
-  width: 100%;
-  min-width: 0;
-  padding: 6px 0;
-  font-size: 0.7rem;
-  font-weight: 700;
-  font-family: "UFCSans", sans-serif;
-  line-height: 1.2;
-  background-color: rgba(200, 200, 200, 0.3);
-  color: rgb(50, 50, 50);
-  border: 1px solid rgba(100, 100, 100, 0.3);
-}
-
-.card-actions a[mat-button]:hover {
-  background-color: rgba(150, 150, 150, 0.3);
 }
 
 /* Navigation controls */

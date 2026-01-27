@@ -1,4 +1,12 @@
 <div class="events-collection">
+  <div class="events-content">
+    @if (viewMode() === 'list') {
+      <app-event-list [events]="events"></app-event-list>
+    } @else {
+      <app-event-stack [events]="events"></app-event-stack>
+    }
+  </div>
+
   <div class="view-toggle">
     <button
       mat-icon-button
@@ -16,13 +24,5 @@
     >
       <mat-icon fontSet="material-symbols-outlined">overview_key</mat-icon>
     </button>
-  </div>
-
-  <div class="events-content">
-    @if (viewMode() === 'list') {
-      <app-event-list [events]="events"></app-event-list>
-    } @else {
-      <app-event-stack [events]="events"></app-event-stack>
-    }
   </div>
 </div>
