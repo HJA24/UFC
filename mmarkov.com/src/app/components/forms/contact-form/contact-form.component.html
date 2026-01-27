@@ -1,0 +1,40 @@
+
+    <form class="contact-form" [formGroup]="form" (ngSubmit)="submit()">
+      <mat-form-field
+        appearance="fill"
+      >
+        <mat-label>Enter your name</mat-label>
+        <input matInput formControlName="name" autocomplete="name" />
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="fill"
+      >
+        <mat-label>Enter your email</mat-label>
+        <input
+          matInput
+          formControlName="email"
+          autocomplete="email"
+        />
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="fill"
+      >
+        <mat-label>Leave a comment</mat-label>
+        <textarea
+          matInput
+          #message
+          formControlName="message"
+          autocomplete="message">
+        </textarea>
+        <mat-hint>{{message.value.length}} / 256 characters</mat-hint>
+      </mat-form-field>
+
+      <button
+        mat-button
+        type="submit"
+      >
+        SEND
+      </button>
+    </form>

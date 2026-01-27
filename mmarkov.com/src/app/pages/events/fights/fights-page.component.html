@@ -1,0 +1,20 @@
+<div class="page">
+  <ng-container *ngIf="fights$ | async as fights; else loading">
+    <div *ngIf="fights.length; else empty" class="fight-cards">
+      <app-fight-card
+        *ngFor="let fight of fights"
+        [fight]="fight"
+        [eventId]="eventId"
+        [fightCard]="fightCard"
+      ></app-fight-card>
+    </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <p>Loading fights…</p>
+  </ng-template>
+
+  <ng-template #empty>
+    <p>No fights found</p>
+  </ng-template>
+</div>

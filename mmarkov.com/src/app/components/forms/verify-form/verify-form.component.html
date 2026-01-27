@@ -1,0 +1,26 @@
+<form class="otp-form" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="otp-container" (paste)="onPaste($event)">
+    <input
+      *ngFor="let ctrl of otpControls; let i = index"
+      #otpInput
+      class="otp-input"
+      type="text"
+      inputmode="numeric"
+      maxlength="1"
+      autocomplete="one-time-code"
+      aria-label="OTP digit {{ i + 1 }}"
+      [value]="ctrl.value"
+      (input)="onInput($event, i)"
+      (keydown)="onKeyDown($event, i)"
+    />
+  </div>
+
+  <button
+    mat-button
+    type="submit"
+    [disabled]="submitting"
+  >
+    SEND
+  </button>
+  <div *ngIf="submitError" class="error">{{ submitError() }}</div>
+</form>

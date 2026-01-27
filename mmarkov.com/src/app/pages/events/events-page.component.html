@@ -1,0 +1,12 @@
+<div class="page">
+  <div class="events-container">
+    <app-event-tabs
+      [activeTab]="activeTab()"
+      (tabChange)="onTabChange($event)"
+    ></app-event-tabs>
+
+    @if (events().length > 0) {
+      <app-event-list [events]="events()"></app-event-list>
+    }
+  </div>
+</div>

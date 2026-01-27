@@ -4,7 +4,7 @@
   padding: 0 24px;
 }
 
-h2, p, ul {
+h2, p, ul, hr {
   width: 100%;
 }
 
@@ -13,6 +13,11 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 0.02em;
   text-align: left;
+  margin-bottom: 8px;
+}
+
+h2 + p {
+  margin-top: 0;
 }
 
 .state {
@@ -47,7 +52,7 @@ app-theory-fundamental-matrix-accordion {
 .Q, .R, .I, .O {
   transition: background-color 0.2s ease;
   padding: 0 2px;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
 

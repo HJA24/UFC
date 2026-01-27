@@ -1,0 +1,146 @@
+
+/* Main contact box */
+.pricing-container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.tiers-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+}
+
+.billing-period {
+  margin-top: 5px;
+  margin-bottom: 0;
+  color: rgba(100, 100, 100, 0.5);
+
+}
+
+/* Price container */
+.price {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+/* Big price number */
+.price-amount {
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: rgb(50, 50, 50);
+}
+
+
+/* "per month" text */
+.price span {
+  font-size: 0.85rem;
+  color: rgba(100, 100, 100, 0.5);
+  line-height: 1;
+}
+
+/* Toggle group styling */
+mat-button-toggle-group {
+  margin-top: 10px;
+  border-radius: 5px;
+  gap: 2px;
+}
+
+/* Individual toggles */
+mat-button-toggle {
+  background-color: rgba(225, 225, 225, 0.3);
+  font-family: "UFCSans", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: rgb(50, 50, 50);
+  margin-top: 0;
+}
+
+/* Selected toggle */
+mat-button-toggle.mat-button-toggle-checked {
+  background: rgba(100, 100, 100, 0.3);
+  color: rgb(50, 50, 50);
+}
+
+mat-card {
+  width: 300px;
+  background-color: rgba(250, 250, 250, 0.3);
+  border: 1px solid rgba(230, 230, 230);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  will-change: transform;
+}
+
+
+mat-card-header {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto auto; /* title row, price row */
+  row-gap: 6px;
+}
+
+
+mat-card-title {
+  align-items: flex-start;
+  font-family: "UFCSans", sans-serif;
+  font-weight: bold;
+  color: rgb(50, 50, 50);
+  margin-bottom: 25px;
+
+}
+
+mat-card-subtitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "UFCSans", sans-serif;
+  font-weight: bold;
+  color: rgb(150, 150, 150);
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+}
+
+mat-card-content {
+  padding: 0;
+}
+
+mat-card-content li {
+  text-align: left;
+}
+
+mat-card button {
+  width: 100px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid rgba(100, 100, 100, 0.3);
+  background-color: rgba(200, 200, 200, 0.3);
+  color: rgb(50, 50, 50);
+  font-family: "UFCSans", sans-serif;
+  font-weight: bold;
+}
+
+mat-card button:hover {
+  background-color: rgba(100, 100, 100, 0.3);
+}
+
+
+mat-card mat-divider {
+  display: block;
+  width: 85%;
+  margin: 10px auto;
+  border-top: 1px solid rgba(100, 100, 100, 0.3);
+}

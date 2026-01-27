@@ -11,14 +11,28 @@
 .state-list-container {
   overflow-x: auto;
   border: 1px solid rgba(100, 100, 100, 0.3);
-  border-radius: 10px;
+  border-radius: 5px;
   padding: 5px;
   max-width: 100%;
   background-color: white;
 }
 
 .state-list-container::-webkit-scrollbar {
-  display: none;
+  height: 6px;
+}
+
+.state-list-container::-webkit-scrollbar-track {
+  background: rgba(200, 200, 200, 0.3);
+  border-radius: 3px;
+}
+
+.state-list-container::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.5);
+  border-radius: 3px;
+}
+
+.state-list-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 150, 150, 0.7);
 }
 
 .state-list {

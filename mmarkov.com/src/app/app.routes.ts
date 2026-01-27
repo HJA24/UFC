@@ -2,10 +2,7 @@ import { Routes } from '@angular/router';
 import { HomePageComponent } from "./pages/home/home-page.component";
 import { TiersPageComponent } from "./pages/tiers/tiers-page.component";
 import { VerifyAccountPageComponent } from "./pages/auth/verify-account/verify-account-page.component";
-import { PricingComponent } from "./components/pricing/pricing.component";
 import { EventsPageComponent } from "./pages/events/events-page.component";
-import { UpcomingEventsPageComponent } from "./pages/events/upcoming/upcoming-events-page.component";
-import { PastEventsPageComponent } from "./pages/events/past/past-events-page.component";
 import { FightsPageComponent } from "./pages/events/fights/fights-page.component";
 import { NetworkPageComponent } from "./pages/fight/network/network-page.component";
 import { JudgingPageComponent } from "./pages/fight/judging/judging-page.component";
@@ -21,6 +18,7 @@ import { ResetPasswordPageComponent } from "./pages/auth/reset-password/reset-pa
 import { FightcardsPageComponent } from "./pages/events/fightcards/fightcards-page.component";
 import { FightPageComponent } from "./pages/fight/fight-page.component";
 import { AboutPageComponent } from "./pages/about/about-page/about-page.component";
+import { PricingPageComponent } from "./pages/pricing/pricing-page/pricing-page.component";
 
 
 
@@ -43,15 +41,9 @@ export const routes: Routes = [
   {
     path: 'events',
     children: [
-      {
-        path: '',
-        component: EventsPageComponent, // shows event-tabs
-        children: [
-          { path: '', redirectTo: 'upcoming', pathMatch: 'full' },
-          { path: 'upcoming', component: UpcomingEventsPageComponent },
-          { path: 'past', component: PastEventsPageComponent },
-        ],
-      },
+      { path: '', redirectTo: 'upcoming', pathMatch: 'full' },
+      { path: 'upcoming', component: EventsPageComponent, data: { tab: 'upcoming' } },
+      { path: 'historical', component: EventsPageComponent, data: { tab: 'historical' } },
       {
         path: ':eventId',
         component: FightcardsPageComponent,
@@ -73,5 +65,5 @@ export const routes: Routes = [
       { path: 'judging', component: JudgingPageComponent },
     ]
   },
-  { path: 'pricing', component: PricingComponent }
-];
+  { path: 'pricing', component: PricingPageComponent }
+]

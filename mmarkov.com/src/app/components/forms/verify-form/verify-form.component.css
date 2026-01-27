@@ -1,0 +1,57 @@
+.otp-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.otp-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.otp-input {
+  width: 32px;
+  height: 36px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  font-size: 16px;
+  font-family: "UFCSans", sans-serif;
+  font-weight: bold;
+
+
+  border: 1px solid rgba(100, 100, 100, 0.3);
+  border-radius: 5px;
+  background: white;
+  color: rgb(50, 50, 50);
+}
+
+
+.otp-input:focus {
+  outline: none;
+}
+
+.otp-form button {
+  font-family: "UFCSans", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 5px;
+  align-self: center;
+  border: 1px solid rgba(100, 100, 100, 0.3);
+  background-color: rgba(200, 200, 200, 0.3);
+  color: rgb(50, 50, 50);
+  margin-top: 10px;
+}
+
+.error {
+  color: #d32f2f;
+  margin-top: 10px;
+}

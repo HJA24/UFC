@@ -2,29 +2,12 @@
   position: relative;
   cursor: pointer;
   padding: 10px 12px;
-  border-radius: 6px;
-  margin: 4px;
+  border-radius: 5px;
   width: 100%;
   background-color: rgba(250, 250, 250, 0.3)
 }
 
-.expand-button {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  z-index: 2;
 
-  width: 32px;
-  height: 32px;
-
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(4px);
-}
-
-.expand-button mat-icon {
-  font-size: 14px;
-  color: rgba(100, 100, 100, 0.7);
-}
 
 .fight-card:hover,
 .fight-card:focus-within {
@@ -35,7 +18,8 @@
   transform: translateY(-1px);
 }
 
-mat-card-header {
+mat-card-header,
+.mat-mdc-card-header {
   width: 100%;
   display: block;
 }
@@ -49,9 +33,7 @@ mat-card-title {
 .fighter-names {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
   width: 100%;
-  font-family: "UFCSans", sans-serif;
 }
 
 .fighter-name {
@@ -68,10 +50,9 @@ mat-card-title {
 }
 
 .fighter-name.red {
-  justify-self: end;
+  justify-self: center;
   text-align: right;
 }
-
 
 
 .fighters-images {

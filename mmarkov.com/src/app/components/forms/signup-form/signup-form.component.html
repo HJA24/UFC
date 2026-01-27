@@ -1,0 +1,113 @@
+<form class="signup-form" [formGroup]="form" (ngSubmit)="submit()">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your first name</mat-label>
+    <input matInput formControlName="firstName" autocomplete="given-name" />
+
+    <mat-error *ngIf="f.firstName.hasError('required') && isTouchedOrDirty(f.firstName)">
+      First name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your last name</mat-label>
+    <input matInput formControlName="lastName" autocomplete="family-name" />
+
+    <mat-error *ngIf="f.lastName.hasError('required') && isTouchedOrDirty(f.lastName)">
+      Last name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input matInput formControlName="email" autocomplete="email" />
+
+    <mat-error *ngIf="f.email.hasError('required') && isTouchedOrDirty(f.email)">
+      Email is required
+    </mat-error>
+    <mat-error *ngIf="f.email.hasError('email') && isTouchedOrDirty(f.email)">
+      Enter a valid email address
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input
+      matInput
+      #passwordInput
+      [type]="hidePassword() ? 'password' : 'text'"
+      formControlName="password"
+      autocomplete="new-password"
+    />
+
+    <mat-hint *ngIf="(passwordInput.value?.length || 0) > 0 && (passwordInput.value?.length || 0) < 12">
+      Password must contain at least 12 characters
+    </mat-hint>
+
+    <mat-error *ngIf="f.password.hasError('required') && isTouchedOrDirty(f.password)">
+      Password is required
+    </mat-error>
+    <mat-error *ngIf="f.password.hasError('minlength') && isTouchedOrDirty(f.password)">
+      Password must be at least 12 characters
+    </mat-error>
+
+    <button
+      mat-icon-button
+      matSuffix
+      type="button"
+      (click)="hidePassword.set(!hidePassword())"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hidePassword()"
+    >
+      <mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Confirm password</mat-label>
+    <input
+      matInput
+      #confirmPasswordInput
+      [type]="hideConfirmedPassword() ? 'password' : 'text'"
+      formControlName="confirmPassword"
+      autocomplete="new-password"
+    />
+
+    <mat-hint *ngIf="(passwordInput.value) !== (confirmPasswordInput.value)">
+      Passwords must be equal
+    </mat-hint>
+
+    <mat-error *ngIf="f.confirmPassword.hasError('required') && isTouchedOrDirty(f.confirmPassword)">
+      Confirming your password is required
+    </mat-error>
+    <mat-error *ngIf="f.confirmPassword.hasError('minlength') && isTouchedOrDirty(f.confirmPassword)">
+      Password must be at least 12 characters
+    </mat-error>
+    <mat-error *ngIf="showPasswordMismatch()">
+      Passwords do not match
+    </mat-error>
+
+    <button
+      mat-icon-button
+      matSuffix
+      type="button"
+      (click)="hideConfirmedPassword.set(!hideConfirmedPassword())"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hideConfirmedPassword()"
+    >
+      <mat-icon>{{ hideConfirmedPassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button
+    mat-button
+    type="submit"
+    [disabled]="submitting()"
+  >
+    SIGN UP
+  </button>
+
+  <div *ngIf="submitError() as e" class="error">
+    {{ e }}
+  </div>
+</form>

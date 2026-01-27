@@ -1,0 +1,67 @@
+<div class="accordion">
+  <div #accordionHeader class="accordion-header" (click)="toggle()">
+    <span class="accordion-title">{{ title() }}</span>
+    <mat-icon [@rotateIcon]="isOpen() ? 'expanded' : 'collapsed'">expand_more</mat-icon>
+  </div>
+  <div #accordionContent class="accordion-content" [@expandCollapse]="isOpen() ? 'expanded' : 'collapsed'" (@expandCollapse.done)="onExpandDone($event)">
+    <p>
+      <span class="equation">
+        <span class="T">T</span>
+        <span class="equals">=</span>
+        <app-matrix-table [data]="T_matrix"></app-matrix-table>
+      </span>
+    </p>
+    <p>
+      <span class="equation">
+        <span class="T">T<sup> 2</sup></span>
+        <span class="equals">=</span>
+        <app-matrix-table [data]="T_matrix"></app-matrix-table>
+        <app-matrix-table [data]="T_matrix"></app-matrix-table>
+        <span class="equals">=</span>
+        <app-matrix-table [data]="T2_matrix"></app-matrix-table>
+      </span>
+    </p>
+    <p>
+      <span class="equation">
+        <span class="T">T<sup> 3</sup></span>
+        <span class="equals">=</span>
+        <app-matrix-table [data]="T_matrix"></app-matrix-table>
+        <app-matrix-table [data]="T2_matrix"></app-matrix-table>
+        <span class="equals">=</span>
+        <app-matrix-table [data]="T3_matrix"></app-matrix-table>
+      </span>
+    </p>
+    <p>
+      In general, the pattern can be written as
+    </p>
+    <p>
+      <span class="equation">
+        <span class="T">T<sup><i> k</i></sup></span>
+        <span class="equals">=</span>
+        <app-matrix-table [data]="Tk_matrix"></app-matrix-table>
+      </span>
+    </p>
+    <p>
+      In the lower left element of the matrix, we encounter the series
+    </p>
+    <p class="equation-block">
+      <app-summation lowerLimit="<i>i</i> = 0" upperLimit="&infin;"></app-summation>
+      <span class="Q">Q<sup><i> i</i></sup></span>
+      = <span class="I">I</span> + <span class="Q">Q</span> + <span class="Q">Q<sup> 2</sup></span> + <span class="Q">Q<sup> 3</sup></span> + ...
+    </p>
+    <p>
+      This series converges to (<span class="I">I</span> - <span class="Q">Q</span> )<sup> -1</sup>
+      when some power <span class="Q">Q<sup><i> k</i></sup></span> has column sums that are less than 1.
+      For a general absorbing Markov chain, some power <span class="Q">Q<sup><i> k</i></sup></span> must have column sums less than <i>1</i> because the column sums of <span class="T">T<sup><i>k</i></sup></span> are exactly <i>1</i>.
+      The definition of an absorbing Markov chain ensures that at least one absorbing state can be reached from each transient state, so the column sums of <span class="Q">Q<sup><i> k</i></sup></span> must be less than <i>1</i> for some <i>k</i>.
+
+      <br> Hence,
+    </p>
+    <p class="equation-block">
+      <span class="N">N</span> =
+      <app-summation lowerLimit="<i>k</i> = 0" upperLimit="&infin;"></app-summation>
+      <span class="Q">Q<sup><i> k</i></sup></span>
+      = (<span class="I">I</span> - <span class="Q">Q</span> )<sup> -1</sup>
+    </p>
+  </div>
+</div>
