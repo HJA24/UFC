@@ -107,17 +107,17 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
       .attr('viewBox', [0, 0, width, height])
       .attr('style', 'max-width: 100%; height: auto; font: 14px "UFCSans", sans-serif;');
 
-    // Selected column highlight
-    const selectedX = marginLeft + nameColumnWidth + (this.selectedTierIndex * tierColumnWidth);
-    svg.append('rect')
-      .attr('x', selectedX)
-      .attr('y', 0)
-      .attr('width', tierColumnWidth)
-      .attr('height', height)
-      .attr('fill', 'rgb(245, 245, 245)');
-
     // Column headers
     const headerY = 20;
+    const headerHeight = marginTop - 10;
+
+    // Header background
+    svg.append('rect')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', width)
+      .attr('height', headerHeight)
+      .attr('fill', 'rgba(200, 200, 200, 0.2)');
 
     svg.append('text')
       .attr('x', marginLeft + 10)
