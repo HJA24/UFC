@@ -2,8 +2,10 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnChanges,
+  Output,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
@@ -44,6 +46,7 @@ const TIER_INDEX: Record<Tier, number> = {
 export class IndentedTreeComponent implements AfterViewInit, OnChanges {
   @Input() jsonUrl = 'assets/tree.json';
   @Input() selectedTierIndex = 0;
+  @Output() tierClick = new EventEmitter<number>();
 
   @ViewChild('container', { static: true }) containerRef!: ElementRef<HTMLDivElement>;
 
@@ -134,7 +137,11 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
         .attr('text-anchor', 'middle')
         .attr('font-weight', 'bold')
         .attr('fill', i === this.selectedTierIndex ? 'rgb(30, 30, 30)' : 'rgb(100, 100, 100)')
-        .text(tier.charAt(0).toUpperCase() + tier.slice(1));
+        .style('cursor', 'pointer')
+        .text(tier.charAt(0).toUpperCase() + tier.slice(1))
+        .on('click', () => {
+          this.tierClick.emit(i);
+        });
     });
 
     // Header separator
@@ -205,7 +212,7 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
         if (!d.isAvailable) return 'rgb(210, 210, 210)';
         return d.hasChildren ? 'rgb(80, 80, 80)' : 'rgb(150, 150, 150)';
       })
-      .style('cursor', d => d.hasChildren ? 'pointer' : 'default')
+      .style('cursor', d => d.hasChildren ? (d.isExpanded ? 'zoom-out' : 'zoom-in') : 'default')
       .on('click', (event, d) => {
         if (d.hasChildren) {
           event.stopPropagation();
@@ -219,7 +226,7 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
       .attr('y', 0)
       .attr('dy', '0.35em')
       .attr('fill', d => d.isAvailable ? 'rgb(50, 50, 50)' : 'rgb(180, 180, 180)')
-      .style('cursor', d => d.hasChildren ? 'pointer' : 'default')
+      .style('cursor', d => d.hasChildren ? (d.isExpanded ? 'zoom-out' : 'zoom-in') : 'default')
       .text(d => d.name)
       .on('click', (event, d) => {
         if (d.hasChildren) {

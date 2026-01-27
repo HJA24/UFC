@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { StrawweightPageComponent } from './strawweight/strawweight-page.component';
 import { LightweightPageComponent } from './lightweight/lightweight-page.component';
 import { MiddleweightPageComponent } from './middleweight/middleweight-page.component';
@@ -23,9 +23,15 @@ import { TiersService } from '../../services/tiers.service';
 export class TiersPageComponent {
   private tiersService = inject(TiersService);
 
+  @ViewChild('tierTree') tierTreeRef!: ElementRef<HTMLDivElement>;
+
   readonly selectedIndex = this.tiersService.selectedIndex;
 
   onTabChange(index: number) {
+    this.tiersService.selectTier(index);
+  }
+
+  onTierClick(index: number) {
     this.tiersService.selectTier(index);
   }
 }

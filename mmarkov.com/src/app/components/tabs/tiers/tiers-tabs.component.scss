@@ -6,6 +6,8 @@
 
 .tiers-tabs {
   @include tabs.segmented-tabs(4);
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .slider {

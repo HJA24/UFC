@@ -37,10 +37,11 @@
         }
       </div>
 
-      <div class="tier-tree">
+      <div class="tier-tree" #tierTree>
         <app-indented-tree
           jsonUrl="assets/tree.json"
           [selectedTierIndex]="selectedIndex()"
+          (tierClick)="onTierClick($event)"
         />
       </div>
     </div>
