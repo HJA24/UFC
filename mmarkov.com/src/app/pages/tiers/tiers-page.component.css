@@ -1,0 +1,32 @@
+.tiers-container {
+  width: 50vw;
+  max-width: 50vw;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.7;
+  color: rgb(50, 50, 50);
+}
+
+.tier-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 20px;
+}
+
+.tier-description {
+}
+
+.tier-tree {
+  display: flex;
+  justify-content: center;
+}
+
