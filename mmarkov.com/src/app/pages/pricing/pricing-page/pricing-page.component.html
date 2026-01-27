@@ -1,0 +1,122 @@
+<div class="page">
+  <div class="pricing-container">
+    <h1>Choose your tier</h1>
+    <div class="period-container">
+      <mat-button-toggle-group [formControl]="billingPeriod" aria-label="Billing Period" appearance="legacy">
+        <mat-button-toggle value="monthly">Monthly</mat-button-toggle>
+        <mat-button-toggle value="quarterly">Quarterly</mat-button-toggle>
+        <mat-button-toggle value="annually">Annual</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <div class="carousel-wrapper">
+      <button class="carousel-arrow carousel-arrow-left" (click)="prevTier()" [class.hidden]="currentTierIndex() === 0">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <div class="tiers-container" #tiersContainer>
+        <div class="strawweight-container">
+        <mat-card appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>Strawweight</mat-card-title>
+            <mat-card-subtitle>
+              <div class="price">
+                <div class="price-amount">Free</div>
+              </div>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+            <button matButton routerLink="/sign-up">SIGN UP</button>
+          </mat-card-actions>
+          <mat-card-content>
+            <p><b>Standout features</b></p>
+            <ul>
+              <li><mat-icon fontSet="material-symbols-outlined">align_horizontal_left</mat-icon>Posterior uncertainty expressed as highest density intervals</li>
+              <li><mat-icon fontSet="material-symbols-outlined">functions</mat-icon>Expected value estimates of fight metrics</li>
+              <li><mat-icon fontSet="material-symbols-outlined">data_table</mat-icon>Comprehensive historical bout data</li>
+              <li><mat-icon fontSet="material-symbols-outlined">network_node</mat-icon>Network analysis on the fighters pool</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="lightweight-container">
+        <mat-card appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>Lightweight</mat-card-title>
+            <mat-card-subtitle>
+              <div class="price">
+                <div class="price-amount">€{{ getPricePerMonth('lightweight') | number:'1.0-0' }}</div>
+                <span>per month</span>
+              </div>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+            <button matButton disabled>SUBSCRIBE</button>
+          </mat-card-actions>
+          <mat-card-content>
+            <p>Everything in <b>Strawweight</b> plus</p>
+            <ul>
+              <li><mat-icon fontSet="material-symbols-outlined">stat_1</mat-icon>Fight-level estimates</li>
+              <li><mat-icon fontSet="material-symbols-outlined">crown</mat-icon>Joint probabilities of winner and method of victory</li>
+              <li><mat-icon fontSet="material-symbols-outlined">radar</mat-icon>Comparative fighter skill estimates</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="middleweight-container">
+        <mat-card appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>Middleweight</mat-card-title>
+            <mat-card-subtitle>
+              <div class="price">
+                <div class="price-amount">€{{ getPricePerMonth('middleweight') | number:'1.0-0' }}</div>
+                <span>per month</span>
+              </div>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+            <button matButton disabled>SUBSCRIBE</button>
+          </mat-card-actions>
+          <mat-card-content>
+            <p>Everything in <b>Lightweight</b> plus</p>
+            <ul>
+              <li><mat-icon fontSet="material-symbols-outlined">stat_2</mat-icon>Round-level estimates</li>
+              <li><mat-icon fontSet="material-symbols-outlined">hourglass</mat-icon>Duration-based indicator outcomes</li>
+              <li><mat-icon fontSet="material-symbols-outlined">partner_exchange</mat-icon>Access to market-implied probability feed</li>
+              <li><mat-icon fontSet="material-symbols-outlined">notifications_active</mat-icon>Custom threshold-triggered alerts</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="heavyweight-container">
+        <mat-card appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>Heavyweight</mat-card-title>
+            <mat-card-subtitle>
+              <div class="price">
+                <div class="price-amount">€{{ getPricePerMonth('heavyweight') | number:'1.0-0' }}</div>
+                <span>per month</span>
+              </div>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+            <button matButton disabled>SUBSCRIBE</button>
+          </mat-card-actions>
+          <mat-card-content>
+            <p>Everything in <b>Middleweight</b> plus</p>
+            <ul>
+              <li><mat-icon fontSet="material-symbols-outlined">stat_3</mat-icon>Continuous-time level estimates</li>
+              <li><mat-icon fotnSet="material-symbols-outlines">balance</mat-icon>Insight into judging-decisions</li>
+              <li><mat-icon fontSet="material-symbols-outlined">database</mat-icon>Access to inhouse-database</li>
+              <li><mat-icon fontSet="material-symbols-outlined">transition_dissolve</mat-icon>Complete posterior distributions</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <button class="carousel-arrow carousel-arrow-right" (click)="nextTier()" [class.hidden]="currentTierIndex() === totalTiers - 1">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

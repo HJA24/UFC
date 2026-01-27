@@ -2,7 +2,6 @@
 /* Main contact box */
 .pricing-container {
   width: 100%;
-  max-width: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +13,14 @@
 .tiers-container {
   display: flex;
   flex-direction: row;
-  gap: 0;
+  gap: 5px;
+}
+
+.strawweight-container,
+.lightweight-container,
+.middleweight-container,
+.heavyweight-container {
+  display: flex;
 }
 
 .billing-period {
@@ -53,35 +59,52 @@
 mat-button-toggle-group {
   margin-top: 10px;
   border-radius: 5px;
-  gap: 2px;
+  background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(230, 230, 230));
+  padding: 3px;
 }
 
 /* Individual toggles */
 mat-button-toggle {
-  background-color: rgba(225, 225, 225, 0.3);
+  background: transparent;
   font-family: "UFCSans", sans-serif;
   font-weight: bold;
   font-size: 14px;
-  color: rgb(50, 50, 50);
-  margin-top: 0;
+  letter-spacing: 0.02em;
+  color: rgb(80, 80, 80);
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+}
+
+mat-button-toggle:hover {
+  color: rgb(30, 30, 30);
 }
 
 /* Selected toggle */
 mat-button-toggle.mat-button-toggle-checked {
-  background: rgba(100, 100, 100, 0.3);
-  color: rgb(50, 50, 50);
+  background: white;
+  color: rgb(30, 30, 30);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 mat-card {
   width: 300px;
-  background-color: rgba(250, 250, 250, 0.3);
-  border: 1px solid rgba(230, 230, 230);
+  background-color: rgba(250, 250, 250, 1);
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  border-radius: 5px;
+  padding: 10px 12px;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   transition: transform 180ms ease, box-shadow 180ms ease;
   will-change: transform;
+}
+
+mat-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
 }
 
 
@@ -118,29 +141,107 @@ mat-card-content {
   padding: 0;
 }
 
+mat-card-content ul {
+  padding-left: 16px;
+  list-style: none;
+}
+
 mat-card-content li {
   text-align: left;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
 }
 
-mat-card button {
-  width: 100px;
-  text-align: center;
-  border-radius: 5px;
-  border: 1px solid rgba(100, 100, 100, 0.3);
-  background-color: rgba(200, 200, 200, 0.3);
-  color: rgb(50, 50, 50);
+mat-card-content li mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+mat-card-actions button {
   font-family: "UFCSans", sans-serif;
   font-weight: bold;
+  font-size: 14px;
+  color: rgb(50, 50, 50);
+  background-color: rgba(200, 200, 200, 0.3);
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-mat-card button:hover {
-  background-color: rgba(100, 100, 100, 0.3);
+mat-card-actions button:hover {
+  background-color: rgba(150, 150, 150, 0.3);
 }
 
+/* Carousel wrapper */
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
 
-mat-card mat-divider {
-  display: block;
-  width: 85%;
-  margin: 10px auto;
-  border-top: 1px solid rgba(100, 100, 100, 0.3);
+/* Carousel arrows - hidden on desktop */
+.carousel-arrow {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(200, 200, 200, 0.3);
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.carousel-arrow:hover {
+  background: rgba(150, 150, 150, 0.3);
+}
+
+.carousel-arrow.hidden {
+  visibility: hidden;
+}
+
+.carousel-arrow mat-icon {
+  color: rgb(50, 50, 50);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    gap: 8px;
+  }
+
+  .carousel-arrow {
+    display: flex;
+  }
+
+  .tiers-container {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    flex: 1;
+  }
+
+  .tiers-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .strawweight-container,
+  .lightweight-container,
+  .middleweight-container,
+  .heavyweight-container {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+
+  mat-card {
+    width: 100%;
+  }
 }
