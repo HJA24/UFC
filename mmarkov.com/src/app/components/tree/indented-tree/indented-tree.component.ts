@@ -1,0 +1,345 @@
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
+import * as d3 from 'd3';
+
+interface TreeNode {
+  name: string;
+  tier?: string;
+  children?: TreeNode[];
+}
+
+interface ProcessedNode {
+  name: string;
+  tier?: string;
+  depth: number;
+  hasChildren: boolean;
+  isAvailable: boolean;
+  isExpanded: boolean;
+}
+
+const TIERS = ['strawweight', 'lightweight', 'middleweight', 'heavyweight'] as const;
+type Tier = typeof TIERS[number];
+
+const TIER_INDEX: Record<Tier, number> = {
+  strawweight: 0,
+  lightweight: 1,
+  middleweight: 2,
+  heavyweight: 3,
+};
+
+@Component({
+  selector: 'app-indented-tree',
+  standalone: true,
+  templateUrl: './indented-tree.component.html',
+  styleUrl: './indented-tree.component.css',
+})
+export class IndentedTreeComponent implements AfterViewInit, OnChanges {
+  @Input() jsonUrl = 'assets/trees/tree.json';
+  @Input() selectedTierIndex = 0;
+
+  @ViewChild('container', { static: true }) containerRef!: ElementRef<HTMLDivElement>;
+
+  private ready = false;
+  private cachedData: TreeNode[] | null = null;
+
+  ngAfterViewInit(): void {
+    this.ready = true;
+    void this.loadAndRender();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!this.ready) return;
+    if (changes['jsonUrl']) {
+      this.cachedData = null;
+      void this.loadAndRender();
+    } else if (changes['selectedTierIndex'] && this.cachedData) {
+      this.render(this.cachedData);
+    }
+  }
+
+  private async loadAndRender(): Promise<void> {
+    let data: TreeNode[] | undefined;
+    try {
+      data = await d3.json<TreeNode[]>(this.jsonUrl);
+    } catch (e) {
+      console.error('Failed to load tree data:', e);
+      return;
+    }
+
+    if (!data) return;
+    this.cachedData = data;
+    this.render(data);
+  }
+
+  private render(data: TreeNode[]): void {
+    const container = this.containerRef.nativeElement;
+    container.innerHTML = '';
+
+    // Process tree: flatten while respecting expansion state
+    const nodes = this.processTree(data, this.selectedTierIndex);
+
+    if (nodes.length === 0) return;
+
+    // Dimensions
+    const nodeSize = 20;
+    const marginLeft = 20;
+    const marginTop = 40;
+    const tierColumnWidth = 110;
+    const nameColumnWidth = 400;
+    const width = marginLeft + nameColumnWidth + (TIERS.length * tierColumnWidth) + 20;
+    const height = (nodes.length + 1) * nodeSize + marginTop;
+
+    // Create SVG
+    const svg = d3.select(container)
+      .append('svg')
+      .attr('width', width)
+      .attr('height', height)
+      .attr('viewBox', [0, 0, width, height])
+      .attr('style', 'max-width: 100%; height: auto; font: 14px "UFCSans", sans-serif;');
+
+    // Selected column highlight
+    const selectedX = marginLeft + nameColumnWidth + (this.selectedTierIndex * tierColumnWidth);
+    svg.append('rect')
+      .attr('x', selectedX)
+      .attr('y', 0)
+      .attr('width', tierColumnWidth)
+      .attr('height', height)
+      .attr('fill', 'rgb(245, 245, 245)');
+
+    // Column headers
+    const headerY = 20;
+
+    svg.append('text')
+      .attr('x', marginLeft + 10)
+      .attr('y', headerY)
+      .attr('font-weight', 'bold')
+      .attr('fill', 'rgb(50, 50, 50)')
+      .text('Feature');
+
+    TIERS.forEach((tier, i) => {
+      const x = marginLeft + nameColumnWidth + (i * tierColumnWidth) + tierColumnWidth / 2;
+      svg.append('text')
+        .attr('x', x)
+        .attr('y', headerY)
+        .attr('text-anchor', 'middle')
+        .attr('font-weight', 'bold')
+        .attr('fill', i === this.selectedTierIndex ? 'rgb(30, 30, 30)' : 'rgb(100, 100, 100)')
+        .text(tier.charAt(0).toUpperCase() + tier.slice(1));
+    });
+
+    // Header separator
+    svg.append('line')
+      .attr('x1', 0)
+      .attr('x2', width)
+      .attr('y1', marginTop - 10)
+      .attr('y2', marginTop - 10)
+      .attr('stroke', 'rgb(200, 200, 200)');
+
+    // Draw connecting lines
+    const lineGroup = svg.append('g')
+      .attr('fill', 'none')
+      .attr('stroke-width', 1);
+
+    // Track vertical line positions for each depth
+    const verticalLines: Map<number, { startY: number; endY: number; available: boolean }[]> = new Map();
+
+    nodes.forEach((node, i) => {
+      if (node.depth > 0) {
+        const y = marginTop + i * nodeSize;
+        const x = marginLeft + node.depth * nodeSize;
+        const parentX = marginLeft + (node.depth - 1) * nodeSize;
+
+        // Horizontal line to node
+        lineGroup.append('line')
+          .attr('x1', parentX)
+          .attr('x2', x)
+          .attr('y1', y)
+          .attr('y2', y)
+          .attr('stroke', node.isAvailable ? 'rgb(150, 150, 150)' : 'rgb(220, 220, 220)');
+      }
+    });
+
+    // Draw vertical connector lines
+    for (let depth = 0; depth < 10; depth++) {
+      let lineStart: number | null = null;
+      let lastAvailable = false;
+
+      nodes.forEach((node, i) => {
+        const y = marginTop + i * nodeSize;
+
+        if (node.depth === depth && node.hasChildren && node.isExpanded) {
+          lineStart = y;
+          lastAvailable = node.isAvailable;
+        } else if (node.depth === depth + 1 && lineStart !== null) {
+          // Continue the line
+        } else if (node.depth <= depth && lineStart !== null) {
+          // End the vertical line at the last child
+          const prevNode = nodes[i - 1];
+          if (prevNode && prevNode.depth > depth) {
+            const endY = marginTop + (i - 1) * nodeSize;
+            const x = marginLeft + depth * nodeSize;
+            lineGroup.append('line')
+              .attr('x1', x)
+              .attr('x2', x)
+              .attr('y1', lineStart)
+              .attr('y2', endY)
+              .attr('stroke', lastAvailable ? 'rgb(150, 150, 150)' : 'rgb(220, 220, 220)');
+          }
+          lineStart = null;
+        }
+      });
+
+      // Close any remaining open line
+      if (lineStart !== null) {
+        let lastChildIdx = -1;
+        for (let j = nodes.length - 1; j >= 0; j--) {
+          if (nodes[j].depth > depth) {
+            lastChildIdx = j;
+            break;
+          }
+        }
+        if (lastChildIdx >= 0) {
+          const endY = marginTop + lastChildIdx * nodeSize;
+          const x = marginLeft + depth * nodeSize;
+          lineGroup.append('line')
+            .attr('x1', x)
+            .attr('x2', x)
+            .attr('y1', lineStart)
+            .attr('y2', endY)
+            .attr('stroke', lastAvailable ? 'rgb(150, 150, 150)' : 'rgb(220, 220, 220)');
+        }
+      }
+    }
+
+    // Nodes
+    const nodeGroup = svg.append('g')
+      .selectAll('g')
+      .data(nodes)
+      .join('g')
+      .attr('transform', (d, i) => `translate(0,${marginTop + i * nodeSize})`);
+
+    // Node circles
+    nodeGroup.append('circle')
+      .attr('cx', d => marginLeft + d.depth * nodeSize)
+      .attr('cy', 0)
+      .attr('r', 3)
+      .attr('fill', d => {
+        if (!d.isAvailable) return 'rgb(210, 210, 210)';
+        return d.hasChildren ? 'rgb(80, 80, 80)' : 'rgb(150, 150, 150)';
+      });
+
+    // Collapse indicator for nodes with hidden children
+    nodeGroup.filter(d => d.hasChildren && !d.isExpanded)
+      .append('text')
+      .attr('x', d => marginLeft + d.depth * nodeSize + 8)
+      .attr('y', 0)
+      .attr('dy', '0.35em')
+      .attr('fill', 'rgb(180, 180, 180)')
+      .attr('font-size', '12px')
+      .text('▶');
+
+    // Node text
+    nodeGroup.append('text')
+      .attr('x', d => marginLeft + d.depth * nodeSize + (d.hasChildren && !d.isExpanded ? 20 : 8))
+      .attr('y', 0)
+      .attr('dy', '0.35em')
+      .attr('fill', d => d.isAvailable ? 'rgb(50, 50, 50)' : 'rgb(180, 180, 180)')
+      .text(d => d.name);
+
+    // Tier checkmarks (only for nodes with a tier property)
+    nodeGroup.each((d, i, nodeElements) => {
+      if (!d.tier) return; // Skip nodes without a tier
+
+      const g = d3.select(nodeElements[i]);
+
+      TIERS.forEach((tier, tierIdx) => {
+        const x = marginLeft + nameColumnWidth + (tierIdx * tierColumnWidth) + tierColumnWidth / 2;
+        const isIncluded = this.isTierIncluded(d.tier, tier);
+
+        g.append('text')
+          .attr('x', x)
+          .attr('y', 0)
+          .attr('dy', '0.35em')
+          .attr('text-anchor', 'middle')
+          .attr('class', 'material-symbols-outlined')
+          .style('font-size', '18px')
+          .style('font-variation-settings', "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 18")
+          .attr('fill', isIncluded ? 'rgb(100, 100, 100)' : 'rgb(220, 220, 220)')
+          .text(isIncluded ? 'check_box' : 'disabled_by_default');
+      });
+    });
+  }
+
+  /**
+   * Process tree into flat list, only expanding nodes that have available descendants
+   */
+  private processTree(nodes: TreeNode[], tierIndex: number): ProcessedNode[] {
+    const result: ProcessedNode[] = [];
+
+    const process = (nodeList: TreeNode[], depth: number) => {
+      for (const node of nodeList) {
+        const isAvailable = this.isNodeDirectlyAvailable(node, tierIndex);
+        const hasAvailableDescendants = this.hasAvailableDescendants(node, tierIndex);
+        const hasChildren = !!(node.children && node.children.length > 0);
+
+        // A node is expanded if it has available descendants
+        const isExpanded = hasAvailableDescendants;
+
+        result.push({
+          name: node.name,
+          tier: node.tier,
+          depth,
+          hasChildren,
+          isAvailable: isAvailable || hasAvailableDescendants,
+          isExpanded,
+        });
+
+        // Only recurse into children if this node should be expanded
+        if (hasChildren && isExpanded) {
+          process(node.children!, depth + 1);
+        }
+      }
+    };
+
+    process(nodes, 0);
+    return result;
+  }
+
+  /**
+   * Check if a node itself is available (not considering descendants)
+   */
+  private isNodeDirectlyAvailable(node: TreeNode, tierIndex: number): boolean {
+    if (!node.tier) return false;
+    const nodeTierIndex = TIER_INDEX[node.tier as Tier];
+    return nodeTierIndex !== undefined && nodeTierIndex <= tierIndex;
+  }
+
+  /**
+   * Check if any descendant of this node is available
+   */
+  private hasAvailableDescendants(node: TreeNode, tierIndex: number): boolean {
+    if (!node.children) return false;
+
+    for (const child of node.children) {
+      if (this.isNodeDirectlyAvailable(child, tierIndex)) return true;
+      if (this.hasAvailableDescendants(child, tierIndex)) return true;
+    }
+
+    return false;
+  }
+
+  private isTierIncluded(nodeTier: string | undefined, columnTier: Tier): boolean {
+    if (!nodeTier) return false;
+    const nodeIndex = TIER_INDEX[nodeTier as Tier];
+    const columnIndex = TIER_INDEX[columnTier];
+    if (nodeIndex === undefined) return false;
+    return columnIndex >= nodeIndex;
+  }
+}

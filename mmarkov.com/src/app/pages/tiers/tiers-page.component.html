@@ -21,6 +21,12 @@
     <p>
       There are 4 different tiers and each tier has it owns granularity.
     </p>
+
+    <app-indented-tree
+      jsonUrl="assets/trees/tree.json"
+      [selectedTierIndex]="selectedIndex()"
+    ></app-indented-tree>
+
     <mat-tab-group
       animationDuration="1000ms"
       [selectedIndex]="selectedIndex()"

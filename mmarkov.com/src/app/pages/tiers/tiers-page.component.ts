@@ -4,6 +4,7 @@ import { StrawweightPageComponent } from './strawweight/strawweight-page.compone
 import { LightweightPageComponent } from './lightweight/lightweight-page.component';
 import { MiddleweightPageComponent } from './middleweight/middleweight-page.component';
 import { HeavyweightPageComponent } from './heavyweight/heavyweight-page.component';
+import { IndentedTreeComponent } from '../../components/tree/indented-tree/indented-tree.component';
 import { TiersService } from '../../services/tiers.service';
 
 @Component({
@@ -13,7 +14,8 @@ import { TiersService } from '../../services/tiers.service';
       StrawweightPageComponent,
       LightweightPageComponent,
       MiddleweightPageComponent,
-      HeavyweightPageComponent
+      HeavyweightPageComponent,
+      IndentedTreeComponent
     ],
     templateUrl: './tiers-page.component.html',
     styleUrl: './tiers-page.component.css'

@@ -1,0 +1,12 @@
+.indented-tree-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.indented-tree-container svg {
+  display: block;
+}
+
+.indented-tree-container .material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+}
