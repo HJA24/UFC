@@ -1,0 +1,585 @@
+[
+  {
+    "name": "winner",
+    "tier": "lightweight",
+    "children": [
+      {
+        "name": "by knockout",
+        "tier": "lightweight",
+        "children": [
+          {
+            "name": "in 1st round",
+            "tier": "middleweight",
+            "children": [
+              {
+                "name": "in 1st minute",
+                "tier": "heavyweight"
+              },
+              {
+                "name": "..."
+              },
+              {
+                "name": "in 5th minute",
+                "tier": "heavyweight"
+              }
+            ]
+          },
+          {
+            "name": "..."
+          },
+          {
+            "name": "in 5th round",
+            "tier": "middleweight",
+            "children": [
+              {
+                "name": ".. in 1st minute",
+                "tier": "heavyweight"
+              },
+              {
+                "name": "..."
+              },
+              {
+                "name": "in 5th minute",
+                "tier": "heavyweight"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "by submission",
+        "tier": "lightweight",
+        "children": [
+          {
+            "name": "in 1st round",
+            "tier": "middleweight",
+            "children": [
+              {
+                "name": "in 1st minute",
+                "tier": "heavyweight"
+              },
+              {
+                "name": "..."
+              },
+              {
+                "name": "in 5th minute",
+                "tier": "heavyweight"
+              }
+            ]
+          },
+          {
+            "name": "..."
+          },
+          {
+            "name": "in 5th round",
+            "tier": "middleweight",
+            "children": [
+              {
+                "name": ".. in 1st minute",
+                "tier": "heavyweight"
+              },
+              {
+                "name": "..."
+              },
+              {
+                "name": "in last 5th minute",
+                "tier": "heavyweight"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "by decision",
+        "tier": "lightweight",
+        "children": [
+          {
+            "name": "split",
+            "tier": "heavyweight",
+            "children": [
+              {
+                "name": "with scores of 50-45, 50-45, 45-50",
+                "tier": "heavyweight"
+              },
+              {
+                "name": "..."
+              },
+              {
+                "name": "with scores of 50-35, 50-35, 35-50",
+                "tier": "heavyweight"
+              }
+            ]
+          },
+          {
+            "name": "unanimous",
+            "tier": "heavyweight",
+            "children": [
+              {
+                "name": "with scores of 50-45, 50-45, 50-45",
+                "tier": "heavyweight"
+              },
+              {
+                "name": "..."
+              },
+              {
+                "name": "with scores of 50-35, 50-35, 50-35",
+                "tier": "heavyweight"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "after comeback",
+        "tier": "heavyweight",
+        "children": [
+          {
+            "name": "from submission attempt",
+            "tier": "heavyweight"
+          },
+          {
+            "name": ".... from knockdown landed",
+            "tier": "heavyweight"
+          }
+        ]
+      },
+      {
+        "name": "inside distance",
+        "tier": "lightweight",
+        "children": [
+          {
+            "name": "in 1st round",
+            "tier": "middleweight",
+            "children": [
+              {
+                "name": "in 1st minute",
+                "tier": "heavyweight",
+                "children": [
+                  {
+                    "name": "in first 10 seconds",
+                    "tier": "heavyweight"
+                  }
+                ]
+              },
+              {
+                "name": "..."
+              },
+              {
+                "name": "in 5th minute",
+                "tier": "heavyweight"
+              }
+            ]
+          },
+          {
+            "name": "..."
+          },
+          {
+            "name": "in 5th round",
+            "tier": "middleweight",
+            "children": [
+              {
+                "name": "in 1st minute",
+                "tier": "heavyweight"
+              },
+              {
+                "name": "..."
+              },
+              {
+                "name": "in 5th minute",
+                "tier": "heavyweight",
+                "children": [
+                  {
+                    "name": "in last 10 seconds",
+                    "tier": "heavyweight"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "duration",
+    "tier": "middleweight",
+    "children": [
+      {
+        "name": "fight lasts under",
+        "tier": "middleweight",
+        "children": [
+          {
+            "name": "1.5 rounds",
+            "tier": "middleweight"
+          },
+          {
+            "name": "..."
+          },
+          {
+            "name": "4.5 rounds",
+            "tier": "middleweight"
+          }
+        ]
+      },
+      {
+        "name": "fight lasts over",
+        "tier": "middleweight",
+        "children": [
+          {
+            "name": "1.5 rounds",
+            "tier": "middleweight"
+          },
+          {
+            "name": "..."
+          },
+          {
+            "name": "4.5 rounds",
+            "tier": "middleweight"
+          }
+        ]
+      },
+      {
+        "name": "fight starts",
+        "tier": "middleweight",
+        "children": [
+          {
+            "name": "2nd round",
+            "tier": "middleweight"
+          },
+          {
+            "name": "..."
+          },
+          {
+            "name": "5th round",
+            "tier": "middleweight"
+          }
+        ]
+      },
+      {
+        "name": "fight doesn't start",
+        "tier": "middleweight",
+        "children": [
+          {
+            "name": "2nd round",
+            "tier": "middleweight"
+          },
+          {
+            "name": "..."
+          },
+          {
+            "name": "5th round",
+            "tier": "middleweight"
+          }
+        ]
+      },
+      {
+        "name": "fight ends in",
+        "tier": "middleweight",
+        "children": [
+          {
+            "name": "1st round",
+            "tier": "middleweight"
+          },
+          {
+            "name": "..."
+          },
+          {
+            "name": "5th round",
+            "tier": "middleweight"
+          }
+        ]
+      },
+      {
+        "name": "fight doesn't end in",
+        "tier": "middleweight",
+        "children": [
+          {
+            "name": "1st round",
+            "tier": "middleweight"
+          },
+          {
+            "name": "..."
+          },
+          {
+            "name": "5th round",
+            "tier": "middleweight"
+          }
+        ]
+      },
+      {
+        "name": "fight goes the distance",
+        "tier": "middleweight"
+      },
+      {
+        "name": "fight doesn't go the distance",
+        "tier": "middleweight"
+      }
+    ]
+  },
+  {
+    "name": "stats",
+    "tier": "strawweight",
+    "children": [
+      {
+        "name": "number of strikes attempted",
+        "children": [
+          {
+            "name": "total is",
+            "children": [
+              {
+                "name": "under",
+                "tier": "heavyweight",
+                "children": [
+                  {
+                    "name": "25",
+                    "tier": "heavyweight"
+                  },
+                  {
+                    "name": "..."
+                  },
+                  {
+                    "name": "100",
+                    "tier": "heavyweight"
+                  }
+                ]
+              },
+              {
+                "name": "approximately",
+                "tier": "strawweight"
+              },
+              {
+                "name": "over",
+                "tier": "heavyweight",
+                "children": [
+                  {
+                    "name": "25",
+                    "tier": "heavyweight"
+                  },
+                  {
+                    "name": "..."
+                  },
+                  {
+                    "name": "100",
+                    "tier": "heavyweight"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "differentials",
+            "tier": "heavyweight"
+          }
+        ]
+      },
+      {
+        "name": "number of strikes landed",
+        "children": [
+          {
+            "name": "total is",
+            "children": [
+              {
+                "name": "under",
+                "tier": "heavyweight",
+                "children": [
+                  {
+                    "name": "25",
+                    "tier": "heavyweight"
+                  },
+                  {
+                    "name": "..."
+                  },
+                  {
+                    "name": "100",
+                    "tier": "heavyweight"
+                  }
+                ]
+              },
+              {
+                "name": "approximately",
+                "tier": "strawweight"
+              },
+              {
+                "name": "over",
+                "tier": "heavyweight",
+                "children": [
+                  {
+                    "name": "25",
+                    "tier": "heavyweight"
+                  },
+                  {
+                    "name": "..."
+                  },
+                  {
+                    "name": "100",
+                    "tier": "heavyweight"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "differentials",
+            "tier": "heavyweight"
+          }
+        ]
+      },
+      {
+        "name": "number of takedowns landed",
+        "children": [
+          {
+            "name": "total is",
+            "children": [
+              {
+                "name": "under",
+                "tier": "heavyweight",
+                "children": [
+                  {
+                    "name": "5",
+                    "tier": "heavyweight"
+                  },
+                  {
+                    "name": "..."
+                  },
+                  {
+                    "name": "25",
+                    "tier": "heavyweight"
+                  }
+                ]
+              },
+              {
+                "name": "approximately",
+                "tier": "strawweight"
+              },
+              {
+                "name": "over",
+                "tier": "heavyweight",
+                "children": [
+                  {
+                    "name": "5",
+                    "tier": "heavyweight"
+                  },
+                  {
+                    "name": "..."
+                  },
+                  {
+                    "name": "25",
+                    "tier": "heavyweight"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "differentials",
+            "tier": "heavyweight"
+          }
+        ]
+      },
+      {
+        "name": "number of submission attempts",
+        "children": [
+          {
+            "name": "total is",
+            "children": [
+              {
+                "name": "under",
+                "tier": "heavyweight",
+                "children": [
+                  {
+                    "name": "2",
+                    "tier": "heavyweight"
+                  },
+                  {
+                    "name": "..."
+                  },
+                  {
+                    "name": "7",
+                    "tier": "heavyweight"
+                  }
+                ]
+              },
+              {
+                "name": "approximately",
+                "tier": "strawweight"
+              },
+              {
+                "name": "over",
+                "tier": "heavyweight",
+                "children": [
+                  {
+                    "name": "2",
+                    "tier": "heavyweight"
+                  },
+                  {
+                    "name": "..."
+                  },
+                  {
+                    "name": "7",
+                    "tier": "heavyweight"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "differentials",
+            "tier": "heavyweight"
+          }
+        ]
+      },
+      {
+        "name": "time spent in ground control",
+        "children": [
+          {
+            "name": "total is",
+            "children": [
+              {
+                "name": "under",
+                "tier": "heavyweight",
+                "children": [
+                  {
+                    "name": "2.5 minutes",
+                    "tier": "heavyweight"
+                  },
+                  {
+                    "name": "..."
+                  },
+                  {
+                    "name": "20 minutes",
+                    "tier": "heavyweight"
+                  }
+                ]
+              },
+              {
+                "name": "approximately",
+                "tier": "strawweight"
+              },
+              {
+                "name": "over",
+                "tier": "heavyweight",
+                "children": [
+                  {
+                    "name": "2.5 minutes",
+                    "tier": "heavyweight"
+                  },
+                  {
+                    "name": "..."
+                  },
+                  {
+                    "name": "20 minutes",
+                    "tier": "heavyweight"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "differentials",
+            "tier": "heavyweight"
+          }
+        ]
+      }
+    ]
+  }
+]

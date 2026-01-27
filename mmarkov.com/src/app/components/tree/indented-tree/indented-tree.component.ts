@@ -42,7 +42,7 @@ const TIER_INDEX: Record<Tier, number> = {
   styleUrl: './indented-tree.component.css',
 })
 export class IndentedTreeComponent implements AfterViewInit, OnChanges {
-  @Input() jsonUrl = 'assets/trees/tree.json';
+  @Input() jsonUrl = 'assets/tree.json';
   @Input() selectedTierIndex = 0;
 
   @ViewChild('container', { static: true }) containerRef!: ElementRef<HTMLDivElement>;
@@ -95,7 +95,7 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
     const marginLeft = 20;
     const marginTop = 40;
     const tierColumnWidth = 110;
-    const nameColumnWidth = 400;
+    const nameColumnWidth = 280;
     const width = marginLeft + nameColumnWidth + (TIERS.length * tierColumnWidth) + 20;
     const height = (nodes.length + 1) * nodeSize + marginTop;
 
