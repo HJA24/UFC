@@ -27,16 +27,10 @@
       [selectedTierIndex]="selectedIndex()"
     ></app-indented-tree>
 
-    <mat-tab-group
-      animationDuration="1000ms"
+    <app-tiers-tabs
       [selectedIndex]="selectedIndex()"
       (selectedIndexChange)="onTabChange($event)"
-    >
-      <mat-tab label="Strawweight"></mat-tab>
-      <mat-tab label="Lightweight"></mat-tab>
-      <mat-tab label="Middleweight"></mat-tab>
-      <mat-tab label="Heavyweight"></mat-tab>
-    </mat-tab-group>
+    />
 
     @switch (selectedIndex()) {
       @case (0) { <app-strawweight-page /> }

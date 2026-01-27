@@ -1,0 +1,31 @@
+<div class="tiers-tabs">
+  <div class="slider" [style.--active-index]="activeIndex()"></div>
+  <button
+    class="tab"
+    [class.active]="activeIndex() === 0"
+    (click)="select(0)"
+  >
+    Strawweight
+  </button>
+  <button
+    class="tab"
+    [class.active]="activeIndex() === 1"
+    (click)="select(1)"
+  >
+    Lightweight
+  </button>
+  <button
+    class="tab"
+    [class.active]="activeIndex() === 2"
+    (click)="select(2)"
+  >
+    Middleweight
+  </button>
+  <button
+    class="tab"
+    [class.active]="activeIndex() === 3"
+    (click)="select(3)"
+  >
+    Heavyweight
+  </button>
+</div>
