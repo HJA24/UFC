@@ -164,7 +164,7 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
       const y = marginTop + i * nodeSize;
       const x = marginLeft + node.depth * nodeSize;
       const parentX = marginLeft + (node.depth - 1) * nodeSize;
-      const strokeColor = node.isAvailable ? 'rgb(150, 150, 150)' : 'rgb(220, 220, 220)';
+      const strokeColor = node.isAvailable ? 'rgb(80, 80, 80)' : 'rgb(200, 200, 200)';
 
       // Find the parent node (last node with depth = current depth - 1)
       let parentIdx = -1;
@@ -208,10 +208,7 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
       .attr('cx', d => marginLeft + d.depth * nodeSize)
       .attr('cy', 0)
       .attr('r', 3)
-      .attr('fill', d => {
-        if (!d.isAvailable) return 'rgb(210, 210, 210)';
-        return d.hasChildren ? 'rgb(80, 80, 80)' : 'rgb(150, 150, 150)';
-      })
+      .attr('fill', d => d.isAvailable ? 'rgb(80, 80, 80)' : 'rgb(200, 200, 200)')
       .style('cursor', d => d.hasChildren ? (d.isExpanded ? 'zoom-out' : 'zoom-in') : 'default')
       .on('click', (event, d) => {
         if (d.hasChildren) {
@@ -225,7 +222,7 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
       .attr('x', d => marginLeft + d.depth * nodeSize + 8)
       .attr('y', 0)
       .attr('dy', '0.35em')
-      .attr('fill', d => d.isAvailable ? 'rgb(50, 50, 50)' : 'rgb(180, 180, 180)')
+      .attr('fill', d => d.isAvailable ? 'rgb(80, 80, 80)' : 'rgb(200, 200, 200)')
       .style('cursor', d => d.hasChildren ? (d.isExpanded ? 'zoom-out' : 'zoom-in') : 'default')
       .text(d => d.name)
       .on('click', (event, d) => {
