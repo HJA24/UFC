@@ -10,6 +10,8 @@
   background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(230, 230, 230));
   border-radius: 5px;
   padding: var(--padding);
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 @mixin segmented-tabs-slider($tab-count: 2) {
