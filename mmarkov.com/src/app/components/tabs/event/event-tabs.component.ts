@@ -7,7 +7,7 @@ export type EventTabType = 'upcoming' | 'historical';
   standalone: true,
   imports: [],
   templateUrl: './event-tabs.component.html',
-  styleUrl: './event-tabs.component.css',
+  styleUrl: './event-tabs.component.scss',
 })
 export class EventTabsComponent {
   activeTab = input<EventTabType>('upcoming');

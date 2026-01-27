@@ -1,0 +1,17 @@
+@use 'styles/tabs' as tabs;
+
+:host {
+  display: block;
+}
+
+.fightcard-tabs {
+  @include tabs.segmented-tabs(3);
+}
+
+.slider {
+  @include tabs.segmented-tabs-slider(3);
+}
+
+.tab {
+  @include tabs.segmented-tabs-tab;
+}

@@ -25,10 +25,12 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/katex/dist/katex.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src"]
+            }
           },
           "configurations": {
             "production": {
@@ -56,6 +58,9 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "proxyConfig": "proxy.config.json"
+          },
           "configurations": {
             "production": {
               "buildTarget": "mmarkov.com:build:production"

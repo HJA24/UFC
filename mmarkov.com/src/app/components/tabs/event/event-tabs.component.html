@@ -1,5 +1,5 @@
-<div class="chip-tabs">
-  <div class="slider" [style.transform]="'translateX(' + (activeIndex() * 100) + '%)'"></div>
+<div class="event-tabs">
+  <div class="slider" [style.--active-index]="activeIndex()"></div>
   <button
     class="tab"
     [class.active]="activeIndex() === 0"

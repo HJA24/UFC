@@ -1,0 +1,17 @@
+@use 'styles/tabs' as tabs;
+
+:host {
+  display: block;
+}
+
+.network-tabs {
+  @include tabs.segmented-tabs(2);
+}
+
+.slider {
+  @include tabs.segmented-tabs-slider(2);
+}
+
+.tab {
+  @include tabs.segmented-tabs-tab;
+}
