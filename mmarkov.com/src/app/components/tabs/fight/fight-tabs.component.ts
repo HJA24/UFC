@@ -1,4 +1,4 @@
-import { Component, inject, signal, effect } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Router, RouterModule, NavigationEnd } from "@angular/router";
 import { filter } from 'rxjs/operators';
 
