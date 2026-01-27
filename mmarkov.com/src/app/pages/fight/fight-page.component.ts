@@ -1,7 +1,10 @@
-import {Component, inject, OnInit, OnDestroy} from '@angular/core';
+import {Component, inject, OnInit, OnDestroy, ElementRef} from '@angular/core';
 import {RouterOutlet, ActivatedRoute} from "@angular/router";
-import {CommonModule} from "@angular/common";
+import {CommonModule, Location} from "@angular/common";
 import {finalize, take, Subscription} from "rxjs";
+
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
 
 import {FightDto} from "../../models/fight.dto";
 import {FightService} from "../../services/fight.service";
@@ -20,13 +23,17 @@ import { ViewTransitionService } from '../../services/view-transition.service';
     RouterOutlet,
     FightTabsComponent,
     DualProgressBarComponent,
-    FightMenuComponent
+    FightMenuComponent,
+    MatIconModule,
+    MatButtonModule
   ],
   templateUrl: './fight-page.component.html',
   styleUrl: './fight-page.component.css',
 })
 export class FightPageComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute)
+  private location = inject(Location)
+  private elementRef = inject(ElementRef)
   private fightService = inject(FightService)
   private viewTransitionService = inject(ViewTransitionService)
   loadingService = inject(FightLoadingService)
@@ -36,28 +43,21 @@ export class FightPageComponent implements OnInit, OnDestroy {
 
   // Read fightId immediately so transition names are available on first render
   private fightId = this.route.snapshot.paramMap.get('fightId');
-  cardTransitionName = `fight-card-${this.fightId}`;
-  blueTransitionName = `fighter-blue-${this.fightId}`;
-  redTransitionName = `fighter-red-${this.fightId}`;
-  progressBarTransitionName = `progress-bar-${this.fightId}`;
+  cardContainerTransition = `fight-card-${this.fightId}`;
+  fighterNameBlueTransition = `fighter-blue-${this.fightId}`;
+  fighterNameRedTransition = `fighter-red-${this.fightId}`;
+  progressBarTransition = `progress-bar-${this.fightId}`;
 
   // Get fighter names from router state for immediate display during transition
-  blueName = history.state?.blueName ?? '';
-  redName = history.state?.redName ?? '';
+  fighterBlueName = history.state?.fighterBlueName ?? '';
+  fighterRedName = history.state?.fighterRedName ?? '';
 
   ngOnInit() {
     // If navigated directly (no router state), load immediately
-    if (!this.blueName) {
+    if (!this.fighterBlueName) {
       this.loadFight();
       return;
     }
-
-    // Wait for view transition to complete before loading data
-    this.subscription = this.viewTransitionService.finished$.pipe(
-      take(1)
-    ).subscribe(() => {
-      this.loadFight();
-    });
   }
 
   ngOnDestroy() {
@@ -72,11 +72,26 @@ export class FightPageComponent implements OnInit, OnDestroy {
     ).subscribe({
       next: (fight) => {
         this.fight = fight;
+        this.scrollToBottom();
       },
       error: (err) => {
         console.error('failed to load fight:', err);
         this.fight = null;
       }
     });
+  }
+
+  private scrollToBottom(): void {
+    // Wait for DOM to update with loaded content
+    setTimeout(() => {
+      const page = this.elementRef.nativeElement.querySelector('.page');
+      if (page) {
+        page.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }
+    });
+  }
+
+  close(): void {
+    this.location.back();
   }
 }

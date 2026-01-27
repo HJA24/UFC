@@ -1,0 +1,59 @@
+<div class="event-stack-container">
+  <div class="stack">
+    @for (event of events; track event.eventId; let i = $index) {
+      <div
+        class="stack-card"
+        [class.dismissed]="i < currentIndex()"
+        [class.active]="i === currentIndex()"
+        [style.--index]="i"
+        (click)="i === currentIndex() ? onCardClick(event) : select(i)"
+      >
+        <div class="card-header">
+          <h3 class="event-title">{{ event.name }}</h3>
+          <div class="event-meta">
+            <span class="event-date">{{ event.date | date }}</span>
+            <span class="event-location">{{ event.city }}, {{ event.country }}</span>
+          </div>
+        </div>
+
+        @if (i === currentIndex()) {
+          <div class="card-actions">
+            <a
+              mat-button
+              [routerLink]="['/events', event.eventId, 'early-prelim', 'fights']"
+              (click)="$event.stopPropagation()"
+            >EARLY PRELIM</a>
+            <a
+              mat-button
+              [routerLink]="['/events', event.eventId, 'prelim', 'fights']"
+              (click)="$event.stopPropagation()"
+            >PRELIM</a>
+            <a
+              mat-button
+              [routerLink]="['/events', event.eventId, 'main', 'fights']"
+              (click)="$event.stopPropagation()"
+            >MAIN</a>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="controls">
+    <button
+      mat-icon-button
+      [disabled]="currentIndex() === 0"
+      (click)="prev()"
+    >
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <span class="counter">{{ currentIndex() + 1 }} / {{ events.length }}</span>
+    <button
+      mat-icon-button
+      [disabled]="currentIndex() === events.length - 1"
+      (click)="next()"
+    >
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</div>

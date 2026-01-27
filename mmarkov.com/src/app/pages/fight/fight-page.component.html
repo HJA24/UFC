@@ -1,19 +1,22 @@
-<div class="page">
-<div class="fight-container">
-  <div class="fight-header">
-    <div class="fighter-name blue" [style.view-transition-name]="blueTransitionName">
-      {{ fight?.fighterBlue?.lastName ?? blueName }}
-    </div>
+<div class="page" [style.view-transition-name]="cardContainerTransition">
+  <button mat-icon-button class="close-button" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <div class="fight-container">
+    <div class="fight-header">
+      <div class="fighter-name blue" [style.view-transition-name]="fighterNameBlueTransition">
+        {{ fight?.fighterBlue?.lastName ?? fighterBlueName }}
+      </div>
 
-    <div class="fighter-name red" [style.view-transition-name]="redTransitionName">
-      {{ fight?.fighterRed?.lastName ?? redName }}
+      <div class="fighter-name red" [style.view-transition-name]="fighterNameRedTransition">
+        {{ fight?.fighterRed?.lastName ?? fighterRedName }}
+      </div>
+      <app-dual-progress-bar
+        [loading]="loadingService.loading()"
+        [style.view-transition-name]="progressBarTransition"
+      ></app-dual-progress-bar>
     </div>
-    <app-dual-progress-bar
-      [loading]="loadingService.loading()"
-      [style.view-transition-name]="progressBarTransitionName"
-    ></app-dual-progress-bar>
   </div>
-</div>
   <app-fight-menu></app-fight-menu>
   <router-outlet></router-outlet>
   <app-fight-tabs></app-fight-tabs>

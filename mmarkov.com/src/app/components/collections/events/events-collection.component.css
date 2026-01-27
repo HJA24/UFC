@@ -1,0 +1,42 @@
+.events-collection {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(200, 200, 200, 0.2);
+  border-radius: 8px;
+}
+
+.view-toggle button {
+  color: rgb(150, 150, 150);
+  transition: all 0.2s ease;
+}
+
+.view-toggle button:hover {
+  color: rgb(100, 100, 100);
+}
+
+.view-toggle button.active {
+  color: rgb(50, 50, 50);
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
+}
+
+.events-content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Material Symbols Outlined font */
+:host ::ng-deep .mat-icon[fontset="material-symbols-outlined"] {
+  font-family: 'Material Symbols Outlined';
+}

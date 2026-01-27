@@ -1,0 +1,28 @@
+<div class="events-collection">
+  <div class="view-toggle">
+    <button
+      mat-icon-button
+      [class.active]="viewMode() === 'list'"
+      (click)="setViewMode('list')"
+      aria-label="List view"
+    >
+      <mat-icon>list</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      [class.active]="viewMode() === 'stack'"
+      (click)="setViewMode('stack')"
+      aria-label="Stack view"
+    >
+      <mat-icon fontSet="material-symbols-outlined">overview_key</mat-icon>
+    </button>
+  </div>
+
+  <div class="events-content">
+    @if (viewMode() === 'list') {
+      <app-event-list [events]="events"></app-event-list>
+    } @else {
+      <app-event-stack [events]="events"></app-event-stack>
+    }
+  </div>
+</div>

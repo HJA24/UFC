@@ -1,0 +1,482 @@
+.demo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.demo-section {
+  margin-bottom: 100px;
+}
+
+.demo-section h2 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.demo-section p {
+  color: rgb(100, 100, 100);
+  margin-bottom: 24px;
+}
+
+/* Base card styles */
+.card-overlapping,
+.card-zdepth,
+.card-cascading,
+.card-accordion,
+.card-swipeable {
+  background: white;
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-overlapping h3,
+.card-zdepth h3,
+.card-cascading h3,
+.card-accordion h3,
+.card-swipeable h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: rgb(100, 100, 100);
+}
+
+/* =========================
+   1. OVERLAPPING CARDS
+========================= */
+.stack-overlapping {
+  position: relative;
+  height: 200px;
+  width: 350px;
+}
+
+.card-overlapping {
+  position: absolute;
+  width: 100%;
+  top: calc(var(--index) * 12px);
+  z-index: calc(10 - var(--index));
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card-overlapping:hover {
+  transform: translateX(20px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   2. Z-DEPTH STACK
+========================= */
+.stack-zdepth {
+  position: relative;
+  height: 220px;
+  width: 350px;
+  perspective: 1000px;
+}
+
+.card-zdepth {
+  position: absolute;
+  width: 100%;
+  transform:
+    translateY(calc(var(--index) * 8px))
+    translateZ(calc(var(--index) * -30px))
+    scale(calc(1 - var(--index) * 0.03));
+  z-index: calc(10 - var(--index));
+  transition: all 0.3s ease;
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+
+.card-zdepth:hover {
+  transform:
+    translateY(calc(var(--index) * 8px - 10px))
+    translateZ(0)
+    scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   3. CASCADING
+========================= */
+.stack-cascading {
+  position: relative;
+  height: 300px;
+  width: 450px;
+}
+
+.card-cascading {
+  position: absolute;
+  width: 320px;
+  top: calc(var(--index) * 25px);
+  left: calc(var(--index) * 25px);
+  z-index: calc(10 - var(--index));
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card-cascading:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  z-index: 20;
+}
+
+/* =========================
+   4. COMPRESSED ACCORDION
+========================= */
+.stack-accordion {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-accordion {
+  margin-top: -1px;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card-accordion:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.card-accordion:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+.card-accordion:not(.expanded) {
+  padding: 10px 20px;
+}
+
+.card-accordion:not(.expanded) h3 {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.card-accordion.expanded {
+  background: rgba(250, 250, 250, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  position: relative;
+}
+
+.card-accordion .content {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(200, 200, 200, 0.3);
+}
+
+.card-accordion .content p {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+/* =========================
+   5. SWIPEABLE DECK
+========================= */
+.stack-swipeable {
+  position: relative;
+  height: 180px;
+  width: 380px;
+  perspective: 1000px;
+}
+
+.card-swipeable {
+  position: absolute;
+  width: 320px;
+  top: calc(var(--index) * 4px);
+  left: calc(var(--index) * 4px);
+  z-index: calc(10 - var(--index));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.card-swipeable.active {
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-swipeable.prev,
+.card-swipeable.next {
+  /* Reset - all cards use base positioning */
+}
+
+/* =========================
+   6. FADE TO BACK
+========================= */
+.stack-fade-back {
+  position: relative;
+  height: 180px;
+  width: 380px;
+}
+
+.card-fade-back {
+  position: absolute;
+  width: 320px;
+  top: calc(var(--index) * 4px);
+  left: calc(var(--index) * 4px);
+  z-index: calc(10 - var(--index));
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-fade-back h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.card-fade-back.active {
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-fade-back.dismissed {
+  opacity: 0.3;
+  top: calc(var(--total) * 6px + 10px);
+  left: calc(var(--total) * 6px + 10px);
+  z-index: calc(0 - var(--dismissed-index));
+}
+
+/* =========================
+   7. SLIDE UNDER
+========================= */
+.stack-slide-under {
+  position: relative;
+  height: 180px;
+  width: 380px;
+}
+
+.card-slide-under {
+  position: absolute;
+  width: 320px;
+  top: calc((var(--index) - var(--current)) * 4px);
+  left: calc((var(--index) - var(--current)) * 4px);
+  z-index: calc(10 - var(--index));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-slide-under h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.card-slide-under.active {
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-slide-under.dismissed {
+  top: calc((var(--index) - var(--current)) * 6px + 4px);
+  left: calc((var(--index) - var(--current)) * 6px + 4px);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+/* =========================
+   8. SHRINK & COLLECT
+========================= */
+.stack-shrink-wrapper {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.shrink-dismissed-area {
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 180px;
+}
+
+.card-shrink-thumb {
+  background: rgba(200, 200, 200, 0.5);
+  border: 1px solid rgba(150, 150, 150, 0.5);
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-shrink-thumb:hover {
+  background: rgba(150, 150, 150, 0.5);
+}
+
+.stack-shrink {
+  position: relative;
+  height: 180px;
+  width: 380px;
+}
+
+.card-shrink {
+  position: absolute;
+  width: 320px;
+  top: calc(var(--index) * 4px);
+  left: calc(var(--index) * 4px);
+  z-index: calc(10 - var(--index));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-shrink h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.card-shrink.active {
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-shrink.dismissed {
+  display: none;
+}
+
+/* =========================
+   9. GREYED TRAIL
+========================= */
+.stack-grey-trail {
+  position: relative;
+  height: 220px;
+  width: 380px;
+}
+
+.card-grey-trail {
+  position: absolute;
+  width: 320px;
+  top: calc(var(--index) * 4px);
+  left: calc(var(--index) * 4px);
+  z-index: calc(10 - var(--index));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-grey-trail h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.card-grey-trail.active {
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-grey-trail.dismissed {
+  background: rgb(240, 240, 240);
+  border-color: rgba(200, 200, 200, 0.3);
+  box-shadow: none;
+  z-index: calc(0 - var(--index));
+}
+
+.card-grey-trail.dismissed h3,
+.card-grey-trail.dismissed .meta {
+  color: rgb(180, 180, 180);
+}
+
+/* =========================
+   10. SOFT RECEDE
+========================= */
+.stack-soft-recede {
+  position: relative;
+  height: 180px;
+  width: 380px;
+}
+
+.card-soft-recede {
+  position: absolute;
+  width: 320px;
+  top: calc(var(--index) * 4px);
+  left: calc(var(--index) * 4px);
+  z-index: calc(10 - var(--index));
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform-origin: top left;
+}
+
+.card-soft-recede h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.card-soft-recede.active {
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-soft-recede.dismissed {
+  transform: scale(0.96);
+  opacity: 0.5;
+  z-index: 0;
+  box-shadow: none;
+}
+
+.swipe-controls {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.swipe-controls button {
+  padding: 8px 20px;
+  border: 1px solid rgba(100, 100, 100, 0.3);
+  border-radius: 4px;
+  background: rgba(200, 200, 200, 0.3);
+  cursor: pointer;
+  font-family: "UFCSans", sans-serif;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.swipe-controls button:hover {
+  background: rgba(150, 150, 150, 0.3);
+}

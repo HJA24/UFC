@@ -1,0 +1,230 @@
+<div class="demo-container">
+  <h1>Event Stack Layouts</h1>
+
+  <!-- 1. OVERLAPPING CARDS -->
+  <section class="demo-section">
+    <h2>1. Overlapping Cards</h2>
+    <p>Cards physically overlap like a deck - edges peek out behind the top card</p>
+    <div class="stack-overlapping">
+      @for (event of events; track event.id; let i = $index) {
+        <div class="card-overlapping" [style.--index]="i">
+          <h3>{{ event.name }}</h3>
+          <div class="meta">{{ event.date }} · {{ event.venue }}</div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- 2. Z-DEPTH STACK -->
+  <section class="demo-section">
+    <h2>2. Z-Depth Stack</h2>
+    <p>3D perspective with shadows indicating depth</p>
+    <div class="stack-zdepth">
+      @for (event of events; track event.id; let i = $index) {
+        <div class="card-zdepth" [style.--index]="i">
+          <h3>{{ event.name }}</h3>
+          <div class="meta">{{ event.date }} · {{ event.venue }}</div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- 3. CASCADING -->
+  <section class="demo-section">
+    <h2>3. Cascading</h2>
+    <p>Diagonally offset like cascading windows</p>
+    <div class="stack-cascading">
+      @for (event of events; track event.id; let i = $index) {
+        <div class="card-cascading" [style.--index]="i">
+          <h3>{{ event.name }}</h3>
+          <div class="meta">{{ event.date }} · {{ event.venue }}</div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- 4. COMPRESSED ACCORDION -->
+  <section class="demo-section">
+    <h2>4. Compressed Accordion</h2>
+    <p>Stacked tightly, click to expand</p>
+    <div class="stack-accordion">
+      @for (event of events; track event.id; let i = $index) {
+        <div
+          class="card-accordion"
+          [class.expanded]="expandedIndex === i"
+          [style.--index]="i"
+          (click)="toggleAccordion(i)"
+        >
+          <h3>{{ event.name }}</h3>
+          @if (expandedIndex === i) {
+            <div class="meta">{{ event.date }} · {{ event.venue }}</div>
+            <div class="content">
+              <p>Main Card · Prelims · Early Prelims</p>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- 5. SWIPEABLE DECK -->
+  <section class="demo-section">
+    <h2>5. Swipeable Deck</h2>
+    <p>All cards visible with diagonal offset, click or navigate to select</p>
+    <div class="stack-swipeable">
+      @for (event of events; track event.id; let i = $index) {
+        <div
+          class="card-swipeable"
+          [class.active]="i === currentIndex"
+          [style.--index]="i"
+          (click)="currentIndex = i"
+        >
+          <h3>{{ event.name }}</h3>
+          <div class="meta">{{ event.date }} · {{ event.venue }}</div>
+        </div>
+      }
+      <div class="swipe-controls">
+        <button (click)="prevCard()">← Prev</button>
+        <button (click)="nextCard()">Next →</button>
+      </div>
+    </div>
+  </section>
+
+  <h1 style="margin-top: 80px;">Dismissed Card Behaviors</h1>
+  <p style="text-align: center; color: rgb(100,100,100); margin-bottom: 60px;">What happens to cards when user clicks "Next"</p>
+
+  <!-- 6. FADE TO BACK -->
+  <section class="demo-section">
+    <h2>6. Fade to Back</h2>
+    <p>Dismissed cards fade and move to the back of the stack</p>
+    <div class="stack-fade-back">
+      @for (event of events; track event.id; let i = $index) {
+        <div
+          class="card-fade-back"
+          [class.dismissed]="i < demoIndices.fadeBack"
+          [class.active]="i === demoIndices.fadeBack"
+          [style.--index]="i"
+          [style.--dismissed-index]="i"
+          [style.--total]="events.length"
+        >
+          <h3>{{ event.name }}</h3>
+          <div class="meta">{{ event.date }} · {{ event.venue }}</div>
+        </div>
+      }
+      <div class="swipe-controls">
+        <button (click)="prevDemo('fadeBack')">← Back</button>
+        <button (click)="nextDemo('fadeBack')">Next →</button>
+        <button (click)="resetDemo('fadeBack')">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. SLIDE UNDER -->
+  <section class="demo-section">
+    <h2>7. Slide Under</h2>
+    <p>Dismissed cards gently slide underneath the stack</p>
+    <div class="stack-slide-under">
+      @for (event of events; track event.id; let i = $index) {
+        <div
+          class="card-slide-under"
+          [class.dismissed]="i < demoIndices.slideUnder"
+          [class.active]="i === demoIndices.slideUnder"
+          [style.--index]="i"
+          [style.--current]="demoIndices.slideUnder"
+        >
+          <h3>{{ event.name }}</h3>
+          <div class="meta">{{ event.date }} · {{ event.venue }}</div>
+        </div>
+      }
+      <div class="swipe-controls">
+        <button (click)="prevDemo('slideUnder')">← Back</button>
+        <button (click)="nextDemo('slideUnder')">Next →</button>
+        <button (click)="resetDemo('slideUnder')">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. SHRINK & COLLECT -->
+  <section class="demo-section">
+    <h2>8. Shrink & Collect</h2>
+    <p>Dismissed cards shrink into thumbnails on the side</p>
+    <div class="stack-shrink-wrapper">
+      <div class="shrink-dismissed-area">
+        @for (event of events; track event.id; let i = $index) {
+          @if (i < demoIndices.shrink) {
+            <div class="card-shrink-thumb" (click)="demoIndices.shrink = i">
+              <span>{{ event.name }}</span>
+            </div>
+          }
+        }
+      </div>
+      <div class="stack-shrink">
+        @for (event of events; track event.id; let i = $index) {
+          <div
+            class="card-shrink"
+            [class.dismissed]="i < demoIndices.shrink"
+            [class.active]="i === demoIndices.shrink"
+            [style.--index]="i - demoIndices.shrink"
+          >
+            <h3>{{ event.name }}</h3>
+            <div class="meta">{{ event.date }} · {{ event.venue }}</div>
+          </div>
+        }
+        <div class="swipe-controls">
+          <button (click)="prevDemo('shrink')">← Back</button>
+          <button (click)="nextDemo('shrink')">Next →</button>
+          <button (click)="resetDemo('shrink')">Reset</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. GREYED TRAIL -->
+  <section class="demo-section">
+    <h2>9. Greyed Trail</h2>
+    <p>Dismissed cards stay visible but greyed out</p>
+    <div class="stack-grey-trail">
+      @for (event of events; track event.id; let i = $index) {
+        <div
+          class="card-grey-trail"
+          [class.dismissed]="i < demoIndices.greyTrail"
+          [class.active]="i === demoIndices.greyTrail"
+          [style.--index]="i"
+        >
+          <h3>{{ event.name }}</h3>
+          <div class="meta">{{ event.date }} · {{ event.venue }}</div>
+        </div>
+      }
+      <div class="swipe-controls">
+        <button (click)="prevDemo('greyTrail')">← Back</button>
+        <button (click)="nextDemo('greyTrail')">Next →</button>
+        <button (click)="resetDemo('greyTrail')">Reset</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. SOFT RECEDE -->
+  <section class="demo-section">
+    <h2>10. Soft Recede</h2>
+    <p>Dismissed cards gently scale down and recede in place</p>
+    <div class="stack-soft-recede">
+      @for (event of events; track event.id; let i = $index) {
+        <div
+          class="card-soft-recede"
+          [class.dismissed]="i < demoIndices.softRecede"
+          [class.active]="i === demoIndices.softRecede"
+          [style.--index]="i"
+        >
+          <h3>{{ event.name }}</h3>
+          <div class="meta">{{ event.date }} · {{ event.venue }}</div>
+        </div>
+      }
+      <div class="swipe-controls">
+        <button (click)="prevDemo('softRecede')">← Back</button>
+        <button (click)="nextDemo('softRecede')">Next →</button>
+        <button (click)="resetDemo('softRecede')">Reset</button>
+      </div>
+    </div>
+  </section>
+
+</div>

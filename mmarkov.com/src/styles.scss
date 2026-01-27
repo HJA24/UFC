@@ -312,8 +312,8 @@ hr {
 
 /* Named elements: position animates over 600ms */
 ::view-transition-group(*) {
-  animation-duration: 750ms !important;
-  animation-timing-function: ease-out;
+  animation-duration: 600ms !important;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 /* Hide old snapshots - only new size is visible */
@@ -336,23 +336,13 @@ hr {
 }
 
 ::view-transition-new(root) {
-  animation: fade-in-delayed 800ms ease-out forwards !important;
+  animation: fade-in-delayed 700ms ease-out forwards !important;
 }
 
 @keyframes fade-in-delayed {
-  0%, 99% { opacity: 0; }
+  0%, 85% { opacity: 0; }
   100% { opacity: 1; }
 }
 
-/* Navbar: stays visible and static */
-::view-transition-group(navbar) {
-  animation-duration: 0s !important;
-}
-
-::view-transition-old(navbar),
-::view-transition-new(navbar) {
-  animation: none !important;
-  opacity: 1 !important;
-}
 
 

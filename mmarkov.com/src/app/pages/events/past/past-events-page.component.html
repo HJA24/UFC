@@ -1,0 +1,15 @@
+<ng-container *ngIf="events$ | async as events; else loading">
+
+  <ng-container *ngIf="events.length > 0; else empty">
+    <app-events-collection [events]="events"></app-events-collection>
+  </ng-container>
+
+</ng-container>
+
+<ng-template #loading>
+  <p>Loading events…</p>
+</ng-template>
+
+<ng-template #empty>
+  <p>No events available</p>
+</ng-template>

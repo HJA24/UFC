@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -28,33 +28,20 @@ export class FightCardComponent {
   @Input({ required: true }) eventId!: string;
   @Input({ required: true }) fightCard!: string;
 
-  @HostBinding('class.transitioning') isTransitioning = false;
 
-  onCardClick(): void {
-    // Mark this card as the one transitioning
-    this.isTransitioning = true;
-
-    // Remove view-transition-name from ALL other cards' elements
-    document.querySelectorAll('app-fight-card:not(.transitioning)').forEach(card => {
-      card.querySelectorAll('[style*="view-transition-name"]').forEach(el => {
-        (el as HTMLElement).style.viewTransitionName = 'none';
-      });
-    });
-  }
-
-  get cardTransitionName(): string {
+  get cardContainerTransition(): string {
     return `fight-card-${this.fight.fightId}`;
   }
 
-  get blueTransitionName(): string {
+  get fighterNameBlueTransition(): string {
     return `fighter-blue-${this.fight.fightId}`;
   }
 
-  get redTransitionName(): string {
+  get fighterNameRedTransition(): string {
     return `fighter-red-${this.fight.fightId}`;
   }
 
-  get dividerTransitionName(): string {
+  get dividerTransition(): string {
     return `progress-bar-${this.fight.fightId}`;
   }
 }

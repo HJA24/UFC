@@ -1,26 +1,18 @@
 <mat-card
   class="fight-card"
   [routerLink]="['/fights', fight.fightId]"
-  [state]="{ blueName: fight.fighterBlue.lastName, redName: fight.fighterRed.lastName }"
-  (click)="onCardClick()"
+  [state]="{ fighterNameBlue: fight.fighterBlue.lastName, fighterNameRed: fight.fighterRed.lastName }"
+  [style.view-transition-name]="cardContainerTransition"
+  (click)="$event.stopPropagation()"
 >
-  <button
-    mat-icon-button
-    class="expand-button"
-    aria-label="Expand fight card"
-    (click)="$event.stopPropagation()"
-  >
-    <mat-icon>open_in_full</mat-icon>
-  </button>
-
   <mat-card-header>
     <mat-card-title>
       <div class="fighter-names">
-        <div class="fighter-name blue" [style.view-transition-name]="blueTransitionName">
+        <div class="fighter-name blue" [style.view-transition-name]="fighterNameBlueTransition">
           {{ fight.fighterBlue.lastName }}
         </div>
 
-        <div class="fighter-name red" [style.view-transition-name]="redTransitionName">
+        <div class="fighter-name red" [style.view-transition-name]="fighterNameRedTransition">
           {{ fight.fighterRed.lastName }}
         </div>
       </div>
@@ -50,7 +42,7 @@
     </div>
   </mat-card-content>
 
-  <mat-divider [style.view-transition-name]="dividerTransitionName"></mat-divider>
+  <mat-divider [style.view-transition-name]="dividerTransition"></mat-divider>
 
   <mat-card-actions>
     <a
