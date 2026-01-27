@@ -124,7 +124,7 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
       .attr('y', headerY)
       .attr('font-weight', 'bold')
       .attr('fill', 'rgb(50, 50, 50)')
-      .text('Feature');
+      .text('Description');
 
     TIERS.forEach((tier, i) => {
       const x = marginLeft + nameColumnWidth + (i * tierColumnWidth) + tierColumnWidth / 2;
@@ -245,39 +245,9 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
         }
       });
 
-    // Collapse indicator for nodes with hidden children
-    nodeGroup.filter(d => d.hasChildren && !d.isExpanded)
-      .append('text')
-      .attr('x', d => marginLeft + d.depth * nodeSize + 8)
-      .attr('y', 0)
-      .attr('dy', '0.35em')
-      .attr('fill', 'rgb(180, 180, 180)')
-      .attr('font-size', '12px')
-      .style('cursor', 'pointer')
-      .text('▶')
-      .on('click', (event, d) => {
-        event.stopPropagation();
-        this.toggleNode(d.path, d.isExpanded);
-      });
-
-    // Expand indicator for expanded nodes with children
-    nodeGroup.filter(d => d.hasChildren && d.isExpanded)
-      .append('text')
-      .attr('x', d => marginLeft + d.depth * nodeSize + 8)
-      .attr('y', 0)
-      .attr('dy', '0.35em')
-      .attr('fill', 'rgb(150, 150, 150)')
-      .attr('font-size', '12px')
-      .style('cursor', 'pointer')
-      .text('▼')
-      .on('click', (event, d) => {
-        event.stopPropagation();
-        this.toggleNode(d.path, d.isExpanded);
-      });
-
     // Node text
     nodeGroup.append('text')
-      .attr('x', d => marginLeft + d.depth * nodeSize + (d.hasChildren ? 20 : 8))
+      .attr('x', d => marginLeft + d.depth * nodeSize + 8)
       .attr('y', 0)
       .attr('dy', '0.35em')
       .attr('fill', d => d.isAvailable ? 'rgb(50, 50, 50)' : 'rgb(180, 180, 180)')
