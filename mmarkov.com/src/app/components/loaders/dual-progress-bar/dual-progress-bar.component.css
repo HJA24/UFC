@@ -1,0 +1,9 @@
+.dual-bars {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+app-progress-bar {
+  flex: 1;
+}

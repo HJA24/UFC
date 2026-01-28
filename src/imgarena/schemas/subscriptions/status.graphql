@@ -1,0 +1,14 @@
+subscription FightCardSubscribeToUfcFightStatuses($input: FightCardInput!) {
+  subscribeToUfcFightStatuses(input: $input) {
+    fightId
+    status
+    result {
+      winner
+      method
+      methodDetails {
+        endingRound
+        endingTime
+      }
+    }
+  }
+}

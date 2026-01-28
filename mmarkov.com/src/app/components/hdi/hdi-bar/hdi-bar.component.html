@@ -1,0 +1,8 @@
+<svg:g class="hdi-bar" [style.z-index]="zIndex()">
+  <svg:rect
+    [attr.x]="min()"
+    [attr.width]="max() - min()"
+    [attr.fill]="color()"
+  />
+  <svg:text>{{ label() }}</svg:text>
+</svg:g>

@@ -1,0 +1,82 @@
+{
+  "1": {
+    "decision_id": 1,
+    "decision": "unanimous",
+    "winner": "blue",
+    "judges": [
+      "blue",
+      "blue",
+      "blue"
+    ]
+  },
+  "2": {
+    "decision_id": 2,
+    "decision": "unanimous",
+    "winner": "red",
+    "judges": [
+      "red",
+      "red",
+      "red"
+    ]
+  },
+  "3": {
+    "id": 3,
+    "decision": "split",
+    "winner": "blue",
+    "judges": [
+      "blue",
+      "blue",
+      "red"
+    ]
+  },
+  "4": {
+    "id": 4,
+    "decision": "split",
+    "winner": "blue",
+    "judges": [
+      "blue",
+      "red",
+      "blue"
+    ]
+  },
+  "5": {
+    "id": 5,
+    "decision": "split",
+    "winner": "blue",
+    "judges": [
+      "red",
+      "blue",
+      "blue"
+    ]
+  },
+  "6": {
+    "id": 6,
+    "decision": "split",
+    "winner": "red",
+    "judges": [
+      "red",
+      "red",
+      "blue"
+    ]
+  },
+  "7": {
+    "id": 7,
+    "decision": "split",
+    "winner": "red",
+    "judges": [
+      "red",
+      "blue",
+      "red"
+    ]
+  },
+  "8": {
+    "id": 8,
+    "decision": "split",
+    "winner": "red",
+    "judges": [
+      "blue",
+      "red",
+      "red"
+    ]
+  }
+}

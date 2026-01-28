@@ -1,0 +1,828 @@
+{
+  "1546": {
+    "2037": [
+      {
+        "blue": "tavares",
+        "red": "whittaker",
+        "fight_id": "5336",
+        "event": "ufc fight night: miocic vs hunt",
+        "date": "09-05-2015",
+        "winner": "red",
+        "method": "knockout",
+        "round": "1",
+        "time": "0:44"
+      }
+    ],
+    "3051": [
+      {
+        "blue": "tavares",
+        "red": "adesanya",
+        "fight_id": "7258",
+        "event": "the ultimate fighter: undefeated finale",
+        "date": "07-07-2018",
+        "winner": "red",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "3314": [
+      {
+        "blue": "tavares",
+        "red": "silva",
+        "fight_id": "10464",
+        "event": "ufc fight night: pavlovich vs blaydes",
+        "date": "22-04-2023",
+        "winner": "red",
+        "method": "knockout",
+        "round": "1",
+        "time": "3:35"
+      }
+    ]
+  },
+  "1806": {
+    "2069": [
+      {
+        "blue": "brunson",
+        "red": "hall",
+        "fight_id": "6217",
+        "event": "ufc fight night: poirier vs johnson",
+        "date": "18-09-16",
+        "winner": "blue",
+        "method": "knockout",
+        "round": "1",
+        "time": "1:41"
+      }
+    ],
+    "2037": [
+      {
+        "blue": "brunson",
+        "red": "whittaker",
+        "fight_id": "6321",
+        "event": "ufc fight night: whittaker vs brunson",
+        "date": "27-11-2016",
+        "winner": "red",
+        "method": "knockout",
+        "round": "1",
+        "time": "4:07"
+      }
+    ],
+    "2337": [
+      {
+        "blue": "brunson",
+        "red": "cannonier",
+        "fight_id": "9603",
+        "event": "ufc 271: adesanya vs whittaker 2",
+        "date": "13-02-2022",
+        "winner": "red",
+        "method": "knockout",
+        "round": "2",
+        "time": "4:29"
+      }
+    ],
+    "3051": [
+      {
+        "blue": "brunson",
+        "red": "adesanya",
+        "fight_id": "7409",
+        "event": "ufc 230: cormier vs lewis",
+        "date": "04-11-2018",
+        "winner": "red",
+        "method": "knockout",
+        "round": "1",
+        "time": "4:51"
+      }
+    ]
+  },
+  "2037": {
+    "1546": [
+      {
+        "blue": "whittaker",
+        "red": "tavares",
+        "fight_id": "5336",
+        "event": "ufc fight night: miocic vs hunt",
+        "date": "09-05-2015",
+        "winner": "blue",
+        "method": "knockout",
+        "round": "1",
+        "time": "0:44"
+      }
+    ],
+    "2069": [
+      {
+        "blue": "whittaker",
+        "red": "hall",
+        "fight_id": "5683",
+        "event": "ufc 193: rousey vs holm",
+        "date": "14-11-2015",
+        "winner": "blue",
+        "method": "judges",
+        "round": "3",
+        "time": "5:00"
+      }
+    ],
+    "1806": [
+      {
+        "blue": "whittaker",
+        "red": "brunson",
+        "fight_id": "6321",
+        "event": "ufc fight night: whittaker vs brunson",
+        "date": "27-11-2016",
+        "winner": "blue",
+        "method": "knockout",
+        "round": "1",
+        "time": "4:07"
+      }
+    ],
+    "3051": [
+      {
+        "blue": "whittaker",
+        "red": "adesanya",
+        "fight_id": "9588",
+        "event": "ufc 243: whittaker vs adesanya",
+        "date": "06-10-2019",
+        "winner": "red",
+        "method": "knockout",
+        "round": "2",
+        "time": "3:33"
+      },
+      {
+        "blue": "whittaker",
+        "red": "adesanya",
+        "fight_id": "7998",
+        "event": "ufc 271: adesanya vs whittaker 2",
+        "date": "13-02-2022",
+        "winner": "red",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "2337": [
+      {
+        "blue": "whittaker",
+        "red": "cannonier",
+        "fight_id": "8743",
+        "event": "ufc 254: khabib vs gaethje",
+        "date": "24-10-2020",
+        "winner": "blue",
+        "method": "judges",
+        "round": "3",
+        "time": "5:00"
+      }
+    ],
+    "2070": [
+      {
+        "blue": "whittaker",
+        "red": "gastelum",
+        "fight_id": "9032",
+        "event": "ufc fight night: whittaker vs gastelum",
+        "date": "18-04-2021",
+        "winner": "blue",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ]
+  },
+  "2069": {
+    "2037": [
+      {
+        "blue": "hall",
+        "red": "whittaker",
+        "fight_id": "5683",
+        "event": "ufc 193: rousey vs holm",
+        "date": "14-11-2015",
+        "winner": "red",
+        "method": "judges",
+        "round": "3",
+        "time": "5:00"
+      }
+    ],
+    "1806": [
+      {
+        "blue": "hall",
+        "red": "brunson",
+        "fight_id": "6217",
+        "event": "ufc fight night: poirier vs. johnson",
+        "date": "18-9-2016",
+        "winner": "red",
+        "method": "knockout",
+        "round": "1",
+        "time": "1:41"
+      }
+    ],
+    "2204": [
+      {
+        "blue": "hall",
+        "red": "strickland",
+        "fight_id": "9231",
+        "event": "ufc fight night: hall vs strickland",
+        "date": "01-08-2021",
+        "winner": "red",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ]
+  },
+  "2070": {
+    "3051": [
+      {
+        "blue": "gastelum",
+        "red": "adesanya",
+        "fight_id": "7732",
+        "event": "ufc 236: holloway vs poirier 2",
+        "date": "14-04-2019",
+        "winner": "red",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "2775": [
+      {
+        "blue": "gastelum",
+        "red": "hermansson",
+        "fight_id": "8537",
+        "event": "ufc fight night: figueiredo vs benavidez 2",
+        "date": "19-07-2020",
+        "winner": "red",
+        "method": "submission",
+        "round": "1",
+        "time": "1:18"
+      }
+    ],
+    "2037": [
+      {
+        "blue": "gastelum",
+        "red": "whittaker",
+        "fight_id": "9032",
+        "event": "ufc fight night: whittaker vs gastelum",
+        "date": "18-04-2021",
+        "winner": "red",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "2337": [
+      {
+        "blue": "gastelum",
+        "red": "cannonier",
+        "fight_id": "9186",
+        "event": "ufc fight night: cannonier vs gastelum",
+        "date": "22-08-2021",
+        "winner": "red",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "3085": [
+      {
+        "blue": "gastelum",
+        "red": "curtis",
+        "fight_id": "10420",
+        "event": "ufc 287: pereira vs adesanya 2",
+        "date": "09-04-2023",
+        "winner": "blue",
+        "method": "judges",
+        "round": "3",
+        "time": "5:00"
+      }
+    ]
+  },
+  "2204": {
+    "2069": [
+      {
+        "blue": "strickland",
+        "red": "hall",
+        "fight_id": "9231",
+        "event": "ufc fight night: hall vs strickland",
+        "date": "01-08-2021",
+        "winner": "blue",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "2775": [
+      {
+        "blue": "strickland",
+        "red": "hermansson",
+        "fight_id": "9590",
+        "event": "ufc fight night: hermansson vs strickland",
+        "date": "06-02-2022",
+        "winner": "blue",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "3546": [
+      {
+        "blue": "strickland",
+        "red": "pereira",
+        "fight_id": "9837",
+        "event": "ufc 293: adesanya vs strickland",
+        "date": "03-07-2022",
+        "winner": "red",
+        "method": "knockout",
+        "round": "1",
+        "time": "2:36"
+      }
+    ],
+    "2337": [
+      {
+        "blue": "strickland",
+        "red": "cannonier",
+        "fight_id": "10131",
+        "event": "ufc fight night: cannonier vs strickland",
+        "date": "18-12-2022",
+        "winner": "blue",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "3576": [
+      {
+        "blue": "strickland",
+        "red": "imavov",
+        "fight_id": "10315",
+        "event": "ufc fight night: strickland vs imavov",
+        "date": "15-01-2023",
+        "winner": "blue",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "3741": [
+      {
+        "blue": "strickland",
+        "red": "magomedov",
+        "fight_id": "10528",
+        "event": "ufc fight night: strickland vs magomedov",
+        "date": "01-07-2023",
+        "winner": "blue",
+        "method": "knockout",
+        "round": "2",
+        "time": "4:20"
+      }
+    ],
+    "3051": [
+      {
+        "blue": "strickland",
+        "red": "adesanya",
+        "fight_id": "10827",
+        "event": "ufc 293: adesanya vs strickland",
+        "date": "10-09-2023",
+        "winner": "blue",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ]
+  },
+  "2337": {
+    "2775": [
+      {
+        "blue": "cannonier",
+        "red": "hermansson",
+        "fight_id": "8039",
+        "event": "ufc fight night: hermansson vs cannonier",
+        "date": "28-09-2019",
+        "winner": "blue",
+        "method": "knockout",
+        "round": "2",
+        "time": "0:27"
+      }
+    ],
+    "2037": [
+      {
+        "blue": "cannonier",
+        "red": "whittaker",
+        "fight_id": "8743",
+        "event": "ufc 254: khabib vs gaethje",
+        "date": "24-10-2020",
+        "winner": "red",
+        "method": "judges",
+        "round": "3",
+        "time": "5:00"
+      }
+    ],
+    "2070": [
+      {
+        "blue": "cannonier",
+        "red": "gastelum",
+        "fight_id": "9186",
+        "event": "ufc fight night: cannonier vs gastelum",
+        "date": "22-08-2021",
+        "winner": "blue",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "1806": [
+      {
+        "blue": "cannonier",
+        "red": "brunson",
+        "fight_id": "9603",
+        "event": "ufc 271: adesanya vs whittaker 2",
+        "date": "13-02-2022",
+        "winner": "blue",
+        "method": "knockout",
+        "round": "2",
+        "time": "4:29"
+      }
+    ],
+    "3051": [
+      {
+        "blue": "cannonier",
+        "red": "adesanya",
+        "fight_id": "9835",
+        "event": "ufc 276: adesanya vs cannonier",
+        "date": "03-07-2022",
+        "winner": "red",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "2204": [
+      {
+        "blue": "cannonier",
+        "red": "strickland",
+        "fight_id": "10131",
+        "event": "ufc fight night: cannonier vs strickland",
+        "date": "18-12-2022",
+        "winner": "red",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "3576": [
+      {
+        "blue": "cannonier",
+        "red": "imavov",
+        "fight_id": "11393",
+        "event": "ufc fight night: cannonier vs imavov",
+        "date": "09-06-2024",
+        "winner": "red",
+        "method": "knockout",
+        "round": "4",
+        "time": "1:34"
+      }
+    ]
+  },
+  "2775": {
+    "2337": [
+      {
+        "blue": "hermansson",
+        "red": "cannonier",
+        "fight_id": "8039",
+        "event": "ufc fight night: hermansson vs cannonier",
+        "date": "28-09-2019",
+        "winner": "red",
+        "method": "knockout",
+        "round": "2",
+        "time": "0:27"
+      }
+    ],
+    "2070": [
+      {
+        "blue": "hermansson",
+        "red": "gastelum",
+        "fight_id": "8537",
+        "event": "ufc fight night: figueiredo vs benavidez 2",
+        "date": "19-07-2020",
+        "winner": "blue",
+        "method": "submission",
+        "round": "1",
+        "time": "1:18"
+      }
+    ],
+    "2204": [
+      {
+        "blue": "hermansson",
+        "red": "strickland",
+        "fight_id": "9590",
+        "event": "ufc fight night: hermansson vs strickland",
+        "date": "06-02-2022",
+        "winner": "red",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "3085": [
+      {
+        "blue": "hermansson",
+        "red": "curtis",
+        "fight_id": "9833",
+        "event": "ufc fight night: blaydes vs aspinall",
+        "date": "23-07-2022",
+        "winner": "blue",
+        "method": "judges",
+        "round": "3",
+        "time": "5:00"
+      }
+    ]
+  },
+  "3051": {
+    "1546": [
+      {
+        "blue": "adesanya",
+        "red": "tavares",
+        "fight_id": "7258",
+        "event": "the ultimate fighter: undefeated finale",
+        "date": "07-07-2018",
+        "winner": "blue",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "1806": [
+      {
+        "blue": "adesanya",
+        "red": "brunson",
+        "fight_id": "7409",
+        "event": "ufc 230: cormier vs lewis",
+        "date": "04-11-2018",
+        "winner": "blue",
+        "method": "knockout",
+        "round": "1",
+        "time": "4:51"
+      }
+    ],
+    "2070": [
+      {
+        "blue": "adesanya",
+        "red": "gastelum",
+        "fight_id": "7732",
+        "event": "ufc 236: holloway vs poirier 2",
+        "date": "14-04-2019",
+        "winner": "blue",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "2037": [
+      {
+        "blue": "adesanya",
+        "red": "whittaker",
+        "fight_id": "7998",
+        "event": "ufc 243: whittaker vs adesanya",
+        "date": "06-10-2019",
+        "winner": "blue",
+        "method": "knockout",
+        "round": "2",
+        "time": "3:33"
+      },
+      {
+        "blue": "adesanya",
+        "red": "whittaker",
+        "fight_id": "9588",
+        "event": "ufc 271: adesanya vs whittaker 2",
+        "date": "13-02-2022",
+        "winner": "blue",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "2337": [
+      {
+        "blue": "adesanya",
+        "red": "cannonier",
+        "fight_id": "9835",
+        "event": "ufc 276: adesanya vs cannonier",
+        "date": "03-07-2022",
+        "winner": "blue",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "3546": [
+      {
+        "blue": "adesanya",
+        "red": "pereira",
+        "fight_id": "10047",
+        "event": "ufc 281: adesanya vs pereira",
+        "date": "13-11-2022",
+        "winner": "red",
+        "method": "knockout",
+        "round": "5",
+        "time": "2:01"
+      },
+      {
+        "blue": "adesanya",
+        "red": "pereira",
+        "fight_id": "10377",
+        "event": "ufc 287: pereira vs adesanya 2",
+        "date": "09-04-2023",
+        "winner": "blue",
+        "method": "knockout",
+        "round": "2",
+        "time": "4:21"
+      }
+    ],
+    "2204": [
+      {
+        "blue": "adesanya",
+        "red": "strickland",
+        "fight_id": "10827",
+        "event": "ufc 293: adesanya vs strickland",
+        "date": "10-09-2023",
+        "winner": "red",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "3576": [
+      {
+        "blue": "adesanya",
+        "red": "imavov",
+        "fight_id": "11828",
+        "event": "ufc fight night: adesanya vs imavov",
+        "date": "01-02-2025",
+        "winner": "red",
+        "method": "knockout",
+        "round": "2",
+        "time": "0:30"
+      }
+    ]
+  },
+  "3085": {
+    "2775": [
+      {
+        "blue": "curtis",
+        "red": "hermansson",
+        "fight_id": "9833",
+        "event": "ufc fight night: blaydes vs aspinall",
+        "date": "23-07-2022",
+        "winner": "red",
+        "method": "judges",
+        "round": "3",
+        "time": "5:00"
+      }
+    ],
+    "2070": [
+      {
+        "blue": "curtis",
+        "red": "gastelum",
+        "fight_id": "10420",
+        "event": "ufc 287: pereira vs adesanya 2",
+        "date": "09-04-2023",
+        "winner": "red",
+        "method": "judges",
+        "round": "3",
+        "time": "5:00"
+      }
+    ]
+  },
+  "3314": {
+    "3546": [
+      {
+        "blue": "silva",
+        "red": "pereira",
+        "fight_id": "9692",
+        "event": "ufc fight night: santos vs ankalaev",
+        "date": "13-03-2022",
+        "winner": "red",
+        "method": "judges",
+        "round": "3",
+        "time": "5:00"
+      }
+    ],
+    "1546": [
+      {
+        "blue": "silva",
+        "red": "tavares",
+        "fight_id": "10464",
+        "event": "ufc fight night: pavlovich vs blaydes",
+        "date": "22-04-2023",
+        "winner": "blue",
+        "method": "knockout",
+        "round": "1",
+        "time": "3:35"
+      }
+    ]
+  },
+  "3546": {
+    "3314": [
+      {
+        "blue": "pereira",
+        "red": "silva",
+        "fight_id": "9692",
+        "event": "ufc fight night: santos vs ankalaev",
+        "date": "13-03-2022",
+        "winner": "blue",
+        "method": "judges",
+        "round": "3",
+        "time": "5:00"
+      }
+    ],
+    "2204": [
+      {
+        "blue": "pereira",
+        "red": "strickland",
+        "fight_id": "837",
+        "event": "ufc 276: adesanya vs cannonier",
+        "date": "03-07-2022",
+        "winner": "blue",
+        "method": "knockout",
+        "round": "1",
+        "time": "2:36"
+      }
+    ],
+    "3051": [
+      {
+        "blue": "pereira",
+        "red": "adesanya",
+        "fight_id": "10047",
+        "event": "ufc 281: adesanya vs pereira",
+        "date": "13-11-2022",
+        "winner": "blue",
+        "method": "knockout",
+        "round": "5",
+        "time": "2:01"
+      },
+      {
+        "blue": "pereira",
+        "red": "adesanya",
+        "fight_id": "10377",
+        "event": "ufc 287: pereira vs adesanya 2",
+        "date": "09-04-2023",
+        "winner": "red",
+        "method": "knockout",
+        "round": "2",
+        "time": "4:21"
+      }
+    ]
+  },
+  "3576": {
+    "2204": [
+      {
+        "blue": "imavov",
+        "red": "strickland",
+        "fight_id": "10315",
+        "event": "ufc fight night: strickland vs imavov",
+        "date": "15-01-2023",
+        "winner": "red",
+        "method": "judges",
+        "round": "5",
+        "time": "5:00"
+      }
+    ],
+    "2337": [
+      {
+        "blue": "imavov",
+        "red": "cannonier",
+        "fight_id": "11393",
+        "event": "ufc fight night: cannonier vs imavov",
+        "date": "09-06-2024",
+        "winner": "blue",
+        "method": "knockout",
+        "round": "4",
+        "time": "1:34"
+      }
+    ],
+    "3051": [
+      {
+        "blue": "imavov",
+        "red": "adesanya",
+        "fight_id": "11828",
+        "event": "ufc fight night: adesanya vs imavov",
+        "date": "01-02-2025",
+        "winner": "blue",
+        "method": "knockout",
+        "round": "2",
+        "time": "0:30"
+      }
+    ]
+  },
+  "3741": {
+    "2204": [
+      {
+        "blue": "magomedov",
+        "red": "strickland",
+        "fight_id": "10528",
+        "event": "ufc fight night: strickland vs magomedov",
+        "date": "01-07-2023",
+        "winner": "red",
+        "method": "knockout",
+        "round": "2",
+        "time": "4:20"
+      }
+    ]
+  }
+}

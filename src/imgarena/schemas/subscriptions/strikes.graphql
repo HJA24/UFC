@@ -1,0 +1,54 @@
+subscription StrikesSubscribeToFightStats($input: FightInput!) {
+    subscribeToUfcFightStats(input: $input) {
+        roundStats {
+            blue {
+                ...strikesSubscribeToFightStatsFields
+            }
+            red {
+                ...strikesSubscribeToFightStatsFields
+            }
+        }
+        fightStats {
+            blue {
+                ...strikesSubscribeToFightStatsFields
+            }
+            red {
+                ...strikesSubscribeToFightStatsFields
+            }
+        }
+        currentRound
+        maxRounds
+    }
+}
+
+fragment strikesSubscribeToFightStatsFields on UfcFightStatsSummary {
+    strikes {
+        totalStrikes {
+            landed
+            attempts
+        }
+        significantStrikes {
+            landed
+            attempts
+        }
+        headSignificantStrikes {
+            landed
+        }
+        bodySignificantStrikes {
+            landed
+        }
+        legsSignificantStrikes {
+            landed
+        }
+        distanceStrikes {
+            landed
+        }
+        clinchSignificantStrikes {
+            landed
+        }
+        groundSignificantStrikes {
+            landed
+        }
+    }
+}
+

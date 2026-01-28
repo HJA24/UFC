@@ -1,0 +1,7 @@
+subscription ConnectivityStatusSubscribeToUfcFightConnectivityStatus($input: FightInput!) {
+  subscribeToUfcFightConnectivityStatus(input: $input) {
+    connectivityToVenue
+    details
+    livestats
+  }
+}

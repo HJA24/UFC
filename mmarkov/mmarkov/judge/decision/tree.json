@@ -1,0 +1,330 @@
+{
+  "decisions": {
+    "21": {
+      "decision_id": "21",
+      "description": "blue wins by decision",
+      "fighter": "blue",
+      "children": [
+        "379",
+        "381"
+      ]
+    },
+    "24": {
+      "decision_id": "24",
+      "description": "red wins by decision",
+      "fighter": "red",
+      "children": [
+        "380",
+        "382"
+      ]
+    },
+    "379": {
+      "decision_id": "379",
+      "description": "blue wins by unanimous decision",
+      "fighter": "blue",
+      "parent": "21"
+    },
+    "380": {
+      "decision_id": "380",
+      "description": "red wins by unanimous decision",
+      "fighter": "red",
+      "parent": "24"
+    },
+    "381": {
+      "decision_id": "381",
+      "description": "blue wins by split decision",
+      "fighter": "blue",
+      "children": [
+        "383",
+        "384",
+        "385"
+      ],
+      "parent": "21"
+    },
+    "382": {
+      "decision_id": "382",
+      "description": "red wins by split decision",
+      "fighter": "red",
+      "children": [
+        "386",
+        "387",
+        "388"
+      ],
+      "parent": "24"
+    },
+    "383": {
+      "decision_id": "383",
+      "description": "blue wins by split decision #1",
+      "fighter": "blue",
+      "parent": "381"
+    },
+    "384": {
+      "decision_id": "384",
+      "description": "blue wins by split decision #2",
+      "fighter": "blue",
+      "parent": "381"
+    },
+    "385": {
+      "decision_id": "385",
+      "description": "blue wins by split decision #3",
+      "fighter": "blue",
+      "parent": "381"
+    },
+    "386": {
+      "decision_id": "386",
+      "description": "red wins by split decision #1",
+      "fighter": "red",
+      "parent": "382"
+    },
+    "387": {
+      "decision_id": "387",
+      "description": "red wins by split decision #2",
+      "fighter": "red",
+      "parent": "382"
+    },
+    "388": {
+      "decision_id": "388",
+      "description": "red wins by split decision #3",
+      "fighter": "red",
+      "parent": "382"
+    }
+  },
+  "views": {
+    "1": {
+      "view_id": "1",
+      "decisions": [
+        "21",
+        "24"
+      ],
+      "children": [
+        "2",
+        "3"
+      ],
+      "down": {
+        "21": "2",
+        "24": "3"
+      }
+    },
+    "2": {
+      "view_id": "2",
+      "decisions": [
+        "379",
+        "381",
+        "24"
+      ],
+      "children": [
+        "4",
+        "5"
+      ],
+      "down": {
+        "24": "4",
+        "381": "5"
+      },
+      "up": "1"
+    },
+    "3": {
+      "view_id": "3",
+      "decisions": [
+        "21",
+        "380",
+        "382"
+      ],
+      "children": [
+        "4",
+        "6"
+      ],
+      "down": {
+        "21": "4",
+        "382": "6"
+      },
+      "up": "1"
+    },
+    "4": {
+      "view_id": "4",
+      "decisions": [
+        "379",
+        "381",
+        "380",
+        "382"
+      ],
+      "children": [
+        "7",
+        "8"
+      ],
+      "down": {
+        "381": "7",
+        "382": "8"
+      },
+      "up": "3"
+    },
+    "5": {
+      "view_id": "5",
+      "decisions": [
+        "379",
+        "383",
+        "384",
+        "385",
+        "24"
+      ],
+      "children": [
+        "7"
+      ],
+      "down": {
+        "24": "7"
+      },
+      "up": "2"
+    },
+    "6": {
+      "view_id": "6",
+      "decisions": [
+        "21",
+        "380",
+        "386",
+        "387",
+        "388"
+      ],
+      "children": [
+        "8"
+      ],
+      "down": {
+        "21": "8"
+      },
+      "up": "3"
+    },
+    "7": {
+      "view_id": "7",
+      "decisions": [
+        "379",
+        "383",
+        "384",
+        "385",
+        "380",
+        "382"
+      ],
+      "children": [
+        "9"
+      ],
+      "down": {
+        "382": "9"
+      },
+      "up": "4"
+    },
+    "8": {
+      "view_id": "8",
+      "decisions": [
+        "379",
+        "381",
+        "380",
+        "386",
+        "387",
+        "388"
+      ],
+      "children": [
+        "9"
+      ],
+      "down": {
+        "381": "9"
+      },
+      "up": "4"
+    },
+    "9": {
+      "view_id": "9",
+      "decisions": [
+        "379",
+        "383",
+        "384",
+        "385",
+        "380",
+        "386",
+        "387",
+        "388"
+      ],
+      "up": "8"
+    }
+  },
+  "root": [
+    {
+      "name": "1",
+      "children": [
+        {
+          "name": "2",
+          "children": [
+            {
+              "name": "4",
+              "children": [
+                {
+                  "name": "7",
+                  "children": [
+                    {
+                      "name": "9"
+                    }
+                  ]
+                },
+                {
+                  "name": "8",
+                  "children": [
+                    {
+                      "name": "9"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "5",
+              "children": [
+                {
+                  "name": "7",
+                  "children": [
+                    {
+                      "name": "9"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "3",
+          "children": [
+            {
+              "name": "4",
+              "children": [
+                {
+                  "name": "7",
+                  "children": [
+                    {
+                      "name": "9"
+                    }
+                  ]
+                },
+                {
+                  "name": "8",
+                  "children": [
+                    {
+                      "name": "9"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "6",
+              "children": [
+                {
+                  "name": "8",
+                  "children": [
+                    {
+                      "name": "9"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

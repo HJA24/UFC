@@ -106,13 +106,13 @@ def insert_network(fight_id: int, network: Dict) -> None:
         cur.executemany(EDGES_QUERY, rows)
         logger.info(f"fight: {fight_id} - successfully inserted edges")
 
-        for category in ['graph', 'node']:
+        for category in ['graph-data', 'node']:
             properties = network['properties'][category]
 
             type_fk = sql.Identifier(f"{category}_property_type")
             child_table = sql.Identifier(f"{category}_properties")
 
-            if category == 'graph':
+            if category == 'graph-data':
                 PROPERTIES_QUERY = sql.SQL("""
                     INSERT INTO {child_table} (
                         {child_fk},

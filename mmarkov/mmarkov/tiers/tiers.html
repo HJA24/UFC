@@ -1,0 +1,372 @@
+§<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tiers</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<style>
+  .main-content {
+    width: 50vw;
+    margin-left: 25vw;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  p {
+    text-align: left;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 90%;
+  }
+
+  th, td {
+    text-align: center;
+    padding: 4px;
+  }
+
+  th:first-child, td:first-child {
+    text-align: left;
+    vertical-align: bottom;
+  }
+
+  ul {
+    text-align: left;
+    list-style-type: square;
+  }
+
+  .fa-check {
+    color: green;
+  }
+
+  .fa-remove {
+    color: #bf0700;
+  }
+
+  @font-face {
+    font-family: "UFCSans";
+    src: url("../fonts/UFCSans-Regular.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "UFCSans";
+    src: url("../fonts/UFCSans-Bold.woff2") format("woff2");
+    font-weight: bold;
+  }
+
+  body {
+    font-family: "UFCSans", Arial, sans-serif;
+  }
+
+  svg {
+    font-family: "UFCSans", sans-serif;
+  }
+
+  .tab-content {
+    display: none;
+    padding: 6px 12px;
+  }
+
+  .tab-links {
+    font-family: "UFCSans", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #ffffff;
+  }
+
+  button.register {
+    width: 100%;
+    font-family: "UFCSans", sans-serif;
+    font-size: 1em;
+    background-color: #ffffff;
+    border-color: rgba(100, 100, 100, 0.25);
+    border-style: solid;
+    border-width: 0.5px;
+    cursor: pointer;
+  }
+
+  button.subscribe {
+    width: 100%;
+    font-family: "UFCSans", sans-serif;
+    font-size: 1em;
+    background-color: #ffffff;
+    border-color: rgba(100, 100, 100, 0.25);
+    border-style: solid;
+    border-width: 0.5px;
+    cursor: pointer;
+  }
+
+  .tab {
+    overflow: hidden;
+  }
+
+  .tab button.active {
+    font-weight: bold;
+    background-color: #e7e7e7;
+    border-color: rgba(100, 100, 100, 0.25);
+    border-style: solid;
+    border-width: 0.5px;
+  }
+
+  .tab button {
+    width: 13%;
+    float: left;
+    border-color: rgba(100, 100, 100, 0.25);
+    border-style: solid;
+    border-width: 0.5px;
+    outline: none;
+    cursor: pointer;
+    padding: 8px 8px;
+    transition: 0.3s;
+    font-size: 15px;
+  }
+</style>
+<body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="main-content">
+  <h2>Categories</h2>
+  <p>Altogether, <i>MMArkov</i> generates 500 estimates per fight. All the estimates can be divided into the following categories:</p>
+  <ul>
+    <li>winner</li>
+    <li>method of victory</li>
+    <li>duration</li>
+    <li>judging</li>
+    <li>stats</li>
+  </ul>
+  <p>Within the <i>winner</i>-category the winner is predicted. These estimates are available at the fight, round, minute, and second level.<br>
+    The manner in which a fighter becomes the winner is addressed in the <i>method of victory</i>-category. This involves knockouts, submissions and judging decisions.
+    In the <i>duration</i>-category, the focus is on when the fight ends. The <i>judging</i>-category provides insights into the judges' scoring if the fight goes to the distance.
+    The <i>stats</i>-category breaks down fight-level performance metrics on an absolute and relative level.</p>
+  <p>There are 4 different tiers and each tier has it owns granularity. </p>
+  <div class="tab">
+    <button class="tab-links" data-tab="strawweight"><i>Strawweight</i></button>
+    <button class="tab-links" data-tab="lightweight"><i>Lightweight</i></button>
+    <button class="tab-links" data-tab="middleweight"><i>Middleweight</i></button>
+    <button class="tab-links" data-tab="heavyweight"><i>Heavyweight</i></button>
+  </div>
+
+  <div id="strawweight" class="tab-content">
+    <p>The <b><i>Strawweight</i></b>-tier consists of predictions on the most important performance metrics. <br>
+    Within this tier the following events are modelled:
+    </p>
+    <ul>
+      <li>The expected number of significant strikes landed by fighter <i>blue</i></li>
+      <li>The expected number of seconds in ground control by fighter <i>blue</i></li>
+      <li>...</li>
+    </ul>
+    <p>This tier consists of <b>8</b> estimates. Click <a href="/register"> here</a> to register and subscribe to the <b><i>Strawweight</i></b>-tier.</p>
+  </div>
+
+  <div id="lightweight" class="tab-content">
+    <p>The <b><i>Lightweight</i></b>-tier consists of predictions on core fight outcomes, including the expected winner, the method of victory and key performance metrics.
+    It serves as a foundational tool for bettors who operate in standard markets. <br>
+    In this tier the following events are modelled:
+    </p>
+    <ul>
+      <li>The probability that fighter <i>blue</i> wins</li>
+      <li>The probability that fighter <i>red</i> wins by a knockout</li>
+      <li>The probability that fighter <i>blue</i> wins decision</li>
+      <li>...</li>
+    </ul>
+    <p>This tier consists of <b>14</b> estimates. Click <a href="/subscribe/lightweight"> here</a> to subscribe to the <b><i>Lightweight</i></b>-tier.</p>
+  </div>
+
+  <div id="middleweight" class="tab-content">
+    <p>The <b><i>Middleweight</i></b>-tier provides access to detailed predictions about the duration of the fight and round-by-round outcomes between the fighters.
+      It is intended for advanced bettors active in derivative and prop markets. <br>
+      The following estimates are within its scope:
+    </p>
+    <ul>
+      <li>The probability that fighter <i>blue</i> wins in round 1</li>
+      <li>The probability that fighter <i>red</i> wins by a knockout in round 3</li>
+      <li>The probability that the fight lasts more than 2.5 rounds</li>
+      <li>The probability that the fight goes to the distance</li>
+      <li>...</li>
+    </ul>
+    <p>There are <b>64</b> predictions included in this tier. Click <a href="/subscribe/middleweight"> here</a> to subscribe to the <b><i>Middleweight</i></b>-tier.</p>
+  </div>
+  <div id="heavyweight" class="tab-content">
+    <p>The <b><i>Heavyweight</i></b>-tier offers the most advanced level of inference.
+       Fighter outcomes are predicted on a minute-level, performance metrics are finely dissected and judge-specific scoring is taken into account.
+       It is intended for professional bettors that seek the finest granular insights. <br>
+       Examples of such insights are:
+    </p>
+    <ul>
+      <li>The probability that fighter <i>red</i> wins by a knockout in first minute of round 3</li>
+      <li>The probability that fighter <i>blue</i> has more strikes landed than fighter <i>red</i></li>
+      <li>The probability that fighter <i>blue</i> wins by unanimous decision</li>
+      <li>The probability that judge 1 assign a score of 50-45 to the fight</li>
+      <li>...</li>
+    </ul>
+    <p>In total, this tier consists of <b>210</b> predictions. Click <a href="/subscribe/middleweight"> here</a> to subscribe to the <b><i>Heavyweight</i></b>-tier.</p>
+  </div>
+  <svg></svg>
+  <h2>Comparison</h2>
+  <p>The comparison table below outlines the estimates included at each tier
+      — from core fight outcomes to the most advanced figh statistics — and helps you select the tier that is most aligned with your goals.
+  A sample of all the estimates of each tier can be found <a href="/sample"> here.</a>
+  </p>
+
+  <table>
+    <tr>
+      <th style="width:70%"></th>
+      <th style="width:7.5%">Strawweight</th>
+      <th style="width:7.5%">Lightweight</th>
+      <th style="width:7.5%">Middleweight</th>
+      <th style="width:7.5%">Heavyweight</th>
+    </tr>
+    <tr>
+      <th>Events</th>
+      <td><i>Free</i></td>
+      <td><i>$1,000</i></td>
+      <td><i>$1,750</i></td>
+      <td><i>$2,500</i></td>
+    </tr>
+    <tr>
+      <td colspan="5" style="border-top: 1px solid gray;"></td>
+    </tr>
+    <tr>
+      <td>number of strikes landed by <i>blue</i> and <i>red</i></td>
+      <td><i class="fa fa-check"></i></td>
+      <td><i class="fa fa-check"></i></td>
+      <td><i class="fa fa-check"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td><i>blue</i> / <i>red</i> winner</td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+      <td><i class="fa fa-check"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td><i>blue</i> / <i>red</i> wins by knockout / submission / decision</td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+      <td><i class="fa fa-check"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td><i>blue</i> / <i>red</i> wins in round <i>r</i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td><i>blue</i> / <i>red</i> wins by knockout / submission in round <i>r</i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td>over / under <i>n</i> rounds</td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td>fight start / doesn't start round <i>r</i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td>fight ends in round <i>r</i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td>fight goes to the distance</td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td><i>blue</i> / <i>red</i> wins in first 10 seconds of the first round</td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td><i>blue</i> / <i>red</i> wins in last 10 seconds of the last round</td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td><i>blue</i> / <i>red</i> wins by knockout / submission in minute <i>m</i> of round <i>r</i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td><i>blue</i> / <i>red</i> wins by split / unanimous decision</td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td><i>blue</i> / <i>red</i> gets a score of <i>n</i> points from the judges</td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td><i>blue</i> / <i>red</i> has more than <i>n</i> strikes landed</td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td><i>blue</i> / <i>red</i> has more strikes landed than <i>red</i> / <i>blue</i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td><i>blue</i> / <i>red</i> survives a knockdown and wins fight</td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td><i>blue</i> / <i>red</i> survives a submission attempt and wins fight</td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-remove"></i></td>
+      <td><i class="fa fa-check"></i></td>
+    </tr>
+    <tr>
+      <td colspan="5" style="border-top: 1px solid gray;"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button class="register" name="register" type="button" value="strawweight">Sign up</button></td>
+      <td><button class="subscribe"  name="subscribe" type="button" value="lightweight">Subscribe</button></td>
+      <td><button class="subscribe" name="subscribe" type="button" value="middleweight">Subscribe</button></td>
+      <td><button class="subscribe" name="subscribe" type="button" value="heavyweight">Subscribe</button></td>
+    </tr>
+  </table>
+</div>
+<script src="tree.js"></script>
+<script src="../tiers.js"></script>
+</body>
+</html>

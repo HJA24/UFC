@@ -17,6 +17,8 @@ export class TransitionMatrixTableComponent implements OnChanges {
   @Input() labels?: string[];
   @Input() highlightRegion?: 'Q' | 'R' | 'O' | 'I' | null;
   @Input() highlightCell?: { i: number; j: number } | null;
+  @Input() firstColumn?: (number | string)[];
+  @Input() lastColumn?: (number | string)[];
 
   data: (number | string)[][] = [];
 
@@ -60,6 +62,20 @@ export class TransitionMatrixTableComponent implements OnChanges {
       ...this.Q.map((row, i) => [...row, ...O[i]]),  // [Q | O]
       ...this.R.map((row, i) => [...row, ...I[i]]),  // [R | I]
     ];
+
+    // Override first column if provided
+    if (this.firstColumn && this.firstColumn.length === this.data.length) {
+      for (let i = 0; i < this.data.length; i++) {
+        this.data[i][0] = this.firstColumn[i];
+      }
+    }
+
+    // Override last column if provided
+    if (this.lastColumn && this.lastColumn.length === this.data.length) {
+      for (let i = 0; i < this.data.length; i++) {
+        this.data[i][this.data[i].length - 1] = this.lastColumn[i];
+      }
+    }
   }
 
 }

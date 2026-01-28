@@ -1,0 +1,15 @@
+.node-label {
+  font-family: 'UFCSans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  fill: #222;          /* text color */
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* old Edge */
+}
+
+
+.node-image {
+  pointer-events: none;  /* lets hover/click land on the node group if you add handlers later */
+}

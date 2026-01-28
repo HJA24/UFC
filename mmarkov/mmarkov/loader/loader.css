@@ -1,0 +1,97 @@
+@property --_p {
+  syntax: "<angle>";
+  initial-value: 1turn;
+  inherits: false;
+}
+
+.loader {
+  --b: 2px; /* the border thickness */
+  --g: 4%; /* control the gap */
+  width: 50px; /* control the size */
+  aspect-ratio: 1;
+  display: inline-grid;
+  --_d: calc(100% / (2 * sin(22.5deg)) + var(--g));
+}
+
+.loader i {
+  grid-area: 1/1;
+  background: rgba(100, 100, 100, 0.33);
+  transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
+    rotate(calc(var(--i) * -45deg - 22.5deg));
+  --o: calc(50% * tan(-22.5deg));
+  clip-path: polygon(
+    var(--o) 50%,
+    50% var(--o),
+    calc(100% - var(--o)) 50%,
+    50% calc(100% - var(--o))
+  );
+  animation: move 2s 1s alternate linear both infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(0px)
+      rotate(calc(var(--i) * -45deg - 22.5deg));
+  }
+  50%,100% {
+    transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
+      rotate(calc(var(--i) * -45deg - 22.5deg));
+  }
+}
+
+.loader:after {
+  content: "";
+  grid-area: 1/1;
+  background: white;
+  margin: calc(50% - (var(--_d) + var(--b) / 2) * cos(22.5deg));
+  mask: conic-gradient(from 22.5deg, #000 360deg, #0000 0);
+  --o: calc(50% * tan(-22.5deg));
+  --x: calc(var(--b) * cos(22.5deg));
+  --y: calc(var(--b) * sin(22.5deg));
+  clip-path: polygon(
+    var(--o) 50%,
+    50% var(--o),
+    calc(100% - var(--o)) 50%,
+    50% calc(100% - var(--o)),
+    var(--o) 50%,
+    calc(50% + var(--o) + var(--y)) var(--x),
+    var(--x) calc(50% + var(--o) + var(--y)),
+    var(--x) calc(50% - var(--o) - var(--y)),
+    calc(50% + var(--o) + var(--y)) calc(100% - var(--x)),
+    calc(50% - var(--o) - var(--y)) calc(100% - var(--x)),
+    calc(100% - var(--x)) calc(50% - var(--o) - var(--y)),
+    calc(100% - var(--x)) calc(50% + var(--o) + var(--y)),
+    calc(50% - var(--o) - var(--y)) var(--x),
+    calc(50% + var(--o) + var(--y)) var(--x)
+  );
+  animation: glow 4s 2s linear both infinite;
+}
+
+@keyframes glow {
+  0%   { opacity: 0; transform: scale(1);    }
+  25%  { opacity: 0.8; transform: scale(1.02); }
+  50%  { opacity: 0; transform: scale(1);    }
+  100% { opacity: 0; transform: scale(1);    }
+}
+
+
+.loader i:nth-child(1) {--i:1}
+.loader i:nth-child(2) {--i:2}
+.loader i:nth-child(3) {--i:3}
+.loader i:nth-child(4) {--i:4}
+.loader i:nth-child(5) {--i:5}
+.loader i:nth-child(6) {--i:6}
+.loader i:nth-child(7) {--i:7}
+.loader i:nth-child(8) {--i:8}
+
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+html, body {
+  background: transparent;
+}

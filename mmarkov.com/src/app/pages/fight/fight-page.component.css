@@ -25,23 +25,6 @@ router-outlet + * {
   display: flex;
 }
 
-.nav-container {
-  display: flex;
-  justify-content: flex-end;
-  height: 40px;
-}
-
-.close-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  color: rgb(100, 100, 100);
-}
-
-.close-button:hover {
-  color: rgb(50, 50, 50);
-}
-
 .fight-container {
   display: flex;
   flex-direction: column;

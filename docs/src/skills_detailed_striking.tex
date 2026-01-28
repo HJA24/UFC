@@ -1,0 +1,227 @@
+%! Author = huibmeulenbelt
+%! Date = 07/09/2024
+
+
+
+% Preamble
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{adjustbox}
+\usepackage{longtable}]
+\usepackage{color}
+
+
+\pdfinfo{
+   /Author (HJA Meulenbelt)
+   /Title  (MMA)
+   /CreationDate (D:20040502195600)
+}
+
+\pagestyle{empty}
+
+\begin{document}
+    \begin{table}[t]
+        \caption{Summary of variables}
+                \vspace{0.1cm}
+        \begin{tabular}{@{}l l}
+           \hline
+           \textbf{Variable} & \textbf{Definition} \\
+           \hline
+           EGA & Ground elbows attempted \\
+           EGBA & Ground elbows at body attempted \\
+           EGBL & Ground elbows at body landed \\
+           EGHA & Ground elbows at head attempted \\
+           EGHL & Ground elbows at head landed \\
+           ESA & Standing elbows attempted \\
+           ESBA & Standing elbows at body attempted \\
+           ESBL & Standing elbows at body landed \\
+           ESHA & Standing elbows at head attempted \\
+           ESHL & Standing elbows at head landed \\
+           FT & Time on ground and opponent not in control (in seconds) \\
+           GRC & Time on ground and fighter in control (in seconds)  \\
+           KDL & Knockdowns landed  \\
+           KOL & Knockouts landed \\
+           KISA & Standing kicks attempted \\
+           KIBA & Standing kicks at body attempted \\
+           KIBL & Standing kicks at body landed \\
+           KIHA & Standing kicks at head attempted \\
+           KIHL & Standing kicks at head landed \\
+           KNSA & Standing knees attempted \\
+           KNBA & Standing knees at body attempted \\
+           KNBL & Standing knees at body landed \\
+           KNHA & Standing knees at head attempted \\
+           KNHL & Standing knees at head landed \\
+           PGA & Ground punches attempted \\
+           PGBA & Ground punches at body attempted \\
+           PGBL & Ground punches at body landed \\
+           PGHA & Ground punches at head attempted \\
+           PGHL & Ground punches at head landed \\
+           PSA & Standing punches attempted \\
+           PSBA & Standing punches at body attempted \\
+           PSBL & Standing punches at body landed \\
+           PSHA & Standing punches at head attempted \\
+           PSHL & Standing punches at head landed \\
+           RVL & Reversals landed \\
+           SMA & Submissions attempted \\
+           SML & Submissions landed \\
+           ST & Time standing and opponent not in control (in seconds) \\
+           SUL & Standups landed \\
+           TDA & Takedowns attempted \\
+           TDL & Takedowns landed \\ [1ex]
+           \hline
+       \end{tabular}
+        \label{tab:table2}
+    \end{table}
+
+    \begin{table}[t]
+        \caption{Overview of skill models}
+                 \vspace{0.2cm}
+        \begin{tabular}{@{}l l l}
+           \hline
+           \textbf{Skill} & \textbf{Abbreviation} & \textbf{Category} \\
+           \hline
+           standing punches rate & psr & striking rate \\
+           ground punches rate & pgr & striking rate \\
+           standing elbows rate & esr & striking rate \\
+           ground elbows rate & sgr & striking rate \\
+           standing kicks rate & kisr & striking rate \\
+           standing knees rate & knsr & striking rate \\
+           takedown rate & tdr & grappling rate \\
+           submission rate & smr & grappling rate  \\
+           reversal rate & rvr & grappling rate \\
+           standup rate & sur & grappling rate \\
+           standing punches head accuracy & psha & striking accuracy \\
+           ground punches head accuracy & pgha & striking accuracy \\
+           standing punches body accuracy & psba & striking accuracy \\
+           ground punches body accuracy & pgba & striking accuracy  \\
+           standing elbows head accuracy & esha & striking accuracy \\
+           ground elbows head accuracy & egha & striking accuracy \\
+           standing elbows body accuracy & esba & striking accuracy \\
+           ground elbows body accuracy & egba & striking accuracy  \\
+           standing kicks head accuracy & kisha & striking accuracy \\
+           standing kicks body accuracy & kisba & striking accuracy \\
+           standing knees head accuracy & knsha & striking accuracy \\
+           standing knees body accuracy & knsba & striking accuracy \\
+           takedown accuracy & tda & grappling accuracy \\
+           submission accuracy & sma & grappling accuracy  \\
+           knockdown from punch & pskd & knockdowns and knockouts  \\
+           standing knockout from punch & psko & knockdowns and knockouts \\
+           ground knockout from punch & pgko & knockdowns and knockouts \\
+           knockdown from elbow & eskd & knockdowns and knockouts  \\
+           standing knockout from elbow & esko & knockdowns and knockouts \\
+           ground knockout from elbow & egko & knockdowns and knockouts \\
+           knockdown from kick & kiskd & knockdowns and knockouts  \\
+           standing knockout from kick & kisko & knockdowns and knockouts \\
+           knockdown from knee & knskd & knockdowns and knockouts  \\
+           standing knockout from knee & knsko & knockdowns and knockouts \\
+           standing punches target & pst & striking target  \\
+           ground punches target & pgt & striking target  \\
+           standing elbows target & est & striking target  \\
+           ground elbows target & egt & striking target  \\
+           standing kicks target & kist & striking target  \\
+           standing knees target & knst & striking target  \\
+           \hline
+       \end{tabular}\label{tab:table3}
+    \end{table}
+
+     \begin{longtable}{@{}l l}
+        \caption{Summary of skills models}
+        \vspace{0.1cm}
+        \hline
+        \textbf{Skill} & \textbf{Model} \\
+        \hline
+        psr & $PSA \sim NegativeBinomialAlt(\eta_{psr}, \psi_{psr})$ \\
+        & $\eta_{psr} = \gamma_{psr} + psr_{att} - psr_{def} + \log(ST)$ \\
+        pgr & $PGA \sim NegativeBinomialAlt(\eta_{pgr}, \psi_{pgr})$ \\
+        & $\eta_{pgr} = \gamma_{pgr} + pgr_{att} - pgr_{def} + \log(FT)$ \\
+        esr & $ESA \sim NegativeBinomialAlt(\eta_{esr}, \psi_{esr})$ \\
+        & $\eta_{esr} = \gamma_{esr} + esr_{att} - esr_{def} + \log(ST)$ \\
+        egr & $EGA \sim NegativeBinomialAlt(\eta_{egr}, \psi_{egr})$ \\
+        & $\eta_{egr} = \gamma_{egr} + egr_{att} - egr_{def} + \log(FT)$ \\
+        kisr & $KISA \sim NegativeBinomialAlt(\eta_{kisr}, \psi_{kisr})$ \\
+        & $\eta_{kisr} = \gamma_{kisr} + kisr_{att} - kisr_{def} + \log(ST)$ \\
+        knsr & $KNSA \sim NegativeBinomialAlt(\eta_{knsr}, \psi_{knsr})$ \\
+        & $\eta_{knsr} = \gamma_{knsr} + knsr_{att} - knsr_{def} + \log(ST)$ \\
+        \hline
+        tdr & $TDA \sim NegativeBinomialAlt(\eta_{tdr}, \psi_{tdr})$ \\
+        & $\eta_{tdr} = \gamma_{tdr} + tdr_{att} - tdr_{def} + \log(ST)$ \\
+        smr & $SMA \sim NegativeBinomial(\eta_{smr}, \psi_{smr})$ \\
+        & $\eta_{smr} = \gamma_{smr} + smr_{att} - smr_{def} + \log(GRC)$ \\
+        rvr & $RVL \sim NegativeBinomial(\eta_{rvr}, \psi_{rvr})$ \\
+        & $\eta_{rvr} = \gamma_{rvr} + rvr_{att} - rvr_{def} + \log(GRC_{opponent})$ \\
+        sur & $SUL \sim NegativeBinomial(\eta_{sur}, \psi_{sur})$ \\
+        & $\eta_{sur} = \gamma_{sur} + sur_{att} - sur_{def} + \log(GRC_{opponent})$ \\
+        \hline
+        psha & $PSHL \sim BetaBinomialAlt(PSHA, \alpha_{psha}, \psi_{psha})$ \\
+        & $\alpha_{psha} = \gamma_{psha} + psha_{att} - psha_{def}$ \\
+        pgha & $PGHL \sim BetaBinomialAlt(PGHA, \alpha_{pgha}, \psi_{pgha})$ \\
+        & $\alpha_{sgha} = \gamma_{pgha} + pgha_{att} - pgha_{def}$ \\
+        psba & $PSBL \sim BetaBinomialAlt(PSBA, \alpha_{psba}, \psi_{psba})$ \\
+        & $\alpha_{psba} = \gamma_{psba} + psba_{att} - psba_{def}$ \\
+        pgba & $PGBL \sim BetaBinomialAlt(PGBA, \alpha_{pgba}, \psi_{pgba})$ \\
+        & $\alpha_{pgba} = \gamma_{pgba} + pgba_{att} - pgba_{def}$ \\
+        esha & $ESHL \sim BetaBinomialAlt(ESHA, \alpha_{esha}, \psi_{esha})$ \\
+        & $\alpha_{esha} = \gamma_{esha} + esha_{att} - esha_{def}$ \\
+        egha & $EGHL \sim BetaBinomialAlt(EGHA, \alpha_{egha}, \psi_{egha})$ \\
+        & $\alpha_{egha} = \gamma_{egha} + egha_{att} - egha_{def}$ \\
+        esba & $ESBL \sim BetaBinomialAlt(ESBA, \alpha_{esba}, \psi_{esba})$ \\
+        & $\alpha_{esba} = \gamma_{esba} + esba_{att} - esba_{def}$ \\
+        egba & $EGBL \sim BetaBinomialAlt(EGBA, \alpha_{egba}, \psi_{egba})$ \\
+        & $\alpha_{egba} = \gamma_{egba} + egba_{att} - egba_{def}$ \\
+        kisha & $KISHL \sim BetaBinomialAlt(KISHA, \alpha_{kisha}, \psi_{kisha})$ \\
+        & $\alpha_{kisha} = \gamma_{kisha} + kisha_{att} - kisha_{def}$ \\
+        kisba & $KISBL \sim BetaBinomialAlt(KISBA, \alpha_{kisba}, \psi_{kisba})$ \\
+        & $\alpha_{kisba} = \gamma_{kisba} + kisba_{att} - kisba_{def}$ \\
+        knsha & $KNSHL \sim BetaBinomialAlt(KNSHA, \alpha_{knsha}, \psi_{knsha})$ \\
+        & $\alpha_{knsha} = \gamma_{knsha} + knsha_{att} - knsha_{def}$ \\
+        knsba & $KNSBL \sim BetaBinomialAlt(KNSBA, \alpha_{knsba}, \psi_{knsba})$ \\
+        & $\alpha_{knsba} = \gamma_{knsba} + knsba_{att} - knsba_{def}$ \\
+        \hline
+        tda & $TDL \sim BetaBinomialAlt(TDA, \alpha_{tda}, \psi_{tda})$ \\
+        & $\alpha_{tda} = \gamma_{tda} + tda_{att} - tda_{def}$ \\
+        sma & $SML \sim BetaBinomialAlt(SMA, \alpha_{sma}, \psi_{sma})$ \\
+        & $\alpha_{sma} = \gamma_{sma} + sma_{att} - sma_{def}$ \\
+        \hline
+        pskd & $KDL \sim BetaBinomialAlt(PSHL, \alpha_{pskd}, \psi_{pskd})$ \\
+        & $\alpha_{pskd} = \gamma_{pskd} + pskd_{att} - pskd_{def}$ \\
+        psko & $KOL \sim BetaBinomialAlt(PSHL, \alpha_{psko}, \psi_{psko})$ \\
+        & $\alpha_{psko} = \gamma_{psko} + psko_{att} - psko_{def}$ \\
+        pgko & $KOL \sim BetaBinomialAlt(PGHL, \alpha_{pgko}, \psi_{pgko})$ \\
+        & $\alpha_{pgko} = \gamma_{pgko} + pgko_{att} - pgko_{def}$ \\
+        eskd & $KDL \sim BetaBinomialAlt(ESHL, \alpha_{eskd}, \psi_{eskd})$ \\
+        & $\alpha_{eskd} = \gamma_{eskd} + eskd_{att} - eskd_{def}$ \\
+        esko & $KOL \sim BetaBinomialAlt(ESHL, \alpha_{esko}, \psi_{esko})$ \\
+        & $\alpha_{esko} = \gamma_{esko} + esko_{att} - esko_{def}$ \\
+        egko & $KOL \sim BetaBinomialAlt(EGHL, \alpha_{egko}, \psi_{egko})$ \\
+        & $\alpha_{egko} = \gamma_{egko} + egko_{att} - egko_{def}$ \\
+        kiskd & $KDL \sim BetaBinomialAlt(KISHL, \alpha_{kiskd}, \psi_{kiskd})$ \\
+        & $\alpha_{kiskd} = \gamma_{kiskd} + kiskd_{att} - kiskd_{def}$ \\
+        kisko & $KOL \sim BetaBinomialAlt(KISHL, \alpha_{kisko}, \psi_{kisko})$ \\
+        & $\alpha_{kisko} = \gamma_{kisko} + kisko_{att} - kisko_{def}$ \\
+        knskd & $KDL \sim BetaBinomialAlt(KNSHL, \alpha_{knskd}, \psi_{knskd})$ \\
+        & $\alpha_{knskd} = \gamma_{knskd} + knskd_{att} - knskd_{def}$ \\
+        knsko & $KOL \sim BetaBinomialAlt(KNSHL, \alpha_{knsko}, \psi_{knsko})$ \\
+        & $\alpha_{knsko} = \gamma_{knsko} + knsko_{att} - knsko_{def}$ \\
+        \hline
+        pst & $PSHA \sim BetaBinomialAlt(PSA, \alpha_{pst}, \psi_{pst})$ \\
+        & $\alpha_{pst} = \gamma_{psht} + pst_{att} - pst_{def}$ \\
+        pgt & $PGHA \sim BetaBinomialAlt(PGA, \alpha_{pgr}, \psi_{pgt})$ \\
+        & $\alpha_{pgt} = \gamma_{pgt} + pgt_{att} - pgt_{def}$ \\
+        
+        est & $ESHA \sim BetaBinomialAlt(ESA, \alpha_{est}, \psi_{est})$ \\
+        & $\alpha_{est} = \gamma_{esht} + est_{att} - est_{def}$ \\
+        egt & $EGHA \sim BetaBinomialAlt(EGA, \alpha_{egr}, \psi_{egt})$ \\
+        & $\alpha_{egt} = \gamma_{egt} + egt_{att} - egt_{def}$ \\
+        
+        kist & $KISHA \sim BetaBinomialAlt(KISA, \alpha_{kist}, \psi_{kist})$ \\
+        & $\alpha_{kist} = \gamma_{kisht} + kist_{att} - kist_{def}$ \\
+        
+        knst & $KNSHA \sim BetaBinomialAlt(KNSA, \alpha_{knst}, \psi_{knst})$ \\
+        & $\alpha_{knst} = \gamma_{knsht} + knst_{att} - knst_{def}$ \\
+        
+        \hline
+      \end{longtable}\label{tab:table}
+
+
+\end{document}

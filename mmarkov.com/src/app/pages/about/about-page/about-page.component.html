@@ -33,13 +33,12 @@
     There are two absorbing states; <i>knockout landed by <span class="fighter-blue">blue</span></i> and <i>knockout landed by <span class="fighter-red">red</span></i>. When the chain
     visits such as state, it remains here forever.
     The other states can be defined as transient states. Let's simulate a fight using this Markov chain.
-    <mat-icon class="simulation-icon" (click)="onSimulationIconClick()">
-      @if (isSimulating) {
-        replay
-      } @else {
-        play_arrow
-      }
-    </mat-icon>
+@if (isSimulating) {
+      <mat-icon class="simulation-icon" (click)="onReplayClick()">replay</mat-icon>
+      <mat-icon class="simulation-icon" (click)="onFastForwardClick()">fast_forward</mat-icon>
+    } @else {
+      <mat-icon class="simulation-icon" (click)="onSimulationIconClick()">play_arrow</mat-icon>
+    }
   </p>
   <app-markov-chain-simulator
     #simulator

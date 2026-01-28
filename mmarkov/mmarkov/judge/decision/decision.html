@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Decisions</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    @font-face {
+      font-family: "UFCSans";
+      src: url("../../fonts/UFCSans-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "UFCSans";
+      src: url("../../fonts/UFCSans-Bold.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f9f9f9;
+    }
+
+    button {
+      padding: 5px 2px;
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+    svg {
+      display: block;
+      background: none;
+    }
+
+    .bar text, .icon-tooltip {
+      font-family: "UFCSans", sans-serif;
+      font-size: 14px;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+    }
+
+    .x-axis text {
+      font-family: "UFCSans", sans-serif;
+      font-size: 14px;
+    }
+
+    .x-axis-label {
+      font-family: "UFCSans", sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+<svg id="chart" width="1000" height="600"></svg>
+</body>
+<script type="module" src="bar_v2.js"></script>
+</html>

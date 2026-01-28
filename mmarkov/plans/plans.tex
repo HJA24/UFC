@@ -1,0 +1,52 @@
+%! Author = huibmeulenbelt
+%! Date = 16/06/2025
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\pagenumbering{gobble}
+% Document
+\begin{document}
+    \section*{Lightweight}
+    The \textit{Lightweight}-tier consists of predictions on core fight outcomes, including projected winner, method of victory and key performance metrics.
+    It serves as a foundational tool for bettors who operate in standard markets.
+    Within the \textit{lightweight}-tier the following events are modelled:
+
+    \begin{itemize}
+        \itemsep0em
+        \item[--] The probability that \textit{blue} wins
+        \item[--] The probability that \textit{red} wins by a knockout
+        \item[--] The expected number of significant strikes landed by \textit{blue}
+        \item[--] The expected number of seconds in ground control of \textit{blue}
+    \end{itemize}
+
+    \section*{Middleweight}
+    The \textit{Middleweight}-tier provides access to detailed fight predictions about the duration of the fight and round-by-round outcomes.
+    It is intended for advanced bettors active in derivative and prop markets.
+    The following estimates are within its scope:
+
+    \begin{itemize}
+        \itemsep0em
+        \item[--] The probability that \textit{blue} wins in round 1
+        \item[--] The probability that \textit{red} wins by a knockout in round 3
+        \item[--] The probability that the fight lasts more than 1.5 rounds
+        \item[--] The probability that the fight goes to the distance
+    \end{itemize}
+
+    \section*{Heavyweight}
+    The \textit{Heavyweight}-tier offers the most advanced level of inference, including judge-specific scoring and statistical dependencies between all performance metrics.
+    It is intended for professional bettors that seek the finest granular insights.
+    Examples of such insights are:
+
+     \begin{itemize}
+        \itemsep0em
+        \item[--] The probability that \textit{blue} has more significant strikes landed than \textit{red}
+        \item[--] The probability that \textit{red} wins by a knockout in the first minute
+        \item[--] The probability that \textit{blue} wins by unanimous decision
+        \item[--] The probability that judge \textit{Sal D'Amato} assign a score of $10-7$ to a round
+        \item[--] The correlation between the number of attempted takedowns and the number of submission attempts of \textit{blue}
+    \end{itemize}
+
+\end{document}

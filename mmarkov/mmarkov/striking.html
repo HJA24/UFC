@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Expected stats</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 1rem;
+      font-family: sans-serif;
+    }
+    .chart-container {
+      width: 100%;
+      max-width: 750px;
+      aspect-ratio: 5 / 1;
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="chart-container">
+    <svg viewBox="0 0 500 150" preserveAspectRatio="xMidYMid meet"></svg>
+  </div>
+
+  <script>
+    const rawData = {
+      "blue": {
+        "0.50": [43.2, 62.6],
+        "0.75": [37.0, 71.0],
+        "0.90": [31.5, 79.9],
+        "0.95": [28.8, 85.8]
+      },
+      "red": {
+        "0.50": [4.2, 9.4],
+        "0.75": [3.4, 12.3],
+        "0.90": [2.5, 16.0],
+        "0.95": [1.5, 18.2]
+      }
+    };
+
+    const colors = {
+      blue: {
+        "0.50": "#0045b9ff",
+        "0.75": "#0045b999",
+        "0.90": "#0045b966",
+        "0.95": "#0045b933"
+      },
+      red: {
+        "0.50": "#bf0700ff",
+        "0.75": "#bf0700aa",
+        "0.90": "#bf070066",
+        "0.95": "#bf070033"
+      }
+    };
+
+    const quantiles = ["0.50", "0.75", "0.90", "0.95"];
+    const fighters  = ["blue", "red"];
+
+    const svg = d3.select("svg");
+    const margin = { top: 10, right: 10, bottom: 10, left: 10 };
+    const barHeight = 15;
+
+    function renderChart() {
+      svg.selectAll("*").remove(); // clear on resize
+
+      const width = parseInt(svg.attr("viewBox").split(" ")[2]);
+      const height = parseInt(svg.attr("viewBox").split(" ")[3]);
+
+      const chartWidth = width - margin.left - margin.right;
+      const chartHeight = height - margin.top - margin.bottom;
+
+      const yScale = d3.scaleBand()
+        .domain(fighters)
+        .range([0, chartHeight])
+        .padding(1);
+
+      const flatData = fighters.flatMap(f =>
+        quantiles.map(q => ({
+          fighter: f,
+          quantile: q,
+          lower: rawData[f][q][0],
+          upper: rawData[f][q][1],
+          color: colors[f][q],
+        }))
+      );
+
+      const xMax = d3.max(flatData, d => d.upper);
+
+      const xScale = d3.scaleLinear()
+        .domain([0, xMax])
+        .range([0, chartWidth]);
+
+      const g = svg.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+      // X Axis
+      g.append("g")
+        .attr("transform", `translate(0,${chartHeight - 25})`)
+        .call(d3.axisBottom(xScale).ticks(10));
+
+      // Bars
+      g.selectAll(".bar")
+        .data(flatData)
+        .enter()
+        .append("rect")
+        .attr("class", "bar")
+        .attr("x", d => xScale(d.lower))
+        .attr("y", d => yScale(d.fighter) + (yScale.bandwidth() - barHeight) / 2)
+        .attr("width", d => xScale(d.upper) - xScale(d.lower))
+        .attr("height", barHeight)
+        .attr("fill", d => d.color)
+        .attr("stroke", d => d.color.slice(0, 7));
+    }
+
+    renderChart();
+
+    // Optional: re-render on resize (debounced)
+    const resizeObserver = new ResizeObserver(() => renderChart());
+    resizeObserver.observe(document.querySelector(".chart-container"));
+    <script src="tree.js"></script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+%! Author = huibmeulenbelt
+%! Date = 18/04/2025
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+
+\pagestyle{empty}
+
+% Document
+\begin{document}
+    \title{A MMArkov Chain}
+    \date{}
+    \maketitle
+
+    \section*{Markov chain}
+        A fight between fighters \textit{blue} and \textit{red} can be represented as a Markov chain.
+        Although a real-world fight is very complex, we assume for this particular example that the following actions and states are possible:
+    \begin{itemize}
+        \item standing
+        \item strike attempt blue
+        \item strike landed blue
+        \item strike attempt red
+        \item strike landed red
+        \item knockout blue
+        \item knockout red
+    \end{itemize}
+
+    The transition matrix between the states and actions is constructed as follows:
+
+    $$
+    T = \begin{bmatrix}
+    0.6 & 0.75 & 0.95 & 0.6 & 0.85 & 0 & 0 \\
+    0.3 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0.25 & 0 & 0 & 0 & 0 & 0 \\
+    0.1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0.4 & 0 & 0 & 0 \\
+    0 & 0 & 0.05 & 0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 0 & 0.15 & 0 & 1
+    \end{bmatrix}
+    $$
+
+    The first column represents the probabilities of the fight moving from "standing" to one of the other states.
+    So, the probability of the fight staying in the "standing"-state is equal to $60\%$.
+    The last two columns represents the "knockout blue"- and "knockout red"-states.
+    These states are absorbing states; once the fight is in this state, it is impossible to move to another state.
+
+    \break
+
+    The vector $x_k = T^kx_0$ tell us the probability of being in any of the states after $k$ steps.
+
+    $$
+    x_1 = \begin{bmatrix}
+    0.6 \\
+    0.3 \\
+    0 \\
+    0.1 \\
+    0 \\
+    0 \\
+    0 \\
+    \end{bmatrix},
+    x_2 = \begin{bmatrix}
+    0.645 \\
+    0.18 \\
+    0.075 \\
+    0.06 \\
+    0.04 \\
+    0 \\
+    0 \\
+    \end{bmatrix},
+    x_{10} = \begin{bmatrix}
+    0.6232 \\
+    0.1882 \\
+    0.0474 \\
+    0.0627 \\
+    0.0253 \\
+    0.0205 \\
+    0.0328 \\
+    \end{bmatrix},
+    x_{1000} = \begin{bmatrix}
+    0.001 \\
+    0.000 \\
+    0.000 \\
+    0.000 \\
+    0.000 \\
+    0.384 \\
+    0.614 \\
+    \end{bmatrix}
+    $$
+
+    After $1000$ steps, there is an almost zero probability that the fight is still going on.
+
+    \hfill
+
+    A transition matrix can be written in the following form
+
+    $$
+    T = \begin{bmatrix}
+    Q & O_{r \times s} \\
+    R & I_s
+    \end{bmatrix}
+    $$
+
+    where $r$ represents the number of transient states and $s$ the number of absorbing states.
+    The elements are described as follows
+
+    \begin{itemize}
+    \item Q is an $r \times r$ matrix that holds the probabilities of moving from a transient state to another transient state
+    \item R is an $s \times r$ matrix that holds the probabilities of moving from a transient state to an absorbing state
+    \item O is an $r \times s$ matrix that holds the probabilities of moving from an absorbing state to a transient state (which is impossible)
+    \item I is an $s \times s$ matrix that holds the probabilities of moving between absorbing states (which is also impossible)
+    \end{itemize}
+
+    In the simplified fight, the elements are constructed as follows
+
+    $$
+    Q = \begin{bmatrix}
+    0.6 & 0.75 & 0.95 & 0.6 & 0.85 \\
+    0.3 & 0 & 0 & 0 & 0 \\
+    0 & 0.25 & 0 & 0 & 0 \\
+    0.1 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0.4 & 0 \\
+    \end{bmatrix}
+    $$
+
+    $$
+    O_{r \times s} = \begin{bmatrix}
+    0 & 0 \\
+    0 & 0 \\
+    0 & 0 \\
+    0 & 0 \\
+    0 & 0
+    \end{bmatrix}
+    $$
+
+
+    $$
+    R = \begin{bmatrix}
+    0 & 0 & 0.05 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0.15
+    \end{bmatrix}
+    $$
+
+    $$
+    I= \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+    \end{bmatrix}
+    $$
+
+    The variable of main interest is  $\lim_{k\to\infty}T^Kx_0$.
+
+    $$
+    T^2 = \begin{bmatrix}
+    Q & O_{r \times s} \\
+    R & I_s
+    \end{bmatrix}
+    \begin{bmatrix}
+    Q & O_{r \times s} \\
+    R & I_s
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    Q^2 & O_{r \times s} \\
+    RQ +  R & I_s
+    \end{bmatrix}
+    $$
+
+    $$
+    T^3 = \begin{bmatrix}
+    Q & O_{r \times s} \\
+    R & I_s
+    \end{bmatrix}
+    \begin{bmatrix}
+    Q^2 & O_{r \times s} \\
+    RQ +  R & I_s
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    Q^3 & O_{r \times s} \\
+    RQ^2+RQ+R & I_s
+    \end{bmatrix}
+    $$
+
+    In general, the pattern can be written as
+
+    $$
+    \begin{bmatrix}
+    Q^k & O_{r \times s} \\
+    R + RQ + ... + RQ^{k-1} & I_s
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    Q^k & O_{r \times s} \\
+    R\sum^{k-1}_{i=0}Q^i & I_s
+    \end{bmatrix}
+    $$
+
+    By calculating the lower left element of the matrix, we encounter the series
+
+    $$
+    \sum_{i=0}^\infty Q^i = I + Q + Q^2 + Q^3 + ...
+    $$
+
+    This series converges to $(I-Q)^{-1}$ when some power $Q^k$ has columns sums that are less than 1.
+
+    The above holds for the example fight and, therefore,
+
+    $$
+    (I-Q)^{-1} = \begin{bmatrix}
+    102.56 & 101.28 & 97.43 & 96.41 & 87.18 \\
+    30.77 & 31.38 & 29.23 & 28.92 & 26.15 \\
+    7.69 & 7.85 & 8.31 & 7.23 & 6.54 \\
+    10.26 & 10.13 & 9.74 & 10.64 & 8.72 \\
+    4.10 & 4.05 & 3.90 & 4.26 & 4.49
+    \end{bmatrix}
+    $$
+
+    and
+
+    $$
+    R(I-Q)^{-1} = \begin{bmatrix}
+    0.38 & 0.39 & 0.42 & 0.36 & 0.33 \\
+    0.62 & 0.61 & 0.58 & 0.64 & 0.67
+    \end{bmatrix}
+    $$
+
+    Consequently,
+
+
+    $$
+    \lim_{k\to\infty}T^K = \begin{bmatrix}
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0.38 & 0.39 & 0.42 & 0.36 & 0.33 & 1 & 0\\
+    0.62 & 0.61 & 0.58 & 0.64 & 0.67 & 0 & 1
+    \end{bmatrix}
+    $$
+
+    A fight always starts with both fighters standing across each other.
+    To find the probabilities of each state after "a very long time", we compute
+
+    $$
+    \lim_{k\to\infty}T^Kx_0 = \begin{bmatrix}
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0.38 & 0.39 & 0.42 & 0.36 & 0.33 & 1 & 0\\
+    0.62 & 0.61 & 0.58 & 0.64 & 0.67 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+    1 \\
+    0 \\
+    0 \\
+    0 \\
+    0 \\
+    0 \\
+    0
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    0 \\
+    0 \\
+    0 \\
+    0 \\
+    0 \\
+    0.38 \\
+    0.62
+    \end{bmatrix}
+    $$
+
+    For an absorbing Markov chain, the $(i, j)$-entry of $R(I_r-Q)^{-1}$ is the probability of ending in absorbing state $a_i$ given that we started in transient state $t_j$.
+    In addition, the $(i, j)$-entry of $(I_r-Q)^{-1}$ contains the expected number of visits to transient state $t_i$ given that we started in transient state $t_j$.
+    With the help of these properties it is possible to determine the probabilities of different outcomes and forecast the number of actions in a fight.
+
+    \begin{center}
+        \begin{tabular}{l| c c c}
+        \textbf{Variable of interest} & \textbf{blue} & \textbf{red} \\ [0.5ex]
+        \hline
+        Probability of knockout & 38\% & 62\% \\
+        Number of strikes attempted & 30.77 & 10.26 \\
+        Number of strikes landed  & 7.69 & 4.10 \\
+        \end{tabular}
+    \end{center}
+
+\end{document}

@@ -1,0 +1,50 @@
+
+  query FightCardListGetFightCard($input: FightCardInput!) {
+    getUfcFightCard(input: $input) {
+      name
+      fights {
+        ...fightCardListGetFightCardFieldsFight
+      }
+    }
+  }
+  fragment fightCardListGetFightCardFieldsFight on UfcFight {
+    cardSegment
+    id
+    status
+    fightOrder
+    weightClass {
+      id
+      description
+      abbreviation
+    }
+    redTeam {
+      ...fightCardListGetFightCardFieldsFighter
+    }
+    blueTeam {
+      ...fightCardListGetFightCardFieldsFighter
+    }
+    result {
+      winner
+      method
+      methodDetails {
+        endingRound
+        endingTime
+      }
+    }
+  }
+  fragment fightCardListGetFightCardFieldsFighter on UfcTeam {
+    fighter {
+      id
+      lastName
+      firstName
+      nickName
+      country
+      recentForm
+      rankings {
+        weightClass {
+          id
+        }
+        rank
+      }
+    }
+  }

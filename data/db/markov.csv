@@ -1,0 +1,403 @@
+markov_id,description,abbreviation,type,category,position,target,bodypart,fighter
+1,advance to back control,ADVMGBL,action,grappling,misc ground control,,,blue
+2,advance to back control,ADVGBL,action,grappling,guard control,,,blue
+3,advance to back control,ADVHGBL,action,grappling,half guard control,,,blue
+4,advance to back control,ADVMBL,action,grappling,mount control,,,blue
+5,advance to back control,ADVSBL,action,grappling,side control,,,blue
+6,advance to guard control,ADVMGGL,action,grappling,misc ground control,,,blue
+7,advance to guard control,ADVBGL,action,grappling,back control,,,blue
+8,advance to guard control,ADVHFGL,action,grappling,half guard control,,,blue
+9,advance to guard control,ADVMGL,action,grappling,mount control,,,blue
+10,advance to guard control,ADVSGL,action,grappling,side control,,,blue
+11,advance to half guard control,ADVMSHGL,action,grappling,misc ground control,,,blue
+12,advance to half guard control,ADVBHGL,action,grappling,back control,,,blue
+13,advance to half guard control,ADVGHGL,action,grappling,guard control,,,blue
+14,advance to half guard control,ADVMHGL,action,grappling,mount control,,,blue
+15,advance to half guard control,ADVSHGL,action,grappling,side control,,,blue
+16,advance to mount control,ADVMGML,action,grappling,misc ground control,,,blue
+17,advance to mount control,ADVBML,action,grappling,back control,,,blue
+18,advance to mount control,ADVGML,action,grappling,guard control,,,blue
+19,advance to mount control,ADVHGML,action,grappling,half guard control,,,blue
+20,advance to mount control,ADVSML,action,grappling,side control,,,blue
+21,advance to side control,ADVMGSL,action,grappling,misc ground control,,,blue
+22,advance to side control,ADVBSL,action,grappling,back control,,,blue
+23,advance to side control,ADVGSL,action,grappling,guard control,,,blue
+24,advance to side control,ADVHGSL,action,grappling,half guard control,,,blue
+25,advance to side control,ADVMSL,action,grappling,mount control,,,blue
+26,back control,BC,state,control,ground,,,blue
+27,clinch control,CC,state,control,clinch,,,blue
+28,elbow attempt,ECA,action,striking,clinch,,,blue
+29,elbow attempt,ECBA,action,striking,clinch,body,elbow,blue
+30,elbow attempt,ECHA,action,striking,clinch,head,elbow,blue
+31,elbow attempt,ECLA,action,striking,clinch,legs,elbow,blue
+32,elbow attempt,EDA,action,striking,distance,,elbow,blue
+33,elbow attempt,EDBA,action,striking,distance,body,elbow,blue
+34,elbow attempt,EDHA,action,striking,distance,head,elbow,blue
+35,elbow attempt,EDLA,action,striking,distance,legs,elbow,blue
+36,elbow attempt,EGA,action,striking,ground,,elbow,blue
+37,elbow attempt,EGBA,action,striking,ground,body,elbow,blue
+38,elbow attempt,EGHA,action,striking,ground,head,elbow,blue
+39,elbow attempt,EGLA,action,striking,ground,legs,elbow,blue
+40,elbow attempt,ESA,action,striking,standing,,elbow,blue
+41,elbow attempt,ESBA,action,striking,standing,body,elbow,blue
+42,elbow attempt,ESHA,action,striking,standing,head,elbow,blue
+43,elbow attempt,ESLA,action,striking,standing,legs,elbow,blue
+44,elbow landed,ECBL,action,striking,clinch,body,elbow,blue
+45,elbow landed,ECHL,action,striking,clinch,head,elbow,blue
+46,elbow landed,ECLL,action,striking,clinch,legs,elbow,blue
+47,elbow landed,EDBL,action,striking,distance,body,elbow,blue
+48,elbow landed,EDHL,action,striking,distance,head,elbow,blue
+49,elbow landed,EDLL,action,striking,distance,legs,elbow,blue
+50,elbow landed,EGBL,action,striking,ground,body,elbow,blue
+51,elbow landed,EGHL,action,striking,ground,head,elbow,blue
+52,elbow landed,EGLL,action,striking,ground,legs,elbow,blue
+53,elbow landed,ESBL,action,striking,standing,body,elbow,blue
+54,elbow landed,ESHL,action,striking,standing,head,elbow,blue
+55,elbow landed,ESLL,action,striking,standing,legs,elbow,blue
+56,ground control,GRC,state,control,ground,,,blue
+57,guard control,GC,state,control,ground,,,blue
+58,half guard control,HGC,state,control,ground,,,blue
+59,kick attempt,KICA,action,striking,clinch,,,blue
+60,kick attempt,KICBA,action,striking,clinch,body,foot,blue
+61,kick attempt,KICHA,action,striking,clinch,head,foot,blue
+62,kick attempt,KICLA,action,striking,clinch,legs,foot,blue
+63,kick attempt,KIDA,action,striking,distance,,foot,blue
+64,kick attempt,KIDBA,action,striking,distance,body,foot,blue
+65,kick attempt,KIDHA,action,striking,distance,head,foot,blue
+66,kick attempt,KIDLA,action,striking,distance,legs,foot,blue
+67,kick attempt,KIGA,action,striking,ground,,foot,blue
+68,kick attempt,KIGBA,action,striking,ground,body,foot,blue
+69,kick attempt,KIGHA,action,striking,ground,head,foot,blue
+70,kick attempt,KIGLA,action,striking,ground,legs,foot,blue
+71,kick attempt,KISA,action,striking,standing,,foot,blue
+72,kick attempt,KISBA,action,striking,standing,body,foot,blue
+73,kick attempt,KISHA,action,striking,standing,head,foot,blue
+74,kick attempt,KISLA,action,striking,standing,legs,foot,blue
+75,kick landed,KICBL,action,striking,clinch,body,foot,blue
+76,kick landed,KICHL,action,striking,clinch,head,foot,blue
+77,kick landed,KICLL,action,striking,clinch,legs,foot,blue
+78,kick landed,KIDBL,action,striking,distance,body,foot,blue
+79,kick landed,KIDHL,action,striking,distance,head,foot,blue
+80,kick landed,KIDLL,action,striking,distance,legs,foot,blue
+81,kick landed,KIGBL,action,striking,ground,body,foot,blue
+82,kick landed,KIGHL,action,striking,ground,head,foot,blue
+83,kick landed,KIGLL,action,striking,ground,legs,foot,blue
+84,kick landed,KISBL,action,striking,standing,body,foot,blue
+85,kick landed,KISHL,action,striking,standing,head,foot,blue
+86,kick landed,KISLL,action,striking,standing,legs,foot,blue
+87,knee attempt,KNCA,action,striking,clinch,,knee,blue
+88,knee attempt,KNCBA,action,striking,clinch,body,knee,blue
+89,knee attempt,KNCHA,action,striking,clinch,head,knee,blue
+90,knee attempt,KNCLA,action,striking,clinch,legs,knee,blue
+91,knee attempt,KNDA,action,striking,distance,,knee,blue
+92,knee attempt,KNDBA,action,striking,distance,body,knee,blue
+93,knee attempt,KNDHA,action,striking,distance,head,knee,blue
+94,knee attempt,KNDLA,action,striking,distance,legs,knee,blue
+95,knee attempt,KNGA,action,striking,ground,,knee,blue
+96,knee attempt,KNGBA,action,striking,ground,body,knee,blue
+97,knee attempt,KNGHA,action,striking,ground,head,knee,blue
+98,knee attempt,KNGLA,action,striking,ground,legs,knee,blue
+99,knee attempt,KNSA,action,striking,standing,,knee,blue
+100,knee attempt,KNSBA,action,striking,standing,body,knee,blue
+101,knee attempt,KNSHA,action,striking,standing,head,knee,blue
+102,knee attempt,KNSLA,action,striking,standing,legs,knee,blue
+103,knee landed,KNCBL,action,striking,clinch,body,knee,blue
+104,knee landed,KNCHL,action,striking,clinch,head,knee,blue
+105,knee landed,KNCLL,action,striking,clinch,legs,knee,blue
+106,knee landed,KNDBL,action,striking,distance,body,knee,blue
+107,knee landed,KNDHL,action,striking,distance,head,knee,blue
+108,knee landed,KNDLL,action,striking,distance,legs,knee,blue
+109,knee landed,KNGBL,action,striking,ground,body,knee,blue
+110,knee landed,KNGHL,action,striking,ground,head,knee,blue
+111,knee landed,KNGLL,action,striking,ground,legs,knee,blue
+112,knee landed,KNSBL,action,striking,standing,body,knee,blue
+113,knee landed,KNSHL,action,striking,standing,head,knee,blue
+114,knee landed,KNSLL,action,striking,standing,legs,knee,blue
+115,knockdown,KDL,action,striking,distance,head,,blue
+116,knockout,KOL,state,striking,,,,blue
+117,misc ground control,MGC,state,control,ground,,,blue
+118,mount control,MC,state,control,ground,,,blue
+119,punch attempt,PCA,action,striking,clinch,,,blue
+120,punch attempt,PCBA,action,striking,clinch,body,hand,blue
+121,punch attempt,PCHA,action,striking,clinch,head,hand,blue
+122,punch attempt,PCLA,action,striking,clinch,legs,hand,blue
+123,punch attempt,PDA,action,striking,distance,,hand,blue
+124,punch attempt,PDBA,action,striking,distance,body,hand,blue
+125,punch attempt,PDHA,action,striking,distance,head,hand,blue
+126,punch attempt,PDLA,action,striking,distance,legs,hand,blue
+127,punch attempt,PGA,action,striking,ground,,hand,blue
+128,punch attempt,PGBA,action,striking,ground,body,hand,blue
+129,punch attempt,PGHA,action,striking,ground,head,hand,blue
+130,punch attempt,PGLA,action,striking,ground,legs,hand,blue
+131,punch attempt,PSA,action,striking,standing,,hand,blue
+132,punch attempt,PSBA,action,striking,standing,body,hand,blue
+133,punch attempt,PSHA,action,striking,standing,head,hand,blue
+134,punch attempt,PSLA,action,striking,standing,legs,hand,blue
+135,punch landed,PCBL,action,striking,clinch,body,hand,blue
+136,punch landed,PCHL,action,striking,clinch,head,hand,blue
+137,punch landed,PCLL,action,striking,clinch,legs,hand,blue
+138,punch landed,PDBL,action,striking,distance,body,hand,blue
+139,punch landed,PDHL,action,striking,distance,head,hand,blue
+140,punch landed,PDLL,action,striking,distance,legs,hand,blue
+141,punch landed,PGBL,action,striking,ground,body,hand,blue
+142,punch landed,PGHL,action,striking,ground,head,hand,blue
+143,punch landed,PGLL,action,striking,ground,legs,hand,blue
+144,punch landed,PSBL,action,striking,standing,body,hand,blue
+145,punch landed,PSHL,action,striking,standing,head,hand,blue
+146,punch landed,PSLL,action,striking,standing,legs,hand,blue
+147,reversal,RVL,action,grappling,ground,,,blue
+148,reversal,RVMGL,action,grappling,mis ground control red,,,blue
+149,reversal,RVHGL,action,grappling,half guard control red,,,blue
+150,reversal,RVGL,action,grappling,guard control red,,,blue
+151,reversal,RVSL,action,grappling,side control red,,,blue
+152,reversal,RVBL,action,grappling,back control red,,,blue
+153,reversal,RVML,action,grappling,mount control red,,,blue
+154,side control,SC,state,control,ground,,,blue
+155,standup,SUL,action,grappling,ground,,,blue
+156,standup,SUMGL,action,grappling,mis ground control red,,,blue
+157,standup,SUHGL,action,grappling,half guard control red,,,blue
+158,standup,SUGL,action,grappling,guard control red,,,blue
+159,standup,SUSL,action,grappling,side control red,,,blue
+160,standup,SUBL,action,grappling,back control red,,,blue
+161,standup,SUML,action,grappling,mount control red,,,blue
+162,strike attempt,SCA,action,striking,clinch,,,blue
+163,strike attempt,SCBA,action,striking,clinch,body,,blue
+164,strike attempt,SCHA,action,striking,clinch,head,,blue
+165,strike attempt,SCLA,action,striking,clinch,legs,,blue
+166,strike attempt,SDA,action,striking,distance,,,blue
+167,strike attempt,SDBA,action,striking,distance,body,,blue
+168,strike attempt,SDHA,action,striking,distance,head,,blue
+169,strike attempt,SDLA,action,striking,distance,legs,,blue
+170,strike attempt,SGA,action,striking,ground,,,blue
+171,strike attempt,SGBA,action,striking,ground,body,,blue
+172,strike attempt,SGHA,action,striking,ground,head,,blue
+173,strike attempt,SGLA,action,striking,ground,legs,,blue
+174,strike attempt,SSA,action,striking,standing,,,blue
+175,strike attempt,SSBA,action,striking,standing,body,,blue
+176,strike attempt,SSHA,action,striking,standing,head,,blue
+177,strike attempt,SSLA,action,striking,standing,legs,,blue
+178,strike landed,SCBL,action,striking,clinch,body,,blue
+179,strike landed,SCHL,action,striking,clinch,head,,blue
+180,strike landed,SCLL,action,striking,clinch,legs,,blue
+181,strike landed,SDBL,action,striking,distance,body,,blue
+182,strike landed,SDHL,action,striking,distance,head,,blue
+183,strike landed,SDLL,action,striking,distance,legs,,blue
+184,strike landed,SGBL,action,striking,ground,body,,blue
+185,strike landed,SGHL,action,striking,ground,head,,blue
+186,strike landed,SGLL,action,striking,ground,legs,,blue
+187,strike landed,SSBL,action,striking,standing,body,,blue
+188,strike landed,SSHL,action,striking,standing,head,,blue
+189,strike landed,SSLL,action,striking,standing,legs,,blue
+190,submission,SMA,action,grappling,ground,,,blue
+191,submission,SMMGA,action,grappling,misc ground control,,,blue
+192,submission,SMHGA,action,grappling,half guard control,,,blue
+193,submission,SMGA,action,grappling,guard control,,,blue
+194,submission,SMSA,action,grappling,side control,,,blue
+195,submission,SMMA,action,grappling,mount control,,,blue
+196,submission,SMBA,action,grappling,back control,,,blue
+197,takedown,TDA,action,grappling,standing,,,blue
+198,tap out,SML,state,grappling,ground,,,blue
+199,advance to back control,ADVMGBL,action,grappling,misc ground control,,,red
+200,advance to back control,ADVGBL,action,grappling,guard control,,,red
+201,advance to back control,ADVHGBL,action,grappling,half guard control,,,red
+202,advance to back control,ADVMBL,action,grappling,mount control,,,red
+203,advance to back control,ADVSBL,action,grappling,side control,,,red
+204,advance to guard control,ADVMGGL,action,grappling,misc ground control,,,red
+205,advance to guard control,ADVBGL,action,grappling,back control,,,red
+206,advance to guard control,ADVHFGL,action,grappling,half guard control,,,red
+207,advance to guard control,ADVMGL,action,grappling,mount control,,,red
+208,advance to guard control,ADVSGL,action,grappling,side control,,,red
+209,advance to half guard control,ADVMSHGL,action,grappling,misc ground control,,,red
+210,advance to half guard control,ADVBHGL,action,grappling,back control,,,red
+211,advance to half guard control,ADVGHGL,action,grappling,guard control,,,red
+212,advance to half guard control,ADVMHGL,action,grappling,mount control,,,red
+213,advance to half guard control,ADVSHGL,action,grappling,side control,,,red
+214,advance to mount control,ADVMGML,action,grappling,misc ground control,,,red
+215,advance to mount control,ADVBML,action,grappling,back control,,,red
+216,advance to mount control,ADVGML,action,grappling,guard control,,,red
+217,advance to mount control,ADVHGML,action,grappling,half guard control,,,red
+218,advance to mount control,ADVSML,action,grappling,side control,,,red
+219,advance to side control,ADVMGSL,action,grappling,misc ground control,,,red
+220,advance to side control,ADVBSL,action,grappling,back control,,,red
+221,advance to side control,ADVGSL,action,grappling,guard control,,,red
+222,advance to side control,ADVHGSL,action,grappling,half guard control,,,red
+223,advance to side control,ADVMSL,action,grappling,mount control,,,red
+224,back control,BC,state,control,ground,,,red
+225,clinch control,CC,state,control,clinch,,,red
+226,elbow attempt,ECA,action,striking,clinch,,,red
+227,elbow attempt,ECBA,action,striking,clinch,body,elbow,red
+228,elbow attempt,ECHA,action,striking,clinch,head,elbow,red
+229,elbow attempt,ECLA,action,striking,clinch,legs,elbow,red
+230,elbow attempt,EDA,action,striking,distance,,elbow,red
+231,elbow attempt,EDBA,action,striking,distance,body,elbow,red
+232,elbow attempt,EDHA,action,striking,distance,head,elbow,red
+233,elbow attempt,EDLA,action,striking,distance,legs,elbow,red
+234,elbow attempt,EGA,action,striking,ground,,elbow,red
+235,elbow attempt,EGBA,action,striking,ground,body,elbow,red
+236,elbow attempt,EGHA,action,striking,ground,head,elbow,red
+237,elbow attempt,EGLA,action,striking,ground,legs,elbow,red
+238,elbow attempt,ESA,action,striking,standing,,elbow,red
+239,elbow attempt,ESBA,action,striking,standing,body,elbow,red
+240,elbow attempt,ESHA,action,striking,standing,head,elbow,red
+241,elbow attempt,ESLA,action,striking,standing,legs,elbow,red
+243,elbow landed,ECBL,action,striking,clinch,body,elbow,red
+244,elbow landed,ECHL,action,striking,clinch,head,elbow,red
+245,elbow landed,ECLL,action,striking,clinch,legs,elbow,red
+246,elbow landed,EDBL,action,striking,distance,body,elbow,red
+247,elbow landed,EDHL,action,striking,distance,head,elbow,red
+248,elbow landed,EDLL,action,striking,distance,legs,elbow,red
+249,elbow landed,EGBL,action,striking,ground,body,elbow,red
+250,elbow landed,EGHL,action,striking,ground,head,elbow,red
+251,elbow landed,EGLL,action,striking,ground,legs,elbow,red
+252,elbow landed,ESBL,action,striking,standing,body,elbow,red
+253,elbow landed,ESHL,action,striking,standing,head,elbow,red
+254,elbow landed,ESLL,action,striking,standing,legs,elbow,red
+256,ground control,GRC,state,control,ground,,,red
+257,guard control,GC,state,control,ground,,,red
+258,half guard control,HGC,state,control,ground,,,red
+259,kick attempt,KICA,action,striking,clinch,,,red
+260,kick attempt,KICBA,action,striking,clinch,body,foot,red
+261,kick attempt,KICHA,action,striking,clinch,head,foot,red
+262,kick attempt,KICLA,action,striking,clinch,legs,foot,red
+263,kick attempt,KIDA,action,striking,distance,,foot,red
+264,kick attempt,KIDBA,action,striking,distance,body,foot,red
+265,kick attempt,KIDHA,action,striking,distance,head,foot,red
+266,kick attempt,KIDLA,action,striking,distance,legs,foot,red
+267,kick attempt,KIGA,action,striking,ground,,foot,red
+268,kick attempt,KIGBA,action,striking,ground,body,foot,red
+269,kick attempt,KIGHA,action,striking,ground,head,foot,red
+270,kick attempt,KIGLA,action,striking,ground,legs,foot,red
+271,kick attempt,KISA,action,striking,standing,,foot,red
+272,kick attempt,KISBA,action,striking,standing,body,foot,red
+273,kick attempt,KISHA,action,striking,standing,head,foot,red
+274,kick attempt,KISLA,action,striking,standing,legs,foot,red
+275,kick landed,KICBL,action,striking,clinch,body,foot,red
+276,kick landed,KICHL,action,striking,clinch,head,foot,red
+277,kick landed,KICLL,action,striking,clinch,legs,foot,red
+278,kick landed,KIDBL,action,striking,distance,body,foot,red
+279,kick landed,KIDHL,action,striking,distance,head,foot,red
+280,kick landed,KIDLL,action,striking,distance,legs,foot,red
+281,kick landed,KIGBL,action,striking,ground,body,foot,red
+282,kick landed,KIGHL,action,striking,ground,head,foot,red
+283,kick landed,KIGLL,action,striking,ground,legs,foot,red
+284,kick landed,KISBL,action,striking,standing,body,foot,red
+285,kick landed,KISHL,action,striking,standing,head,foot,red
+286,kick landed,KISLL,action,striking,standing,legs,foot,red
+287,knee attempt,KNCA,action,striking,clinch,,knee,red
+288,knee attempt,KNCBA,action,striking,clinch,body,knee,red
+289,knee attempt,KNCHA,action,striking,clinch,head,knee,red
+290,knee attempt,KNCLA,action,striking,clinch,legs,knee,red
+291,knee attempt,KNDA,action,striking,distance,,knee,red
+292,knee attempt,KNDBA,action,striking,distance,body,knee,red
+293,knee attempt,KNDHA,action,striking,distance,head,knee,red
+294,knee attempt,KNDLA,action,striking,distance,legs,knee,red
+295,knee attempt,KNGA,action,striking,ground,,knee,red
+296,knee attempt,KNGBA,action,striking,ground,body,knee,red
+297,knee attempt,KNGHA,action,striking,ground,head,knee,red
+298,knee attempt,KNGLA,action,striking,ground,legs,knee,red
+299,knee attempt,KNSA,action,striking,standing,,knee,red
+300,knee attempt,KNSBA,action,striking,standing,body,knee,red
+301,knee attempt,KNSHA,action,striking,standing,head,knee,red
+302,knee attempt,KNSLA,action,striking,standing,legs,knee,red
+303,knee landed,KNCBL,action,striking,clinch,body,knee,red
+304,knee landed,KNCHL,action,striking,clinch,head,knee,red
+305,knee landed,KNCLL,action,striking,clinch,legs,knee,red
+306,knee landed,KNDBL,action,striking,distance,body,knee,red
+307,knee landed,KNDHL,action,striking,distance,head,knee,red
+308,knee landed,KNDLL,action,striking,distance,legs,knee,red
+309,knee landed,KNGBL,action,striking,ground,body,knee,red
+310,knee landed,KNGHL,action,striking,ground,head,knee,red
+311,knee landed,KNGLL,action,striking,ground,legs,knee,red
+312,knee landed,KNSBL,action,striking,standing,body,knee,red
+313,knee landed,KNSHL,action,striking,standing,head,knee,red
+314,knee landed,KNSLL,action,striking,standing,legs,knee,red
+315,knockdown,KDL,action,striking,distance,,,red
+316,knockout,KOL,state,striking,,,,red
+317,misc ground control,MGC,state,control,ground,,,red
+318,mount control,MC,state,control,ground,,,red
+319,punch attempt,PCA,action,striking,clinch,,,red
+320,punch attempt,PCBA,action,striking,clinch,body,hand,red
+321,punch attempt,PCHA,action,striking,clinch,head,hand,red
+322,punch attempt,PCLA,action,striking,clinch,legs,hand,red
+323,punch attempt,PDA,action,striking,distance,,hand,red
+324,punch attempt,PDBA,action,striking,distance,body,hand,red
+325,punch attempt,PDHA,action,striking,distance,head,hand,red
+326,punch attempt,PDLA,action,striking,distance,legs,hand,red
+327,punch attempt,PGA,action,striking,ground,,hand,red
+328,punch attempt,PGBA,action,striking,ground,body,hand,red
+329,punch attempt,PGHA,action,striking,ground,head,hand,red
+330,punch attempt,PGLA,action,striking,ground,legs,hand,red
+331,punch attempt,PSA,action,striking,standing,,hand,red
+332,punch attempt,PSBA,action,striking,standing,body,hand,red
+333,punch attempt,PSHA,action,striking,standing,head,hand,red
+334,punch attempt,PSLA,action,striking,standing,legs,hand,red
+336,punch landed,PCBL,action,striking,clinch,body,hand,red
+337,punch landed,PCHL,action,striking,clinch,head,hand,red
+338,punch landed,PCLL,action,striking,clinch,legs,hand,red
+339,punch landed,PDBL,action,striking,distance,body,hand,red
+340,punch landed,PDHL,action,striking,distance,head,hand,red
+341,punch landed,PDLL,action,striking,distance,legs,hand,red
+342,punch landed,PGBL,action,striking,ground,body,hand,red
+343,punch landed,PGHL,action,striking,ground,head,hand,red
+344,punch landed,PGLL,action,striking,ground,legs,hand,red
+345,punch landed,PSBL,action,striking,standing,body,hand,red
+346,punch landed,PSHL,action,striking,standing,head,hand,red
+347,punch landed,PSLL,action,striking,standing,legs,hand,red
+349,reversal,RVL,action,grappling,ground,,,red
+350,reversal,RVMGL,action,grappling,mis ground control blue,,,red
+351,reversal,RVHGL,action,grappling,half guard control blue,,,red
+352,reversal,RVGL,action,grappling,guard control blue,,,red
+353,reversal,RVSL,action,grappling,side control blue,,,red
+354,reversal,RVBL,action,grappling,back control blue,,,red
+355,reversal,RVML,action,grappling,mount control blue,,,red
+356,side control,SC,state,control,ground,,,red
+357,standup,SUL,action,grappling,ground,,,red
+358,standup,SUMGL,action,grappling,mis ground control blue,,,red
+359,standup,SUHGL,action,grappling,half guard control blue,,,red
+360,standup,SUGL,action,grappling,guard control blue,,,red
+361,standup,SUSL,action,grappling,side control blue,,,red
+362,standup,SUBL,action,grappling,back control blue,,,red
+363,standup,SUML,action,grappling,mount control blue,,,red
+364,strike attempt,SCA,action,striking,clinch,,,red
+365,strike attempt,SCBA,action,striking,clinch,body,,red
+366,strike attempt,SCHA,action,striking,clinch,head,,red
+367,strike attempt,SCLA,action,striking,clinch,legs,,red
+368,strike attempt,SDA,action,striking,distance,,,red
+369,strike attempt,SDBA,action,striking,distance,body,,red
+370,strike attempt,SDHA,action,striking,distance,head,,red
+371,strike attempt,SDLA,action,striking,distance,legs,,red
+372,strike attempt,SGA,action,striking,ground,,,red
+373,strike attempt,SGBA,action,striking,ground,body,,red
+374,strike attempt,SGHA,action,striking,ground,head,,red
+375,strike attempt,SGLA,action,striking,ground,legs,,red
+376,strike attempt,SSA,action,striking,standing,,,red
+377,strike attempt,SSBA,action,striking,standing,body,,red
+378,strike attempt,SSHA,action,striking,standing,head,,red
+379,strike attempt,SSLA,action,striking,standing,legs,,red
+381,strike landed,SCBL,action,striking,clinch,body,,red
+382,strike landed,SCHL,action,striking,clinch,head,,red
+383,strike landed,SCLL,action,striking,clinch,legs,,red
+384,strike landed,SDBL,action,striking,distance,body,,red
+385,strike landed,SDHL,action,striking,distance,head,,red
+386,strike landed,SDLL,action,striking,distance,legs,,red
+387,strike landed,SGBL,action,striking,ground,body,,red
+388,strike landed,SGHL,action,striking,ground,head,,red
+389,strike landed,SGLL,action,striking,ground,legs,,red
+390,strike landed,SSBL,action,striking,standing,body,,red
+391,strike landed,SSHL,action,striking,standing,head,,red
+392,strike landed,SSLL,action,striking,standing,legs,,red
+394,submission,SMA,action,grappling,ground,,,red
+395,submission,SMMGA,action,grappling,misc ground control,,,red
+396,submission,SMHGA,action,grappling,half guard control,,,red
+397,submission,SMGA,action,grappling,guard control,,,red
+398,submission,SMSA,action,grappling,side control,,,red
+399,submission,SMMA,action,grappling,mount control,,,red
+400,submission,SMBA,action,grappling,back control,,,red
+401,takedown,TDA,action,grappling,standing,,,red
+402,tap out,SML,state,grappling,ground,,,red
+403,distance,DT,state,position,distance,,,
+404,standing,ST,state,position,standing,,,
+405,takedown,TDL,action,grappling,ground,,,blue
+406,takedown,TDL,action,grappling,ground,,,red
+407,ground,GT,state,position,ground,,,
+408,floor,FT,state,position,ground,,,

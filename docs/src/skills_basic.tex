@@ -1,0 +1,132 @@
+%! Author = huibmeulenbelt
+%! Date = 07/09/2024
+
+
+
+% Preamble
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{adjustbox}
+
+
+\pdfinfo{
+   /Author (HJA Meulenbelt)
+   /Title  (MMA)
+   /CreationDate (D:20040502195600)
+}
+
+\begin{document}
+    \begin{table}[t]
+        \caption{Summary of variables}
+                \vspace{0.1cm}
+        \begin{tabular}{@{}l l}
+           \hline
+           \textbf{Variable} & \textbf{Definition} \\
+           \hline
+           FT & Time on ground and opponent not in control (in seconds) \\
+           GRC & Time on ground and fighter in control (in seconds)  \\
+           KDL & Knockdowns landed  \\
+           KOL & Knockouts landed \\
+           RVL & Reversals landed \\
+           SGA & Ground strikes attempted \\
+           SGBA & Ground strikes at body attempted \\
+           SGBL & Ground strikes at body landed \\
+           SGHA & Ground strikes at head attempted \\
+           SGHL & Ground strikes at head landed \\
+           SMA & Submissions attempted \\
+           SML & Submissions landed \\
+           SSA & Standing strikes attempted \\
+           SSBA & Standing strikes at body attempted \\
+           SSBL & Standing strikes at body landed \\
+           SSHA & Standing strikes at head attempted \\
+           SSHL & Standing strikes at head landed \\
+           ST & Time standing and opponent not in control (in seconds) \\
+           SUL & Standups landed \\
+           TDA & Takedowns attempted \\
+           TDL & Takedowns landed \\ [1ex]
+           \hline
+       \end{tabular}
+        \label{tab:table2}
+    \end{table}
+
+    \begin{table}[t]
+        \caption{Overview of skill models}
+                 \vspace{0.2cm}
+        \begin{tabular}{@{}l l l}
+           \hline
+           \textbf{Skill} & \textbf{Abbreviation} & \textbf{Category} \\
+           \hline
+           standing strikes rate & ssr & striking rate \\
+           ground strikes rate & sgr & striking rate \\
+           takedown rate & tdr & grappling rate \\
+           submission rate & smr & grappling rate  \\
+           reversal rate & rvr & grappling rate \\
+           standup rate & sur & grappling rate \\
+           standing strikes head accuracy & ssha & striking accuracy \\
+           ground strikes head accuracy & sgha & striking accuracy \\
+           standing strikes body accuracy & ssba & striking accuracy \\
+           ground strikes body accuracy & sgba & striking accuracy  \\
+           takedown accuracy & tda & grappling accuracy \\
+           submission accuracy & sma & grappling accuracy  \\
+           knockdown & skd & knockdowns and knockouts  \\
+           standing knockout & sko & knockdowns and knockouts \\
+           ground knockout & gko & knockdowns and knockouts \\
+           standing strikes target & sst & striking target  \\
+           ground strikes target & sgt & striking target  \\
+           \hline
+       \end{tabular}\label{tab:table3}
+    \end{table}
+
+       \begin{table}[t]
+        \caption{Summary of skills models}
+          \vspace{0.1cm}
+        \begin{tabular}{@{}l l}
+           \hline
+           \textbf{Skill} & \textbf{Model} \\
+           \hline
+           ssr & $SSA \sim NegativeBinomialAlt(\eta_{ssr}, \psi_{ssr})$ \\
+           & $\eta_{ssr} = \gamma_{ssr} + ssr_{att} - ssr_{def} + \log(ST)$ \\
+           sgr & $SGA \sim NegativeBinomialAlt(\eta_{sgr}, \psi_{sgr})$ \\
+           & $\eta_{sgr} = \gamma_{sgr} + sgr_{att} - sgr_{def} + \log(FT)$ \\
+           \hline
+           tdr & $TDA \sim NegativeBinomialAlt(\eta_{tdr}, \psi_{tdr})$ \\
+           & $\eta_{tdr} = \gamma_{tdr} + tdr_{att} - tdr_{def} + \log(ST)$ \\
+           smr & $SMA \sim NegativeBinomial(\eta_{smr}, \psi_{smr})$ \\
+           & $\eta_{smr} = \gamma_{smr} + smr_{att} - smr_{def} + \log(GRC)$ \\
+           rvr & $RVL \sim NegativeBinomial(\eta_{rvr}, \psi_{rvr})$ \\
+           & $\eta_{rvr} = \gamma_{rvr} + rvr_{att} - rvr_{def} + \log(GRC_{opponent})$ \\
+           sur & $SUL \sim NegativeBinomial(\eta_{sur}, \psi_{sur})$ \\
+           & $\eta_{sur} = \gamma_{sur} + sur_{att} - sur_{def} + \log(GRC_{opponent})$ \\
+           \hline
+           ssha & $SSHL \sim BetaBinomialAlt(SSHA, \alpha_{ssha}, \psi_{ssha})$ \\
+           & $\alpha_{ssha} = \gamma_{ssha} + ssha_{att} - ssha_{def}$ \\
+           sgha & $SGHL \sim BetaBinomialAlt(SGHA, \alpha_{sgha}, \psi_{sgha})$ \\
+           & $\alpha_{sgha} = \gamma_{sgha} + sgha_{att} - sgha_{def}$ \\
+           ssba & $SSBL \sim BetaBinomialAlt(SSBA, \alpha_{ssba}, \psi_{ssba})$ \\
+           & $\alpha_{ssba} = \gamma_{ssba} + ssba_{att} - ssba_{def}$ \\
+           sgba & $SGBL \sim BetaBinomialAlt(SGBA, \alpha_{sgba}, \psi_{sgba})$ \\
+           & $\alpha_{sgba} = \gamma_{sgba} + sgba_{att} - sgba_{def}$ \\
+           \hline
+           tda & $TDL \sim BetaBinomialAlt(TDA, \alpha_{tda}, \psi_{tda})$ \\
+           & $\alpha_{tda} = \gamma_{tda} + tda_{att} - tda_{def}$ \\
+           sma & $SML \sim BetaBinomialAlt(SMA, \alpha_{sma}, \psi_{sma})$ \\
+           & $\alpha_{sma} = \gamma_{sma} + sma_{att} - sma_{def}$ \\
+           \hline
+           skd & $KDL \sim BetaBinomialAlt(SSHL, \alpha_{skd}, \psi_{skd})$ \\
+           & $\alpha_{skd} = \gamma_{skd} + skd_{att} - skd_{def}$ \\
+           sko & $KOL \sim BetaBinomialAlt(SSHL, \alpha_{sko}, \psi_{sko})$ \\
+           & $\alpha_{sko} = \gamma_{sko} + sko_{att} - sko_{def}$ \\
+           gko & $KOL \sim BetaBinomialAlt(SGHL, \alpha_{gko}, \psi_{gko})$ \\
+           & $\alpha_{gko} = \gamma_{gko} + gko_{att} - gko_{def}$ \\
+           \hline
+           sst & $SSHA \sim BetaBinomialAlt(SSA, \alpha_{sst}, \psi_{sst})$ \\
+           & $\alpha_{sst} = \gamma_{ssht} + sst_{att} - sst_{def}$ \\
+           sgt & $SGHA \sim BetaBinomialAlt(SGA, \alpha_{sgr}, \psi_{sgt})$ \\
+           & $\alpha_{sgt} = \gamma_{sgt} + sgt_{att} - sgt_{def}$ \\
+           \hline
+       \end{tabular}\label{tab:table}
+       \end{table}
+
+
+\end{document}

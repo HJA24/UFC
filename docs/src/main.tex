@@ -1,0 +1,62 @@
+%! Author = huibmeulenbelt
+%! Date = 07/09/2024
+
+
+
+% Preamble
+\documentclass[11pt]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+\pdfinfo{
+   /Author (HJA Meulenbelt)
+   /Title  (MMA)
+   /CreationDate (D:20040502195600)
+}
+
+\begin{document}
+   \section*{Fight dynamics}
+   In MMA, the ability of a fighter to keep the opponent grounded and inversely, the ability of an opponent to get up after being taken down, is of great importance.
+   Let's assume there are 3 states; $ST$, $GRC_b$, $GRC_r$.
+
+   Through a takedown ($TDL$) the fights moves from standing $ST$ to one of the two ground states.
+   A reversal ($RVL$) changes who's in control on the ground.
+   Finally, one moves back to standing when a standup ($SUL$) occurs.
+
+   The ground control-time per takedown and reversal is modelled using a mean-dispersion parameterization of the gamma distribution, allowing for attack and defence abilities.
+
+   $$
+   \frac{GRC_b}{TDL_b + RVL_b} \sim Gamma(\mu, \phi)
+   $$
+
+   where $log(\mu) = \gamma_{FLO} + \lambda_{FLO_{att}, b} - \lambda_{FLO_{def}, r}$
+
+   Given a fighter’s predicted ground control-time per takedown and reversal, we can then find the opponent’s probability of forcing an escape (per second) to be
+
+   $$
+   \frac{1}{\mu}
+   $$
+
+   If we know the probability of escaping, we can simulate the number of escapes, $ESL_r$:
+
+   $$
+   ESL_r = RVL_r + SUL_r = Binomial(GRC_b, \frac{1}{\mu_b})
+   $$
+
+   I want to infer $SUL$ as $RVL$ is known, but $SUL$ isn't.
+   Because  $ESL \in \set\{RVL, SUL\}$, we can infer
+
+   $$
+   RVL_r \sim Binomial(ESL_r, \alpha_{RVL, r})
+   $$
+
+   where $log(\alpha_{RVL, r}) = \gamma_{RVL} + \lambda_{RVL_{att}, r} - \lambda_{RVL_{def}, b}$ and
+
+   $$
+   ESL_r - RVL_r = SUL_r \sim Binomial(ESL_r, \alpha_{SUL, r})
+   $$
+
+   where $log(\alpha_{SUL, r}) = \gamma_{SUL} + \lambda_{SUL_{att}, r} - \lambda_{SUL_{def}, b}$
+
+\end{document}

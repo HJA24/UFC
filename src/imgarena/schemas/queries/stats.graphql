@@ -1,0 +1,118 @@
+query StatsGetFight($input: FightInput!) {
+    getUfcFight(input: $input) {
+      id
+      status
+      stats {
+        currentRound
+        maxRounds
+        fightStats {
+          blue {
+            ...statsGetFightFields
+          }
+          red {
+            ...statsGetFightFields
+          }
+        }
+        roundStats {
+          blue {
+            ...statsGetFightFields
+          }
+          red {
+            ...statsGetFightFields
+          }
+        }
+      }
+
+      ...MatchDetailTabSharedFight
+    }
+  }
+
+  fragment statsGetFightFields on UfcFightStatsSummary {
+    grappling {
+      submissions {
+        attempts
+      }
+      takedowns {
+        landed
+        attempts
+      }
+    }
+    strikes {
+      knockDown {
+        landed
+      }
+      totalStrikes {
+        landed
+      }
+    }
+    times {
+      controlTime
+    }
+  }
+
+  fragment MatchDetailTabSharedFight on UfcFight {
+    id
+    redTeam {
+      fighter {
+        id
+        rankings {
+          weightClass {
+            id
+          }
+          rank
+        }
+        country
+        record {
+          wins
+          losses
+          draws
+        }
+        winsByMethod {
+          kotkoWins
+          submissionWins
+          decisionWins
+          otherWins
+        }
+        recentForm
+      }
+    }
+    blueTeam {
+      fighter {
+        id
+        rankings {
+          weightClass {
+            id
+          }
+          rank
+        }
+        country
+        record {
+          wins
+          losses
+          draws
+        }
+        winsByMethod {
+          kotkoWins
+          submissionWins
+          decisionWins
+          otherWins
+        }
+        recentForm
+      }
+    }
+    status
+    result {
+      winner
+      method
+      methodDetails {
+        endingRound
+        endingTime
+      }
+      officialResult
+    }
+    weightClass {
+      id
+      description
+      abbreviation
+    }
+  }

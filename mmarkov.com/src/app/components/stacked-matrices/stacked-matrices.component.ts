@@ -38,10 +38,10 @@ export class StackedMatricesComponent implements OnInit {
 
   labels: string[] = [
     'standing',
-    'strike attempted blue',
-    'strike attempted red',
-    'strike landed blue',
-    'strike landed red',
+    'strike attempted by blue',
+    'strike attempted by red',
+    'strike landed by blue',
+    'strike landed by red',
     'knockout blue',
     'knockout red',
   ];
@@ -122,9 +122,7 @@ export class StackedMatricesComponent implements OnInit {
     }
   }
 
-  // Last column for the last card (T_5000) showing "..."
   readonly dotsLastColumn: (number | string)[] = ['', '', '', '...', '', '', ''];
-  // First column for the second-last card (T_9) when viewed from T_5000
   readonly dotsFirstColumn: (number | string)[] = ['', '', '', '...', '', '', ''];
 
   // Blank matrices for the gap card

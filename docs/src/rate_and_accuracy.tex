@@ -1,0 +1,43 @@
+%! Author = huibmeulenbelt
+%! Date = 18/04/2025
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+
+% Document
+\begin{document}
+    \title{Work-rate and accuracy models}
+    \date{}
+    \maketitle
+
+    \section*{Work-rate}
+    The number of strikes, takedowns, submission attempts and other actions are referred to as the 'work-rates'.
+    While these "rates" may seem fighter-specific, the ability to prevent one’s opponent from attempting techniques is a crucial skill in itself.
+    This can be through range control or rendering the opponent unable to attempt techniques through grappling.
+    Consequently, we allow for an attack and defence parameter in each of these models.
+    With the help of an appropriate distribution and the inferred parameters, it is possible to predict the number of actions in a round.
+
+    The Poisson distribution is a discrete distribution that calculates the probability of a certain number of events occurring within a fixed interval.
+    It has only one parameter, $\lambda$, that is equal to both the mean and the variance.
+
+    $$
+    \text{SA} \sim Poisson(\gamma_{str} + \lambda_{attack, blue} - \lambda_{defence, red})
+    $$
+
+    \section*{Accuracy}
+    Next, it is necessary to know the accuracy of each strike, takedown and other possible actions.
+    Again, we allow for an attack and defence parameter in each of the accuracy models.
+
+    The binomial distribution is a discrete distribution that calculates the probability of each of the possible number of successes on
+
+    $$
+    \text{SL} \sim Binomial_logit(\text{SA}, \gamma_{sta} + \lambda_{attack, blue} - \lambda_{defence, red})
+    $$
+
+     logit
+
+
+\end{document}

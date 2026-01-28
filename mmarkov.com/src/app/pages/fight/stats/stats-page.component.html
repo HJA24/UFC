@@ -1,0 +1,13 @@
+<div class="stats-container">
+  @for (chart of chartData(); track chart.stat) {
+    <div class="stat-chart">
+      <span class="stat-label">{{ chart.label }}</span>
+      <app-hdis-chart
+        [rows]="chart.rows"
+        [domain]="chart.domain"
+        [width]="400"
+      />
+      <span class="stat-spacer"></span>
+    </div>
+  }
+</div>

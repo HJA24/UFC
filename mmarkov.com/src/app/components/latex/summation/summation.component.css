@@ -1,0 +1,27 @@
+.summation {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  line-height: 1;
+  margin: 0 2px;
+}
+
+.sigma {
+  font-size: 1.6em;
+  line-height: 1;
+}
+
+.upper-limit,
+.lower-limit {
+  font-size: 0.65em;
+  line-height: 1;
+}
+
+.upper-limit {
+  margin-bottom: -2px;
+}
+
+.lower-limit {
+  margin-top: -2px;
+}

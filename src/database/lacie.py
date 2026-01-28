@@ -2,7 +2,7 @@
 Backup SQLite database and JSON data to LaCie external drive.
 
 Usage:
-    python src/database/backup_lacie.py
+    python src/database/lacie.py
 """
 
 import shutil

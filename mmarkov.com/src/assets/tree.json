@@ -130,15 +130,15 @@
         ]
       },
       {
-        "name": "after comeback",
+        "name": "after comeback from",
         "tier": "heavyweight",
         "children": [
           {
-            "name": "from submission attempt",
+            "name": "submission attempt",
             "tier": "heavyweight"
           },
           {
-            "name": ".... from knockdown landed",
+            "name": "knockdown landed",
             "tier": "heavyweight"
           }
         ]
@@ -318,13 +318,14 @@
   },
   {
     "name": "stats",
-    "tier": "strawweight",
+    "tier": "heavyweight",
     "children": [
       {
         "name": "number of strikes attempted",
         "children": [
           {
             "name": "total is",
+            "tier": "heavyweight",
             "children": [
               {
                 "name": "under",
@@ -342,10 +343,6 @@
                     "tier": "heavyweight"
                   }
                 ]
-              },
-              {
-                "name": "approximately",
-                "tier": "strawweight"
               },
               {
                 "name": "over",
@@ -377,6 +374,7 @@
         "children": [
           {
             "name": "total is",
+            "tier": "heavyweight",
             "children": [
               {
                 "name": "under",
@@ -394,10 +392,6 @@
                     "tier": "heavyweight"
                   }
                 ]
-              },
-              {
-                "name": "approximately",
-                "tier": "strawweight"
               },
               {
                 "name": "over",
@@ -429,6 +423,7 @@
         "children": [
           {
             "name": "total is",
+            "tier": "heavyweight",
             "children": [
               {
                 "name": "under",
@@ -446,10 +441,6 @@
                     "tier": "heavyweight"
                   }
                 ]
-              },
-              {
-                "name": "approximately",
-                "tier": "strawweight"
               },
               {
                 "name": "over",
@@ -481,6 +472,7 @@
         "children": [
           {
             "name": "total is",
+            "tier": "heavyweight",
             "children": [
               {
                 "name": "under",
@@ -498,10 +490,6 @@
                     "tier": "heavyweight"
                   }
                 ]
-              },
-              {
-                "name": "approximately",
-                "tier": "strawweight"
               },
               {
                 "name": "over",
@@ -533,6 +521,7 @@
         "children": [
           {
             "name": "total is",
+            "tier": "heavyweight",
             "children": [
               {
                 "name": "under",
@@ -550,10 +539,6 @@
                     "tier": "heavyweight"
                   }
                 ]
-              },
-              {
-                "name": "approximately",
-                "tier": "strawweight"
               },
               {
                 "name": "over",

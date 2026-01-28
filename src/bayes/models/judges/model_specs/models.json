@@ -1,0 +1,191 @@
+{
+  "1": {
+    "model_id": 1,
+    "category": "winner",
+    "distribution": "bernoulli-logit",
+    "parameterization":  "centered",
+    "path": "/src/bayes/models/judges/stan/1.stan",
+    "K": [
+      "SSHL",
+      "SGHL",
+      "KDL",
+      "SMA",
+      "TDL"
+    ]
+  },
+  "2": {
+    "model_id": 2,
+    "category": "winner",
+    "distribution": "bernoulli-logit",
+    "parameterization":  "non-centered",
+    "path": "/src/bayes/models/judges/stan/2.stan",
+    "K": [
+      "SSHL",
+      "SGHL",
+      "KDL",
+      "SMA",
+      "TDL"
+    ]
+  },
+  "3": {
+    "model_id": 3,
+    "category": "winner",
+    "distribution": "bernoulli-logit",
+    "parameterization":  "centered",
+    "path": "/src/bayes/models/judges/stan/1.stan",
+    "K": [
+      "SSHL",
+      "SGHL",
+      "KDL",
+      "SMA",
+      "TDL",
+      "GC"
+    ]
+  },
+  "4": {
+    "model_id": 4,
+    "category": "winner",
+    "distribution": "bernoulli-logit",
+    "parameterization":  "non-centered",
+    "path": "/src/bayes/models/judges/stan/2.stan",
+    "K": [
+      "SSHL",
+      "SGHL",
+      "KDL",
+      "SMA",
+      "TDL",
+      "GC"
+    ]
+  },
+  "5": {
+    "model_id": 5,
+    "category": "score",
+    "distribution": "ordered-logit",
+    "parameterization": "non-centered",
+    "path": "/src/bayes/models/judges/stan/3.stan",
+    "K": [
+      "SAL",
+      "SMA",
+      "TDL"
+    ],
+    "y": {
+      "7-10": -3,
+      "8-10": -2,
+      "9-10": -1,
+      "10-9": 1,
+      "10-8": 2,
+      "10-7": 3
+    }
+  },
+  "6": {
+    "model_id": 6,
+    "category": "score",
+    "distribution": "ordered-logit",
+    "parameterization": "non-centered",
+    "path": "/src/bayes/models/judges/stan/3.stan",
+    "K": [
+      "SSHL",
+      "SGHL",
+      "KDL",
+      "SMA",
+      "TDL"
+    ],
+    "y": {
+      "7-10": -3,
+      "8-10": -2,
+      "9-10": -1,
+      "10-9": 1,
+      "10-8": 2,
+      "10-7": 3
+    }
+  },
+    "7": {
+    "model_id": 7,
+    "category": "score",
+    "distribution": "ordered-logit",
+    "parameterization": "non-centered",
+    "path": "/src/bayes/models/judges/stan/3.stan",
+    "K": [
+      "SSHL",
+      "SGHL",
+      "KDL",
+      "SMA",
+      "TDL",
+      "GC"
+    ],
+    "y": {
+      "7-10": -3,
+      "8-10": -2,
+      "9-10": -1,
+      "10-9": 1,
+      "10-8": 2,
+      "10-7": 3
+    }
+  },
+  "8": {
+    "model_id": 8,
+    "category": "score",
+    "distribution": "induced-dirichlet ordered-logit",
+    "parameterization": "non-centered",
+    "path": "/src/bayes/models/judges/stan/4.stan",
+    "K": [
+      "SAL",
+      "SMA",
+      "TDL"
+    ],
+    "y": {
+      "7-10": -3,
+      "8-10": -2,
+      "9-10": -1,
+      "10-9": 1,
+      "10-8": 2,
+      "10-7": 3
+    }
+  },
+  "9": {
+    "model_id": 9,
+    "category": "score",
+    "distribution": "induced-dirichlet ordered-logit",
+    "parameterization": "non-centered",
+    "path": "/src/bayes/models/judges/stan/4.stan",
+    "K": [
+      "SSHL",
+      "SGHL",
+      "KDL",
+      "SMA",
+      "TDL"
+    ],
+    "y": {
+      "7-10": -3,
+      "8-10": -2,
+      "9-10": -1,
+      "10-9": 1,
+      "10-8": 2,
+      "10-7": 3
+    }
+  },
+  "10": {
+    "model_id": 10,
+    "category": "score",
+    "distribution": "induced-dirichlet ordered_logit",
+    "parameterization": "non-centered",
+    "path": "/src/bayes/models/judges/stan/4.stan",
+    "K":
+    [
+      "SSHL",
+      "SGHL",
+      "KDL",
+      "SMA",
+      "TDL",
+      "GC"
+    ],
+    "y": {
+      "7-10": -3,
+      "8-10": -2,
+      "9-10": -1,
+      "10-9": 1,
+      "10-8": 2,
+      "10-7": 3
+    }
+  }
+}

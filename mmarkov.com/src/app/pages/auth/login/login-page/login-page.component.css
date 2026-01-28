@@ -1,0 +1,13 @@
+.auth-links {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.auth-links p {
+  margin: 6px 0;
+}
+
+.auth-links a {
+  font-weight: 600;
+}

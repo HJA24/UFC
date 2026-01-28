@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scorecards</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
+    <style>
+        @font-face {
+            font-family: "UFCSans";
+            src: url("../../fonts/UFCSans-Regular.woff2") format("woff2");
+        }
+
+        @font-face {
+            font-family: "UFCSans";
+            src: url("../../fonts/UFCSans-Bold.woff2") format("woff2");
+            font-weight: bold;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        .chart-container {
+            display: grid;
+            grid-template-columns: auto 8px 50px; /* joint + gap + right-marginal width */
+            grid-template-rows: 50px 8px auto; /* top-marginal height + gap + joint */
+            gap: 1px;
+            justify-content: start;
+            align-items: start;
+            width: fit-content;
+            margin: auto;
+            position: relative;
+        }
+
+        rect.invisible {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        rect.infeasible {
+          fill: #f9f9f9;      /* light gray */
+          stroke: #e5e5e5;    /* subtle border */
+        }
+
+        rect.zero {
+          fill: #ffffff;      /* pure white for zero-prob feasible cells */
+          stroke: #f0f0f0;
+        }
+
+        .x-axis text, .y-axis text,
+        .secondary-y-axis text, .secondary-x-axis text {
+            font-size: 17px;
+            font-family: "UFCSans", sans-serif;
+        }
+
+        .axis-label {
+            font-size: 20px;
+            font-family: "UFCSans", sans-serif;
+            font-weight: bold;
+        }
+
+        .x-axis .tick text.highlight-tick,
+        .y-axis .tick text.highlight-tick {
+            font-style: italic;
+        }
+
+        .x-axis line, .y-axis line,
+        .x-axis path, .y-axis path,
+        .secondary-y-axis path, .secondary-y-axis line,
+        .secondary-x-axis path, .secondary-x-axis line {
+            display: none;
+        }
+
+        #top-marginal {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+
+        #top-legend {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+            z-index: 1;
+        }
+
+        #joint-plot {
+            grid-column: 1 / 2;
+            grid-row: 3 / 4;
+            pointer-events: auto;
+        }
+
+        #right-legend {
+            grid-column: 2 / 3;
+            grid-row: 3 / 4;
+            z-index: 1;
+        }
+
+        #right-marginal {
+            grid-column: 3 / 4;
+            grid-row: 3 / 4;
+        }
+
+        svg {
+            overflow: visible;
+            pointer-events: none;
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        #top-marginal, #right-marginal {
+            pointer-events: auto;
+            touch-action: none;
+        }
+
+        .x-axis text,
+        .y-axis text,
+        .secondary-x-axis text,
+        .secondary-y-axis text {
+            user-select: none; /* Standard */
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none; /* Firefox */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="chart-container">
+    <svg id="top-marginal"></svg>
+    <svg id="top-legend"></svg>
+    <svg id="joint-plot"></svg>
+    <svg id="right-legend"></svg>
+    <svg id="right-marginal"></svg>
+</div>
+</div>
+<script type="module" src="src/chart.js"></script>
+</body>
+</html>

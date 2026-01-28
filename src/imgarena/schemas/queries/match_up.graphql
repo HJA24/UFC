@@ -1,0 +1,60 @@
+
+  query MatchupGetFighters($input: FightInput!) {
+    getUfcFight(input: $input) {
+      id
+      redTeam {
+        ...matchupGetFightersFieldsFighter
+      }
+      blueTeam {
+        ...matchupGetFightersFieldsFighter
+      }
+      status
+      result {
+        winner
+        method
+        methodDetails {
+          endingRound
+          endingTime
+        }
+        officialResult
+      }
+      weightClass {
+        id
+        description
+        abbreviation
+      }
+    }
+  }
+
+  fragment matchupGetFightersFieldsFighter on UfcTeam {
+    fighter {
+      id
+      rankings {
+        weightClass {
+          id
+        }
+        rank
+      }
+      country
+      record {
+        wins
+        losses
+        draws
+      }
+      winsByMethod {
+        kotkoWins
+        submissionWins
+        decisionWins
+        otherWins
+      }
+      recentForm
+      takedownsDefense
+      takedownAccuracy
+      submissionsAverage
+      sigStrikesPerMin
+      sigStrikesDefense
+      takedownAvg
+      sigStrikesAccuracy
+      sigStrikesAbsorbed
+    }
+  }

@@ -1,0 +1,18 @@
+.verify-account-container {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.verify-account-container h2 {
+  margin-bottom: 0;
+}
+
+.verify-account-container p {
+  margin: 0;
+}

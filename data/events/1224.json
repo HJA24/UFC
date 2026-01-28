@@ -1,0 +1,5004 @@
+{
+  "EventId": 1224,
+  "Name": "UFC Fight Night: Moreno vs. Albazi",
+  "StartTime": "2024-11-02T21:00Z",
+  "TimeZone": "GMT-06:00",
+  "Status": "Final",
+  "LiveEventId": null,
+  "LiveFightId": null,
+  "LiveRoundNumber": null,
+  "LiveRoundElapsedTime": null,
+  "Organization": {
+    "OrganizationId": 1,
+    "Name": "Ultimate Fighting Championship"
+  },
+  "Location": {
+    "City": "Edmonton",
+    "State": "Alberta",
+    "Country": "Canada",
+    "TriCode": "CAN",
+    "VenueId": 288,
+    "Venue": "Rogers Place"
+  },
+  "FightCard": [
+    {
+      "FightId": 11653,
+      "FightOrder": 1,
+      "Status": "Final",
+      "CardSegment": "Main",
+      "CardSegmentStartTime": "2024-11-03T00:00Z",
+      "CardSegmentBroadcaster": "ESPN+",
+      "Fighters": [
+        {
+          "FighterId": 2825,
+          "MMAId": 127073,
+          "Name": {
+            "FirstName": "Brandon",
+            "LastName": "Moreno",
+            "NickName": "The Assassin Baby"
+          },
+          "Born": {
+            "City": "Tijuana",
+            "State": "Baja California",
+            "Country": "Mexico",
+            "TriCode": "MEX"
+          },
+          "FightingOutOf": {
+            "City": "Tijuana",
+            "State": "Baja California",
+            "Country": "Mexico",
+            "TriCode": "MEX"
+          },
+          "Record": {
+            "Wins": 22,
+            "Losses": 8,
+            "Draws": 2,
+            "NoContests": 0
+          },
+          "DOB": "1993-12-07",
+          "Age": 30,
+          "Stance": "Orthodox",
+          "Weight": 125.0,
+          "Height": 67.0,
+          "Reach": 70.0,
+          "UFCLink": "http://www.ufc.com/athlete/Brandon-Moreno",
+          "WeightClasses": [
+            {
+              "WeightClassId": 8,
+              "WeightClassOrder": 1,
+              "Description": "Flyweight",
+              "Abbreviation": "FLW"
+            }
+          ],
+          "Corner": "Red",
+          "WeighIn": 125.5,
+          "Outcome": {
+            "OutcomeId": 1,
+            "Outcome": "Win"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        },
+        {
+          "FighterId": 3478,
+          "MMAId": 156632,
+          "Name": {
+            "FirstName": "Amir",
+            "LastName": "Albazi",
+            "NickName": "The Prince"
+          },
+          "Born": {
+            "City": "Baghdad",
+            "State": "Baghdad",
+            "Country": "Iraq",
+            "TriCode": "IRQ"
+          },
+          "FightingOutOf": {
+            "City": "Baghdad",
+            "State": "Baghdad",
+            "Country": "Iraq",
+            "TriCode": "IRQ"
+          },
+          "Record": {
+            "Wins": 17,
+            "Losses": 2,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1993-10-27",
+          "Age": 31,
+          "Stance": "Orthodox",
+          "Weight": 125.0,
+          "Height": 65.0,
+          "Reach": 68.0,
+          "UFCLink": "http://www.ufc.com/athlete/Amir-Albazi",
+          "WeightClasses": [
+            {
+              "WeightClassId": 8,
+              "WeightClassOrder": 1,
+              "Description": "Flyweight",
+              "Abbreviation": "FLW"
+            }
+          ],
+          "Corner": "Blue",
+          "WeighIn": 125.5,
+          "Outcome": {
+            "OutcomeId": 2,
+            "Outcome": "Loss"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        }
+      ],
+      "Result": {
+        "Method": "Decision - Unanimous",
+        "EndingRound": 5,
+        "EndingTime": "5:00",
+        "EndingStrike": null,
+        "EndingTarget": null,
+        "EndingPosition": null,
+        "EndingSubmission": null,
+        "EndingNotes": null,
+        "FightOfTheNight": false,
+        "FightScores": [
+          {
+            "JudgeId": 32,
+            "JudgeFirstName": "Eric",
+            "JudgeLastName": "Colon",
+            "Fighters": [
+              {
+                "FighterId": 2825,
+                "Score": 49
+              },
+              {
+                "FighterId": 3478,
+                "Score": 46
+              }
+            ]
+          },
+          {
+            "JudgeId": 14,
+            "JudgeFirstName": "Sal",
+            "JudgeLastName": "D'amato",
+            "Fighters": [
+              {
+                "FighterId": 2825,
+                "Score": 50
+              },
+              {
+                "FighterId": 3478,
+                "Score": 45
+              }
+            ]
+          },
+          {
+            "JudgeId": 200,
+            "JudgeFirstName": "Derek",
+            "JudgeLastName": "Cleary",
+            "Fighters": [
+              {
+                "FighterId": 2825,
+                "Score": 50
+              },
+              {
+                "FighterId": 3478,
+                "Score": 45
+              }
+            ]
+          }
+        ]
+      },
+      "WeightClass": {
+        "WeightClassId": 8,
+        "CatchWeight": null,
+        "Weight": "116-125",
+        "Description": "Flyweight",
+        "Abbreviation": "FLW"
+      },
+      "Accolades": [],
+      "Referee": {
+        "RefereeId": 31,
+        "FirstName": "Marc",
+        "LastName": "Goddard"
+      },
+      "RuleSet": {
+        "PossibleRounds": 5,
+        "Description": "5 Rnd (5-5-5-5-5)"
+      },
+      "FightNightTracking": [
+        {
+          "ActionId": 82803,
+          "FighterId": null,
+          "Type": "fight_open",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:52:44Z"
+        },
+        {
+          "ActionId": 82805,
+          "FighterId": 3478,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:56:10Z"
+        },
+        {
+          "ActionId": 82806,
+          "FighterId": 2825,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:59:23Z"
+        },
+        {
+          "ActionId": 82809,
+          "FighterId": null,
+          "Type": "tale_of_the_tape",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T03:02:48Z"
+        },
+        {
+          "ActionId": 82810,
+          "FighterId": null,
+          "Type": "staredown",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T03:05:54Z"
+        },
+        {
+          "ActionId": 82811,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 1,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T03:06:24Z"
+        },
+        {
+          "ActionId": 82812,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 1,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T03:11:25Z"
+        },
+        {
+          "ActionId": 82813,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 2,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T03:12:36Z"
+        },
+        {
+          "ActionId": 82814,
+          "FighterId": 3478,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "3:02",
+          "Timestamp": "2024-11-03T03:14:34Z"
+        },
+        {
+          "ActionId": 82815,
+          "FighterId": 3478,
+          "Type": "takedown",
+          "RoundNumber": 2,
+          "RoundTime": "3:00",
+          "Timestamp": "2024-11-03T03:14:36Z"
+        },
+        {
+          "ActionId": 82816,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 2,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T03:17:36Z"
+        },
+        {
+          "ActionId": 82817,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 3,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T03:18:44Z"
+        },
+        {
+          "ActionId": 82818,
+          "FighterId": 3478,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "0:19",
+          "Timestamp": "2024-11-03T03:23:25Z"
+        },
+        {
+          "ActionId": 82819,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 3,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T03:23:45Z"
+        },
+        {
+          "ActionId": 82820,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 4,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T03:24:53Z"
+        },
+        {
+          "ActionId": 82821,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 4,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T03:29:53Z"
+        },
+        {
+          "ActionId": 82822,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 5,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T03:31:05Z"
+        },
+        {
+          "ActionId": 82823,
+          "FighterId": 3478,
+          "Type": "takedown_attempt",
+          "RoundNumber": 5,
+          "RoundTime": "4:11",
+          "Timestamp": "2024-11-03T03:31:54Z"
+        },
+        {
+          "ActionId": 82824,
+          "FighterId": null,
+          "Type": "round_pause",
+          "RoundNumber": 5,
+          "RoundTime": "4:03",
+          "Timestamp": "2024-11-03T03:32:02Z"
+        },
+        {
+          "ActionId": 82825,
+          "FighterId": 3478,
+          "Type": "pause_reason_eye_poke",
+          "RoundNumber": 5,
+          "RoundTime": "4:03",
+          "Timestamp": "2024-11-03T03:32:02Z"
+        },
+        {
+          "ActionId": 82826,
+          "FighterId": null,
+          "Type": "round_unpause",
+          "RoundNumber": 5,
+          "RoundTime": "4:03",
+          "Timestamp": "2024-11-03T03:32:30Z"
+        },
+        {
+          "ActionId": 82827,
+          "FighterId": 3478,
+          "Type": "takedown_attempt",
+          "RoundNumber": 5,
+          "RoundTime": "3:36",
+          "Timestamp": "2024-11-03T03:33:09Z"
+        },
+        {
+          "ActionId": 82828,
+          "FighterId": 2825,
+          "Type": "takedown_attempt",
+          "RoundNumber": 5,
+          "RoundTime": "3:31",
+          "Timestamp": "2024-11-03T03:33:15Z"
+        },
+        {
+          "ActionId": 82829,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 5,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T03:36:45Z"
+        },
+        {
+          "ActionId": 82830,
+          "FighterId": null,
+          "Type": "fight_over",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T03:36:45Z"
+        },
+        {
+          "ActionId": 82831,
+          "FighterId": null,
+          "Type": "results",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T03:38:29Z"
+        },
+        {
+          "ActionId": 82832,
+          "FighterId": 2825,
+          "Type": "unofficial_winner_decision",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T03:38:46Z"
+        },
+        {
+          "ActionId": 82833,
+          "FighterId": null,
+          "Type": "fight_complete",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T03:42:48Z"
+        }
+      ]
+    },
+    {
+      "FightId": 11601,
+      "FightOrder": 2,
+      "Status": "Final",
+      "CardSegment": "Main",
+      "CardSegmentStartTime": "2024-11-03T00:00Z",
+      "CardSegmentBroadcaster": "ESPN+",
+      "Fighters": [
+        {
+          "FighterId": 3647,
+          "MMAId": 154218,
+          "Name": {
+            "FirstName": "Erin",
+            "LastName": "Blanchfield",
+            "NickName": "Cold Blooded"
+          },
+          "Born": {
+            "City": "New York City",
+            "State": "New York",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "FightingOutOf": {
+            "City": "Elmwood Park",
+            "State": "New Jersey",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "Record": {
+            "Wins": 13,
+            "Losses": 2,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1999-05-04",
+          "Age": 25,
+          "Stance": "Orthodox",
+          "Weight": 125.0,
+          "Height": 64.0,
+          "Reach": 66.0,
+          "UFCLink": "http://www.ufc.com/athlete/Erin-Blanchfield",
+          "WeightClasses": [
+            {
+              "WeightClassId": 35,
+              "WeightClassOrder": 1,
+              "Description": "Women's Flyweight",
+              "Abbreviation": "WFLW"
+            }
+          ],
+          "Corner": "Red",
+          "WeighIn": 125.5,
+          "Outcome": {
+            "OutcomeId": 1,
+            "Outcome": "Win"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        },
+        {
+          "FighterId": 2344,
+          "MMAId": 131303,
+          "Name": {
+            "FirstName": "Rose",
+            "LastName": "Namajunas",
+            "NickName": "Thug"
+          },
+          "Born": {
+            "City": "Milwaukee",
+            "State": "Wisconsin",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "FightingOutOf": {
+            "City": "Denver",
+            "State": "Colorado",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "Record": {
+            "Wins": 14,
+            "Losses": 7,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1992-06-29",
+          "Age": 32,
+          "Stance": "Orthodox",
+          "Weight": 125.0,
+          "Height": 65.0,
+          "Reach": 65.0,
+          "UFCLink": "http://www.ufc.com/athlete/Rose-Namajunas",
+          "WeightClasses": [
+            {
+              "WeightClassId": 35,
+              "WeightClassOrder": 1,
+              "Description": "Women's Flyweight",
+              "Abbreviation": "WFLW"
+            },
+            {
+              "WeightClassId": 32,
+              "WeightClassOrder": 2,
+              "Description": "Women's Strawweight",
+              "Abbreviation": "WSW"
+            }
+          ],
+          "Corner": "Blue",
+          "WeighIn": 125.0,
+          "Outcome": {
+            "OutcomeId": 2,
+            "Outcome": "Loss"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        }
+      ],
+      "Result": {
+        "Method": "Decision - Unanimous",
+        "EndingRound": 5,
+        "EndingTime": "5:00",
+        "EndingStrike": null,
+        "EndingTarget": null,
+        "EndingPosition": null,
+        "EndingSubmission": null,
+        "EndingNotes": null,
+        "FightOfTheNight": false,
+        "FightScores": [
+          {
+            "JudgeId": 70,
+            "JudgeFirstName": "Junichiro",
+            "JudgeLastName": "Kamijo",
+            "Fighters": [
+              {
+                "FighterId": 3647,
+                "Score": 48
+              },
+              {
+                "FighterId": 2344,
+                "Score": 47
+              }
+            ]
+          },
+          {
+            "JudgeId": 228,
+            "JudgeFirstName": "Mike",
+            "JudgeLastName": "Bell",
+            "Fighters": [
+              {
+                "FighterId": 3647,
+                "Score": 48
+              },
+              {
+                "FighterId": 2344,
+                "Score": 47
+              }
+            ]
+          },
+          {
+            "JudgeId": 200,
+            "JudgeFirstName": "Derek",
+            "JudgeLastName": "Cleary",
+            "Fighters": [
+              {
+                "FighterId": 3647,
+                "Score": 48
+              },
+              {
+                "FighterId": 2344,
+                "Score": 47
+              }
+            ]
+          }
+        ]
+      },
+      "WeightClass": {
+        "WeightClassId": 35,
+        "CatchWeight": null,
+        "Weight": "116-125",
+        "Description": "Women's Flyweight",
+        "Abbreviation": "WFLW"
+      },
+      "Accolades": [],
+      "Referee": {
+        "RefereeId": 158,
+        "FirstName": "Blake",
+        "LastName": "Grice"
+      },
+      "RuleSet": {
+        "PossibleRounds": 5,
+        "Description": "5 Rnd (5-5-5-5-5)"
+      },
+      "FightNightTracking": [
+        {
+          "ActionId": 82768,
+          "FighterId": null,
+          "Type": "fight_open",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:08:37Z"
+        },
+        {
+          "ActionId": 82770,
+          "FighterId": 2344,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:12:04Z"
+        },
+        {
+          "ActionId": 82771,
+          "FighterId": 3647,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:14:08Z"
+        },
+        {
+          "ActionId": 82772,
+          "FighterId": null,
+          "Type": "tale_of_the_tape",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:16:26Z"
+        },
+        {
+          "ActionId": 82773,
+          "FighterId": null,
+          "Type": "staredown",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:18:26Z"
+        },
+        {
+          "ActionId": 82774,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 1,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T02:18:47Z"
+        },
+        {
+          "ActionId": 82775,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 1,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T02:23:47Z"
+        },
+        {
+          "ActionId": 82776,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 2,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T02:25:01Z"
+        },
+        {
+          "ActionId": 82777,
+          "FighterId": 3647,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "3:31",
+          "Timestamp": "2024-11-03T02:26:30Z"
+        },
+        {
+          "ActionId": 82778,
+          "FighterId": 2344,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "3:03",
+          "Timestamp": "2024-11-03T02:26:58Z"
+        },
+        {
+          "ActionId": 82779,
+          "FighterId": 2344,
+          "Type": "takedown",
+          "RoundNumber": 2,
+          "RoundTime": "3:03",
+          "Timestamp": "2024-11-03T02:26:58Z"
+        },
+        {
+          "ActionId": 82780,
+          "FighterId": 3647,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "0:11",
+          "Timestamp": "2024-11-03T02:29:50Z"
+        },
+        {
+          "ActionId": 82781,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 2,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T02:30:02Z"
+        },
+        {
+          "ActionId": 82782,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 3,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T02:31:14Z"
+        },
+        {
+          "ActionId": 82783,
+          "FighterId": 2344,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "3:45",
+          "Timestamp": "2024-11-03T02:32:29Z"
+        },
+        {
+          "ActionId": 82784,
+          "FighterId": 3647,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "3:39",
+          "Timestamp": "2024-11-03T02:32:35Z"
+        },
+        {
+          "ActionId": 82785,
+          "FighterId": 3647,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "3:16",
+          "Timestamp": "2024-11-03T02:32:58Z"
+        },
+        {
+          "ActionId": 82786,
+          "FighterId": 3647,
+          "Type": "takedown",
+          "RoundNumber": 3,
+          "RoundTime": "3:13",
+          "Timestamp": "2024-11-03T02:33:01Z"
+        },
+        {
+          "ActionId": 82787,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 3,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T02:36:15Z"
+        },
+        {
+          "ActionId": 82788,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 4,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T02:37:24Z"
+        },
+        {
+          "ActionId": 82789,
+          "FighterId": 3647,
+          "Type": "takedown_attempt",
+          "RoundNumber": 4,
+          "RoundTime": "0:39",
+          "Timestamp": "2024-11-03T02:41:45Z"
+        },
+        {
+          "ActionId": 82790,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 4,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T02:42:25Z"
+        },
+        {
+          "ActionId": 82791,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 5,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T02:43:35Z"
+        },
+        {
+          "ActionId": 82792,
+          "FighterId": 2344,
+          "Type": "takedown_attempt",
+          "RoundNumber": 5,
+          "RoundTime": "4:46",
+          "Timestamp": "2024-11-03T02:43:49Z"
+        },
+        {
+          "ActionId": 82793,
+          "FighterId": 3647,
+          "Type": "takedown_attempt",
+          "RoundNumber": 5,
+          "RoundTime": "4:13",
+          "Timestamp": "2024-11-03T02:44:22Z"
+        },
+        {
+          "ActionId": 82794,
+          "FighterId": 3647,
+          "Type": "takedown_attempt",
+          "RoundNumber": 5,
+          "RoundTime": "4:08",
+          "Timestamp": "2024-11-03T02:44:27Z"
+        },
+        {
+          "ActionId": 82795,
+          "FighterId": 3647,
+          "Type": "takedown",
+          "RoundNumber": 5,
+          "RoundTime": "4:07",
+          "Timestamp": "2024-11-03T02:44:28Z"
+        },
+        {
+          "ActionId": 82796,
+          "FighterId": 2344,
+          "Type": "takedown_attempt",
+          "RoundNumber": 5,
+          "RoundTime": "0:25",
+          "Timestamp": "2024-11-03T02:48:10Z"
+        },
+        {
+          "ActionId": 82808,
+          "FighterId": 3647,
+          "Type": "takedown_attempt",
+          "RoundNumber": 5,
+          "RoundTime": "0:08",
+          "Timestamp": "2024-11-03T02:48:27Z"
+        },
+        {
+          "ActionId": 82798,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 5,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T02:48:37Z"
+        },
+        {
+          "ActionId": 82799,
+          "FighterId": null,
+          "Type": "fight_over",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:48:37Z"
+        },
+        {
+          "ActionId": 82800,
+          "FighterId": null,
+          "Type": "results",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:50:18Z"
+        },
+        {
+          "ActionId": 82801,
+          "FighterId": 3647,
+          "Type": "unofficial_winner_decision",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:50:34Z"
+        },
+        {
+          "ActionId": 82802,
+          "FighterId": null,
+          "Type": "fight_complete",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:52:13Z"
+        }
+      ]
+    },
+    {
+      "FightId": 11643,
+      "FightOrder": 3,
+      "Status": "Final",
+      "CardSegment": "Main",
+      "CardSegmentStartTime": "2024-11-03T00:00Z",
+      "CardSegmentBroadcaster": "ESPN+",
+      "Fighters": [
+        {
+          "FighterId": 3834,
+          "MMAId": 151716,
+          "Name": {
+            "FirstName": "Caio",
+            "LastName": "Machado",
+            "NickName": "Bigfoot"
+          },
+          "Born": {
+            "City": "Presidente Prudente",
+            "State": "Sao Paulo",
+            "Country": "Brazil",
+            "TriCode": "BRA"
+          },
+          "FightingOutOf": {
+            "City": "Presidente Prudente",
+            "State": "Sao Paulo",
+            "Country": "Brazil",
+            "TriCode": "BRA"
+          },
+          "Record": {
+            "Wins": 8,
+            "Losses": 4,
+            "Draws": 1,
+            "NoContests": 0
+          },
+          "DOB": "1994-07-20",
+          "Age": 30,
+          "Stance": "Southpaw",
+          "Weight": 250.0,
+          "Height": 76.0,
+          "Reach": 78.0,
+          "UFCLink": "http://www.ufc.com/athlete/Caio-Machado",
+          "WeightClasses": [
+            {
+              "WeightClassId": 2,
+              "WeightClassOrder": 1,
+              "Description": "Light Heavyweight",
+              "Abbreviation": "LHW"
+            },
+            {
+              "WeightClassId": 1,
+              "WeightClassOrder": 2,
+              "Description": "Heavyweight",
+              "Abbreviation": "HW"
+            }
+          ],
+          "Corner": "Red",
+          "WeighIn": 205.0,
+          "Outcome": {
+            "OutcomeId": 2,
+            "Outcome": "Loss"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        },
+        {
+          "FighterId": 4033,
+          "MMAId": 174,
+          "Name": {
+            "FirstName": "Brendson",
+            "LastName": "Ribeiro",
+            "NickName": "The Gorilla"
+          },
+          "Born": {
+            "City": "Belem",
+            "State": "Para",
+            "Country": "Brazil",
+            "TriCode": "BRA"
+          },
+          "FightingOutOf": {
+            "City": "Curitiba",
+            "State": "Parana",
+            "Country": "Brazil",
+            "TriCode": "BRA"
+          },
+          "Record": {
+            "Wins": 16,
+            "Losses": 7,
+            "Draws": 0,
+            "NoContests": 1
+          },
+          "DOB": "1996-09-08",
+          "Age": 28,
+          "Stance": "Orthodox",
+          "Weight": 205.0,
+          "Height": 75.0,
+          "Reach": 81.0,
+          "UFCLink": "http://www.ufc.com/athlete/Brendson-Ribeiro",
+          "WeightClasses": [
+            {
+              "WeightClassId": 2,
+              "WeightClassOrder": 1,
+              "Description": "Light Heavyweight",
+              "Abbreviation": "LHW"
+            }
+          ],
+          "Corner": "Blue",
+          "WeighIn": 205.0,
+          "Outcome": {
+            "OutcomeId": 1,
+            "Outcome": "Win"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        }
+      ],
+      "Result": {
+        "Method": "Decision - Split",
+        "EndingRound": 3,
+        "EndingTime": "5:00",
+        "EndingStrike": null,
+        "EndingTarget": null,
+        "EndingPosition": null,
+        "EndingSubmission": null,
+        "EndingNotes": null,
+        "FightOfTheNight": false,
+        "FightScores": [
+          {
+            "JudgeId": 14,
+            "JudgeFirstName": "Sal",
+            "JudgeLastName": "D'amato",
+            "Fighters": [
+              {
+                "FighterId": 3834,
+                "Score": 28
+              },
+              {
+                "FighterId": 4033,
+                "Score": 29
+              }
+            ]
+          },
+          {
+            "JudgeId": 389,
+            "JudgeFirstName": "Thomas",
+            "JudgeLastName": "Collins",
+            "Fighters": [
+              {
+                "FighterId": 3834,
+                "Score": 29
+              },
+              {
+                "FighterId": 4033,
+                "Score": 28
+              }
+            ]
+          },
+          {
+            "JudgeId": 228,
+            "JudgeFirstName": "Mike",
+            "JudgeLastName": "Bell",
+            "Fighters": [
+              {
+                "FighterId": 3834,
+                "Score": 28
+              },
+              {
+                "FighterId": 4033,
+                "Score": 29
+              }
+            ]
+          }
+        ]
+      },
+      "WeightClass": {
+        "WeightClassId": 2,
+        "CatchWeight": null,
+        "Weight": "186-205",
+        "Description": "Light Heavyweight",
+        "Abbreviation": "LHW"
+      },
+      "Accolades": [],
+      "Referee": {
+        "RefereeId": 105,
+        "FirstName": "Jerin",
+        "LastName": "Valel"
+      },
+      "RuleSet": {
+        "PossibleRounds": 3,
+        "Description": "3 Rnd (5-5-5)"
+      },
+      "FightNightTracking": [
+        {
+          "ActionId": 82749,
+          "FighterId": null,
+          "Type": "fight_open",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T01:40:11Z"
+        },
+        {
+          "ActionId": 82751,
+          "FighterId": 4033,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T01:41:17Z"
+        },
+        {
+          "ActionId": 82752,
+          "FighterId": 3834,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T01:43:21Z"
+        },
+        {
+          "ActionId": 82753,
+          "FighterId": null,
+          "Type": "tale_of_the_tape",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T01:45:38Z"
+        },
+        {
+          "ActionId": 82754,
+          "FighterId": null,
+          "Type": "staredown",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T01:47:08Z"
+        },
+        {
+          "ActionId": 82755,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 1,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T01:47:26Z"
+        },
+        {
+          "ActionId": 82756,
+          "FighterId": null,
+          "Type": "round_pause",
+          "RoundNumber": 1,
+          "RoundTime": "0:44",
+          "Timestamp": "2024-11-03T01:51:42Z"
+        },
+        {
+          "ActionId": 82757,
+          "FighterId": 4033,
+          "Type": "pause_reason_low_blow",
+          "RoundNumber": 1,
+          "RoundTime": "0:44",
+          "Timestamp": "2024-11-03T01:51:42Z"
+        },
+        {
+          "ActionId": 82758,
+          "FighterId": null,
+          "Type": "round_unpause",
+          "RoundNumber": 1,
+          "RoundTime": "0:44",
+          "Timestamp": "2024-11-03T01:52:14Z"
+        },
+        {
+          "ActionId": 82759,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 1,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T01:53:00Z"
+        },
+        {
+          "ActionId": 82760,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 2,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T01:54:12Z"
+        },
+        {
+          "ActionId": 82761,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 2,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T01:59:12Z"
+        },
+        {
+          "ActionId": 82762,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 3,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T02:00:24Z"
+        },
+        {
+          "ActionId": 82763,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 3,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T02:05:24Z"
+        },
+        {
+          "ActionId": 82764,
+          "FighterId": null,
+          "Type": "fight_over",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:05:24Z"
+        },
+        {
+          "ActionId": 82765,
+          "FighterId": null,
+          "Type": "results",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:07:18Z"
+        },
+        {
+          "ActionId": 82766,
+          "FighterId": 4033,
+          "Type": "unofficial_winner_decision",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:07:38Z"
+        },
+        {
+          "ActionId": 82767,
+          "FighterId": null,
+          "Type": "fight_complete",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T02:08:04Z"
+        }
+      ]
+    },
+    {
+      "FightId": 11605,
+      "FightOrder": 4,
+      "Status": "Final",
+      "CardSegment": "Main",
+      "CardSegmentStartTime": "2024-11-03T00:00Z",
+      "CardSegmentBroadcaster": "ESPN+",
+      "Fighters": [
+        {
+          "FighterId": 3209,
+          "MMAId": 158814,
+          "Name": {
+            "FirstName": "Ariane",
+            "LastName": "da Silva",
+            "NickName": "Queen of Violence"
+          },
+          "Born": {
+            "City": "Curitiba",
+            "State": "Parana",
+            "Country": "Brazil",
+            "TriCode": "BRA"
+          },
+          "FightingOutOf": {
+            "City": "Curitiba",
+            "State": "Parana",
+            "Country": "Brazil",
+            "TriCode": "BRA"
+          },
+          "Record": {
+            "Wins": 17,
+            "Losses": 10,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1994-01-26",
+          "Age": 30,
+          "Stance": "Orthodox",
+          "Weight": 125.0,
+          "Height": 66.0,
+          "Reach": 67.0,
+          "UFCLink": "http://www.ufc.com/athlete/Ariane-da-Silva",
+          "WeightClasses": [
+            {
+              "WeightClassId": 35,
+              "WeightClassOrder": 1,
+              "Description": "Women's Flyweight",
+              "Abbreviation": "WFLW"
+            }
+          ],
+          "Corner": "Red",
+          "WeighIn": 125.0,
+          "Outcome": {
+            "OutcomeId": 2,
+            "Outcome": "Loss"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        },
+        {
+          "FighterId": 3663,
+          "MMAId": 154444,
+          "Name": {
+            "FirstName": "Jasmine",
+            "LastName": "Jasudavicius",
+            "NickName": null
+          },
+          "Born": {
+            "City": "St. Catharines",
+            "State": "Ontario",
+            "Country": "Canada",
+            "TriCode": "CAN"
+          },
+          "FightingOutOf": {
+            "City": "Niagara Falls",
+            "State": "Ontario",
+            "Country": "Canada",
+            "TriCode": "CAN"
+          },
+          "Record": {
+            "Wins": 12,
+            "Losses": 3,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1989-03-01",
+          "Age": 35,
+          "Stance": "Orthodox",
+          "Weight": 125.0,
+          "Height": 67.0,
+          "Reach": 68.0,
+          "UFCLink": "http://www.ufc.com/athlete/Jasmine-Jasudavicius",
+          "WeightClasses": [
+            {
+              "WeightClassId": 35,
+              "WeightClassOrder": 1,
+              "Description": "Women's Flyweight",
+              "Abbreviation": "WFLW"
+            }
+          ],
+          "Corner": "Blue",
+          "WeighIn": 125.0,
+          "Outcome": {
+            "OutcomeId": 1,
+            "Outcome": "Win"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": true
+        }
+      ],
+      "Result": {
+        "Method": "Submission",
+        "EndingRound": 3,
+        "EndingTime": "2:28",
+        "EndingStrike": null,
+        "EndingTarget": null,
+        "EndingPosition": "On Ground",
+        "EndingSubmission": "D'Arce Choke",
+        "EndingNotes": null,
+        "FightOfTheNight": false,
+        "FightScores": []
+      },
+      "WeightClass": {
+        "WeightClassId": 35,
+        "CatchWeight": null,
+        "Weight": "116-125",
+        "Description": "Women's Flyweight",
+        "Abbreviation": "WFLW"
+      },
+      "Accolades": [],
+      "Referee": {
+        "RefereeId": 299,
+        "FirstName": "Luke",
+        "LastName": "Boutin"
+      },
+      "RuleSet": {
+        "PossibleRounds": 3,
+        "Description": "3 Rnd (5-5-5)"
+      },
+      "FightNightTracking": [
+        {
+          "ActionId": 82724,
+          "FighterId": null,
+          "Type": "fight_open",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T01:07:41Z"
+        },
+        {
+          "ActionId": 82726,
+          "FighterId": 3663,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T01:08:44Z"
+        },
+        {
+          "ActionId": 82727,
+          "FighterId": 3209,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T01:11:06Z"
+        },
+        {
+          "ActionId": 82728,
+          "FighterId": null,
+          "Type": "tale_of_the_tape",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T01:12:56Z"
+        },
+        {
+          "ActionId": 82729,
+          "FighterId": null,
+          "Type": "staredown",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T01:14:19Z"
+        },
+        {
+          "ActionId": 82730,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 1,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T01:14:39Z"
+        },
+        {
+          "ActionId": 82731,
+          "FighterId": 3663,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "0:33",
+          "Timestamp": "2024-11-03T01:19:06Z"
+        },
+        {
+          "ActionId": 82732,
+          "FighterId": 3663,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "0:31",
+          "Timestamp": "2024-11-03T01:19:08Z"
+        },
+        {
+          "ActionId": 82733,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 1,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T01:19:40Z"
+        },
+        {
+          "ActionId": 82734,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 2,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T01:20:55Z"
+        },
+        {
+          "ActionId": 82735,
+          "FighterId": 3663,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "3:45",
+          "Timestamp": "2024-11-03T01:22:10Z"
+        },
+        {
+          "ActionId": 82736,
+          "FighterId": 3663,
+          "Type": "takedown",
+          "RoundNumber": 2,
+          "RoundTime": "3:43",
+          "Timestamp": "2024-11-03T01:22:12Z"
+        },
+        {
+          "ActionId": 82737,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 2,
+          "RoundTime": "0:01",
+          "Timestamp": "2024-11-03T01:25:54Z"
+        },
+        {
+          "ActionId": 82738,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 3,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T01:27:08Z"
+        },
+        {
+          "ActionId": 82739,
+          "FighterId": 3663,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "4:56",
+          "Timestamp": "2024-11-03T01:27:12Z"
+        },
+        {
+          "ActionId": 82740,
+          "FighterId": 3663,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "4:49",
+          "Timestamp": "2024-11-03T01:27:19Z"
+        },
+        {
+          "ActionId": 82741,
+          "FighterId": 3663,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "4:00",
+          "Timestamp": "2024-11-03T01:28:08Z"
+        },
+        {
+          "ActionId": 82742,
+          "FighterId": 3663,
+          "Type": "takedown",
+          "RoundNumber": 3,
+          "RoundTime": "3:59",
+          "Timestamp": "2024-11-03T01:28:09Z"
+        },
+        {
+          "ActionId": 82743,
+          "FighterId": 3663,
+          "Type": "submission_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "2:38",
+          "Timestamp": "2024-11-03T01:29:30Z"
+        },
+        {
+          "ActionId": 82744,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 3,
+          "RoundTime": "2:32",
+          "Timestamp": "2024-11-03T01:29:36Z"
+        },
+        {
+          "ActionId": 82745,
+          "FighterId": null,
+          "Type": "fight_over",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T01:29:36Z"
+        },
+        {
+          "ActionId": 82747,
+          "FighterId": 3663,
+          "Type": "unofficial_winner_submission",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T01:32:37Z"
+        },
+        {
+          "ActionId": 82746,
+          "FighterId": null,
+          "Type": "results",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T01:32:26Z"
+        },
+        {
+          "ActionId": 82748,
+          "FighterId": null,
+          "Type": "fight_complete",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T01:34:45Z"
+        }
+      ]
+    },
+    {
+      "FightId": 11604,
+      "FightOrder": 5,
+      "Status": "Final",
+      "CardSegment": "Main",
+      "CardSegmentStartTime": "2024-11-03T00:00Z",
+      "CardSegmentBroadcaster": "ESPN+",
+      "Fighters": [
+        {
+          "FighterId": 3233,
+          "MMAId": 158738,
+          "Name": {
+            "FirstName": "Marc-Andre",
+            "LastName": "Barriault",
+            "NickName": "Powerbar"
+          },
+          "Born": {
+            "City": "Gatineau",
+            "State": "Quebec",
+            "Country": "Canada",
+            "TriCode": "CAN"
+          },
+          "FightingOutOf": {
+            "City": "Gatineau",
+            "State": "Quebec",
+            "Country": "Canada",
+            "TriCode": "CAN"
+          },
+          "Record": {
+            "Wins": 16,
+            "Losses": 9,
+            "Draws": 0,
+            "NoContests": 1
+          },
+          "DOB": "1990-02-18",
+          "Age": 34,
+          "Stance": "Orthodox",
+          "Weight": 185.0,
+          "Height": 73.0,
+          "Reach": 74.0,
+          "UFCLink": "http://www.ufc.com/athlete/Marc-Andre-Barriault",
+          "WeightClasses": [
+            {
+              "WeightClassId": 3,
+              "WeightClassOrder": 1,
+              "Description": "Middleweight",
+              "Abbreviation": "MW"
+            }
+          ],
+          "Corner": "Red",
+          "WeighIn": 185.0,
+          "Outcome": {
+            "OutcomeId": 2,
+            "Outcome": "Loss"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        },
+        {
+          "FighterId": 3504,
+          "MMAId": 129896,
+          "Name": {
+            "FirstName": "Dustin",
+            "LastName": "Stoltzfus",
+            "NickName": null
+          },
+          "Born": {
+            "City": "Lancaster",
+            "State": "Pennsylvania",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "FightingOutOf": {
+            "City": "Germersheim",
+            "State": "Rhineland-Palatinate",
+            "Country": "Germany",
+            "TriCode": "GER"
+          },
+          "Record": {
+            "Wins": 16,
+            "Losses": 6,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1991-11-15",
+          "Age": 32,
+          "Stance": "Orthodox",
+          "Weight": 185.0,
+          "Height": 72.0,
+          "Reach": 75.0,
+          "UFCLink": "http://www.ufc.com/athlete/Dustin-Stoltzfus",
+          "WeightClasses": [
+            {
+              "WeightClassId": 3,
+              "WeightClassOrder": 1,
+              "Description": "Middleweight",
+              "Abbreviation": "MW"
+            }
+          ],
+          "Corner": "Blue",
+          "WeighIn": 185.5,
+          "Outcome": {
+            "OutcomeId": 1,
+            "Outcome": "Win"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": true
+        }
+      ],
+      "Result": {
+        "Method": "KO/TKO",
+        "EndingRound": 1,
+        "EndingTime": "4:28",
+        "EndingStrike": "Punch",
+        "EndingTarget": "Head",
+        "EndingPosition": "In Clinch",
+        "EndingSubmission": null,
+        "EndingNotes": null,
+        "FightOfTheNight": false,
+        "FightScores": []
+      },
+      "WeightClass": {
+        "WeightClassId": 3,
+        "CatchWeight": null,
+        "Weight": "171-185",
+        "Description": "Middleweight",
+        "Abbreviation": "MW"
+      },
+      "Accolades": [],
+      "Referee": {
+        "RefereeId": 31,
+        "FirstName": "Marc",
+        "LastName": "Goddard"
+      },
+      "RuleSet": {
+        "PossibleRounds": 3,
+        "Description": "3 Rnd (5-5-5)"
+      },
+      "FightNightTracking": [
+        {
+          "ActionId": 82709,
+          "FighterId": null,
+          "Type": "fight_open",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:42:36Z"
+        },
+        {
+          "ActionId": 82711,
+          "FighterId": 3504,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:43:38Z"
+        },
+        {
+          "ActionId": 82712,
+          "FighterId": 3233,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:45:18Z"
+        },
+        {
+          "ActionId": 82713,
+          "FighterId": null,
+          "Type": "tale_of_the_tape",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:47:06Z"
+        },
+        {
+          "ActionId": 82714,
+          "FighterId": null,
+          "Type": "staredown",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:48:35Z"
+        },
+        {
+          "ActionId": 82715,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 1,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T00:48:50Z"
+        },
+        {
+          "ActionId": 82716,
+          "FighterId": 3504,
+          "Type": "submission_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "1:09",
+          "Timestamp": "2024-11-03T00:52:41Z"
+        },
+        {
+          "ActionId": 82717,
+          "FighterId": 3504,
+          "Type": "knockdown",
+          "RoundNumber": 1,
+          "RoundTime": "0:31",
+          "Timestamp": "2024-11-03T00:53:19Z"
+        },
+        {
+          "ActionId": 82718,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 1,
+          "RoundTime": "0:28",
+          "Timestamp": "2024-11-03T00:53:22Z"
+        },
+        {
+          "ActionId": 82719,
+          "FighterId": null,
+          "Type": "fight_over",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:53:22Z"
+        },
+        {
+          "ActionId": 82720,
+          "FighterId": 3504,
+          "Type": "unofficial_winner_kotko",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:53:45Z"
+        },
+        {
+          "ActionId": 82721,
+          "FighterId": null,
+          "Type": "results",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:56:23Z"
+        },
+        {
+          "ActionId": 82722,
+          "FighterId": null,
+          "Type": "results",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:56:23Z"
+        },
+        {
+          "ActionId": 82723,
+          "FighterId": null,
+          "Type": "fight_complete",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:58:46Z"
+        }
+      ]
+    },
+    {
+      "FightId": 11650,
+      "FightOrder": 6,
+      "Status": "Final",
+      "CardSegment": "Main",
+      "CardSegmentStartTime": "2024-11-03T00:00Z",
+      "CardSegmentBroadcaster": "ESPN+",
+      "Fighters": [
+        {
+          "FighterId": 2642,
+          "MMAId": 164126,
+          "Name": {
+            "FirstName": "Mike",
+            "LastName": "Malott",
+            "NickName": "Proper"
+          },
+          "Born": {
+            "City": "Cleveland",
+            "State": "Ohio",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "FightingOutOf": {
+            "City": "Burlington",
+            "State": "Ontario",
+            "Country": "Canada",
+            "TriCode": "CAN"
+          },
+          "Record": {
+            "Wins": 11,
+            "Losses": 2,
+            "Draws": 1,
+            "NoContests": 0
+          },
+          "DOB": "1991-11-07",
+          "Age": 33,
+          "Stance": "Orthodox",
+          "Weight": 170.0,
+          "Height": 73.0,
+          "Reach": 73.0,
+          "UFCLink": "http://www.ufc.com/athlete/Mike-Malott",
+          "WeightClasses": [
+            {
+              "WeightClassId": 4,
+              "WeightClassOrder": 1,
+              "Description": "Welterweight",
+              "Abbreviation": "WW"
+            }
+          ],
+          "Corner": "Red",
+          "WeighIn": 170.5,
+          "Outcome": {
+            "OutcomeId": 1,
+            "Outcome": "Win"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        },
+        {
+          "FighterId": 2932,
+          "MMAId": 126012,
+          "Name": {
+            "FirstName": "Trevin",
+            "LastName": "Giles",
+            "NickName": null
+          },
+          "Born": {
+            "City": "San Antonio",
+            "State": "Texas",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "FightingOutOf": {
+            "City": "Houston",
+            "State": "Texas",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "Record": {
+            "Wins": 16,
+            "Losses": 7,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1992-08-06",
+          "Age": 32,
+          "Stance": "Orthodox",
+          "Weight": 170.0,
+          "Height": 72.0,
+          "Reach": 74.0,
+          "UFCLink": "http://www.ufc.com/athlete/Trevin-Giles",
+          "WeightClasses": [
+            {
+              "WeightClassId": 4,
+              "WeightClassOrder": 1,
+              "Description": "Welterweight",
+              "Abbreviation": "WW"
+            }
+          ],
+          "Corner": "Blue",
+          "WeighIn": 170.0,
+          "Outcome": {
+            "OutcomeId": 2,
+            "Outcome": "Loss"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        }
+      ],
+      "Result": {
+        "Method": "Decision - Unanimous",
+        "EndingRound": 3,
+        "EndingTime": "5:00",
+        "EndingStrike": null,
+        "EndingTarget": null,
+        "EndingPosition": null,
+        "EndingSubmission": null,
+        "EndingNotes": null,
+        "FightOfTheNight": false,
+        "FightScores": [
+          {
+            "JudgeId": 32,
+            "JudgeFirstName": "Eric",
+            "JudgeLastName": "Colon",
+            "Fighters": [
+              {
+                "FighterId": 2642,
+                "Score": 30
+              },
+              {
+                "FighterId": 2932,
+                "Score": 27
+              }
+            ]
+          },
+          {
+            "JudgeId": 389,
+            "JudgeFirstName": "Thomas",
+            "JudgeLastName": "Collins",
+            "Fighters": [
+              {
+                "FighterId": 2642,
+                "Score": 29
+              },
+              {
+                "FighterId": 2932,
+                "Score": 28
+              }
+            ]
+          },
+          {
+            "JudgeId": 228,
+            "JudgeFirstName": "Mike",
+            "JudgeLastName": "Bell",
+            "Fighters": [
+              {
+                "FighterId": 2642,
+                "Score": 29
+              },
+              {
+                "FighterId": 2932,
+                "Score": 28
+              }
+            ]
+          }
+        ]
+      },
+      "WeightClass": {
+        "WeightClassId": 4,
+        "CatchWeight": null,
+        "Weight": "156-170",
+        "Description": "Welterweight",
+        "Abbreviation": "WW"
+      },
+      "Accolades": [],
+      "Referee": {
+        "RefereeId": 239,
+        "FirstName": "Andy",
+        "LastName": "Social"
+      },
+      "RuleSet": {
+        "PossibleRounds": 3,
+        "Description": "3 Rnd (5-5-5)"
+      },
+      "FightNightTracking": [
+        {
+          "ActionId": 82692,
+          "FighterId": null,
+          "Type": "fight_open",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:10:38Z"
+        },
+        {
+          "ActionId": 82694,
+          "FighterId": 2932,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:12:01Z"
+        },
+        {
+          "ActionId": 82695,
+          "FighterId": 2642,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:13:50Z"
+        },
+        {
+          "ActionId": 82696,
+          "FighterId": null,
+          "Type": "tale_of_the_tape",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:15:49Z"
+        },
+        {
+          "ActionId": 82697,
+          "FighterId": null,
+          "Type": "staredown",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:17:38Z"
+        },
+        {
+          "ActionId": 82698,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 1,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T00:17:57Z"
+        },
+        {
+          "ActionId": 82699,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 1,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T00:23:03Z"
+        },
+        {
+          "ActionId": 82700,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 2,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T00:24:10Z"
+        },
+        {
+          "ActionId": 82701,
+          "FighterId": 2642,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "1:59",
+          "Timestamp": "2024-11-03T00:27:11Z"
+        },
+        {
+          "ActionId": 82702,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 2,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T00:29:10Z"
+        },
+        {
+          "ActionId": 82703,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 3,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-03T00:30:28Z"
+        },
+        {
+          "ActionId": 82704,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 3,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-03T00:35:30Z"
+        },
+        {
+          "ActionId": 82705,
+          "FighterId": null,
+          "Type": "fight_over",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:35:30Z"
+        },
+        {
+          "ActionId": 82706,
+          "FighterId": null,
+          "Type": "results",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:37:05Z"
+        },
+        {
+          "ActionId": 82707,
+          "FighterId": 2642,
+          "Type": "unofficial_winner_decision",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:37:23Z"
+        },
+        {
+          "ActionId": 82708,
+          "FighterId": null,
+          "Type": "fight_complete",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:39:27Z"
+        }
+      ]
+    },
+    {
+      "FightId": 11649,
+      "FightOrder": 7,
+      "Status": "Final",
+      "CardSegment": "Prelims1",
+      "CardSegmentStartTime": "2024-11-02T21:00Z",
+      "CardSegmentBroadcaster": "ESPN+",
+      "Fighters": [
+        {
+          "FighterId": 2852,
+          "MMAId": 147583,
+          "Name": {
+            "FirstName": "Aiemann",
+            "LastName": "Zahabi",
+            "NickName": null
+          },
+          "Born": {
+            "City": "Laval",
+            "State": "Quebec",
+            "Country": "Canada",
+            "TriCode": "CAN"
+          },
+          "FightingOutOf": {
+            "City": "Montreal",
+            "State": "Quebec",
+            "Country": "Canada",
+            "TriCode": "CAN"
+          },
+          "Record": {
+            "Wins": 12,
+            "Losses": 2,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1987-11-19",
+          "Age": 36,
+          "Stance": "Orthodox",
+          "Weight": 135.0,
+          "Height": 68.0,
+          "Reach": 68.5,
+          "UFCLink": "http://www.ufc.com/athlete/Aiemann-Zahabi",
+          "WeightClasses": [
+            {
+              "WeightClassId": 7,
+              "WeightClassOrder": 1,
+              "Description": "Bantamweight",
+              "Abbreviation": "BW"
+            }
+          ],
+          "Corner": "Red",
+          "WeighIn": 135.5,
+          "Outcome": {
+            "OutcomeId": 1,
+            "Outcome": "Win"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        },
+        {
+          "FighterId": 2191,
+          "MMAId": 119836,
+          "Name": {
+            "FirstName": "Pedro",
+            "LastName": "Munhoz",
+            "NickName": "The Young Punisher"
+          },
+          "Born": {
+            "City": "Sao Paulo",
+            "State": "Sao Paulo",
+            "Country": "Brazil",
+            "TriCode": "BRA"
+          },
+          "FightingOutOf": {
+            "City": "Coconut Creek",
+            "State": "Florida",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "Record": {
+            "Wins": 20,
+            "Losses": 10,
+            "Draws": 0,
+            "NoContests": 2
+          },
+          "DOB": "1986-09-07",
+          "Age": 38,
+          "Stance": "Orthodox",
+          "Weight": 135.0,
+          "Height": 66.0,
+          "Reach": 65.0,
+          "UFCLink": "http://www.ufc.com/athlete/Pedro-Munhoz",
+          "WeightClasses": [
+            {
+              "WeightClassId": 7,
+              "WeightClassOrder": 1,
+              "Description": "Bantamweight",
+              "Abbreviation": "BW"
+            }
+          ],
+          "Corner": "Blue",
+          "WeighIn": 135.0,
+          "Outcome": {
+            "OutcomeId": 2,
+            "Outcome": "Loss"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        }
+      ],
+      "Result": {
+        "Method": "Decision - Unanimous",
+        "EndingRound": 3,
+        "EndingTime": "5:00",
+        "EndingStrike": null,
+        "EndingTarget": null,
+        "EndingPosition": null,
+        "EndingSubmission": null,
+        "EndingNotes": null,
+        "FightOfTheNight": false,
+        "FightScores": [
+          {
+            "JudgeId": 14,
+            "JudgeFirstName": "Sal",
+            "JudgeLastName": "D'amato",
+            "Fighters": [
+              {
+                "FighterId": 2852,
+                "Score": 30
+              },
+              {
+                "FighterId": 2191,
+                "Score": 27
+              }
+            ]
+          },
+          {
+            "JudgeId": 32,
+            "JudgeFirstName": "Eric",
+            "JudgeLastName": "Colon",
+            "Fighters": [
+              {
+                "FighterId": 2852,
+                "Score": 29
+              },
+              {
+                "FighterId": 2191,
+                "Score": 28
+              }
+            ]
+          },
+          {
+            "JudgeId": 228,
+            "JudgeFirstName": "Mike",
+            "JudgeLastName": "Bell",
+            "Fighters": [
+              {
+                "FighterId": 2852,
+                "Score": 29
+              },
+              {
+                "FighterId": 2191,
+                "Score": 28
+              }
+            ]
+          }
+        ]
+      },
+      "WeightClass": {
+        "WeightClassId": 7,
+        "CatchWeight": null,
+        "Weight": "126-135",
+        "Description": "Bantamweight",
+        "Abbreviation": "BW"
+      },
+      "Accolades": [],
+      "Referee": {
+        "RefereeId": 105,
+        "FirstName": "Jerin",
+        "LastName": "Valel"
+      },
+      "RuleSet": {
+        "PossibleRounds": 3,
+        "Description": "3 Rnd (5-5-5)"
+      },
+      "FightNightTracking": [
+        {
+          "ActionId": 82669,
+          "FighterId": null,
+          "Type": "fight_open",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:35:07Z"
+        },
+        {
+          "ActionId": 82671,
+          "FighterId": 2191,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:36:08Z"
+        },
+        {
+          "ActionId": 82672,
+          "FighterId": 2852,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:38:11Z"
+        },
+        {
+          "ActionId": 82673,
+          "FighterId": null,
+          "Type": "tale_of_the_tape",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:39:37Z"
+        },
+        {
+          "ActionId": 82674,
+          "FighterId": null,
+          "Type": "staredown",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:41:05Z"
+        },
+        {
+          "ActionId": 82675,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 1,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T23:41:19Z"
+        },
+        {
+          "ActionId": 82676,
+          "FighterId": 2852,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "0:42",
+          "Timestamp": "2024-11-02T23:45:37Z"
+        },
+        {
+          "ActionId": 82677,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 1,
+          "RoundTime": "0:01",
+          "Timestamp": "2024-11-02T23:46:19Z"
+        },
+        {
+          "ActionId": 82678,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 2,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T23:47:28Z"
+        },
+        {
+          "ActionId": 82679,
+          "FighterId": 2191,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "2:13",
+          "Timestamp": "2024-11-02T23:50:15Z"
+        },
+        {
+          "ActionId": 82680,
+          "FighterId": 2191,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "1:28",
+          "Timestamp": "2024-11-02T23:51:01Z"
+        },
+        {
+          "ActionId": 82681,
+          "FighterId": 2191,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "0:19",
+          "Timestamp": "2024-11-02T23:52:09Z"
+        },
+        {
+          "ActionId": 82682,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 2,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T23:52:28Z"
+        },
+        {
+          "ActionId": 82683,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 3,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T23:53:37Z"
+        },
+        {
+          "ActionId": 82684,
+          "FighterId": 2191,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "2:05",
+          "Timestamp": "2024-11-02T23:56:32Z"
+        },
+        {
+          "ActionId": 82685,
+          "FighterId": 2191,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "1:14",
+          "Timestamp": "2024-11-02T23:57:23Z"
+        },
+        {
+          "ActionId": 82686,
+          "FighterId": 2191,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T23:58:37Z"
+        },
+        {
+          "ActionId": 82687,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 3,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T23:58:38Z"
+        },
+        {
+          "ActionId": 82688,
+          "FighterId": null,
+          "Type": "fight_over",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:58:38Z"
+        },
+        {
+          "ActionId": 82689,
+          "FighterId": null,
+          "Type": "results",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:59:58Z"
+        },
+        {
+          "ActionId": 82690,
+          "FighterId": 2852,
+          "Type": "unofficial_winner_decision",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:00:12Z"
+        },
+        {
+          "ActionId": 82691,
+          "FighterId": null,
+          "Type": "fight_complete",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-03T00:01:10Z"
+        }
+      ]
+    },
+    {
+      "FightId": 11682,
+      "FightOrder": 8,
+      "Status": "Final",
+      "CardSegment": "Prelims1",
+      "CardSegmentStartTime": "2024-11-02T21:00Z",
+      "CardSegmentBroadcaster": "ESPN+",
+      "Fighters": [
+        {
+          "FighterId": 3292,
+          "MMAId": 160330,
+          "Name": {
+            "FirstName": "Charles",
+            "LastName": "Jourdain",
+            "NickName": "Air"
+          },
+          "Born": {
+            "City": "Beloeil",
+            "State": "Quebec",
+            "Country": "Canada",
+            "TriCode": "CAN"
+          },
+          "FightingOutOf": {
+            "City": "Beloeil",
+            "State": "Quebec",
+            "Country": "Canada",
+            "TriCode": "CAN"
+          },
+          "Record": {
+            "Wins": 16,
+            "Losses": 8,
+            "Draws": 1,
+            "NoContests": 0
+          },
+          "DOB": "1995-11-27",
+          "Age": 28,
+          "Stance": "Switch",
+          "Weight": 135.0,
+          "Height": 69.0,
+          "Reach": 69.0,
+          "UFCLink": "http://www.ufc.com/athlete/Charles-Jourdain",
+          "WeightClasses": [
+            {
+              "WeightClassId": 7,
+              "WeightClassOrder": 1,
+              "Description": "Bantamweight",
+              "Abbreviation": "BW"
+            },
+            {
+              "WeightClassId": 6,
+              "WeightClassOrder": 2,
+              "Description": "Featherweight",
+              "Abbreviation": "FTW"
+            },
+            {
+              "WeightClassId": 5,
+              "WeightClassOrder": 3,
+              "Description": "Lightweight",
+              "Abbreviation": "LW"
+            }
+          ],
+          "Corner": "Red",
+          "WeighIn": 135.0,
+          "Outcome": {
+            "OutcomeId": 1,
+            "Outcome": "Win"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": true
+        },
+        {
+          "FighterId": 3777,
+          "MMAId": 126332,
+          "Name": {
+            "FirstName": "Victor",
+            "LastName": "Henry",
+            "NickName": "La Mangosta"
+          },
+          "Born": {
+            "City": "Southgate",
+            "State": "California",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "FightingOutOf": {
+            "City": "Southgate",
+            "State": "California",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "Record": {
+            "Wins": 24,
+            "Losses": 7,
+            "Draws": 0,
+            "NoContests": 1
+          },
+          "DOB": "1987-05-04",
+          "Age": 37,
+          "Stance": "Switch",
+          "Weight": 135.0,
+          "Height": 67.0,
+          "Reach": 68.0,
+          "UFCLink": "http://www.ufc.com/athlete/Victor-Henry",
+          "WeightClasses": [
+            {
+              "WeightClassId": 7,
+              "WeightClassOrder": 1,
+              "Description": "Bantamweight",
+              "Abbreviation": "BW"
+            }
+          ],
+          "Corner": "Blue",
+          "WeighIn": 135.0,
+          "Outcome": {
+            "OutcomeId": 2,
+            "Outcome": "Loss"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        }
+      ],
+      "Result": {
+        "Method": "Submission",
+        "EndingRound": 2,
+        "EndingTime": "3:43",
+        "EndingStrike": null,
+        "EndingTarget": null,
+        "EndingPosition": "Standing",
+        "EndingSubmission": "Guillotine Choke",
+        "EndingNotes": null,
+        "FightOfTheNight": false,
+        "FightScores": []
+      },
+      "WeightClass": {
+        "WeightClassId": 7,
+        "CatchWeight": null,
+        "Weight": "126-135",
+        "Description": "Bantamweight",
+        "Abbreviation": "BW"
+      },
+      "Accolades": [],
+      "Referee": {
+        "RefereeId": 158,
+        "FirstName": "Blake",
+        "LastName": "Grice"
+      },
+      "RuleSet": {
+        "PossibleRounds": 3,
+        "Description": "3 Rnd (5-5-5)"
+      },
+      "FightNightTracking": [
+        {
+          "ActionId": 82642,
+          "FighterId": null,
+          "Type": "fight_open",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:14:31Z"
+        },
+        {
+          "ActionId": 82644,
+          "FighterId": 3777,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:15:33Z"
+        },
+        {
+          "ActionId": 82645,
+          "FighterId": 3292,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:17:15Z"
+        },
+        {
+          "ActionId": 82646,
+          "FighterId": null,
+          "Type": "tale_of_the_tape",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:18:52Z"
+        },
+        {
+          "ActionId": 82647,
+          "FighterId": null,
+          "Type": "staredown",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:20:16Z"
+        },
+        {
+          "ActionId": 82648,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 1,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T23:20:38Z"
+        },
+        {
+          "ActionId": 82649,
+          "FighterId": 3292,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "2:41",
+          "Timestamp": "2024-11-02T23:22:57Z"
+        },
+        {
+          "ActionId": 82650,
+          "FighterId": 3292,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "2:26",
+          "Timestamp": "2024-11-02T23:23:12Z"
+        },
+        {
+          "ActionId": 82651,
+          "FighterId": 3777,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "2:22",
+          "Timestamp": "2024-11-02T23:23:16Z"
+        },
+        {
+          "ActionId": 82652,
+          "FighterId": 3777,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "2:21",
+          "Timestamp": "2024-11-02T23:23:17Z"
+        },
+        {
+          "ActionId": 82653,
+          "FighterId": 3777,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "1:33",
+          "Timestamp": "2024-11-02T23:24:05Z"
+        },
+        {
+          "ActionId": 82654,
+          "FighterId": 3777,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "1:30",
+          "Timestamp": "2024-11-02T23:24:08Z"
+        },
+        {
+          "ActionId": 82655,
+          "FighterId": 3777,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "0:22",
+          "Timestamp": "2024-11-02T23:25:16Z"
+        },
+        {
+          "ActionId": 82656,
+          "FighterId": 3777,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "0:21",
+          "Timestamp": "2024-11-02T23:25:17Z"
+        },
+        {
+          "ActionId": 82657,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 1,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T23:25:39Z"
+        },
+        {
+          "ActionId": 82658,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 2,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T23:26:51Z"
+        },
+        {
+          "ActionId": 82659,
+          "FighterId": 3777,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "3:53",
+          "Timestamp": "2024-11-02T23:27:58Z"
+        },
+        {
+          "ActionId": 82660,
+          "FighterId": 3777,
+          "Type": "takedown",
+          "RoundNumber": 2,
+          "RoundTime": "3:52",
+          "Timestamp": "2024-11-02T23:27:59Z"
+        },
+        {
+          "ActionId": 82661,
+          "FighterId": 3777,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "1:20",
+          "Timestamp": "2024-11-02T23:30:31Z"
+        },
+        {
+          "ActionId": 82662,
+          "FighterId": 3777,
+          "Type": "takedown",
+          "RoundNumber": 2,
+          "RoundTime": "1:20",
+          "Timestamp": "2024-11-02T23:30:31Z"
+        },
+        {
+          "ActionId": 82663,
+          "FighterId": 3292,
+          "Type": "submission_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "1:18",
+          "Timestamp": "2024-11-02T23:30:33Z"
+        },
+        {
+          "ActionId": 82664,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 2,
+          "RoundTime": "1:16",
+          "Timestamp": "2024-11-02T23:30:35Z"
+        },
+        {
+          "ActionId": 82665,
+          "FighterId": null,
+          "Type": "fight_over",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:30:35Z"
+        },
+        {
+          "ActionId": 82666,
+          "FighterId": 3292,
+          "Type": "unofficial_winner_submission",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:31:54Z"
+        },
+        {
+          "ActionId": 82667,
+          "FighterId": null,
+          "Type": "results",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:32:54Z"
+        },
+        {
+          "ActionId": 82668,
+          "FighterId": null,
+          "Type": "fight_complete",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:34:48Z"
+        }
+      ]
+    },
+    {
+      "FightId": 11747,
+      "FightOrder": 9,
+      "Status": "Final",
+      "CardSegment": "Prelims1",
+      "CardSegmentStartTime": "2024-11-02T21:00Z",
+      "CardSegmentBroadcaster": "ESPN+",
+      "Fighters": [
+        {
+          "FighterId": 3315,
+          "MMAId": 161957,
+          "Name": {
+            "FirstName": "Jack",
+            "LastName": "Shore",
+            "NickName": "Tank"
+          },
+          "Born": {
+            "City": "Abergavenny",
+            "State": "Wales",
+            "Country": "United Kingdom",
+            "TriCode": "GBR"
+          },
+          "FightingOutOf": {
+            "City": "Abertillery",
+            "State": "Wales",
+            "Country": "United Kingdom",
+            "TriCode": "GBR"
+          },
+          "Record": {
+            "Wins": 17,
+            "Losses": 3,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1995-02-06",
+          "Age": 29,
+          "Stance": "Orthodox",
+          "Weight": 145.0,
+          "Height": 68.0,
+          "Reach": 71.0,
+          "UFCLink": "http://www.ufc.com/athlete/Jack-Shore",
+          "WeightClasses": [
+            {
+              "WeightClassId": 6,
+              "WeightClassOrder": 1,
+              "Description": "Featherweight",
+              "Abbreviation": "FTW"
+            },
+            {
+              "WeightClassId": 7,
+              "WeightClassOrder": 2,
+              "Description": "Bantamweight",
+              "Abbreviation": "BW"
+            }
+          ],
+          "Corner": "Red",
+          "WeighIn": 145.5,
+          "Outcome": {
+            "OutcomeId": 2,
+            "Outcome": "Loss"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        },
+        {
+          "FighterId": 3442,
+          "MMAId": 145165,
+          "Name": {
+            "FirstName": "Youssef",
+            "LastName": "Zalal",
+            "NickName": "The Moroccan Devil"
+          },
+          "Born": {
+            "City": "Casablanca",
+            "State": null,
+            "Country": "Morocco",
+            "TriCode": "MAR"
+          },
+          "FightingOutOf": {
+            "City": "Englewood",
+            "State": "Colorado",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "Record": {
+            "Wins": 16,
+            "Losses": 5,
+            "Draws": 1,
+            "NoContests": 0
+          },
+          "DOB": "1996-09-04",
+          "Age": 28,
+          "Stance": "Switch",
+          "Weight": 145.0,
+          "Height": 70.0,
+          "Reach": 72.0,
+          "UFCLink": "http://www.ufc.com/athlete/Youssef-Zalal",
+          "WeightClasses": [
+            {
+              "WeightClassId": 6,
+              "WeightClassOrder": 1,
+              "Description": "Featherweight",
+              "Abbreviation": "FTW"
+            }
+          ],
+          "Corner": "Blue",
+          "WeighIn": 145.0,
+          "Outcome": {
+            "OutcomeId": 1,
+            "Outcome": "Win"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": true
+        }
+      ],
+      "Result": {
+        "Method": "Submission",
+        "EndingRound": 2,
+        "EndingTime": "0:59",
+        "EndingStrike": null,
+        "EndingTarget": null,
+        "EndingPosition": "From Half Guard",
+        "EndingSubmission": "Arm Triangle",
+        "EndingNotes": null,
+        "FightOfTheNight": false,
+        "FightScores": []
+      },
+      "WeightClass": {
+        "WeightClassId": 6,
+        "CatchWeight": null,
+        "Weight": "136-145",
+        "Description": "Featherweight",
+        "Abbreviation": "FTW"
+      },
+      "Accolades": [],
+      "Referee": {
+        "RefereeId": 299,
+        "FirstName": "Luke",
+        "LastName": "Boutin"
+      },
+      "RuleSet": {
+        "PossibleRounds": 3,
+        "Description": "3 Rnd (5-5-5)"
+      },
+      "FightNightTracking": [
+        {
+          "ActionId": 82617,
+          "FighterId": null,
+          "Type": "fight_open",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:55:26Z"
+        },
+        {
+          "ActionId": 82619,
+          "FighterId": 3442,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:55:28Z"
+        },
+        {
+          "ActionId": 82620,
+          "FighterId": 3315,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:57:15Z"
+        },
+        {
+          "ActionId": 82621,
+          "FighterId": null,
+          "Type": "tale_of_the_tape",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:58:33Z"
+        },
+        {
+          "ActionId": 82622,
+          "FighterId": null,
+          "Type": "staredown",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:59:49Z"
+        },
+        {
+          "ActionId": 82623,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 1,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T23:00:07Z"
+        },
+        {
+          "ActionId": 82624,
+          "FighterId": 3315,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "4:06",
+          "Timestamp": "2024-11-02T23:01:01Z"
+        },
+        {
+          "ActionId": 82625,
+          "FighterId": 3315,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "3:30",
+          "Timestamp": "2024-11-02T23:01:37Z"
+        },
+        {
+          "ActionId": 82626,
+          "FighterId": 3315,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "3:21",
+          "Timestamp": "2024-11-02T23:01:46Z"
+        },
+        {
+          "ActionId": 82627,
+          "FighterId": 3315,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "3:05",
+          "Timestamp": "2024-11-02T23:02:02Z"
+        },
+        {
+          "ActionId": 82628,
+          "FighterId": 3315,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "3:02",
+          "Timestamp": "2024-11-02T23:02:05Z"
+        },
+        {
+          "ActionId": 82629,
+          "FighterId": 3315,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "1:43",
+          "Timestamp": "2024-11-02T23:03:24Z"
+        },
+        {
+          "ActionId": 82630,
+          "FighterId": 3442,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "1:02",
+          "Timestamp": "2024-11-02T23:04:06Z"
+        },
+        {
+          "ActionId": 82631,
+          "FighterId": 3442,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "0:59",
+          "Timestamp": "2024-11-02T23:04:08Z"
+        },
+        {
+          "ActionId": 82632,
+          "FighterId": 3442,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "0:58",
+          "Timestamp": "2024-11-02T23:04:09Z"
+        },
+        {
+          "ActionId": 82633,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 1,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T23:05:08Z"
+        },
+        {
+          "ActionId": 82634,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 2,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T23:06:21Z"
+        },
+        {
+          "ActionId": 82635,
+          "FighterId": 3442,
+          "Type": "knockdown",
+          "RoundNumber": 2,
+          "RoundTime": "4:30",
+          "Timestamp": "2024-11-02T23:06:51Z"
+        },
+        {
+          "ActionId": 82636,
+          "FighterId": 3442,
+          "Type": "submission_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "4:10",
+          "Timestamp": "2024-11-02T23:07:11Z"
+        },
+        {
+          "ActionId": 82637,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 2,
+          "RoundTime": "4:01",
+          "Timestamp": "2024-11-02T23:07:20Z"
+        },
+        {
+          "ActionId": 82638,
+          "FighterId": null,
+          "Type": "fight_over",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:07:20Z"
+        },
+        {
+          "ActionId": 82639,
+          "FighterId": 3442,
+          "Type": "unofficial_winner_submission",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:07:34Z"
+        },
+        {
+          "ActionId": 82640,
+          "FighterId": null,
+          "Type": "results",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:09:26Z"
+        },
+        {
+          "ActionId": 82641,
+          "FighterId": null,
+          "Type": "fight_complete",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T23:12:39Z"
+        }
+      ]
+    },
+    {
+      "FightId": 11644,
+      "FightOrder": 10,
+      "Status": "Final",
+      "CardSegment": "Prelims1",
+      "CardSegmentStartTime": "2024-11-02T21:00Z",
+      "CardSegmentBroadcaster": "ESPN+",
+      "Fighters": [
+        {
+          "FighterId": 3287,
+          "MMAId": 163571,
+          "Name": {
+            "FirstName": "Alexandr",
+            "LastName": "Romanov",
+            "NickName": "King Kong"
+          },
+          "Born": {
+            "City": "Comrat",
+            "State": null,
+            "Country": "Moldova",
+            "TriCode": "MDA"
+          },
+          "FightingOutOf": {
+            "City": "Comrat",
+            "State": null,
+            "Country": "Moldova",
+            "TriCode": "MDA"
+          },
+          "Record": {
+            "Wins": 18,
+            "Losses": 3,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1990-12-11",
+          "Age": 33,
+          "Stance": "Southpaw",
+          "Weight": 262.0,
+          "Height": 74.0,
+          "Reach": 75.0,
+          "UFCLink": "http://www.ufc.com/athlete/Alexandr-Romanov",
+          "WeightClasses": [
+            {
+              "WeightClassId": 1,
+              "WeightClassOrder": 1,
+              "Description": "Heavyweight",
+              "Abbreviation": "HW"
+            }
+          ],
+          "Corner": "Red",
+          "WeighIn": 261.0,
+          "Outcome": {
+            "OutcomeId": 1,
+            "Outcome": "Win"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        },
+        {
+          "FighterId": 3361,
+          "MMAId": 160944,
+          "Name": {
+            "FirstName": "Rodrigo",
+            "LastName": "Nascimento",
+            "NickName": "Ze Colmeia"
+          },
+          "Born": {
+            "City": "Belo Horizonte",
+            "State": "Minas Gerais",
+            "Country": "Brazil",
+            "TriCode": "BRA"
+          },
+          "FightingOutOf": {
+            "City": "Belo Horizonte",
+            "State": "Minas Gerais",
+            "Country": "Brazil",
+            "TriCode": "BRA"
+          },
+          "Record": {
+            "Wins": 11,
+            "Losses": 3,
+            "Draws": 0,
+            "NoContests": 1
+          },
+          "DOB": "1992-11-26",
+          "Age": 31,
+          "Stance": "Orthodox",
+          "Weight": 246.0,
+          "Height": 74.0,
+          "Reach": 80.0,
+          "UFCLink": "http://www.ufc.com/athlete/Rodrigo-Nascimento",
+          "WeightClasses": [
+            {
+              "WeightClassId": 1,
+              "WeightClassOrder": 1,
+              "Description": "Heavyweight",
+              "Abbreviation": "HW"
+            }
+          ],
+          "Corner": "Blue",
+          "WeighIn": 264.0,
+          "Outcome": {
+            "OutcomeId": 2,
+            "Outcome": "Loss"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        }
+      ],
+      "Result": {
+        "Method": "Decision - Unanimous",
+        "EndingRound": 3,
+        "EndingTime": "5:00",
+        "EndingStrike": null,
+        "EndingTarget": null,
+        "EndingPosition": null,
+        "EndingSubmission": null,
+        "EndingNotes": null,
+        "FightOfTheNight": false,
+        "FightScores": [
+          {
+            "JudgeId": 533,
+            "JudgeFirstName": "Jason",
+            "JudgeLastName": "Tatlow",
+            "Fighters": [
+              {
+                "FighterId": 3287,
+                "Score": 30
+              },
+              {
+                "FighterId": 3361,
+                "Score": 27
+              }
+            ]
+          },
+          {
+            "JudgeId": 389,
+            "JudgeFirstName": "Thomas",
+            "JudgeLastName": "Collins",
+            "Fighters": [
+              {
+                "FighterId": 3287,
+                "Score": 30
+              },
+              {
+                "FighterId": 3361,
+                "Score": 27
+              }
+            ]
+          },
+          {
+            "JudgeId": 14,
+            "JudgeFirstName": "Sal",
+            "JudgeLastName": "D'amato",
+            "Fighters": [
+              {
+                "FighterId": 3287,
+                "Score": 30
+              },
+              {
+                "FighterId": 3361,
+                "Score": 27
+              }
+            ]
+          }
+        ]
+      },
+      "WeightClass": {
+        "WeightClassId": 1,
+        "CatchWeight": null,
+        "Weight": "206-265",
+        "Description": "Heavyweight",
+        "Abbreviation": "HW"
+      },
+      "Accolades": [],
+      "Referee": {
+        "RefereeId": 31,
+        "FirstName": "Marc",
+        "LastName": "Goddard"
+      },
+      "RuleSet": {
+        "PossibleRounds": 3,
+        "Description": "3 Rnd (5-5-5)"
+      },
+      "FightNightTracking": [
+        {
+          "ActionId": 82581,
+          "FighterId": null,
+          "Type": "fight_open",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:27:23Z"
+        },
+        {
+          "ActionId": 82583,
+          "FighterId": 3361,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:28:19Z"
+        },
+        {
+          "ActionId": 82584,
+          "FighterId": 3287,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:30:03Z"
+        },
+        {
+          "ActionId": 82585,
+          "FighterId": null,
+          "Type": "tale_of_the_tape",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:32:08Z"
+        },
+        {
+          "ActionId": 82586,
+          "FighterId": null,
+          "Type": "staredown",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:33:38Z"
+        },
+        {
+          "ActionId": 82587,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 1,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T22:33:57Z"
+        },
+        {
+          "ActionId": 82588,
+          "FighterId": 3287,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "4:48",
+          "Timestamp": "2024-11-02T22:34:09Z"
+        },
+        {
+          "ActionId": 82589,
+          "FighterId": 3287,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "4:36",
+          "Timestamp": "2024-11-02T22:34:21Z"
+        },
+        {
+          "ActionId": 82590,
+          "FighterId": 3287,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "4:33",
+          "Timestamp": "2024-11-02T22:34:24Z"
+        },
+        {
+          "ActionId": 82591,
+          "FighterId": 3287,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "4:19",
+          "Timestamp": "2024-11-02T22:34:38Z"
+        },
+        {
+          "ActionId": 82592,
+          "FighterId": 3287,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "4:19",
+          "Timestamp": "2024-11-02T22:34:38Z"
+        },
+        {
+          "ActionId": 82593,
+          "FighterId": 3287,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "3:18",
+          "Timestamp": "2024-11-02T22:35:39Z"
+        },
+        {
+          "ActionId": 82594,
+          "FighterId": 3287,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "3:17",
+          "Timestamp": "2024-11-02T22:35:40Z"
+        },
+        {
+          "ActionId": 82595,
+          "FighterId": 3287,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "1:40",
+          "Timestamp": "2024-11-02T22:37:17Z"
+        },
+        {
+          "ActionId": 82596,
+          "FighterId": 3287,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "1:31",
+          "Timestamp": "2024-11-02T22:37:26Z"
+        },
+        {
+          "ActionId": 82597,
+          "FighterId": 3287,
+          "Type": "submission_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T22:38:57Z"
+        },
+        {
+          "ActionId": 82598,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 1,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T22:38:58Z"
+        },
+        {
+          "ActionId": 82599,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 2,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T22:40:09Z"
+        },
+        {
+          "ActionId": 82600,
+          "FighterId": 3287,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "4:49",
+          "Timestamp": "2024-11-02T22:40:20Z"
+        },
+        {
+          "ActionId": 82601,
+          "FighterId": 3287,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "3:30",
+          "Timestamp": "2024-11-02T22:41:39Z"
+        },
+        {
+          "ActionId": 82602,
+          "FighterId": 3287,
+          "Type": "takedown",
+          "RoundNumber": 2,
+          "RoundTime": "3:24",
+          "Timestamp": "2024-11-02T22:41:45Z"
+        },
+        {
+          "ActionId": 82603,
+          "FighterId": 3287,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "2:38",
+          "Timestamp": "2024-11-02T22:42:31Z"
+        },
+        {
+          "ActionId": 82604,
+          "FighterId": 3287,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "2:34",
+          "Timestamp": "2024-11-02T22:42:35Z"
+        },
+        {
+          "ActionId": 82605,
+          "FighterId": 3287,
+          "Type": "takedown",
+          "RoundNumber": 2,
+          "RoundTime": "2:33",
+          "Timestamp": "2024-11-02T22:42:36Z"
+        },
+        {
+          "ActionId": 82606,
+          "FighterId": null,
+          "Type": "round_pause",
+          "RoundNumber": 2,
+          "RoundTime": "0:29",
+          "Timestamp": "2024-11-02T22:44:40Z"
+        },
+        {
+          "ActionId": 82607,
+          "FighterId": 3361,
+          "Type": "pause_reason_low_blow",
+          "RoundNumber": 2,
+          "RoundTime": "0:29",
+          "Timestamp": "2024-11-02T22:44:40Z"
+        },
+        {
+          "ActionId": 82608,
+          "FighterId": null,
+          "Type": "round_unpause",
+          "RoundNumber": 2,
+          "RoundTime": "0:29",
+          "Timestamp": "2024-11-02T22:46:25Z"
+        },
+        {
+          "ActionId": 82609,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 2,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T22:46:54Z"
+        },
+        {
+          "ActionId": 82610,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 3,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T22:48:10Z"
+        },
+        {
+          "ActionId": 82611,
+          "FighterId": 3287,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "4:51",
+          "Timestamp": "2024-11-02T22:48:19Z"
+        },
+        {
+          "ActionId": 82612,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 3,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T22:53:10Z"
+        },
+        {
+          "ActionId": 82613,
+          "FighterId": null,
+          "Type": "fight_over",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:53:10Z"
+        },
+        {
+          "ActionId": 82614,
+          "FighterId": null,
+          "Type": "results",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:54:28Z"
+        },
+        {
+          "ActionId": 82615,
+          "FighterId": 3287,
+          "Type": "unofficial_winner_decision",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:54:46Z"
+        },
+        {
+          "ActionId": 82616,
+          "FighterId": null,
+          "Type": "fight_complete",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:55:22Z"
+        }
+      ]
+    },
+    {
+      "FightId": 11645,
+      "FightOrder": 11,
+      "Status": "Final",
+      "CardSegment": "Prelims1",
+      "CardSegmentStartTime": "2024-11-02T21:00Z",
+      "CardSegmentBroadcaster": "ESPN+",
+      "Fighters": [
+        {
+          "FighterId": 4092,
+          "MMAId": 156,
+          "Name": {
+            "FirstName": "Serhiy",
+            "LastName": "Sidey",
+            "NickName": null
+          },
+          "Born": {
+            "City": "Chernivtsi",
+            "State": "Chernivtsi",
+            "Country": "Ukraine",
+            "TriCode": "UKR"
+          },
+          "FightingOutOf": {
+            "City": "Burlington",
+            "State": "Ontario",
+            "Country": "Canada",
+            "TriCode": "CAN"
+          },
+          "Record": {
+            "Wins": 11,
+            "Losses": 2,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1996-07-04",
+          "Age": 28,
+          "Stance": "Switch",
+          "Weight": 135.0,
+          "Height": 71.0,
+          "Reach": 72.0,
+          "UFCLink": "http://www.ufc.com/athlete/Serhiy-Sidey",
+          "WeightClasses": [
+            {
+              "WeightClassId": 7,
+              "WeightClassOrder": 1,
+              "Description": "Bantamweight",
+              "Abbreviation": "BW"
+            }
+          ],
+          "Corner": "Red",
+          "WeighIn": 135.0,
+          "Outcome": {
+            "OutcomeId": 1,
+            "Outcome": "Win"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        },
+        {
+          "FighterId": 3911,
+          "MMAId": 157427,
+          "Name": {
+            "FirstName": "Garrett",
+            "LastName": "Armfield",
+            "NickName": null
+          },
+          "Born": {
+            "City": "Eureka",
+            "State": "Missouri",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "FightingOutOf": {
+            "City": "Kansas City",
+            "State": "Missouri",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "Record": {
+            "Wins": 10,
+            "Losses": 5,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1996-10-09",
+          "Age": 28,
+          "Stance": "Orthodox",
+          "Weight": 135.0,
+          "Height": 66.0,
+          "Reach": 70.0,
+          "UFCLink": "http://www.ufc.com/athlete/Garrett-Armfield",
+          "WeightClasses": [
+            {
+              "WeightClassId": 7,
+              "WeightClassOrder": 1,
+              "Description": "Bantamweight",
+              "Abbreviation": "BW"
+            },
+            {
+              "WeightClassId": 6,
+              "WeightClassOrder": 2,
+              "Description": "Featherweight",
+              "Abbreviation": "FTW"
+            }
+          ],
+          "Corner": "Blue",
+          "WeighIn": 135.0,
+          "Outcome": {
+            "OutcomeId": 2,
+            "Outcome": "Loss"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        }
+      ],
+      "Result": {
+        "Method": "Decision - Split",
+        "EndingRound": 3,
+        "EndingTime": "5:00",
+        "EndingStrike": null,
+        "EndingTarget": null,
+        "EndingPosition": null,
+        "EndingSubmission": null,
+        "EndingNotes": null,
+        "FightOfTheNight": false,
+        "FightScores": [
+          {
+            "JudgeId": 200,
+            "JudgeFirstName": "Derek",
+            "JudgeLastName": "Cleary",
+            "Fighters": [
+              {
+                "FighterId": 4092,
+                "Score": 29
+              },
+              {
+                "FighterId": 3911,
+                "Score": 28
+              }
+            ]
+          },
+          {
+            "JudgeId": 228,
+            "JudgeFirstName": "Mike",
+            "JudgeLastName": "Bell",
+            "Fighters": [
+              {
+                "FighterId": 4092,
+                "Score": 28
+              },
+              {
+                "FighterId": 3911,
+                "Score": 29
+              }
+            ]
+          },
+          {
+            "JudgeId": 70,
+            "JudgeFirstName": "Junichiro",
+            "JudgeLastName": "Kamijo",
+            "Fighters": [
+              {
+                "FighterId": 4092,
+                "Score": 29
+              },
+              {
+                "FighterId": 3911,
+                "Score": 28
+              }
+            ]
+          }
+        ]
+      },
+      "WeightClass": {
+        "WeightClassId": 7,
+        "CatchWeight": null,
+        "Weight": "126-135",
+        "Description": "Bantamweight",
+        "Abbreviation": "BW"
+      },
+      "Accolades": [],
+      "Referee": {
+        "RefereeId": 239,
+        "FirstName": "Andy",
+        "LastName": "Social"
+      },
+      "RuleSet": {
+        "PossibleRounds": 3,
+        "Description": "3 Rnd (5-5-5)"
+      },
+      "FightNightTracking": [
+        {
+          "ActionId": 82545,
+          "FighterId": null,
+          "Type": "fight_open",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:59:36Z"
+        },
+        {
+          "ActionId": 82547,
+          "FighterId": 3911,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:00:20Z"
+        },
+        {
+          "ActionId": 82548,
+          "FighterId": 4092,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:02:03Z"
+        },
+        {
+          "ActionId": 82549,
+          "FighterId": null,
+          "Type": "tale_of_the_tape",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:04:28Z"
+        },
+        {
+          "ActionId": 82550,
+          "FighterId": null,
+          "Type": "staredown",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:05:43Z"
+        },
+        {
+          "ActionId": 82551,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 1,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T22:06:03Z"
+        },
+        {
+          "ActionId": 82552,
+          "FighterId": 3911,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "1:58",
+          "Timestamp": "2024-11-02T22:09:05Z"
+        },
+        {
+          "ActionId": 82553,
+          "FighterId": 4092,
+          "Type": "submission_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "1:47",
+          "Timestamp": "2024-11-02T22:09:16Z"
+        },
+        {
+          "ActionId": 82554,
+          "FighterId": 3911,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "1:19",
+          "Timestamp": "2024-11-02T22:09:44Z"
+        },
+        {
+          "ActionId": 82555,
+          "FighterId": 3911,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "1:17",
+          "Timestamp": "2024-11-02T22:09:46Z"
+        },
+        {
+          "ActionId": 82556,
+          "FighterId": 4092,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "0:16",
+          "Timestamp": "2024-11-02T22:10:47Z"
+        },
+        {
+          "ActionId": 82557,
+          "FighterId": 4092,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "0:11",
+          "Timestamp": "2024-11-02T22:10:52Z"
+        },
+        {
+          "ActionId": 82558,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 1,
+          "RoundTime": "0:02",
+          "Timestamp": "2024-11-02T22:11:01Z"
+        },
+        {
+          "ActionId": 82559,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 2,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T22:12:13Z"
+        },
+        {
+          "ActionId": 82560,
+          "FighterId": 4092,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "1:58",
+          "Timestamp": "2024-11-02T22:15:15Z"
+        },
+        {
+          "ActionId": 82561,
+          "FighterId": 4092,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "0:05",
+          "Timestamp": "2024-11-02T22:17:08Z"
+        },
+        {
+          "ActionId": 82562,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 2,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T22:17:17Z"
+        },
+        {
+          "ActionId": 82563,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 3,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T22:18:29Z"
+        },
+        {
+          "ActionId": 82564,
+          "FighterId": 3911,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "4:35",
+          "Timestamp": "2024-11-02T22:18:54Z"
+        },
+        {
+          "ActionId": 82565,
+          "FighterId": 3911,
+          "Type": "takedown",
+          "RoundNumber": 3,
+          "RoundTime": "4:34",
+          "Timestamp": "2024-11-02T22:18:55Z"
+        },
+        {
+          "ActionId": 82566,
+          "FighterId": 4092,
+          "Type": "submission_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "4:25",
+          "Timestamp": "2024-11-02T22:19:04Z"
+        },
+        {
+          "ActionId": 82569,
+          "FighterId": 3911,
+          "Type": "submission_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "2:51",
+          "Timestamp": "2024-11-02T22:20:38Z"
+        },
+        {
+          "ActionId": 82570,
+          "FighterId": 4092,
+          "Type": "reversal",
+          "RoundNumber": 3,
+          "RoundTime": "2:49",
+          "Timestamp": "2024-11-02T22:20:40Z"
+        },
+        {
+          "ActionId": 82571,
+          "FighterId": 3911,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "2:42",
+          "Timestamp": "2024-11-02T22:20:47Z"
+        },
+        {
+          "ActionId": 82572,
+          "FighterId": 3911,
+          "Type": "takedown",
+          "RoundNumber": 3,
+          "RoundTime": "2:42",
+          "Timestamp": "2024-11-02T22:20:48Z"
+        },
+        {
+          "ActionId": 82573,
+          "FighterId": 3911,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "1:27",
+          "Timestamp": "2024-11-02T22:22:02Z"
+        },
+        {
+          "ActionId": 82574,
+          "FighterId": 3911,
+          "Type": "takedown",
+          "RoundNumber": 3,
+          "RoundTime": "1:26",
+          "Timestamp": "2024-11-02T22:22:03Z"
+        },
+        {
+          "ActionId": 82575,
+          "FighterId": 4092,
+          "Type": "submission_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "1:15",
+          "Timestamp": "2024-11-02T22:22:14Z"
+        },
+        {
+          "ActionId": 82576,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 3,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T22:23:29Z"
+        },
+        {
+          "ActionId": 82577,
+          "FighterId": null,
+          "Type": "fight_over",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:23:29Z"
+        },
+        {
+          "ActionId": 82578,
+          "FighterId": null,
+          "Type": "results",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:25:48Z"
+        },
+        {
+          "ActionId": 82579,
+          "FighterId": 4092,
+          "Type": "unofficial_winner_decision",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:26:13Z"
+        },
+        {
+          "ActionId": 82580,
+          "FighterId": null,
+          "Type": "fight_complete",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T22:27:17Z"
+        }
+      ]
+    },
+    {
+      "FightId": 11603,
+      "FightOrder": 12,
+      "Status": "Final",
+      "CardSegment": "Prelims1",
+      "CardSegmentStartTime": "2024-11-02T21:00Z",
+      "CardSegmentBroadcaster": "ESPN+",
+      "Fighters": [
+        {
+          "FighterId": 3684,
+          "MMAId": 158433,
+          "Name": {
+            "FirstName": "Chad",
+            "LastName": "Anheliger",
+            "NickName": "The Monster"
+          },
+          "Born": {
+            "City": "Kelowna",
+            "State": "British Columbia",
+            "Country": "Canada",
+            "TriCode": "CAN"
+          },
+          "FightingOutOf": {
+            "City": "Calgary",
+            "State": "Alberta",
+            "Country": "Canada",
+            "TriCode": "CAN"
+          },
+          "Record": {
+            "Wins": 13,
+            "Losses": 8,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1986-12-01",
+          "Age": 37,
+          "Stance": "Orthodox",
+          "Weight": 135.0,
+          "Height": 66.0,
+          "Reach": 64.5,
+          "UFCLink": "http://www.ufc.com/athlete/Chad-Anheliger",
+          "WeightClasses": [
+            {
+              "WeightClassId": 7,
+              "WeightClassOrder": 1,
+              "Description": "Bantamweight",
+              "Abbreviation": "BW"
+            }
+          ],
+          "Corner": "Red",
+          "WeighIn": 135.0,
+          "Outcome": {
+            "OutcomeId": 2,
+            "Outcome": "Loss"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        },
+        {
+          "FighterId": 2192,
+          "MMAId": 116037,
+          "Name": {
+            "FirstName": "Cody",
+            "LastName": "Gibson",
+            "NickName": "The Renegade"
+          },
+          "Born": {
+            "City": "Blackwell",
+            "State": "Oklahoma",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "FightingOutOf": {
+            "City": "San Luis Obispo",
+            "State": "California",
+            "Country": "USA",
+            "TriCode": "USA"
+          },
+          "Record": {
+            "Wins": 22,
+            "Losses": 10,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1987-09-11",
+          "Age": 37,
+          "Stance": "Orthodox",
+          "Weight": 135.0,
+          "Height": 70.0,
+          "Reach": 71.0,
+          "UFCLink": "http://www.ufc.com/athlete/Cody-Gibson",
+          "WeightClasses": [
+            {
+              "WeightClassId": 7,
+              "WeightClassOrder": 1,
+              "Description": "Bantamweight",
+              "Abbreviation": "BW"
+            }
+          ],
+          "Corner": "Blue",
+          "WeighIn": 135.5,
+          "Outcome": {
+            "OutcomeId": 1,
+            "Outcome": "Win"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        }
+      ],
+      "Result": {
+        "Method": "Decision - Unanimous",
+        "EndingRound": 3,
+        "EndingTime": "5:00",
+        "EndingStrike": null,
+        "EndingTarget": null,
+        "EndingPosition": null,
+        "EndingSubmission": null,
+        "EndingNotes": null,
+        "FightOfTheNight": false,
+        "FightScores": [
+          {
+            "JudgeId": 200,
+            "JudgeFirstName": "Derek",
+            "JudgeLastName": "Cleary",
+            "Fighters": [
+              {
+                "FighterId": 3684,
+                "Score": 26
+              },
+              {
+                "FighterId": 2192,
+                "Score": 30
+              }
+            ]
+          },
+          {
+            "JudgeId": 70,
+            "JudgeFirstName": "Junichiro",
+            "JudgeLastName": "Kamijo",
+            "Fighters": [
+              {
+                "FighterId": 3684,
+                "Score": 27
+              },
+              {
+                "FighterId": 2192,
+                "Score": 30
+              }
+            ]
+          },
+          {
+            "JudgeId": 532,
+            "JudgeFirstName": "Ziad",
+            "JudgeLastName": "Harb",
+            "Fighters": [
+              {
+                "FighterId": 3684,
+                "Score": 27
+              },
+              {
+                "FighterId": 2192,
+                "Score": 30
+              }
+            ]
+          }
+        ]
+      },
+      "WeightClass": {
+        "WeightClassId": 7,
+        "CatchWeight": null,
+        "Weight": "126-135",
+        "Description": "Bantamweight",
+        "Abbreviation": "BW"
+      },
+      "Accolades": [],
+      "Referee": {
+        "RefereeId": 105,
+        "FirstName": "Jerin",
+        "LastName": "Valel"
+      },
+      "RuleSet": {
+        "PossibleRounds": 3,
+        "Description": "3 Rnd (5-5-5)"
+      },
+      "FightNightTracking": [
+        {
+          "ActionId": 82516,
+          "FighterId": null,
+          "Type": "fight_open",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:32:21Z"
+        },
+        {
+          "ActionId": 82518,
+          "FighterId": 2192,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:33:25Z"
+        },
+        {
+          "ActionId": 82519,
+          "FighterId": 3684,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:35:38Z"
+        },
+        {
+          "ActionId": 82520,
+          "FighterId": null,
+          "Type": "tale_of_the_tape",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:37:37Z"
+        },
+        {
+          "ActionId": 82521,
+          "FighterId": null,
+          "Type": "staredown",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:39:02Z"
+        },
+        {
+          "ActionId": 82522,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 1,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T21:39:24Z"
+        },
+        {
+          "ActionId": 82523,
+          "FighterId": 2192,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "3:21",
+          "Timestamp": "2024-11-02T21:41:03Z"
+        },
+        {
+          "ActionId": 82524,
+          "FighterId": 2192,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "3:19",
+          "Timestamp": "2024-11-02T21:41:05Z"
+        },
+        {
+          "ActionId": 82525,
+          "FighterId": 2192,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "1:15",
+          "Timestamp": "2024-11-02T21:43:09Z"
+        },
+        {
+          "ActionId": 82526,
+          "FighterId": 2192,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "1:14",
+          "Timestamp": "2024-11-02T21:43:10Z"
+        },
+        {
+          "ActionId": 82527,
+          "FighterId": 2192,
+          "Type": "submission_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "0:07",
+          "Timestamp": "2024-11-02T21:44:17Z"
+        },
+        {
+          "ActionId": 82528,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 1,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T21:44:25Z"
+        },
+        {
+          "ActionId": 82529,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 2,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T21:45:38Z"
+        },
+        {
+          "ActionId": 82530,
+          "FighterId": 2192,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "4:41",
+          "Timestamp": "2024-11-02T21:45:57Z"
+        },
+        {
+          "ActionId": 82531,
+          "FighterId": 2192,
+          "Type": "takedown",
+          "RoundNumber": 2,
+          "RoundTime": "4:39",
+          "Timestamp": "2024-11-02T21:45:59Z"
+        },
+        {
+          "ActionId": 82532,
+          "FighterId": 2192,
+          "Type": "submission_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "2:46",
+          "Timestamp": "2024-11-02T21:47:52Z"
+        },
+        {
+          "ActionId": 82533,
+          "FighterId": 2192,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "1:39",
+          "Timestamp": "2024-11-02T21:48:59Z"
+        },
+        {
+          "ActionId": 82534,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 2,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T21:50:38Z"
+        },
+        {
+          "ActionId": 82535,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 3,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T21:51:53Z"
+        },
+        {
+          "ActionId": 82536,
+          "FighterId": 2192,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "4:11",
+          "Timestamp": "2024-11-02T21:52:42Z"
+        },
+        {
+          "ActionId": 82537,
+          "FighterId": 2192,
+          "Type": "takedown",
+          "RoundNumber": 3,
+          "RoundTime": "4:04",
+          "Timestamp": "2024-11-02T21:52:49Z"
+        },
+        {
+          "ActionId": 82538,
+          "FighterId": 2192,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "1:42",
+          "Timestamp": "2024-11-02T21:55:11Z"
+        },
+        {
+          "ActionId": 82539,
+          "FighterId": 2192,
+          "Type": "takedown",
+          "RoundNumber": 3,
+          "RoundTime": "1:40",
+          "Timestamp": "2024-11-02T21:55:13Z"
+        },
+        {
+          "ActionId": 82540,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 3,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T21:56:54Z"
+        },
+        {
+          "ActionId": 82541,
+          "FighterId": null,
+          "Type": "fight_over",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:56:54Z"
+        },
+        {
+          "ActionId": 82542,
+          "FighterId": null,
+          "Type": "results",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:58:25Z"
+        },
+        {
+          "ActionId": 82543,
+          "FighterId": 2192,
+          "Type": "unofficial_winner_decision",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:58:41Z"
+        },
+        {
+          "ActionId": 82544,
+          "FighterId": null,
+          "Type": "fight_complete",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:58:59Z"
+        }
+      ]
+    },
+    {
+      "FightId": 11606,
+      "FightOrder": 13,
+      "Status": "Final",
+      "CardSegment": "Prelims1",
+      "CardSegmentStartTime": "2024-11-02T21:00Z",
+      "CardSegmentBroadcaster": "ESPN+",
+      "Fighters": [
+        {
+          "FighterId": 3562,
+          "MMAId": 143151,
+          "Name": {
+            "FirstName": "Jamey-Lyn",
+            "LastName": "Horth",
+            "NickName": null
+          },
+          "Born": {
+            "City": "Squamish",
+            "State": "British Columbia",
+            "Country": "Canada",
+            "TriCode": "CAN"
+          },
+          "FightingOutOf": {
+            "City": "Squamish",
+            "State": "British Columbia",
+            "Country": "Canada",
+            "TriCode": "CAN"
+          },
+          "Record": {
+            "Wins": 7,
+            "Losses": 1,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1990-03-30",
+          "Age": 34,
+          "Stance": "Orthodox",
+          "Weight": 125.0,
+          "Height": 67.0,
+          "Reach": 66.0,
+          "UFCLink": "http://www.ufc.com/athlete/Jamey-Lyn-Horth",
+          "WeightClasses": [
+            {
+              "WeightClassId": 35,
+              "WeightClassOrder": 1,
+              "Description": "Women's Flyweight",
+              "Abbreviation": "WFLW"
+            },
+            {
+              "WeightClassId": 25,
+              "WeightClassOrder": 2,
+              "Description": "Women's Bantamweight",
+              "Abbreviation": "WBW"
+            }
+          ],
+          "Corner": "Red",
+          "WeighIn": 126.0,
+          "Outcome": {
+            "OutcomeId": 1,
+            "Outcome": "Win"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        },
+        {
+          "FighterId": 4013,
+          "MMAId": 174,
+          "Name": {
+            "FirstName": "Ivana",
+            "LastName": "Petrovic",
+            "NickName": null
+          },
+          "Born": {
+            "City": "Konstanz",
+            "State": "Baden-Wurttemberg",
+            "Country": "Germany",
+            "TriCode": "GER"
+          },
+          "FightingOutOf": {
+            "City": "Tonsberg",
+            "State": null,
+            "Country": "Norway",
+            "TriCode": "NOR"
+          },
+          "Record": {
+            "Wins": 7,
+            "Losses": 2,
+            "Draws": 0,
+            "NoContests": 0
+          },
+          "DOB": "1994-06-11",
+          "Age": 30,
+          "Stance": "Southpaw",
+          "Weight": 125.0,
+          "Height": 68.0,
+          "Reach": 70.0,
+          "UFCLink": "http://www.ufc.com/athlete/Ivana-Petrovic",
+          "WeightClasses": [
+            {
+              "WeightClassId": 35,
+              "WeightClassOrder": 1,
+              "Description": "Women's Flyweight",
+              "Abbreviation": "WFLW"
+            }
+          ],
+          "Corner": "Blue",
+          "WeighIn": 125.0,
+          "Outcome": {
+            "OutcomeId": 2,
+            "Outcome": "Loss"
+          },
+          "KOOfTheNight": false,
+          "SubmissionOfTheNight": false,
+          "PerformanceOfTheNight": false
+        }
+      ],
+      "Result": {
+        "Method": "Decision - Split",
+        "EndingRound": 3,
+        "EndingTime": "5:00",
+        "EndingStrike": null,
+        "EndingTarget": null,
+        "EndingPosition": null,
+        "EndingSubmission": null,
+        "EndingNotes": null,
+        "FightOfTheNight": false,
+        "FightScores": [
+          {
+            "JudgeId": 32,
+            "JudgeFirstName": "Eric",
+            "JudgeLastName": "Colon",
+            "Fighters": [
+              {
+                "FighterId": 3562,
+                "Score": 30
+              },
+              {
+                "FighterId": 4013,
+                "Score": 27
+              }
+            ]
+          },
+          {
+            "JudgeId": 389,
+            "JudgeFirstName": "Thomas",
+            "JudgeLastName": "Collins",
+            "Fighters": [
+              {
+                "FighterId": 3562,
+                "Score": 28
+              },
+              {
+                "FighterId": 4013,
+                "Score": 29
+              }
+            ]
+          },
+          {
+            "JudgeId": 228,
+            "JudgeFirstName": "Mike",
+            "JudgeLastName": "Bell",
+            "Fighters": [
+              {
+                "FighterId": 3562,
+                "Score": 29
+              },
+              {
+                "FighterId": 4013,
+                "Score": 28
+              }
+            ]
+          }
+        ]
+      },
+      "WeightClass": {
+        "WeightClassId": 35,
+        "CatchWeight": null,
+        "Weight": "116-125",
+        "Description": "Women's Flyweight",
+        "Abbreviation": "WFLW"
+      },
+      "Accolades": [],
+      "Referee": {
+        "RefereeId": 158,
+        "FirstName": "Blake",
+        "LastName": "Grice"
+      },
+      "RuleSet": {
+        "PossibleRounds": 3,
+        "Description": "3 Rnd (5-5-5)"
+      },
+      "FightNightTracking": [
+        {
+          "ActionId": 82484,
+          "FighterId": null,
+          "Type": "fight_open",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:04:45Z"
+        },
+        {
+          "ActionId": 82486,
+          "FighterId": 4013,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:05:46Z"
+        },
+        {
+          "ActionId": 82487,
+          "FighterId": 3562,
+          "Type": "walkout",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:08:00Z"
+        },
+        {
+          "ActionId": 82488,
+          "FighterId": null,
+          "Type": "tale_of_the_tape",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:09:43Z"
+        },
+        {
+          "ActionId": 82489,
+          "FighterId": null,
+          "Type": "staredown",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:11:21Z"
+        },
+        {
+          "ActionId": 82490,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 1,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T21:11:43Z"
+        },
+        {
+          "ActionId": 82491,
+          "FighterId": 4013,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "2:59",
+          "Timestamp": "2024-11-02T21:13:44Z"
+        },
+        {
+          "ActionId": 82492,
+          "FighterId": 4013,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "2:56",
+          "Timestamp": "2024-11-02T21:13:47Z"
+        },
+        {
+          "ActionId": 82493,
+          "FighterId": 3562,
+          "Type": "takedown_attempt",
+          "RoundNumber": 1,
+          "RoundTime": "1:14",
+          "Timestamp": "2024-11-02T21:15:29Z"
+        },
+        {
+          "ActionId": 82494,
+          "FighterId": 3562,
+          "Type": "takedown",
+          "RoundNumber": 1,
+          "RoundTime": "1:12",
+          "Timestamp": "2024-11-02T21:15:31Z"
+        },
+        {
+          "ActionId": 82495,
+          "FighterId": 4013,
+          "Type": "reversal",
+          "RoundNumber": 1,
+          "RoundTime": "0:29",
+          "Timestamp": "2024-11-02T21:16:14Z"
+        },
+        {
+          "ActionId": 82496,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 1,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T21:16:44Z"
+        },
+        {
+          "ActionId": 82497,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 2,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T21:17:55Z"
+        },
+        {
+          "ActionId": 82498,
+          "FighterId": 4013,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "4:35",
+          "Timestamp": "2024-11-02T21:18:20Z"
+        },
+        {
+          "ActionId": 82499,
+          "FighterId": 4013,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "4:33",
+          "Timestamp": "2024-11-02T21:18:22Z"
+        },
+        {
+          "ActionId": 82500,
+          "FighterId": 4013,
+          "Type": "takedown",
+          "RoundNumber": 2,
+          "RoundTime": "4:31",
+          "Timestamp": "2024-11-02T21:18:24Z"
+        },
+        {
+          "ActionId": 82501,
+          "FighterId": 4013,
+          "Type": "takedown_attempt",
+          "RoundNumber": 2,
+          "RoundTime": "0:08",
+          "Timestamp": "2024-11-02T21:22:47Z"
+        },
+        {
+          "ActionId": 82502,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 2,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T21:22:56Z"
+        },
+        {
+          "ActionId": 82503,
+          "FighterId": null,
+          "Type": "round_start",
+          "RoundNumber": 3,
+          "RoundTime": "5:00",
+          "Timestamp": "2024-11-02T21:24:12Z"
+        },
+        {
+          "ActionId": 82504,
+          "FighterId": 3562,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "4:26",
+          "Timestamp": "2024-11-02T21:24:46Z"
+        },
+        {
+          "ActionId": 82505,
+          "FighterId": 4013,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "2:12",
+          "Timestamp": "2024-11-02T21:27:00Z"
+        },
+        {
+          "ActionId": 82506,
+          "FighterId": 3562,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "1:46",
+          "Timestamp": "2024-11-02T21:27:26Z"
+        },
+        {
+          "ActionId": 82507,
+          "FighterId": 3562,
+          "Type": "takedown",
+          "RoundNumber": 3,
+          "RoundTime": "1:44",
+          "Timestamp": "2024-11-02T21:27:28Z"
+        },
+        {
+          "ActionId": 82508,
+          "FighterId": 4013,
+          "Type": "reversal",
+          "RoundNumber": 3,
+          "RoundTime": "1:17",
+          "Timestamp": "2024-11-02T21:27:55Z"
+        },
+        {
+          "ActionId": 82509,
+          "FighterId": 4013,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "0:23",
+          "Timestamp": "2024-11-02T21:28:49Z"
+        },
+        {
+          "ActionId": 82510,
+          "FighterId": 3562,
+          "Type": "takedown_attempt",
+          "RoundNumber": 3,
+          "RoundTime": "0:08",
+          "Timestamp": "2024-11-02T21:29:04Z"
+        },
+        {
+          "ActionId": 82511,
+          "FighterId": null,
+          "Type": "round_end",
+          "RoundNumber": 3,
+          "RoundTime": "0:00",
+          "Timestamp": "2024-11-02T21:29:12Z"
+        },
+        {
+          "ActionId": 82512,
+          "FighterId": null,
+          "Type": "fight_over",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:29:12Z"
+        },
+        {
+          "ActionId": 82513,
+          "FighterId": null,
+          "Type": "results",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:31:26Z"
+        },
+        {
+          "ActionId": 82514,
+          "FighterId": 3562,
+          "Type": "unofficial_winner_decision",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:31:45Z"
+        },
+        {
+          "ActionId": 82515,
+          "FighterId": null,
+          "Type": "fight_complete",
+          "RoundNumber": null,
+          "RoundTime": null,
+          "Timestamp": "2024-11-02T21:32:15Z"
+        }
+      ]
+    }
+  ]
+}

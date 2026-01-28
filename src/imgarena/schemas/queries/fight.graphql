@@ -1,0 +1,52 @@
+
+  query FightDetailGetFight($input: FightInput!) {
+    getUfcFight(input: $input) {
+      id
+      fightType {
+        possibleRounds
+      }
+      redTeam {
+        fighter {
+          id
+          firstName
+          lastName
+          rankings {
+            weightClass {
+              id
+            }
+            rank
+          }
+          country
+        }
+      }
+      blueTeam {
+        fighter {
+          id
+          firstName
+          lastName
+          rankings {
+            weightClass {
+              id
+            }
+            rank
+          }
+          country
+        }
+      }
+      weightClass {
+        id
+        description
+        abbreviation
+      }
+      status
+      result {
+        winner
+        method
+        methodDetails {
+          endingRound
+          endingTime
+        }
+        officialResult
+      }
+    }
+  }

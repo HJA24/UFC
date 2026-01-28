@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+</head>
+<style>
+  .main-content {
+      width: 50vw;
+      margin-left: 25vw;
+      text-align: center;
+    }
+
+  form input {
+    width: 25%;
+    padding: 4px;
+    margin: 1px 5px;
+    box-sizing: border-box;
+    font-family: "UFCSans", sans-serif;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+
+  @font-face {
+    font-family: "UFCSans";
+    src: url("../fonts/UFCSans-Regular.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "UFCSans";
+    src: url("../fonts/UFCSans-Bold.woff2") format("woff2");
+    font-weight: bold;
+  }
+
+  body {
+    font-family: "UFCSans", sans-serif;
+  }
+
+  button {
+    font-family: "UFCSans", sans-serif;
+    margin-top: 10px;
+    font-size: 1em;
+    width: 10%;
+  }
+
+</style>
+<body>
+<div class="main-content">
+  <h2>Join <i>mmarkov</i></h2>
+  <form>
+    <label for="first_name">First name:</label>
+    <br>
+    <input type="text" id="first_name" name="first_name">
+    <br>
+    <label for="last_name">Last name:</label>
+    <br>
+    <input type="text" id="last_name" name="last_name">
+    <br>
+    <label for="email">Email:</label>
+    <br>
+    <input type="text" id="email" name="email">
+    <br>
+    <label for="password">Password:</label>
+    <br>
+    <input type="text" id="password" name="password">
+    <br>
+    <label for="confirmed_password">Confirm password:</label>
+    <br>
+    <input type="text" id="confirmed_password" name="confirmed_password">
+  </form>
+  <button type="submit">Sign up</button>
+  <p>By signing up, you agree to our
+    <a href="/terms_and_conditions"> Terms & Conditions</a> and
+    <a href="/privacy"> Privacy Policy</a>.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Markets</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+
+    @font-face {
+      font-family: "UFCSans";
+      src: url("../fonts/UFCSans-Regular.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "UFCSans";
+      src: url("../fonts/UFCSans-Bold.woff2") format("woff2");
+      font-weight: bold;
+    }
+
+    body {
+      margin: 0;
+      font-family: "UFCSans", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .bookies-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .bookies-bar p {
+      font-weight: bold;
+      margin-bottom: 10px;
+      align-self:  flex-start;
+    }
+
+    .labels-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .container {
+      position: relative;
+      padding-left: 25px;
+      cursor: pointer;
+      font-size: 15px;
+      user-select: none;
+    }
+
+    .container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+    }
+
+    .container:hover input ~ .checkmark {
+      background-color: rgba(100, 100, 100, 0.33);
+    }
+
+    .container input:checked ~ .checkmark {
+      background-color: rgba(100, 100, 100, 0.33);
+    }
+
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    .container input:checked ~ .checkmark:after {
+      display: block;
+    }
+
+    .container .checkmark:after {
+      left: 7px;
+      top: 3px;
+      width: 4px;
+      height: 9px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    svg {
+      font-size: 18px;
+    }
+
+    p {
+      text-align: left;
+    }
+
+    .x-draggable {
+    cursor: ew-resize;
+      user-select: none;
+  }
+
+
+  </style>
+</head>
+<body>
+
+  <div class="bookies-bar">
+    <p>Select bookie(s):</p>
+    <div class="labels-wrap">
+      <label class="container">DraftKings
+        <input type="checkbox" data-bookie="DraftKings">
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container">BetMGM
+        <input type="checkbox" data-bookie="BetMGM">
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container">Caesars
+        <input type="checkbox" data-bookie="Caesars">
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container">BetRivers
+        <input type="checkbox" data-bookie="BetRivers">
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container">FanDuel
+        <input type="checkbox" data-bookie="FanDuel">
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container">Betway
+        <input type="checkbox" data-bookie="Betway">
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container">Bet365
+        <input type="checkbox" data-bookie="Bet365">
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container">Unibet
+        <input type="checkbox" data-bookie="Unibet">
+        <span class="checkmark"></span>
+      </label>
+
+      <label class="container">PointsBet
+        <input type="checkbox" data-bookie="PointsBet">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  </div>
+
+  <svg width="1000" height="750"></svg>
+  <script src="axes.js"></script>
+  <script src="scatter.js"></script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+    <style>
+        :root {
+            --container-w: 70%;
+            --header-top: 35px;
+            --navbar-h: 55px;
+            --logo-size: 27.5px;
+        }
+
+        @font-face {
+            font-family: "UFCSans";
+            src: url("../fonts/UFCSans-Regular.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: "UFCSans";
+            src: url("../fonts/UFCSans-Bold.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #fff;
+            font-family: "UFCSans", sans-serif;
+        }
+
+        header.hero-wrap {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .hero {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .header {
+            position: absolute;
+            top: var(--header-top);
+            left: 50%;
+            transform: translateX(-50%);
+            width: var(--container-w);
+            height: var(--navbar-h);
+            display: flex;
+            align-items: center;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .navbar {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 2px 2px 2px 2px rgba(100, 100, 100, 0.8);
+            z-index: 2;
+            pointer-events: auto;
+        }
+
+        .navbar li {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            font-weight: 700;
+        }
+
+        .navbar li.login {
+            margin-left: auto;
+        }
+
+        .navbar a {
+            transition: transform .5s ease, color .3s ease;
+
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 18px;
+            line-height: 28px;
+            height: 28px;
+            color: rgb(100, 100, 100);
+        }
+
+        .navbar a.login {
+            font-size: 17px;
+        }
+
+        .navbar a:hover:not(.active) {
+            /* font-size: 19px;  <-- remove this */
+            transform: scale(1.04); /* smooth, no layout shift */
+        }
+
+        .navbar a.active {
+            color: #000;
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center; /* horizontal center */
+            align-items: flex-start; /* push to top */
+            padding-top: 15vh; /* move it down a bit (20% viewport height) */
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        /* The text box: same width as the navbar container */
+        .text {
+            display: none; /* hidden initially */
+            width: var(--container-w); /* match navbar width */
+            max-width: 60vw; /* safety on tiny screens */
+            font-size: 20px;
+            line-height: 1.5;
+            text-align: left;
+
+            /* match navbar look so it "belongs" */
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 10px 10px;
+
+            /* optional fade-in */
+            opacity: 0;
+            transition: opacity 1s ease;
+            pointer-events: auto; /* allow selecting/copying text */
+        }
+
+        /* when shown, fade in */
+        .text.show {
+            opacity: 1;
+        }
+
+
+        /* Logo centered between viewport-left and navbar-left */
+        .logo {
+            position: absolute;
+            top: calc(var(--header-top) + (var(--navbar-h) - var(--logo-size)) / 2);
+            left: calc((100vw - var(--container-w)) / 4);
+            transform: translateX(-50%);
+            width: var(--logo-size);
+            height: var(--logo-size);
+            aspect-ratio: 1;
+            display: inline-grid;
+            z-index: 3;
+            pointer-events: none;
+
+            --b: 1.5px;
+            --g: 4%;
+            --_d: calc(100% / (2 * sin(22.5deg)) + var(--g));
+        }
+
+        @property --_p {
+            syntax: "<angle>";
+            initial-value: 1turn;
+            inherits: false;
+        }
+
+        .logo i {
+            grid-area: 1/1;
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(0) rotate(calc(var(--i) * -45deg - 22.5deg));
+            --o: calc(50% * tan(-22.5deg));
+            clip-path: polygon(var(--o) 50%, 50% var(--o), calc(100% - var(--o)) 50%, 50% calc(100% - var(--o)));
+            animation: move 2s 1s alternate linear both;
+        }
+
+        @keyframes move {
+            0% {
+                transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(0) rotate(calc(var(--i) * -45deg - 22.5deg));
+            }
+            50%, 100% {
+                transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d)) rotate(calc(var(--i) * -45deg - 22.5deg));
+            }
+        }
+
+        .logo:after {
+            content: "";
+            grid-area: 1/1;
+            background: rgba(255, 255, 255, 0.7);
+            margin: calc(50% - (var(--_d) + var(--b) / 2) * cos(22.5deg));
+            mask: conic-gradient(from 22.5deg, #000 var(--_p), #0000 0);
+            animation: fill 2s 1s linear both;
+            --o: calc(50% * tan(-22.5deg));
+            --x: calc(var(--b) * cos(22.5deg));
+            --y: calc(var(--b) * sin(22.5deg));
+            clip-path: polygon(
+                    var(--o) 50%, 50% var(--o), calc(100% - var(--o)) 50%, 50% calc(100% - var(--o)),
+                    var(--o) 50%, calc(50% + var(--o) + var(--y)) var(--x), var(--x) calc(50% + var(--o) + var(--y)),
+                    var(--x) calc(50% - var(--o) - var(--y)), calc(50% + var(--o) + var(--y)) calc(100% - var(--x)),
+                    calc(50% - var(--o) - var(--y)) calc(100% - var(--x)), calc(100% - var(--x)) calc(50% - var(--o) - var(--y)),
+                    calc(100% - var(--x)) calc(50% + var(--o) + var(--y)), calc(50% - var(--o) - var(--y)) var(--x),
+                    calc(50% + var(--o) + var(--y)) var(--x)
+            );
+        }
+
+        @keyframes fill {
+            0%, 50% {
+                --_p: 0deg;
+            }
+            100% {
+                --_p: 360deg;
+            }
+        }
+
+        .logo i:nth-child(1) {
+            --i: 1
+        }
+
+        .logo i:nth-child(2) {
+            --i: 2
+        }
+
+        .logo i:nth-child(3) {
+            --i: 3
+        }
+
+        .logo i:nth-child(4) {
+            --i: 4
+        }
+
+        .logo i:nth-child(5) {
+            --i: 5
+        }
+
+        .logo i:nth-child(6) {
+            --i: 6
+        }
+
+        .logo i:nth-child(7) {
+            --i: 7
+        }
+
+        .logo i:nth-child(8) {
+            --i: 8
+        }
+    </style>
+</head>
+<body>
+<header class="hero-wrap">
+    <img class="hero" src="../../images/gray/cropped%20ufc%20189%20weigh-in.jpg" alt="" aria-hidden="true"/>
+
+    <div class="logo" title="ochance" aria-label="ochance">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+
+    <div class="header">
+        <ul class="navbar">
+            <li><a class="active" href="#home">HOME</a></li>
+            <li><a href="#methodology">METHODOLOGY</a></li>
+            <li><a href="#upcoming">UPCOMING</a></li>
+            <li><a href="#tiers">TIERS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+            <li class="login"><a class="login" href="#login">LOGIN</a></li>
+        </ul>
+    </div>
+</header>
+<div class="overlay">
+    <p class="text">
+        <i>mmarkov</i> provides probabilistic estimates of outcomes for UFC fights. This is achieved using Bayesian inference, Markov chains and
+        quantitative modelling techniques. Our models leverage rich historical data, capture hierarchical relationships
+        between fighter-specific capabilities and account for uncertainty. The result is a total of x well-calibrated
+        estimates per fight, tailored for both standard and advanced prediction markets.
+      <br>
+      <br>
+      <b>Welcome in our octagon.</b>
+    </p>
+</div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const logo = document.querySelector('.logo');
+        const text = document.querySelector('.text');
+
+        // Safety fallback in case animations are disabled or don't fire
+        let revealed = false;
+        const reveal = () => {
+            if (revealed) return;
+            revealed = true;
+            text.style.display = 'block';
+            requestAnimationFrame(() => text.classList.add('show')); // fade-in if you kept the .show CSS
+        };
+
+        // If user prefers reduced motion, reveal immediately
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReduced) {
+            reveal();
+            return;
+        }
+
+        // Reveal when the logo's "fill" animation ends
+        logo.addEventListener('animationend', (e) => {
+            // Pseudo-element animations (like .logo:after) fire on the element with animationName
+            if (e.animationName === 'fill') reveal();
+        });
+
+        // Extra fallback: reveal after 4s if no event fired for any reason
+        setTimeout(reveal, 4000);
+    });
+</script>
+</html>

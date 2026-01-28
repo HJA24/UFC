@@ -1,0 +1,79 @@
+{
+  "name": "decisions",
+  "children": [
+    {
+      "name": "blue",
+      "value": 0.5,
+      "market_id": 1,
+      "children": [
+        {
+          "name": "unanimous",
+          "children": [
+            {
+              "name": "blue / blue / blue",
+              "market_id": 379,
+              "value": 0.05
+            }
+          ]
+        },
+        {
+          "name": "split",
+          "children": [
+            {
+              "name": "blue / blue / red",
+              "market_id": 381,
+              "value": 0.1
+            },
+            {
+              "name": "blue / red / blue",
+              "market_id": 382,
+              "value": 0.15
+            },
+            {
+              "name": "red / blue / blue",
+              "market_id": 383,
+              "value": 0.2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "red",
+      "value": 0.8,
+      "market_id": 2,
+      "children": [
+        {
+          "name": "red unanimous decision",
+          "children": [
+            {
+              "name": "red / red / red",
+              "market_id": 380,
+              "value": 0.3
+            }
+          ]
+        },
+        {
+          "name": "red split decision",
+          "children": [
+            {
+              "name": "red / red / blue",
+              "market_id": 384,
+              "value": 0.1
+            },
+            {
+              "name": "red / blue / red",
+              "market_id": 385,
+              "value": 0.15
+            },
+            {
+              "name": "blue / red / red",
+              "market_id": 386,
+              "value": 0.25
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

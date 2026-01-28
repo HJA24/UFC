@@ -1,0 +1,44 @@
+
+.welcome-container {
+  width: 50vw;
+  max-width: 50vw;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start; /* or center if you prefer */
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 0;
+}
+
+p {
+  line-height: 1.7;
+  color: rgb(50, 50, 50);
+}
+
+.welcome-container h2,
+.welcome-container p {
+  opacity: 0;
+}
+
+
+.welcome-container h2 {
+  animation: fadeIn 0.8s ease forwards;
+  animation-delay: 3s;
+}
+
+.welcome-container p {
+  animation: fadeIn 0.8s ease forwards;
+  animation-delay: 3.5s; /* after h2 finishes */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

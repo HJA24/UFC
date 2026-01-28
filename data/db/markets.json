@@ -1,0 +1,2467 @@
+{
+  "name": "markets",
+  "children": [
+    {
+      "name": "winner",
+      "children": [
+        {
+          "name": "blue",
+          "market_id": 1,
+          "tier_id": 1,
+          "children": [
+            {
+              "name": "R1",
+              "market_id": 4,
+              "tier_id": 2,
+              "children": [
+                {
+                  "name": "first 10 seconds",
+                  "market_id": 3,
+                  "tier_id": 3
+                }
+              ]
+            },
+            {
+              "name": "R2",
+              "market_id": 5,
+              "tier_id": 2
+            },
+            {
+              "name": "R3",
+              "market_id": 6,
+              "tier_id": 2
+            },
+            {
+              "name": "R4",
+              "market_id": 7,
+              "tier_id": 2
+            },
+            {
+              "name": "R5",
+              "market_id": 8,
+              "tier_id": 2,
+              "children": [
+                {
+                  "name": "last 10 seconds",
+                  "market_id": 9,
+                  "tier_id": 3
+                }
+              ]
+            },
+            {
+              "name": "inside distance",
+              "market_id": 10,
+              "tier_id": 2
+            },
+            {
+              "name": "comeback",
+              "children": [
+                {
+                  "description": "knockdown landed",
+                  "market_id": 390,
+                  "tier_id": 3
+                },
+                {
+                  "description": "submission attempted",
+                  "market_id": 391,
+                  "tier_id": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "red",
+          "market_id": 2,
+          "tier_id": 1,
+          "children": [
+            {
+              "name": "R1",
+              "market_id": 12,
+              "tier_id": 2,
+              "children": [
+                {
+                  "name": "first 10 seconds",
+                  "market_id": 11,
+                  "tier_id": 3
+                }
+              ]
+            },
+            {
+              "name": "R2",
+              "market_id": 13,
+              "tier_id": 2
+            },
+            {
+              "name": "R3",
+              "market_id": 14,
+              "tier_id": 2
+            },
+            {
+              "name": "R4",
+              "market_id": 15,
+              "tier_id": 2
+            },
+            {
+              "name": "R5",
+              "market_id": 16,
+              "tier_id": 2,
+              "children": [
+                {
+                  "name": "last 10 seconds",
+                  "market_id": 17,
+                  "tier_id": 3
+                }
+              ]
+            },
+            {
+              "name": "inside distance",
+              "market_id": 18,
+              "tier_id": 2
+            },
+            {
+              "name": "comeback",
+              "children": [
+                {
+                  "description": "knockdown landed",
+                  "market_id": 392,
+                  "tier_id": 3
+                },
+                {
+                  "description": "submission attempted",
+                  "market_id": 393,
+                  "tier_id": 3
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "method",
+      "children": [
+        {
+          "name": "blue",
+          "children": [
+            {
+              "name": "knockout",
+              "market_id": 19,
+              "tier_id": 1,
+              "children": [
+                {
+                  "name": "R1",
+                  "market_id": 25,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 45,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 46,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 47,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 48,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 49,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R2",
+                  "market_id": 26,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 50,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 51,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 52,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 53,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 54,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R3",
+                  "market_id": 27,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 55,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 56,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 57,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 58,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 59,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R4",
+                  "market_id": 28,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 60,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 61,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 62,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 63,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 64,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R5",
+                  "market_id": 29,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 65,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 66,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 67,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 68,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 69,
+                      "tier_id": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "submission",
+              "market_id": 20,
+              "tier_id": 1,
+              "children": [
+                {
+                  "name": "R1",
+                  "market_id": 30,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 70,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 71,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 72,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 73,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 74,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R2",
+                  "market_id": 31,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 75,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 76,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 77,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 78,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 79,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R3",
+                  "market_id": 32,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 80,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 81,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 82,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 83,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 84,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R4",
+                  "market_id": 33,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 85,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 86,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 87,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 88,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 89,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R5",
+                  "market_id": 34,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "2nd minute",
+                      "market_id": 90,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 91,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 92,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 93,
+                      "tier_id": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "decision",
+              "market_id": 21,
+              "tier_id": 1,
+              "children": [
+                {
+                  "description": "split/majority decision",
+                  "market_id": 394,
+                  "tier_id": 3
+                },
+                {
+                  "description": "unanimous decision",
+                  "market_id": 395,
+                  "tier_id": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "red",
+          "children": [
+            {
+              "name": "knockout",
+              "market_id": 22,
+              "tier_id": 1,
+              "children": [
+                {
+                  "name": "R1",
+                  "market_id": 35,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 94,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 95,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 96,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 97,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 98,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R2",
+                  "market_id": 36,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 99,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 100,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 101,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 102,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 103,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R3",
+                  "market_id": 37,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 104,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 105,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 106,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 107,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 108,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R4",
+                  "market_id": 38,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 109,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 110,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 111,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 112,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 113,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R5",
+                  "market_id": 39,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 114,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 115,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 116,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 117,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 118,
+                      "tier_id": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "submission",
+              "market_id": 23,
+              "tier_id": 1,
+              "children": [
+                {
+                  "name": "R1",
+                  "market_id": 40,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 119,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 120,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 121,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 122,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 123,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R2",
+                  "market_id": 41,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 124,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 125,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 126,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 127,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 128,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R3",
+                  "market_id": 42,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 129,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 130,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 131,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 132,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 133,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R4",
+                  "market_id": 43,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 134,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 135,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 136,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 137,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 138,
+                      "tier_id": 3
+                    }
+                  ]
+                },
+                {
+                  "name": "R5",
+                  "market_id": 44,
+                  "tier_id": 2,
+                  "children": [
+                    {
+                      "name": "1st minute",
+                      "market_id": 139,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "2nd minute",
+                      "market_id": 140,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "3rd minute",
+                      "market_id": 141,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "4th minute",
+                      "market_id": 142,
+                      "tier_id": 3
+                    },
+                    {
+                      "name": "5th minute",
+                      "market_id": 143,
+                      "tier_id": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "decision",
+              "market_id": 24,
+              "tier_id": 1,
+              "children": [
+                {
+                  "category": "decision",
+                  "description": "split/majority decision",
+                  "market_id": 396,
+                  "sub_category": "split",
+                  "tier_id": 3
+                },
+                {
+                  "category": "decision",
+                  "description": "unanimous decision",
+                  "market_id": 397,
+                  "sub_category": "unanimous",
+                  "tier_id": 3
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "duration",
+      "children": [
+        {
+          "name": "over/under",
+          "children": [
+            {
+              "name": "1.5",
+              "children": [
+                {
+                  "name": "under",
+                  "market_id": 148,
+                  "tier_id": 2
+                },
+                {
+                  "name": "over",
+                  "market_id": 144,
+                  "tier_id": 2
+                }
+              ]
+            },
+            {
+              "name": "2.5",
+              "children": [
+                {
+                  "name": "under",
+                  "market_id": 149,
+                  "tier_id": 2
+                },
+                {
+                  "name": "over",
+                  "market_id": 145,
+                  "tier_id": 2
+                }
+              ]
+            },
+            {
+              "name": "3.5",
+              "children": [
+                {
+                  "name": "under",
+                  "market_id": 150,
+                  "tier_id": 2
+                },
+                {
+                  "name": "over",
+                  "market_id": 146,
+                  "tier_id": 2
+                }
+              ]
+            },
+            {
+              "name": "4.5",
+              "children": [
+                {
+                  "name": "under",
+                  "market_id": 151,
+                  "tier_id": 2
+                },
+                {
+                  "name": "over",
+                  "market_id": 147,
+                  "tier_id": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "fight starts",
+          "children": [
+            {
+              "name": "R2",
+              "children": [
+                {
+                  "name": "True",
+                  "market_id": 152,
+                  "tier_id": 2
+                },
+                {
+                  "name": "False",
+                  "market_id": 156,
+                  "tier_id": 2
+                }
+              ]
+            },
+            {
+              "name": "R3",
+              "children": [
+                {
+                  "name": "True",
+                  "market_id": 153,
+                  "tier_id": 2
+                },
+                {
+                  "name": "False",
+                  "market_id": 157,
+                  "tier_id": 2
+                }
+              ]
+            },
+            {
+              "name": "R4",
+              "children": [
+                {
+                  "name": "True",
+                  "market_id": 154,
+                  "tier_id": 2
+                },
+                {
+                  "name": "False",
+                  "market_id": 158,
+                  "tier_id": 2
+                }
+              ]
+            },
+            {
+              "name": "R5",
+              "children": [
+                {
+                  "name": "True",
+                  "market_id": 155,
+                  "tier_id": 2
+                },
+                {
+                  "name": "False",
+                  "market_id": 159,
+                  "tier_id": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "fight ends in",
+          "children": [
+            {
+              "name": "R1",
+              "children": [
+                {
+                  "name": "True",
+                  "market_id": 160,
+                  "tier_id": 2
+                },
+                {
+                  "name": "False",
+                  "market_id": null,
+                  "tier_id": 2
+                }
+              ]
+            },
+            {
+              "name": "R2",
+              "children": [
+                {
+                  "name": "True",
+                  "market_id": 161,
+                  "tier_id": 2
+                },
+                {
+                  "name": "False",
+                  "market_id": null,
+                  "tier_id": 2
+                }
+              ]
+            },
+            {
+              "name": "R3",
+              "children": [
+                {
+                  "name": "True",
+                  "market_id": 162,
+                  "tier_id": 2
+                },
+                {
+                  "name": "False",
+                  "market_id": null,
+                  "tier_id": 2
+                }
+              ]
+            },
+            {
+              "name": "R4",
+              "children": [
+                {
+                  "name": "True",
+                  "market_id": 163,
+                  "tier_id": 2
+                },
+                {
+                  "name": "False",
+                  "market_id": null,
+                  "tier_id": 2
+                }
+              ]
+            },
+            {
+              "name": "R5",
+              "children": [
+                {
+                  "name": "True",
+                  "market_id": 164,
+                  "tier_id": 2
+                },
+                {
+                  "name": "False",
+                  "market_id": null,
+                  "tier_id": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "to the distance",
+          "children": [
+            {
+              "name": "True",
+              "market_id": null,
+              "tier_id": 2
+            },
+            {
+              "name": "False",
+              "market_id": null,
+              "tier_id": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stats",
+      "children": [
+        {
+          "name": "total",
+          "children": [
+            {
+              "name": "blue",
+              "children": [
+                {
+                  "name": "strikes landed",
+                  "children": [
+                    {
+                      "name": "50",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "75",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "100",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "takedowns landed",
+                  "children": [
+                    {
+                      "name": "5",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "10",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "15",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "20",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "submissions attempted",
+                  "children": [
+                    {
+                      "name": 2,
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": 5,
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": 7,
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "ground control",
+                  "children": [
+                    {
+                      "name": "1 minute",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2.5 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "5 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "7.5 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "10 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "12.5 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "15 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "15 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "17.5 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "20 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "red",
+              "children": [
+                {
+                  "name": "strikes landed",
+                  "children": [
+                    {
+                      "name": "50",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "75",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "100",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "takedowns landed",
+                  "children": [
+                    {
+                      "name": "5",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "10",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "15",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "20",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "submissions attempted",
+                  "children": [
+                    {
+                      "name": 2,
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": 5,
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": 7,
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "ground control",
+                  "children": [
+                    {
+                      "name": "1 minute",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "2.5 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "5 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "7.5 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "10 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "12.5 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "15 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "15 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "17.5 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    },
+                    {
+                      "name": "20 minutes",
+                      "children": [
+                        {
+                          "name": "under",
+                          "market_id": null,
+                          "tier_id": 3
+                        },
+                        {
+                          "name": "over",
+                          "market_id": null,
+                          "tier_id": 3
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "differential",
+          "children": [
+            {
+              "name": "blue",
+              "children": [
+                {
+                  "name": "strikes landed",
+                  "market_id": 265
+                },
+                {
+                  "name": "takedowns landed",
+                  "market_id": 267
+                },
+                {
+                  "name": "submission attempts",
+                  "market_id": 269
+                },
+                {
+                  "name": "ground control",
+                  "market_id": 273
+                }
+              ]
+            },
+            {
+              "name": "red",
+              "children": [
+                {
+                  "name": "strikes landed",
+                  "market_id": 266
+                },
+                {
+                  "name": "takedowns landed",
+                  "market_id": 268
+                },
+                {
+                  "name": "submission attempts",
+                  "market_id": 270
+                },
+                {
+                  "name": "ground control",
+                  "market_id": 274
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "knockout",
+      "children": [
+        {
+          "name": "blue",
+          "children": [
+            {
+              "description": "by punch",
+              "market_id": 275,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 283,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 284,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 285,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 286,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 287,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "by elbow",
+              "market_id": 276,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 288,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 289,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 290,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 291,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 292,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "by kick",
+              "market_id": 277,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 293,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 294,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 295,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 296,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 297,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "by knee",
+              "market_id": 278,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 298,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 299,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 300,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 301,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 302,
+                  "tier_id": 4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "red",
+          "children": [
+            {
+              "description": "by punch",
+              "market_id": 279,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 303,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 304,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 305,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 306,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 307,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "by elbow",
+              "market_id": 280,
+              "sub_category": "elbow",
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 308,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 309,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 310,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 311,
+                  "sub_category": "elbow",
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 312,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "by kick",
+              "market_id": 281,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 313,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 314,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 315,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 316,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 317,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "by knee",
+              "market_id": 282,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 318,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 319,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 320,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 321,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 322,
+                  "tier_id": 4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "submission",
+      "children": [
+        {
+          "name": "blue",
+          "children": [
+            {
+              "description": "rear naked choke",
+              "market_id": 323,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 335,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 336,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 337,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 338,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 339,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "guillotine choke",
+              "market_id": 324,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 340,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 341,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 342,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 343,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 344,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "armbar",
+              "market_id": 325,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 345,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 346,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 347,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 348,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 349,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "arm triangle choke",
+              "market_id": 326,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 350,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 351,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 352,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 353,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 354,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "triangle choke",
+              "market_id": 327,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 355,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 356,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 357,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 357,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 358,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "d'arce choke",
+              "market_id": 328,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 355,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 356,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 357,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 357,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 358,
+                  "tier_id": 4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "red",
+          "children": [
+            {
+              "description": "rear naked choke",
+              "market_id": 329,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 359,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 360,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 361,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 362,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 364,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "guillotine choke",
+              "market_id": 330,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 365,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 366,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 367,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 368,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 369,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "armbar",
+              "market_id": 331,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 370,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 371,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 372,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 373,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 374,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "arm triangle choke",
+              "market_id": 332,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 375,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 376,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 377,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 378,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 379,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "triangle choke",
+              "market_id": 333,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 380,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 381,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 382,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 383,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 384,
+                  "tier_id": 4
+                }
+              ]
+            },
+            {
+              "description": "d'arce choke",
+              "market_id": 334,
+              "tier_id": 4,
+              "children": [
+                {
+                  "description": "R1",
+                  "market_id": 385,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R2",
+                  "market_id": 386,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R3",
+                  "market_id": 387,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R4",
+                  "market_id": 388,
+                  "tier_id": 4
+                },
+                {
+                  "description": "R5",
+                  "market_id": 389,
+                  "tier_id": 4
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

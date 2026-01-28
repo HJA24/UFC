@@ -1,0 +1,82 @@
+%! Author = huibmeulenbelt
+%! Date = 01/03/2025
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{titling}
+
+\setlength{\droptitle}{-5cm}       % This is your set screw.
+\graphicspath{ {./images/} }
+
+% Document
+\begin{document}
+    \title{A MMArkov Chain}
+    \maketitle
+
+    \section*{Markov chain}
+    A MMA fight can be represented as a Markov chain.
+    Figure \ref{fig:chain} shows the relationships between the different states.
+    Table \ref{tab:terminology} describes the different states and actions.
+
+    \begin{figure}[h!]
+      \centering
+      \subfigure{\includegraphics[width=\linewidth]{chain.png}}
+      \caption{A visual representation of the states and transitions}
+      \label{fig:chain}
+   \end{figure}
+
+    \begin{table}[h!]
+        \centering
+       \begin{tabular}{@{}l l l}
+           \hline
+           \textbf{Variable} & \textbf{Definition} & \textbf{Category} \\
+           \hline
+           GRC & Ground control & state \\
+           KDL & Knockdown landed & transition \\
+           RVL & Reversal landed & transition \\
+           ST  & Standing & state \\
+           SUL & Standup landed & transition \\
+           TDL & Takedown landed & transition \\ [1ex]
+           \hline
+       \end{tabular}
+        \caption{A summary of the states and transitions}
+        \label{tab:terminology}
+    \end{table}
+
+    \section*{Stand ups}
+    All the variables of Table 1 are known, with the exception of $SUL$.
+    The chain always starts in $ST$ and depending on the final state we can infer the following:
+
+    \subsubsection*{Final state is \textbf{ST}}
+    $GRC_{blue}$ and $GRC_{red}$ are entered and exited the same number of times.
+
+    \begin{align*}
+        SUL_{red} & = \max(0, KDL_{blue} + TDL_{blue} + RVL_{blue} - RVL_{red}) \\
+        SUL_{blue} & = \max(0, KDL_{red} + TDL_{red} + RVL_{red} - RVL_{blue}) \\
+    \end{align*}
+
+    \subsubsection*{Final state is \textbf{GRC\_{blue}}}
+    The number of entries of $GRC_{blue}$ is one greater than the number of exits.
+    The number of entries and exits of $GRC_{red}$ is equal to each other.
+
+    \begin{align*}
+        SUL_{blue} & = \max(0, KDL_{red} + TDL_{red} + RVL_{red} - RVL_{blue} - 1) \\
+        SUL_{red} & = \max(0, KDL_{blue} + TDL_{blue} + RVL_{blue} - RVL_{red}) \\
+    \end{align*}
+
+    \subsubsection*{Final state is \textbf{GRC\_{red}}}
+    The number of entries and exits of $GRC_{blue}$ is equal to each other.
+    The number of entries of $GRC_{red}$ is one greater than the number of exits.
+
+    \begin{align*}
+        SUL_{blue} & = \max(0, KDL_{red} + TDL_{red} + RVL_{red} - RVL_{blue}) \\
+        SUL_{red} & = \max(0, KDL_{blue} + TDL_{blue} + RVL_{blue} - RVL_{red} - 1) \\
+    \end{align*}
+
+\end{document}

@@ -1,0 +1,297 @@
+404 376                                        // standing -> strike standing attempt red
+404 174                                        // standing -> strike standing attempt blue
+404 401                                        // standing -> takedown attempt red
+404 197                                        // standing -> takedown attempt blue
+404 404                                        // standing -> standing
+
+376 377                                        // strike standing attempt red -> strike standing body attempt red
+376 378                                        // strike standing attempt red -> strike standing head attempt red
+174 175                                        // strike standing attempt blue -> strike standing body attempt blue
+174 176                                        // strike standing attempt blue -> strike standing head attempt blue
+
+377 404                                        // strike standing body attempt red -> standing
+377 390                                        // strike standing body attempt red -> strike standing body landed red
+378 404                                        // strike standing head attempt red -> standing
+378 391                                        // strike standing head attempt red -> strike standing head landed red
+175 404                                        // strike standing body attempt blue -> standing
+175 187                                        // strike standing body attempt blue -> strike standing body landed blue
+176 404                                        // strike standing head attempt blue -> standing
+176 188                                        // strike standing head attempt blue -> strike standing head landed blue
+
+390 404 1                                      // strike standing body landed red -> standing
+391 116                                        // strike standing head landed red -> knockout blue
+391 404                                        // strike standing head landed red -> standing
+187 404 1                                      // strike standing body landed blue -> standing
+188 316                                        // strike standing head landed blue -> knockout red
+188 404                                        // strike standing head landed blue -> standing
+
+401 404                                        // takedown attempt red -> standing
+401 401                                        // takedown attempt red -> takedown landed red
+406 317 1                                      // takedown landed red -> misc ground control red
+197 404                                        // takedown attempt blue -> standing
+197 405                                        // takedown attempt blue -> takedown landed blue
+405 117                                        // takedown landed blue -> misc ground control blue
+
+317 148                                        // misc ground control red -> reversal blue
+317 156                                        // misc ground control red -> standup blue
+317 317                                        // misc ground control red -> misc ground control red
+317 372                                        // misc ground control red -> strike ground attempt red
+317 395                                        // misc ground control red -> submission attempt red
+317 199                                        // misc ground control red -> advance to back control red
+317 204                                        // misc ground control red -> advance to guard control red
+317 209                                        // misc ground control red -> advance to half guard control red
+317 214                                        // misc ground control red -> advance to mount control red
+317 219                                        // misc ground control red -> advance to side control red
+117 117                                        // misc ground control blue -> misc ground control blue
+117 170                                        // misc ground control blue -> strike ground attempt blue
+117 191                                        // misc ground control blue -> submission attempt blue
+117 350                                        // misc ground control blue -> reversal red
+117 358                                        // misc ground control blue -> standup red
+117 1                                          // misc ground control blue -> advance to back control blue
+117 6                                          // misc ground control blue -> advance to guard control blue
+117 11                                         // misc ground control blue -> advance to half guard control blue
+117 16                                         // misc ground control blue -> advance to mount control blue
+117 21                                         // misc ground control blue -> advance to side control blue
+
+224 152                                        // back control red -> reversal blue
+224 160                                        // back control red -> standup blue
+224 224                                        // back control red -> back control red
+224 372                                        // back control red -> strike attempt red
+224 400                                        // back control red -> submission attempt red
+224 205                                        // back control red -> advance to guard control red
+224 210                                        // back control red -> advance to half guard control red
+224 215                                        // back control red -> advance to mount control red
+224 220                                        // back control red -> advance to side control red
+26 26                                          // back control blue -> back control blue
+26 170                                         // back control blue -> strike attempt blue
+26 196                                         // back control blue -> submission attempt blue
+26 354                                         // back control blue -> reversal red
+26 362                                         // back control blue -> standup red
+26 7                                           // back control blue -> advance to guard control blue
+26 12                                          // back control blue -> advance to half guard control blue
+26 17                                          // back control blue -> advance to mount control blue
+26 22                                          // back control blue -> advance to side control blue
+
+356 151                                        // side control red -> reversal blue
+356 159                                        // side control red -> standup blue
+356 356                                        // side control red -> control red
+356 372                                        // side control red -> strike attempt red
+356 398                                        // side control red -> submission attempt red
+356 203                                        // side control red -> advance to back control red
+356 208                                        // side control red -> advance to guard control red
+356 213                                        // side control red -> advance to half guard control red
+356 218                                        // side control red -> advance to mount control red
+154 154                                        // side control blue -> side control blue
+154 170                                        // side control blue -> strike attempt blue
+154 194                                        // side control blue -> submission attempt blue
+154 353                                        // side control blue -> reversal red
+154 361                                        // side control blue -> standup red
+154 5                                          // side control blue -> advance to back control blue
+154 10                                         // side control blue -> advance to guard control blue
+154 15                                         // side control blue -> advance to half guard control blue
+154 20                                         // side control blue -> advance to mount control blue
+
+257 150                                        // guard control red -> reversal blue
+257 158                                        // guard control red -> standup blue
+257 257                                        // guard control red -> guard control red
+257 372                                        // guard control red -> strike attempt red
+257 397                                        // guard control red -> submission attempt red
+257 200                                        // guard control red -> advance to back control red
+257 211                                        // guard control red -> advance to half guard control red
+257 216                                        // guard control red -> advance to mount control red
+257 221                                        // guard control red -> advance to side control red
+57 57                                          // guard control blue -> guard control blue
+57 170                                         // guard control blue -> strike attempt blue
+57 193                                         // guard control blue -> submission attempt blue
+57 352                                         // guard control blue -> reversal red
+57 360                                         // guard control blue -> standup red
+57 2                                           // guard control blue -> advance to back control blue
+57 13                                          // guard control blue -> advance to half guard control blue
+57 18                                          // guard control blue -> advance to mount control blue
+57 23                                          // guard control blue -> advance to side control blue
+
+258 149                                        // half guard control red -> reversal blue
+258 157                                        // half guard control red -> standup blue
+258 258                                        // half guard control red -> half guard control red
+258 372                                        // half guard control red -> strike attempt red
+258 396                                        // half guard control red -> submission attempt red
+258 201                                        // half guard control red -> advance to back control red
+258 206                                        // half guard control red -> advance to guard control red
+258 217                                        // half guard control red -> advance to mount control red
+258 222                                        // half guard control red -> advance to side control red
+58 58                                          // half guard control blue -> half guard control blue
+58 170                                         // half guard control blue -> strike attempt blue
+58 192                                         // half guard control blue -> submission attempt blue
+58 351                                         // half guard control blue -> reversal red
+58 359                                         // half guard control blue -> standup red
+58 3                                           // half guard control blue -> advance to back control blue
+58 8                                           // half guard control blue -> advance to guard control blue
+58 19                                          // half guard control blue -> advance to mount control blue
+58 24                                          // half guard control blue -> advance to side control blue
+
+318 153                                        // mount control red -> reversal blue
+318 161                                        // mount control red -> standup blue
+318 318                                        // mount control red -> mount control red
+318 372                                        // mount control red -> strike attempt red
+318 399                                        // mount control red -> submission attempt red
+318 202                                        // mount control red -> advance to back control red
+318 207                                        // mount control red -> advance to guard control red
+318 212                                        // mount control red -> advance to half guard control red
+318 223                                        // mount control red -> advance to side control red
+118 118                                        // mount control blue -> mount control blue
+118 170                                        // mount control blue -> strike attempt blue
+118 195                                        // mount control blue -> submission attempt blue
+118 355                                        // mount control blue -> reversal red
+118 363                                        // mount control blue -> standup red
+118 4                                          // mount control blue -> advance to back control blue
+118 9                                          // mount control blue -> advance to guard control blue
+118 14                                         // mount control blue -> advance to half guard control blue
+118 25                                         // mount control blue -> advance to side control blue
+
+199 224 1                                      // advance to back control from misc ground control red -> back control red
+200 224 1                                      // advance to back control from guard control red -> back control red
+201 224 1                                      // advance to back control from half guard control red -> back control red
+202 224 1                                      // advance to back control from mount control red -> back control red
+203 224 1                                      // advance to back control from side control red -> back control red
+204 257 1                                      // advance to guard control from misc ground control red -> guard control red
+205 257 1                                      // advance to guard control from back control red -> guard control red
+206 257 1                                      // advance to guard control from half guard control red -> guard control red
+207 257 1                                      // advance to guard control from mount control red -> guard control red
+208 257 1                                      // advance to guard control from side control red -> guard control red
+209 258 1                                      // advance to half guard control from misc ground control red -> half guard control red
+210 258 1                                      // advance to half guard control from back control red -> half guard control red
+211 258 1                                      // advance to half guard control from guard control red -> half guard control red
+212 258 1                                      // advance to half guard control from mount control red -> half guard control red
+213 258 1                                      // advance to half guard control from side control red -> half guard control red
+214 318 1                                      // advance to mount control from misc ground control red -> mount control red
+215 318 1                                      // advance to mount control from back control red -> mount control red
+216 318 1                                      // advance to mount control from guard control red -> mount control red
+217 318 1                                      // advance to mount control from half guard control red -> mount control red
+218 318 1                                      // advance to mount control from side control red -> mount control red
+219 356 1                                      // advance to side control from misc ground control red -> side control red
+220 356 1                                      // advance to side control from back control red -> side control red
+221 356 1                                      // advance to side control from guard control red -> side control red
+222 356 1                                      // advance to side control from half guard control red -> side control red
+223 356 1                                      // advance to side control from mount control red -> side control red
+
+1 26 1                                         // advance to back control from misc ground control red -> back control red
+2 26 1                                         // advance to back control from guard control red -> back control red
+3 26 1                                         // advance to back control from half guard control red -> back control red
+4 26 1                                         // advance to back control from mount control red -> back control red
+5 26 1                                         // advance to back control from side control red -> back control red
+6 57 1                                         // advance to guard control from misc ground control red -> guard control red
+7 57 1                                         // advance to guard control from back control red -> guard control red
+8 57 1                                         // advance to guard control from half guard control red -> guard control red
+9 57 1                                         // advance to guard control from mount control red -> guard control red
+10 57 1                                        // advance to guard control from side control red -> guard control red
+11 58 1                                        // advance to half guard control from misc ground control red -> half guard control red
+12 58 1                                        // advance to half guard control from back control red -> half guard control red
+13 58 1                                        // advance to half guard control from guard control red -> half guard control red
+14 58 1                                        // advance to half guard control from mount control red -> half guard control red
+15 58 1                                        // advance to half guard control from side control red -> half guard control red
+16 118 1                                       // advance to mount control from misc ground control red -> mount control red
+17 118 1                                       // advance to mount control from back control red -> mount control red
+18 118 1                                       // advance to mount control from guard control red -> mount control red
+19 118 1                                       // advance to mount control from half guard control red -> mount control red
+20 118 1                                       // advance to mount control from side control red -> mount control red
+21 154 1                                       // advance to side control from misc ground control red -> side control red
+22 154 1                                       // advance to side control from back control red -> side control red
+23 154 1                                       // advance to side control from guard control red -> side control red
+24 154 1                                       // advance to side control from half guard control red -> side control red
+25 154 1                                       // advance to side control from mount control red -> side control red
+
+350 317 1                                      // reversal from misc ground control blue red -> misc ground control red
+351 317 1                                      // reversal from half guard control blue red -> misc ground control red
+352 317 1                                      // reversal from guard control blue red -> misc ground control red
+353 317 1                                      // reversal from side control blue red -> misc ground control red
+354 317 1                                      // reversal from back control blue red -> misc ground control red
+355 317 1                                      // reversal from mount control blue red -> misc ground control red
+
+148 117 1                                      // reversal from misc ground control red blue -> misc ground control blue
+149 117 1                                      // reversal from half guard control red blue -> misc ground control blue
+150 117 1                                      // reversal from guard control red blue -> misc ground control blue
+151 117 1                                      // reversal from side control red blue -> misc ground control blue
+152 117 1                                      // reversal from back control red blue -> misc ground control blue
+153 117 1                                      // reversal from mount control red blue -> misc ground control blue
+
+358 404 1                                      // stand up from misc ground control red -> standing
+359 404 1                                      // stand up from half guard control red -> standing
+360 404 1                                      // stand up from guard control red -> standing
+361 404 1                                      // stand up from side control red -> standing
+362 404 1                                      // stand up from back control red -> standing
+363 404 1                                      // stand up from mount control red -> standing
+
+156 404 1                                      // stand up from misc ground control blue -> standing
+157 404 1                                      // stand up from half guard control blue -> standing
+158 404 1                                      // stand up from guard control blue -> standing
+159 404 1                                      // stand up from side control blue -> standing
+160 404 1                                      // stand up from back control blue -> standing
+161 404 1                                      // stand up from mount control blue -> standing
+
+395 317                                        // submission attempt misc ground control red -> misc ground control red
+396 258                                        // submission attempt half guard control red -> half guard control red
+397 257                                        // submission attempt guard control red -> guard control red
+398 356                                        // submission attempt side control red -> side control red
+399 318                                        // submission attempt mount control red -> mount control red
+400 224                                        // submission attempt back control red -> back control red
+
+191 117                                        // submission attempt misc ground control blue -> misc ground control blue
+192 58                                         // submission attempt half guard control blue -> half guard control blue
+193 57                                         // submission attempt guard control blue -> guard control blue
+194 154                                        // submission attempt side control blue -> side control blue
+195 118                                        // submission attempt mount control blue -> mount control blue
+196 26                                         // submission attempt back control blue -> back control blue
+
+395 198                                        // submission attempt misc ground control red -> tapout blue
+396 198                                        // submission attempt half guard control red -> tapout blue
+397 198                                        // submission attempt guard control red -> tapout blue
+398 198                                        // submission attempt side control red -> tapout blue
+399 198                                        // submission attempt mount control red -> tapout blue
+400 198                                        // submission attempt back control red -> tapout blue
+
+191 402                                        // submission attempt misc ground control blue -> tapout red
+192 402                                        // submission attempt half guard control blue -> tapout red
+193 402                                        // submission attempt guard control blue -> tapout red
+194 402                                        // submission attempt side control blue -> tapout red
+195 402                                        // submission attempt mount control blue -> tapout red
+196 402                                        // submission attempt back control blue -> tapout red
+
+387 317 1                                      // strike ground body landed red -> misc ground control red
+387 258 1                                      // strike ground body landed red -> half guard control red
+387 257 1                                      // strike ground body landed red -> guard control red
+387 356 1                                      // strike ground body landed red -> side control red
+387 318 1                                      // strike ground body landed red -> mount control red
+387 224 1                                      // strike ground body landed red -> back control red
+
+184 117 1                                      // strike ground body landed blue -> misc ground control blue
+184 58 1                                       // strike ground body landed blue -> half guard control blue
+184 57 1                                       // strike ground body landed blue -> guard control blue
+184 154 1                                      // strike ground body landed blue -> side control blue
+184 118 1                                      // strike ground body landed blue -> mount control blue
+184 26 1                                       // strike ground body landed blue -> back control blue
+
+374 317                                        // strike ground head attempt red -> misc ground control red
+374 258                                        // strike ground head attempt red -> half guard control red
+374 257                                        // strike ground head attempt red -> guard control red
+374 356                                        // strike ground head attempt red -> side control red
+374 318                                        // strike ground head attempt red -> mount control red
+374 224                                        // strike ground head attempt red -> back control red
+
+172 117                                        // strike ground head attempt blue -> misc ground control blue
+172 58                                         // strike ground head attempt blue -> half guard control blue
+172 57                                         // strike ground head attempt blue -> guard control blue
+172 154                                        // strike ground head attempt blue -> side control blue
+172 118                                        // strike ground head attempt blue -> mount control blue
+172 26                                         // strike ground head attempt blue -> back control blue
+
+373 387                                        // strike ground body attempt red -> strike ground body landed red
+374 388                                        // strike ground head attempt red -> strike ground head landed red
+171 184                                        // strike ground body attempt blue -> strike ground body landed blue
+172 185                                        // strike ground head attempt blue -> strike ground head landed blue
+388 116                                        // strike ground head landed red -> knockout blue
+185 316                                        // strike ground head landed blue -> knockout red
+
+402 402 1                                      // tapout red -> tapout red
+198 198 1                                      // tapout blue -> tapout blue
+316 316 1                                      // knockout red -> knockout red
+116 116 1                                      // knockout blue -> knockout blue

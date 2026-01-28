@@ -1,0 +1,94 @@
+%! Author = huibmeulenbelt
+%! Date = 11/04/2025
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{adjustbox}
+
+\pagestyle{empty}
+
+% Document
+\begin{document}
+    \title{Fight outcomes}
+    \author{HJA Meulenbelt}
+    \maketitle
+
+    \section*{Probabilities}
+    Each fight consists of $f \in \{blue, red\}$ fighters and is observed by $J=3$ judges.
+
+    Table \ref{tab:table} shows the possible decision outcomes of fight as a result of the judges' verdicts.
+
+    \begin{table}[!ht]
+        \caption{Overview of all possible decisions}
+        \vspace{0.2cm}
+        \centering
+        \begin{tabular}{l l l l l}
+            \textbf{Judge 1} & \textbf{Judge 2} & \textbf{Judge 3} & \textbf{Winner} & \textbf{Decision} \\
+            \hline
+            blue & blue & blue & blue & unanimous win \\
+            blue & blue & red & blue & split win \\
+            blue & blue & draw & blue & majority win \\
+            blue & red & draw & draw & split draw \\
+            blue & draw & draw & draw & majority draw \\
+            draw & draw & draw & draw & unanimous draw
+        \end{tabular}\label{tab:table}
+    \end{table}
+
+    Due to their rare nature, draws are excluded from the possible judges' verdicts.
+    If a fight goes to the distance, judge $j$ assigns per round $r$ a score $y^{a, b}_{j, r} \in \{7-10, 8-10, 9-10, 10-9, 10-8, 10-7\}$.
+    A fight goes to the distance if one of the fighters is not prematurely defeated by either a knockout or a submission.
+    The probability of a knockout and a submission during a round is defined as, respectively, $p_{knockout, r, f}$ and $p_{submission, r, f}$.
+    It is assumed that these probabilities are constant and do not change as the fight progresses.
+    Therefore, the probability of "surviving" any round is equal to
+    $$
+    p_{round} = 1 - (p_{knockout, blue} + p_{knockout, red} + p_{submission, blue} + p_{submission, red})
+    $$
+
+    The main event and co-main event are scheduled for $R=5$ rounds.
+    All the other events are scheduled for $R=3$ rounds.
+
+    Logically, the probability of a fight "going the distance" is
+    $$
+    p_{decision} =\begin{cases}
+                      p_{round}^5 & \text{if (co-)main fight} \\
+                      p_{round}^3 & \text{other}
+    \end{cases}
+    $$
+
+    In this case a fighter can win by either an unanimous or a split decision.
+
+    The probability of fighter $f$ winning by unanimous decision is equal to
+    $$
+    p_{unanimous, f} = p_{decision} \cdot \sum_u^U
+    $$
+
+    and by split decision
+    $$
+    p_{split, f} = p_{decision} \cdot \sum_{j=1}^J\mathbb{I}(a>b) = J - 1
+    $$
+
+    Together these probabilities form the probability that fighter $f$ wins by the judges' decisions.
+    $$
+    p_{judges, f} = p_{unanimous, f} + p_{split, f}
+    $$
+
+    The probabilities of the other methods to win the fight are
+    $$
+    p_{submission, f} = p_{submission, r, f} + \sum_{r=1}^{R-1} rp_{round} \cdot p_{submission, r, f}
+    $$
+
+    and
+    $$
+    p_{knockout, f} = p_{knockout, r, f} + \sum_{r=1}^{R-1} rp_{round} \cdot p_{knockout, r, f}
+    $$
+
+    Together, the probability of fighter $f$ winning the fight is equal to
+    $$
+    p_{win, f} = p_{knockout, f} +  p_{submission, f} + p_{judges, f}
+    $$
+
+\end{document}

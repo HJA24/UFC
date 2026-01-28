@@ -1,0 +1,197 @@
+subscription StatsSubscribeToFightStats($input: FightInput!) {
+  subscribeToUfcFightStats(input: $input) {
+    status
+    roundStats {
+      blue {
+        ...statsSubscribeToFightStatsFields
+      }
+      red {
+        ...statsSubscribeToFightStatsFields
+      }
+    }
+    fightStats {
+      blue {
+        ...statsSubscribeToFightStatsFields
+      }
+      red {
+        ...statsSubscribeToFightStatsFields
+      }
+    }
+    currentRound
+    maxRounds
+    currentRound
+  }
+}
+
+fragment statsSubscribeToFightStatsFields on UfcFightStatsSummary {
+  grappling {
+    submissions {
+      attempts
+    }
+    takedowns {
+      landed
+      attempts
+    }
+    reversals {
+      landed
+      attempts
+    }
+    standups {
+      landed
+      attempted
+    }
+  }
+  strikes {
+    bodySignificantStrikes {
+      attempts
+      landed
+    }
+    bodyTotalStrikes {
+      attempts
+      landed
+    }
+    clinchBodyStrikes {
+      attempts
+      landed
+    }
+    clinchHeadStrikes {
+      attempts
+      landed
+    }
+    clinchLegStrikes {
+      attempts
+      landed
+    }
+    clinchSignificantKicks {
+      attempts
+      landed
+    }
+    clinchSignificantPunches {
+      attempts
+      landed
+    }
+    clinchSignificantStrikes{
+      attempts
+      landed
+    }
+    clinchTotalStrikes {
+      attempts
+      landed
+    }
+    distanceBodyKicks {
+      attempts
+      landed
+    }
+    distanceBodyPunches {
+      attempts
+      landed
+    }
+    distanceBodyStrikes {
+      attempts
+      landed
+    }
+    distanceHeadKicks {
+      attempts
+      landed
+    }
+    distanceHeadPunches {
+      attempts
+      landed
+    }
+    distanceHeadStrikes {
+      attempts
+      landed
+    }
+    distanceLegKicks {
+      attempts
+      landed
+    }
+    distanceLegStrikes {
+      attempts
+      landed
+    }
+    distanceStrikes {
+      attempts
+      landed
+    }
+    groundBodyStrikes {
+      attempts
+      landed
+    }
+    groundHeadStrikes {
+      attempts
+      landed
+    }
+    groundLegStrikes {
+      attempts
+      landed
+    }
+    groundSignificantKicks {
+      attempts
+      landed
+    }
+    groundSignificantPunches {
+      attempts
+      landed
+    }
+    groundSignificantStrikes {
+      attempts
+      landed
+    }
+    groundTotalStrikes {
+      attempts
+      landed
+    }
+    headSignificantStrikes {
+      attempts
+      landed
+    }
+    headTotalStrikes {
+      attempts
+      landed
+    }
+    kicks {
+      attempts
+      landed
+    }
+    knockDown {
+      attempts
+      landed
+    }
+    legsSignificantStrikes {
+      attempts
+      landed
+    }
+    legsTotalStrikes {
+      attempts
+      landed
+    }
+    punches {
+      attempts
+      landed
+    }
+    significantStrikes {
+      attempts
+      landed
+    }
+    totalStrikes {
+      attempts
+      landed
+    }
+  }
+  times {
+    backControlTime
+    clinchTime
+    controlTime
+    distanceTime
+    groundControlTime
+    groundTime
+    guardControlTime
+    halfGuardControlTime
+    miscGroundControlTime
+    mountControlTime
+    neutralTime
+    sideControlTime
+    standingTime
+  }
+}

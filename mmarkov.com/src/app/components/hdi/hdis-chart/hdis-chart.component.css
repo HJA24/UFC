@@ -1,0 +1,7 @@
+.hdis-chart-container {
+  width: 100%;
+}
+
+.hdis-chart-container svg {
+  font-family: 'UFCSans', sans-serif;
+}

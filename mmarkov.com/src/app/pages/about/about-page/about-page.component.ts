@@ -127,10 +127,18 @@ export class AboutPageComponent {
   }
 
   onSimulationIconClick(): void {
-    if (this.isSimulating) {
-      this.simulatorRef.resetSimulation();
-    } else {
-      this.simulatorRef.startSimulation();
+    this.simulatorRef.startSimulation();
+  }
+
+  onReplayClick(): void {
+    this.simulatorRef.resetSimulation();
+    this.simulatorRef.startSimulation();
+  }
+
+  onFastForwardClick(): void {
+    this.simulatorRef.stopSimulation();
+    while (!this.simulatorRef.isAbsorbed) {
+      this.simulatorRef.step();
     }
   }
 

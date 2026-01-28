@@ -1,0 +1,47 @@
+subscription StatsSubscribeToFightStats($input: FightInput!) {
+  subscribeToUfcFightStats(input: $input) {
+    status
+    roundStats {
+      blue {
+        ...statsSubscribeToFightStatsFields
+      }
+      red {
+        ...statsSubscribeToFightStatsFields
+      }
+    }
+    fightStats {
+      blue {
+        ...statsSubscribeToFightStatsFields
+      }
+      red {
+        ...statsSubscribeToFightStatsFields
+      }
+    }
+    currentRound
+    maxRounds
+    currentRound
+  }
+}
+
+fragment statsSubscribeToFightStatsFields on UfcFightStatsSummary {
+  grappling {
+    submissions {
+      attempts
+    }
+    takedowns {
+      landed
+      attempts
+    }
+  }
+  strikes {
+    knockDown {
+      landed
+    }
+    totalStrikes {
+      landed
+    }
+  }
+  times {
+    controlTime
+  }
+}

@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Methodology</title>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+</head>
+<style>
+  .centered-container {
+      width: 50vw;
+      margin-left: 25vw;
+      text-align: left;
+      padding: 2rem;
+      background-color: white;
+  }
+
+  .formula {
+    padding: 1px 1px;
+    text-align: center;
+  }
+
+  .variable {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  table {
+    width: 33%;
+    border-image: linear-gradient(90deg,#000 5px,#0000 0 calc(100% - 5px),#000 0) 1/1.5px;
+    border-collapse: collapse;
+  }
+
+  .numberOfVisitsTable td,
+  .probabilityOfAbsorptionTable td,
+  table td {
+    width: 5%;
+    padding: 4px;
+    text-align: center;
+  }
+
+  .canonicalTable {
+    width: 7%;
+    padding: 4px;
+    border-image: linear-gradient(90deg,#000 5px,#0000 0 calc(100% - 5px),#000 0) 1/1.5px;
+    border-collapse: collapse;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .summaryTable {
+    width: 33%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  .numberOfVisitsTable {
+    width: 30%;
+    padding: 4px;
+    border-image: linear-gradient(90deg,#000 5px,#0000 0 calc(100% - 5px),#000 0) 1/1.5px;
+    border-collapse: collapse;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .probabilityOfAbsorptionTable {
+    width: 30%;
+    padding: 4px;
+    border-image: linear-gradient(90deg,#000 5px,#0000 0 calc(100% - 5px),#000 0) 1/1.5px;
+    border-collapse: collapse;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .summaryTable th {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: black;
+    border: 0.5px;
+    border-bottom-style: solid;
+  }
+
+  td:hover {
+    background-color: rgba(100, 100, 100, 0.33);
+  }
+
+  .cellQ, .cellR, .cellO, .cellI {
+    position: relative;
+    border: none;
+  }
+
+  .cellQ .celltext,
+  .cellR .celltext,
+  .cellO .celltext,
+  .cellI .celltext {
+    font-family: "UFCSans", sans-serif;
+    position: absolute;
+    visibility: hidden;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    bottom: 100%;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s;
+  }
+
+  .cellQ .celltext::after,
+  .cellR .celltext::after,
+  .cellO .celltext::after,
+  .cellI .celltext::after {
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+
+  .cellQ:hover .celltext,
+  .cellR:hover .celltext,
+  .cellO:hover .celltext,
+  .cellI:hover .celltext {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+    width: auto;
+    max-width: 90vw;        /* Optional: prevents it from going off screen */
+    white-space: nowrap;    /* Prevents line breaks */
+    text-align: left;
+  }
+
+  @font-face {
+    font-family: "UFCSans";
+    src: url("../fonts/UFCSans-Regular.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "UFCSans";
+    src: url("../fonts/UFCSans-Bold.woff2") format("woff2");
+    font-weight: bold;
+  }
+
+  html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: "UFCSans", Arial, sans-serif;
+    background: #f3f3f3;
+  }
+
+  .panel {
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+</style>
+<body>
+<div class="centered-container">
+  <div class="markov-container">
+    <h2>Markov chains</h2>
+    <p>
+      In 1913, the mathematician Andrey A. Markov presented his analysis of Pushkin’s <i>Eugene Onegin</i> to the Royal Academy of Sciences in St. Petersburg.
+      He found that the sequence of consonants and vowels in the text could be described as a random sequence.
+      In order to perform his analysis, the mathematician invented so-called “Markov chains”.
+      These probabilistic state diagrams shows the transitions between states and their corresponding probability of occurrence.
+    </p>
+    <p>
+      A fight between fighters <i>blue</i> and <i>red</i> can be represented as a Markov chain.
+      Although a real-world fight is significantly more complex, let's assume that in a fight only the following actions and states are possible:
+    </p>
+    <ul>
+      <li>standing</li>
+      <li>strike attempt by <i>blue</i></li>
+      <li>strike attempt by <i>red</i></li>
+      <li>strike landed by <i>blue</i></li>
+      <li>strike landed by <i>red</i></li>
+      <li>knockout landed by <i>blue</i></li>
+      <li>knockout landed by <i>red</i></li>
+    </ul>
+    <p>
+      The transition matrix \(T\) between the actions and states is constructed as follows:
+    </p>
+    <div class="formula">
+      <div class="variable"> \(T\) = </div>
+        <table id="T" class="variable">
+          <tr>
+            <td class="cellQ">0.6
+              <span class="celltext">standing &#8594 standing</span>
+            </td>
+            <td class="cellQ">0.7
+              <span class="celltext">strike attempted <i>blue</i> &#8594 standing</span>
+            </td>
+              <td class="cellQ">0.9<span class="celltext">strike landed <i>blue</i> &#8594 standing</span>
+              </td>
+              <td class="cellQ">0.6<span class="celltext">strike attempted <i>red</i> &#8594 standing</span>
+              </td>
+              <td class="cellQ">0.8<span class="celltext">strike landed <i>red</i> &#8594 standing</span>
+              </td>
+              <td class="cellO">0<span class="celltext">knockout landed <i>blue</i> &#8594 standing</span>
+              </td>
+              <td class="cellO">0<span class="celltext">knockout landed <i>red</i> &#8594 standing</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="cellQ">0.3<span class="celltext">standing &#8594 strike attempt <i>blue</i></span>
+              </td>
+              <td class="cellQ">0<span class="celltext">strike attempt <i>blue</i> &#8594 strike attempt <i>blue</i></span>
+              </td>
+              <td class="cellQ">0<span class="celltext">strike landed <i>blue</i> &#8594 strike attempt <i>blue</i></span>
+              </td>
+              <td class="cellQ">0<span class="celltext">strike attempt <i>red</i> &#8594 strike attempt <i>blue</i></span>
+              </td>
+              <td class="cellQ">0<span class="celltext"> strike landed <i>red</i> &#8594 strike attempt <i>blue</i></span>
+              </td>
+              <td class="cellO">0<span class="celltext"> knockout landed <i>blue</i> &#8594 strike attempt <i>blue</i></span>
+              </td>
+              <td class="cellO">0<span class="celltext"> knockout <i>red</i> &#8594 strike attempt <i>blue</i></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="cellQ">0<span class="celltext"> standing &#8594 strike attempt <i>red</i></span>
+              </td>
+              <td class="cellQ">0.3<span class="celltext"> strike attempt <i>blue</i> &#8594 strike attempt <i>red</i></span>
+              </td>
+              <td class="cellQ">0<span class="celltext"> strike landed <i>blue</i> &#8594 strike attempt <i>red</i></span>
+              </td>
+              <td class="cellQ">0<span class="celltext"> strike attempt <i>red</i> &#8594 strike attempt <i>red</i></span>
+              </td>
+              <td class="cellQ">0<span class="celltext"> strike landed <i>red</i> &#8594 strike attempt <i>red</i></span>
+              </td>
+              <td class="cellO">0<span class="celltext"> knockout landed <i>blue</i> &#8594 strike attempt <i>red</i></span>
+              </td>
+              <td class="cellO">0<span class="celltext"> knockout landed <i>red</i> &#8594 strike attempt <i>red</i></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="cellQ">0.1<span class="celltext"> standing &#8594 strike landed <i>blue</i></span>
+              </td>
+              <td class="cellQ">0<span class="celltext"> strike attempt <i>blue</i> &#8594 strike landed <i>blue</i></span>
+              </td>
+              <td class="cellQ">0<span class="celltext"> strike landed <i>blue</i> &#8594 strike landed <i>blue</i></span>
+              </td>
+              <td class="cellQ">0<span class="celltext"> strike attempt <i>red</i> &#8594 strike landed <i>blue</i></span>
+              </td>
+              <td class="cellQ">0<span class="celltext"> strike landed <i>red</i> &#8594 strike landed <i>blue</i></span>
+              </td>
+              <td class="cellO">0<span class="celltext"> knockout landed <i>blue</i> &#8594 strike landed <i>blue</i></span>
+              </td>
+              <td class="cellO">0<span class="celltext"> knockout landed <i>red</i> &#8594 strike landed <i>blue</i></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="cellQ">0<span class="celltext"> standing &#8594 strike landed <i>red</i></span>
+              </td>
+              <td class="cellQ">0<span class="celltext"> strike attempt <i>blue</i> &#8594 strike landed <i>red</i></span>
+              </td>
+              <td class="cellQ">0<span class="celltext"> strike landed <i>blue</i> &#8594 strike landed <i>red</i></span>
+              </td>
+              <td class="cellQ">0.4<span class="celltext"> strike attempt <i>red</i> &#8594 strike landed <i>red</i></span>
+              </td>
+              <td class="cellQ">0<span class="celltext"> strike landed <i>red</i> &#8594 strike landed <i>red</i></span>
+              </td>
+              <td class="cellO">0<span class="celltext"> knockout landed <i>blue</i> &#8594 strike landed <i>red</i></span>
+              </td>
+              <td class="cellO">0<span class="celltext"> knockout landed <i>red</i> &#8594 strike landed <i>red</i></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="cellR">0<span class="celltext"> standing &#8594 knockout landed <i>blue</i></span>
+              </td>
+              <td class="cellR">0<span class="celltext"> strike attempt <i>blue</i> &#8594 knockout landed <i>blue</i></span>
+              </td>
+              <td class="cellR">0.1<span class="celltext"> strike landed blue &#8594 knockout landed <i>blue</i></span>
+              </td>
+              <td class="cellR">0<span class="celltext"> strike attempt <i>red</i> &#8594 knockout landed <i>blue</i></span>
+              </td>
+              <td class="cellR">0<span class="celltext"> strike landed <i>red</i> &#8594 knockout landed <i>blue</i></span>
+              </td>
+              <td class="cellI">1<span class="celltext"> knockout landed <i>blue</i> &#8594 knockout landed <i>blue</i></span>
+              </td>
+              <td class="cellI">0<span class="celltext"> knockout landed <i>red</i> &#8594 knockout landed <i>blue</i></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="cellR">0<span class="celltext"> standing &#8594 knockout landed <i>red</i></span>
+              </td>
+              <td class="cellR">0<span class="celltext"> strike attempt <i>blue</i> &#8594 knockout landed <i>red</i></span>
+              </td>
+              <td class="cellR">0<span class="celltext"> strike landed <i>blue</i> &#8594 knockout landed <i>red</i></span>
+              </td>
+              <td class="cellR">0<span class="celltext"> strike attempt <i>red</i> &#8594 knockout landed <i>red</i></span>
+              </td>
+              <td class="cellR">0.2<span class="celltext"> strike landed <i>red</i> &#8594 knockout landed <i>red</i></span>
+              </td>
+              <td class="cellI">0<span class="celltext"> knockout landed <i>blue</i> &#8594 knockout landed <i>red</i></span>
+              </td>
+              <td class="cellI">1<span class="celltext"> knockout landed <i>red</i> &#8594 knockout landed <i>red</i></span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      <p>
+        The first column represents the transition probabilities from standing to other states.
+        There are two absorbing states; knockout landed by <i>blue</i> and knockout landed by <i>red</i>. When the chain visits such as state, it remains here forever.
+        A transition matrix can be written in the following canonical form:
+      </p>
+      <div>
+        <div class="formula">
+          <div class="variable"> \(T\) = </div>
+          <table class="canonicalTable">
+            <tr>
+              <td class="Q">\(Q\)</td>
+              <td class="O">\(O\)</td>
+            </tr>
+            <tr>
+              <td class="R">\(R\)</td>
+              <td class="I">\(I\)</td>
+            </tr>
+          </table>
+      </div>
+    </div>
+    <p>
+      The elements are described as follows:
+    </p>
+      <ul>
+      <li>\(Q\) is an \(r \times r\) matrix that holds the probabilities of moving from a transient state to another transient state</li>
+      <li>\(R\) is an \(s \times r\) matrix that holds the probabilities of moving from a transient state to an absorbing state</li>
+      <li>\(O\) is an \(r \times s\) matrix that holds the probabilities of moving from an absorbing state to a transient state (which is impossible)</li>
+      <li>\(I\) is an \(s \times s\) matrix that holds the probabilities of moving between absorbing states (which is also impossible)</li>
+    </ul>
+    <div>
+      <p>
+      A basic property about an absorbing Markov chain is the expected number of visits to a transient state \(j\) starting from a transient state \(i\) (before being absorbed).
+      This can be <a href="javascript:void(0)" class="accordion">inferred</a> from the \((i, j)\)-entry of the so-called fundamental matrix \(N\):
+      $$
+      N := \sum_{k=0}^{\infty}Q^k=(I - Q)^{-1}
+      $$
+     </p>
+    <div class="panel">
+      <p>
+        $$
+        \begin{align*}
+        T &=
+        \begin{bmatrix}
+        Q & O \\
+        R & I
+        \end{bmatrix} \\[1.5ex]
+        T^2 &=
+        \begin{bmatrix}
+        Q & O \\
+        R & I
+        \end{bmatrix}
+        \begin{bmatrix}
+        Q & O \\
+        R & I
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+        Q^2 & O \\
+        RQ + R & I
+        \end{bmatrix} \\[1.5ex]
+        T^3 &=
+        \begin{bmatrix}
+        Q & O \\
+        R & I
+        \end{bmatrix}
+        \begin{bmatrix}
+        Q^2 & O \\
+        RQ + R & I
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+        Q^3 & O \\
+        RQ^2 + RQ + R & I
+        \end{bmatrix}
+        \end{align*}
+        $$
+      </p>
+      <p>
+        In general, the pattern can be written as
+
+        $$
+        \begin{align*}
+        T^k &=
+        \begin{bmatrix}
+        Q^k & O \\
+        R + RQ + ... + RQ^{k-1} & I
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+        Q^k & O \\
+        R\sum^{k-1}_{i=0}Q^i & I
+        \end{bmatrix}
+        \end{align*}
+        $$
+      </p>
+      <p>
+        By calculating the lower left element of the matrix, we encounter the series
+
+        $$
+        \sum_{i=0}^\infty Q^i = I + Q + Q^2 + Q^3 + ...
+        $$
+
+        This series converges to \((I-Q)^{-1}\) when some power \(Q^k\) has column sums that are less than 1.
+      </p>
+    </div>
+
+      <p>
+    In the above example, this results in
+  </p>
+  <div>
+    <div class="formula">
+        <div class="variable"> \(N\)= </div>
+        <table class="numberOfVisitsTable">
+          <tr>
+            <td>102.56</td>
+            <td>101.28</td>
+            <td>97.43</td>
+            <td>96.41</td>
+            <td>87.18</td>
+          </tr>
+          <tr>
+            <td class="numberOfStrikesAttemptedBlueCell">30.77</td>
+            <td>31.38</td>
+            <td>29.23</td>
+            <td>28.92</td>
+            <td>26.15</td>
+          </tr>
+          <tr>
+            <td class="numberOfStrikesAttemptedRedCell">7.69</td>
+            <td>7.85</td>
+            <td>8.31</td>
+            <td>7.23</td>
+            <td>6.54</td>
+          </tr>
+          <tr>
+            <td class="numberOfStrikesLandedBlueCell">10.26</td>
+            <td>10.13</td>
+            <td>9.74</td>
+            <td>10.64</td>
+            <td>8.72</td>
+          </tr>
+          <tr>
+            <td class="numberOfStrikesLandedRedCell">4.10</td>
+            <td>4.05</td>
+            <td>3.90</td>
+            <td>4.26</td>
+            <td>4.49</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  <p>
+    and
+  </p>
+  <div class="formula">
+    <div class="variable"> \(RN\)= </div>
+    <table class="probabilityOfAbsorptionTable">
+      <tr>
+        <td class="probabilityOfKnockoutBlueCell">0.38</td>
+        <td>0.39</td>
+        <td>0.42</td>
+        <td>0.36</td>
+        <td>0.33</td>
+      </tr>
+      <tr>
+        <td class="probabilityOfKnockoutRedCell">0.62</td>
+        <td>0.61</td>
+        <td>0.58</td>
+        <td>0.64</td>
+        <td>0.67</td>
+      </tr>
+    </table>
+    </div>
+  </div>
+  <p>
+    A fight always starts with both fighters standing across each other.
+    To find the probabilities of each state after "a very long time", we compute
+
+    $$
+    \lim_{k\to\infty}T^Kx_0 = \begin{bmatrix}
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0.38 & 0.39 & 0.42 & 0.36 & 0.33 & 1 & 0\\
+    0.62 & 0.61 & 0.58 & 0.64 & 0.67 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+    1 \\
+    0 \\
+    0 \\
+    0 \\
+    0 \\
+    0 \\
+    0
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    0 \\
+    0 \\
+    0 \\
+    0 \\
+    0 \\
+    0.38 \\
+    0.62
+    \end{bmatrix}
+    $$
+  </p>
+
+  <p>
+    With the help of these properties of the Markov chain it is possible to determine the probabilities of different outcomes and forecast the number of actions in a fight:
+  </p>
+  <table class="summaryTable">
+      <colgroup>
+    <col style="width: 100%;">
+    <col style="width: 25%;">
+    <col style="width: 25%;">
+  </colgroup>
+    <tr>
+      <th>Variable of interest</th>
+      <th>blue</th>
+      <th>red</th>
+    </tr>
+    <tr>
+      <td>Number of strikes attempted</td>
+      <td class="numberOfStrikesAttemptedBlue">30.77</td>
+      <td class="numberOfStrikesAttemptedRed">7.69</td>
+    </tr>
+    <tr>
+      <td>Number of strikes landed</td>
+      <td class="numberOfStrikesLandedBlue">10.26</td>
+      <td class="numberOfStrikesLandedRed">4.10</td>
+    </tr>
+    <tr>
+      <td>Probability of knockout</td>
+      <td class="probabilityOfKnockoutBlue">0.38</td>
+      <td class="probabilityOfKnockoutRed">0.62</td>
+    </tr>
+  </table>
+  <p>
+        For an overview of all the possible estimates, click <a href="/tiers">here</a>.
+  </p>
+</div>
+    </div>
+</div>
+<script src="accordion.js"></script>
+<script src="highlight.js"></script>
+</body>
+</html>

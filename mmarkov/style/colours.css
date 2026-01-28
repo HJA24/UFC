@@ -1,0 +1,19 @@
+:root {
+  --hdi-50-color-blue:  #0045b9ff;
+  --hdi-75-color-blue:  #0045b999;
+  --hdi-90-color-blue:  #0045b960;
+  --hdi-95-color-blue:  #0045b940;
+  --hdi-100-color-blue: #0045b920;
+
+  --hdi-50-color-red:   #bf0700ff;
+  --hdi-75-color-red:   #bf0700aa;
+  --hdi-90-color-red:   #bf070050;
+  --hdi-95-color-red:   #bf070030;
+  --hdi-100-color-red:  #bf070010;
+
+  --hdi-50-zindex:  5;
+  --hdi-75-zindex:  4;
+  --hdi-90-zindex:  3;
+  --hdi-95-zindex:  2;
+  --hdi-100-zindex: 1;
+}

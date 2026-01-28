@@ -1,0 +1,7 @@
+  query ConnectivityStatusGetUfcFightConnectivityStatus($input: FightInput!) {
+    getUfcFightConnectivityStatus(input: $input) {
+      connectivityToVenue
+      details
+      livestats
+    }
+  }

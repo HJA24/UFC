@@ -1,0 +1,7 @@
+<mat-progress-bar
+  class="corner-progress"
+  [ngClass]="corner() === 'BLUE' ? 'blue' : 'red'"
+  [mode]="mode()"
+  [value]="value()"
+  (animationEnd)="onAnimationEnd($event)">
+</mat-progress-bar>

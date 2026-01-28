@@ -1,0 +1,301 @@
+{
+  "name": "holmes 2.1",
+  "stan": {
+    "model_id": 2,
+    "parameters": ["gamma", "lambda", "psi"],
+    "intercept": {
+      "parameters": {
+        "gamma": [
+          "ssr",
+          "sgr",
+          "tdr",
+          "smr",
+          "rvr",
+          "sur",
+          "ssha",
+          "sgha",
+          "ssba",
+          "sgba",
+          "tda",
+          "sma",
+          "skd",
+          "sko",
+          "gko",
+          "sst",
+          "sgt"
+        ]
+      }
+    },
+    "striking_rate": {
+      "distribution": "negative binomial",
+      "K": 2,
+      "parameters": {
+        "lambda": [
+          "ssr_att",
+          "sgr_att",
+          "ssr_def",
+          "sgr_def"
+        ],
+        "psi": [
+          "ssr_att",
+          "sgr_att",
+          "ssr_def",
+          "sgr_def"
+        ]
+      },
+      "data": {
+        "y1": [
+          [
+            "SSA_blue",
+            "SSA_red"
+          ],
+          [
+            "SGA_blue",
+            "SGA_red"
+          ]
+        ],
+        "T1": [
+          [
+            "ST_blue",
+            "ST_red"
+          ],
+          [
+            "FT_blue",
+            "FT_red"
+          ]
+        ]
+      }
+    },
+    "grappling_rate": {
+      "distribution": "negative binomial",
+      "K": 4,
+      "parameters": {
+        "lambda": [
+          "tdr_att",
+          "smr_att",
+          "rvr_att",
+          "sur_att",
+          "tdr_def",
+          "smr_def",
+          "rvr_def",
+          "sur_def"
+        ],
+        "psi": [
+          "tdr_att",
+          "smr_att",
+          "rvr_att",
+          "sur_att",
+          "tdr_def",
+          "smr_def",
+          "rvr_def",
+          "sur_def"
+        ]
+      },
+      "data": {
+        "y2": [
+          [
+            "TDA_blue",
+            "TDA_red"
+          ],
+          [
+            "SMA_blue",
+            "SMA_red"
+          ],
+          [
+            "RVL_blue",
+            "RVL_red"
+          ],
+          [
+            "SUL_blue",
+            "SUL_red"
+          ]
+        ],
+        "T2": [
+          [
+            "ST_blue",
+            "ST_red"
+          ],
+          [
+            "GC_blue",
+            "GC_red"
+          ],
+          [
+            "GC_red",
+            "GC_blue"
+          ],
+          [
+            "GC_red",
+            "GC_blue"
+          ]
+        ]
+      }
+    },
+    "striking_accuracy": {
+      "distribution": "binomial",
+      "K": 4,
+      "parameters": {
+        "lambda": [
+          "ssha_att",
+          "sgha_att",
+          "ssba_att",
+          "sgba_att",
+          "ssha_def",
+          "sgha_def",
+          "ssba_def",
+          "sgba_def"
+        ]
+      },
+      "data": {
+        "n3": [
+          [
+            "SSHL_blue",
+            "SSHL_red"
+          ],
+          [
+            "SGHL_blue",
+            "SGHL_red"
+          ],
+          [
+            "SSBL_blue",
+            "SSBL_red"
+          ],
+          [
+            "SGBL_blue",
+            "SGBL_red"
+          ]
+        ],
+        "N3": [
+          [
+            "SSHA_blue",
+            "SSHA_red"
+          ],
+          [
+            "SGHA_blue",
+            "SGHA_red"
+          ],
+          [
+            "SSBA_blue",
+            "SSBA_red"
+          ],
+          [
+            "SGBA_blue",
+            "SGBA_red"
+          ]
+        ]
+      }
+    },
+    "grappling_accuracy": {
+      "distribution": "binomial",
+      "K": 2,
+      "parameters": {
+        "lambda": [
+          "tda_att",
+          "sma_att",
+          "tda_def",
+          "sma_def"
+        ]
+      },
+      "data": {
+        "n4": [
+          [
+            "TDL_blue",
+            "TDL_red"
+          ],
+          [
+            "SML_blue",
+            "SML_red"
+          ]
+        ],
+        "N4": [
+          [
+            "TDA_blue",
+            "TDA_red"
+          ],
+          [
+            "SMA_blue",
+            "SMA_red"
+          ]
+        ]
+      }
+    },
+    "knockdowns_and_knockouts": {
+      "distribution": "binomial",
+      "K": 3,
+      "parameters": {
+        "lambda": [
+          "skd_att",
+          "sko_att",
+          "gko_att",
+          "skd_def",
+          "sko_def",
+          "gko_def"
+        ]
+      },
+      "data": {
+        "n5": [
+          [
+            "KDL_blue",
+            "KDL_red"
+          ],
+          [
+            "KOL_blue",
+            "KOL_red"
+          ],
+          [
+            "KOL_blue",
+            "KOL_red"
+          ]
+        ],
+        "N5": [
+          [
+            "SSHL_blue",
+            "SSHL_red"
+          ],
+          [
+            "SSHL_blue",
+            "SSHL_red"
+          ],
+          [
+            "SGHL_blue",
+            "SGHL_red"
+          ]
+        ]
+      }
+    },
+    "strike_target": {
+      "distribution": "binomial",
+      "K": 2,
+      "parameters": {
+        "lambda": [
+          "sst_att",
+          "sgt_att",
+          "sst_def",
+          "sgt_def"
+        ]
+      },
+      "data": {
+        "n6": [
+          [
+            "SSHA_blue",
+            "SSHA_red"
+          ],
+          [
+            "SGHA_blue",
+            "SGHA_red"
+          ]
+        ],
+        "N6": [
+          [
+            "SSA_blue",
+            "SSA_red"
+          ],
+          [
+            "SGA_blue",
+            "SGA_red"
+          ]
+        ]
+      }
+    }
+  },
+  "markov": 1
+}

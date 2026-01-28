@@ -1,0 +1,14 @@
+<div class="network-layout">
+  <app-graph-data-chart
+    class="network-chart"
+    [nodes]="nodes"
+    [edges]="edges"
+    (activeNodeIds)="onActiveNodeIdsChange($event)">
+  ></app-graph-data-chart>
+
+  <app-graph-data-table
+    class='network-table'
+    [data]="matchups"
+    [activeNodeIds]="activeNodeIds()">
+  ></app-graph-data-table>
+</div>

@@ -1,0 +1,693 @@
+{
+  "nodes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    9,
+    10,
+    14,
+    15,
+    19,
+    20,
+    24,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87
+  ],
+  "tree": {
+    "name": "middleweight",
+    "node_id": 1,
+    "expanded": true,
+    "opacity": 1,
+    "children": [
+      {
+        "name": "winner",
+        "node_id": 2,
+        "expanded": true,
+        "opacity": 1,
+        "children": [
+          {
+            "name": "inside distance",
+            "node_id": 3,
+            "expanded": true,
+            "opacity": 1,
+            "children": [
+              {
+                "name": "by knockout",
+                "node_id": 4,
+                "expanded": true,
+                "opacity": 1,
+                "children": [
+                  {
+                    "name": "R1",
+                    "node_id": 5,
+                    "expanded": false,
+                    "opacity": 1,
+                    "children": [
+                      {
+                        "name": "first 10 seconds",
+                        "node_id": 6,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "...",
+                        "node_id": 7,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "5th minute",
+                        "node_id": 8,
+                        "opacity": 0.2
+                      }
+                    ]
+                  },
+                  {
+                    "name": "...",
+                    "node_id": 9,
+                    "opacity": 1
+                  },
+                  {
+                    "name": "R5",
+                    "node_id": 10,
+                    "expanded": false,
+                    "opacity": 1,
+                    "children": [
+                      {
+                        "name": "1st minute",
+                        "node_id": 11,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "...",
+                        "node_id": 12,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "last 10 seconds",
+                        "node_id": 13,
+                        "opacity": 0.2
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "by submission",
+                "node_id": 14,
+                "expanded": true,
+                "opacity": 1,
+                "children": [
+                  {
+                    "name": "R1",
+                    "node_id": 15,
+                    "expanded": false,
+                    "opacity": 1,
+                    "children": [
+                      {
+                        "name": "first 10 seconds",
+                        "node_id": 16,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "...",
+                        "node_id": 17,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "5th minute",
+                        "node_id": 18,
+                        "opacity": 0.2
+                      }
+                    ]
+                  },
+                  {
+                    "name": "...",
+                    "node_id": 19,
+                    "opacity": 1
+                  },
+                  {
+                    "name": "R5",
+                    "node_id": 20,
+                    "expanded": false,
+                    "opacity": 1,
+                    "children": [
+                      {
+                        "name": "1st minute",
+                        "node_id": 21,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "...",
+                        "node_id": 22,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "last 10 seconds",
+                        "node_id": 23,
+                        "opacity": 0.2
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "by decision",
+            "node_id": 24,
+            "expanded": false,
+            "opacity": 1,
+            "children": [
+              {
+                "name": "split",
+                "node_id": 25,
+                "opacity": 0.2,
+                "expanded": false,
+                "children": [
+                  {
+                    "name": "50-45, 50-45, 45-50",
+                    "node_id": 26,
+                    "opacity": 0.2,
+                    "expanded": false,
+                    "children": [
+                      {
+                        "name": "50-45",
+                        "node_id": 27,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "...",
+                        "node_id": 28,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "45-50",
+                        "node_id": 29,
+                        "opacity": 0.2
+                      }
+                    ]
+                  },
+                  {
+                    "name": "...",
+                    "node_id": 30,
+                    "opacity": 0.2
+                  },
+                  {
+                    "name": "50-35, 50-35, 35-50",
+                    "node_id": 31,
+                    "opacity": 0.2,
+                    "expanded": false,
+                    "children": [
+                      {
+                        "name": "50-35",
+                        "node_id": 32,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "...",
+                        "node_id": 33,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "35-50",
+                        "node_id": 34,
+                        "opacity": 0.2
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "unanimous",
+                "node_id": 35,
+                "opacity": 0.2,
+                "expanded": false,
+                "children": [
+                  {
+                    "name": "50-45, 50-45, 50-45",
+                    "node_id": 36,
+                    "opacity": 0.2,
+                    "expanded": false,
+                    "children": [
+                      {
+                        "name": "50-45",
+                        "node_id": 37,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "...",
+                        "node_id": 38,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "50-45",
+                        "node_id": 39,
+                        "opacity": 0.2
+                      }
+                    ]
+                  },
+                  {
+                    "name": "...",
+                    "node_id": 40,
+                    "opacity": 0.2
+                  },
+                  {
+                    "name": "50-35, 50-35, 50-35",
+                    "node_id": 41,
+                    "opacity": 0.2,
+                    "expanded": false,
+                    "children": [
+                      {
+                        "name": "50-35",
+                        "node_id": 42,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "...",
+                        "node_id": 43,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "50-35",
+                        "node_id": 44,
+                        "opacity": 0.2
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "comeback",
+            "node_id": 45,
+            "expanded": false,
+            "opacity": 0.2,
+            "children": [
+              {
+                "name": "submission attempt",
+                "node_id": 46,
+                "opacity": 0.2
+              },
+              {
+                "name": "knockdown landed",
+                "node_id": 47,
+                "opacity": 0.2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "duration",
+        "node_id": 48,
+        "expanded": true,
+        "opacity": 1,
+        "children": [
+          {
+            "name": "over/under",
+            "node_id": 49,
+            "expanded": true,
+            "opacity": 1,
+            "children": [
+              {
+                "name": "1.5 rounds",
+                "node_id": 50,
+                "expanded": true,
+                "opacity": 1,
+                "children": [
+                  {
+                    "name": "over",
+                    "node_id": 51,
+                    "opacity": 1
+                  },
+                  {
+                    "name": "under",
+                    "node_id": 52,
+                    "opacity": 1
+                  }
+                ]
+              },
+              {
+                "name": "...",
+                "node_id": 53,
+                "opacity": 1
+              },
+              {
+                "name": "4.5 rounds",
+                "node_id": 54,
+                "expanded": true,
+                "opacity": 1,
+                "children": [
+                  {
+                    "name": "over",
+                    "node_id": 55,
+                    "opacity": 1
+                  },
+                  {
+                    "name": "under",
+                    "node_id": 56,
+                    "opacity": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "fight starts",
+            "node_id": 57,
+            "expanded": true,
+            "opacity": 1,
+            "children": [
+              {
+                "name": "R2",
+                "node_id": 58,
+                "expanded": true,
+                "opacity": 1,
+                "children": [
+                  {
+                    "name": true,
+                    "node_id": 59,
+                    "opacity": 1
+                  },
+                  {
+                    "name": false,
+                    "node_id": 60,
+                    "opacity": 1
+                  }
+                ]
+              },
+              {
+                "name": "...",
+                "node_id": 61,
+                "opacity": 1
+              },
+              {
+                "name": "R5",
+                "node_id": 62,
+                "expanded": true,
+                "opacity": 1,
+                "children": [
+                  {
+                    "name": true,
+                    "node_id": 63,
+                    "opacity": 1
+                  },
+                  {
+                    "name": true,
+                    "node_id": 64,
+                    "opacity": 1
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "to the distance",
+            "node_id": 65,
+            "expanded": true,
+            "opacity": 1,
+            "children": [
+              {
+                "name": true,
+                "node_id": 66,
+                "opacity": 1
+              },
+              {
+                "name": false,
+                "node_id": 67,
+                "opacity": 1
+              }
+            ]
+          },
+          {
+            "name": "fight ends in",
+            "node_id": 68,
+            "expanded": true,
+            "opacity": 1,
+            "children": [
+              {
+                "name": "R1",
+                "node_id": 69,
+                "expanded": false,
+                "opacity": 1,
+                "children": [
+                  {
+                    "name": true,
+                    "node_id": 70,
+                    "opacity": 1
+                  },
+                  {
+                    "name": false,
+                    "node_id": 71,
+                    "opacity": 1
+                  }
+                ]
+              },
+              {
+                "name": "...",
+                "node_id": 72,
+                "opacity": 1
+              },
+              {
+                "name": "R5",
+                "node_id": 73,
+                "expanded": true,
+                "opacity": 1,
+                "children": [
+                  {
+                    "name": true,
+                    "node_id": 74,
+                    "opacity": 1
+                  },
+                  {
+                    "name": false,
+                    "node_id": 75,
+                    "opacity": 1
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "stats",
+        "node_id": 76,
+        "expanded": true,
+        "opacity": 1,
+        "children": [
+          {
+            "name": "differential",
+            "node_id": 77,
+            "expanded": false,
+            "opacity": 0.2,
+            "children": [
+              {
+                "name": "strikes landed",
+                "node_id": 78,
+                "opacity": 0.2
+              },
+              {
+                "name": "takedowns landed",
+                "node_id": 79,
+                "opacity": 0.2
+              },
+              {
+                "name": "submission attempts",
+                "node_id": 80,
+                "opacity": 0.2
+              },
+              {
+                "name": "ground control",
+                "node_id": 81,
+                "opacity": 0.2
+              }
+            ]
+          },
+          {
+            "name": "totals",
+            "node_id": 82,
+            "expanded": true,
+            "opacity": 1,
+            "children": [
+              {
+                "name": "equal",
+                "node_id": 83,
+                "expanded": true,
+                "opacity": 1,
+                "children": [
+                  {
+                    "name": "strikes landed",
+                    "node_id": 84,
+                    "opacity": 1
+                  },
+                  {
+                    "name": "takedowns landed",
+                    "node_id": 85,
+                    "opacity": 1
+                  },
+                  {
+                    "name": "submission attempts",
+                    "node_id": 86,
+                    "opacity": 1
+                  },
+                  {
+                    "name": "ground control",
+                    "node_id": 87,
+                    "opacity": 1
+                  }
+                ]
+              },
+              {
+                "name": "over/under",
+                "node_id": 88,
+                "expanded": false,
+                "opacity": 0.2,
+                "children": [
+                  {
+                    "name": "strikes landed",
+                    "node_id": 89,
+                    "expanded": false,
+                    "opacity": 0.2,
+                    "children": [
+                      {
+                        "name": 50,
+                        "node_id": 90,
+                        "expanded": false,
+                        "opacity": 0.2,
+                        "children": [
+                          {
+                            "name": "over",
+                            "node_id": 91,
+                            "opacity": 0.2
+                          },
+                          {
+                            "name": "under",
+                            "node_id": 92,
+                            "opacity": 0.2
+                          }
+                        ]
+                      },
+                      {
+                        "name": "...",
+                        "node_id": 93,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": 100,
+                        "node_id": 94,
+                        "expanded": false,
+                        "opacity": 0.2,
+                        "children": [
+                          {
+                            "name": "over",
+                            "node_id": 95,
+                            "opacity": 0.2
+                          },
+                          {
+                            "name": "under",
+                            "node_id": 96,
+                            "opacity": 0.2
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "...",
+                    "node_id": 97,
+                    "opacity": 0.2
+                  },
+                  {
+                    "name": "ground control",
+                    "node_id": 98,
+                    "expanded": false,
+                    "opacity": 0.2,
+                    "children": [
+                      {
+                        "name": "2.5 minutes",
+                        "node_id": 99,
+                        "expanded": false,
+                        "opacity": 0.2,
+                        "children": [
+                          {
+                            "name": "over",
+                            "node_id": 100,
+                            "opacity": 0.2
+                          },
+                          {
+                            "name": "under",
+                            "node_id": 101,
+                            "opacity": 0.2
+                          }
+                        ]
+                      },
+                      {
+                        "name": "...",
+                        "node_id": 102,
+                        "opacity": 0.2
+                      },
+                      {
+                        "name": "20 minutes",
+                        "node_id": 103,
+                        "expanded": false,
+                        "opacity": 0.2,
+                        "children": [
+                          {
+                            "name": "over",
+                            "node_id": 104,
+                            "opacity": 0.2
+                          },
+                          {
+                            "name": "under",
+                            "node_id": 105,
+                            "opacity": 0.2
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

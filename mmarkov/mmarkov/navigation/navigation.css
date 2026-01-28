@@ -1,0 +1,53 @@
+.navbar {
+    list-style-type: none;
+    margin: 60px auto 0 auto;
+    padding: 0 0;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.navbar li {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    height: 100%;
+}
+
+.navbar li.login {
+    margin-left: auto;
+}
+
+.navbar a {
+    display: block;
+    color: gray;
+    text-align: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-family: "UFCSans", "sans-serif";
+    line-height: 28px;
+    height: 28px;
+}
+
+.navbar a.login {
+    font-size: 15px;
+    color: black;
+}
+
+.navbar a:hover:not(.active) {
+    font-style: italic;
+}
+
+.navbar a.active {
+    color: black;
+}

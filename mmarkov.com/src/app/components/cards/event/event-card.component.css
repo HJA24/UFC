@@ -47,6 +47,7 @@ mat-card-actions {
   padding: 0;
 }
 
+
 mat-card-actions a[mat-button] {
   width: 100%;
   min-width: 0;

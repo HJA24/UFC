@@ -1,0 +1,82 @@
+%! Author = huibmeulenbelt
+%! Date = 18/01/2026
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+
+% Document
+\begin{document}
+    \title{Network properties}
+    \maketitle
+
+
+    \section*{Clustering}
+    Clustering measures how often a fighter’s opponents have also fought each other.
+
+    \[
+        C_i = \frac{2e_i}{k_i(k_i-1)},
+        \qquad
+        C = \frac{1}{|V|}\sum_i C_i
+    \]
+
+    \textbf{Interpretation.}
+    \(C=0\): opponents of a fighter never fight each other, producing tree-like local structure.
+    \(C=1\): every fighter’s opponents form a clique, yielding maximal local redundancy.
+
+    \textbf{Relation to Bayesian inference.}
+    High clustering provides multiple independent comparison paths between fighters, reducing posterior uncertainty and enabling consistency checks for transitive skill differences.
+
+    \section*{Transitivity}
+    Transitivity measures the global prevalence of triangular fight relationships.
+
+    \textbf{Formula.}
+    \[
+        T = \frac{3 \times \text{number of triangles}}{\text{number of connected triples}}
+    \]
+
+    \textbf{Interpretation.}
+    \(T=0\): no closed triplets exist; transitive comparisons rely on long chains.
+    \(T=1\): all connected triples are closed; comparisons are maximally redundant.
+
+    \textbf{Relation to Bayesian inference.}
+    High transitivity increases the number of overlapping constraints on relative skill, stabilizing posterior estimates of win probabilities for unobserved matchups.
+
+    \section*{Efficiency}
+    Effiency measures how short fight-path distances are across the network.
+
+    \textbf{Formula}
+    \[
+        E = \frac{1}{n(n-1)} \sum_{i\neq j} \frac{1}{d_{ij}}
+    \]
+
+    \textbf{Interpretation}
+    \(E=0\): many fighter pairs are unreachable or separated by long paths.
+    \(E=1\): all fighters are directly connected or separated by a single fight.
+
+    \textbf{Relation to Bayesian inference}
+    Higher efficiency means fewer intermediaries (fights between opponents...) are needed to relate fighters, limiting uncertainty accumulation when inferring transitive win probabilities.
+
+    \section*{Connectivity}
+    Connectivity measures whether all fighters belong to a single connected component.
+
+    \textbf{Formula}
+    \[
+        \kappa = \frac{|\text{largest connected component}|}{|V|}
+    \]
+
+    \textbf{Interpretation}
+    \(\kappa=0\): the network is entirely fragmented into isolated nodes.
+    \(\kappa=1\): the fight graph is fully connected.
+
+    \textbf{Relation to Bayesian inference}
+    Only connected components allow data-driven comparisons; disconnected components force cross-group win probabilities to be driven by prior assumptions rather than evidence.
+
+    \section*{Closeness}
+    \section*{Degree centrality}
+    The degree centrality for a node $v$ is the fraction of nodes it is connected to.
+    It is normalized by dividing by the maximum possible degree in a simple graph, $n - 1$ where $n$ is the number of nodes in $G$.
+
+\end{document}

@@ -49,14 +49,6 @@ You are the hub connecting all other agents:
 
 ## Roadmap Framework
 
-### Planning Horizons
-| Horizon | Timeframe | Detail Level | Review Frequency |
-|---------|-----------|--------------|------------------|
-| Now | 0-4 weeks | Sprint-level tasks | Weekly |
-| Next | 1-3 months | Features/epics | Bi-weekly |
-| Later | 3-12 months | Themes/initiatives | Monthly |
-| Vision | 1-3 years | Strategic direction | Quarterly |
-
 ### Prioritization Framework (RICE)
 ```
 RICE Score = (Reach × Impact × Confidence) / Effort
@@ -91,42 +83,6 @@ Effort: Person-weeks of work
 | Judge model improvements | 1 | 2 | 0.8 | 4 | 0.4 |
 | API access | 1 | 2 | 0.8 | 2 | 0.8 |
 | Mobile optimization | 2 | 1 | 0.8 | 2 | 0.8 |
-
-## Constraint Management
-
-### Constraint Types
-```
-1. TIME
-   - Event deadlines (UFC 300 is April 13)
-   - Market windows (launch before major event)
-   - Competitive pressure
-
-2. MONEY
-   - Development budget
-   - Infrastructure costs
-   - API/data costs
-
-3. TECHNICAL
-   - Dependencies between features
-   - Technical debt
-   - Infrastructure limitations
-
-4. HUMAN
-   - Available expertise
-   - Team capacity
-   - Knowledge bottlenecks
-```
-
-### Tradeoff Matrix
-```
-When two constraints conflict, use this hierarchy:
-
-1. Legal/Compliance > Everything (non-negotiable)
-2. Revenue-generating > Cost-saving
-3. User retention > User acquisition
-4. Core features > Nice-to-haves
-5. Quality > Speed (for MVP, reverse for experiments)
-```
 
 ## Product Requirements Document (PRD) Template
 
@@ -219,16 +175,6 @@ ProductManager uses the **Linear MCP server** for direct access to Linear. The M
 | `linear_get_user` | Get user info | Check assignments |
 | `linear_search` | Search issues/projects | Find related work |
 
-### Project Structure
-```
-MMarkov Workspace
-├── 🎯 Roadmap (Project)
-│   ├── Q1 2025 (Milestone)
-│   └── Q2 2025 (Milestone)
-├── 🛠 Engineering (Team)
-├── 🎨 Design (Team)
-└── 📝 Content (Team)
-```
 
 ### Agent Labels
 
@@ -367,23 +313,23 @@ Pipe-delimited table with 4 columns:
 
 ```
 completed | issue | description | assignee(s)
-[]|MMAR-042|Optimize database indexes for faster queries|DatabaseEngineer
-[]|MMAR-045|Set up Stripe webhook for payment processing|BackendArchitect
-[]|MMAR-051|Create draft of Privacy Policy|LegalAdvisor, PrivacyOfficer
+[]|MMRKV-042|Optimize database indexes for faster queries|DatabaseEngineer
+[]|MMRKV-045|Set up Stripe webhook for payment processing|BackendArchitect
+[]|MMRKV-051|Create draft of Privacy Policy|LegalAdvisor, PrivacyOfficer
 []||Design icons for navigation on FightPage|GraphicDesigner
-[x]|MMAR-039|Fighter profile page|FrontendDeveloper
+[x]|MMRKV-039|Fighter profile page|FrontendDeveloper
 ```
 
 **Columns:**
 - `completed`: `[]` = incomplete, `[x]` = completed
-- `issue`: Linear issue identifier (e.g., `MMAR-123`), empty if no issue linked
+- `issue`: Linear issue identifier (e.g., `MMRKV-123`), empty if no issue linked
 - `description`: Brief task description
 - `assignee(s)`: Agent name(s), comma-separated for multiple assignees
 
 **Notes:**
 - Header row has spaces around pipes for readability
 - Data rows have no spaces around pipes
-- Linear URLs can be constructed from issue ID: `https://linear.app/mmarkov/issue/MMAR-XXX`
+- Linear URLs can be constructed from issue ID: `https://linear.app/mmarkov/issue/MMRKV-XXX`
 
 ### Agent-to-Label Mapping
 ```python
@@ -392,7 +338,7 @@ AGENT_LABEL_MAP = {
     "backend-architect": ["backend", "architecture", "api", "kotlin"],
     "frontend-developer": ["frontend", "angular", "component", "service"],
     "database-engineer": ["database", "postgresql", "migration", "schema"],
-    "d3-specialist": ["visualization", "d3", "chart", "graph"],
+    "d3-specialist": ["visualization", "d3", "chart", "graph-data"],
     "stan-engineer": ["bayesian", "stan", "model", "sampling"],
     "website-performance-engineer": ["performance", "optimization", "speed"],
     "data-processor": ["data", "etl", "pipeline", "scraping"],
@@ -448,12 +394,12 @@ When running `/product-manager daily todos`, use the Linear MCP tools:
 - Metrics review
 - Agent sync (as needed)
 
-### Monthly
+### Biweekly
 - Roadmap review
 - KPI deep dive
 - Client feedback synthesis
 
-### Quarterly
+### Monthly
 - Strategic planning
 - Roadmap realignment
 - OKR setting
@@ -504,7 +450,7 @@ When running `/product-manager daily todos`, use the Linear MCP tools:
 > **Risk**: Stan model improvements may slip. Mitigation: Launch with current model, iterate post-launch.
 >
 > **Linear Tasks Created**:
-> - [MMAR-101] Fight predictions page - @D3Specialist
-> - [MMAR-102] Stripe integration - @PaymentIntegrator
-> - [MMAR-103] Landing page copy - @Copywriter
-> - [MMAR-104] Performance audit - @WebsitePerformanceEngineer
+> - [MMKRV-101] Fight predictions page - @D3Specialist
+> - [MMKRV-102] Stripe integration - @PaymentIntegrator
+> - [MMKRV-103] Landing page copy - @Copywriter
+> - [MMKRV-104] Performance audit - @WebsitePerformanceEngineer

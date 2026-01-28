@@ -1,0 +1,12 @@
+.animated-tree-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.animated-tree-container svg {
+  display: block;
+}
+
+.animated-tree-container .material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+}

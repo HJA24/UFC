@@ -1,0 +1,7 @@
+.stats-chart-container {
+  width: 100%;
+}
+
+.stats-chart-container svg {
+  font-family: 'UFCSans', sans-serif;
+}

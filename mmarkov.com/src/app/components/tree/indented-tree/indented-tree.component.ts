@@ -27,14 +27,13 @@ interface ProcessedNode {
   path: string; // Unique path identifier for tracking collapsed state
 }
 
-const TIERS = ['strawweight', 'lightweight', 'middleweight', 'heavyweight'] as const;
+const TIERS = ['lightweight', 'middleweight', 'heavyweight'] as const;
 type Tier = typeof TIERS[number];
 
 const TIER_INDEX: Record<Tier, number> = {
-  strawweight: 0,
-  lightweight: 1,
-  middleweight: 2,
-  heavyweight: 3,
+  lightweight: 0,
+  middleweight: 1,
+  heavyweight: 2,
 };
 
 @Component({
@@ -171,7 +170,7 @@ export class IndentedTreeComponent implements AfterViewInit, OnChanges {
       for (let j = i - 1; j >= 0; j--) {
         if (nodes[j].depth === node.depth - 1) {
           parentIdx = j;
-          break;
+           break;
         }
       }
 

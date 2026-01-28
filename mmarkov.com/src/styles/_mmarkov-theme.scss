@@ -1,0 +1,117 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+/* ---------------------------
+   MMarkov Analytics Terminal
+   Angular Material v17+ (Material 3)
+---------------------------- */
+
+/* Material 3 theme */
+$mmarkov-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+
+    /* Calm, analytics-style primary (blue-ish) */
+    primary: mat.$m3-blue-palette,
+
+    /* Neutral secondary/tertiary to keep things “terminal” */
+    secondary: mat.$m3-neutral-palette,
+    tertiary: mat.$m3-slate-palette,
+
+    /* Optional: error palette */
+    error: mat.$m3-red-palette
+  ),
+
+  density: (
+    scale: -1
+  )
+));
+
+/* Apply to all components */
+@include mat.all-component-themes($mmarkov-theme);
+
+/* ---------------------------
+   App design tokens (your system)
+---------------------------- */
+:root {
+  --mmarkov-bg: #f7f8fa;
+  --mmarkov-surface: #ffffff;
+  --mmarkov-surface-2: #f2f4f7;
+
+  --mmarkov-border: #e5e7eb;
+  --mmarkov-divider: #edf0f4;
+
+  --mmarkov-text: #0f172a;
+  --mmarkov-text-2: #334155;
+  --mmarkov-muted: #64748b;
+
+  --mmarkov-link: #1d4ed8;
+  --mmarkov-focus: rgba(29, 78, 216, 0.22);
+
+  --mmarkov-red: #b91c1c;
+  --mmarkov-blue: #1d4ed8;
+
+  --mmarkov-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+html, body {
+  background: var(--mmarkov-bg);
+  color: var(--mmarkov-text);
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Cards/panels */
+.mat-mdc-card,
+.mmarkov-panel {
+  background: var(--mmarkov-surface);
+  border: 1px solid var(--mmarkov-border);
+  box-shadow: var(--mmarkov-shadow);
+  border-radius: 12px;
+}
+
+/* Toolbars */
+.mat-mdc-toolbar {
+  background: var(--mmarkov-surface);
+  color: var(--mmarkov-text);
+  border-bottom: 1px solid var(--mmarkov-divider);
+}
+
+/* Focus */
+:focus-visible {
+  outline: 3px solid var(--mmarkov-focus);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Tables */
+.mat-mdc-table { background: var(--mmarkov-surface); }
+.mat-mdc-header-row { background: var(--mmarkov-surface-2); }
+.mat-mdc-row, .mat-mdc-header-row { border-bottom: 1px solid var(--mmarkov-divider); }
+.mat-mdc-header-cell { color: var(--mmarkov-text-2); font-weight: 600; }
+.mat-mdc-row:hover { background: rgba(15, 23, 42, 0.03); }
+
+/* Form fields */
+.mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color: var(--mmarkov-border);
+  --mdc-outlined-text-field-hover-outline-color: #cbd5e1;
+  --mdc-outlined-text-field-focus-outline-color: var(--mmarkov-link);
+}
+
+/* Chips */
+.mmarkov-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--mmarkov-border);
+  background: var(--mmarkov-surface);
+  color: var(--mmarkov-text-2);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.mmarkov-chip--red { border-color: rgba(185,28,28,.35); color: var(--mmarkov-red); }
+.mmarkov-chip--blue { border-color: rgba(29,78,216,.30); color: var(--mmarkov-blue); }
+.mmarkov-chip--muted { background: var(--mmarkov-surface-2); }

@@ -1,0 +1,113 @@
+%! Author = huibmeulenbelt
+%! Date = 04/06/2025
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Document
+\begin{document}
+    Let $X_0, X_1, ..., X_n$ be a Markov chain with state spaces $S$, initial probability distribution $\mu$ and transition probability matrix $P = \{p_{i,j}\}$.
+    There are $A$ absorbing states.
+
+    \section*{Passage and hitting times}
+    The first passage time from state $i$ to $j$, $T_{i,j}$ is the number of steps taken by the chain until it arrives for the first time in state $j$  given that $X_0 = i$.
+    This is a random variable and its probability distribution is given as
+
+
+    $$
+    h_{i,j}^{(n)} = P(T_{i,j}=n) = P(X_n = j, X_{n-1} \neq j, ..., X_1 \neq j | X_0 \neq j)
+    $$
+
+    The first passage times can be found recursively as follows: $h_{i,j}^{(1)}=p_{i,j}$ and for $n \geq 2$
+
+    $$
+    h_{i,j}^{(n)} = \sum_{k \in S - \{j\}} p_{i,k} h_{k,j}^{(n-1)}
+    $$
+
+    \section*{Expected number of visits to transient states}
+    Let $I_{i,j}(n)$ to be 1 if $X_n = j$ given that $X_0=i$ and 0 otherwise.
+    The number of visits to state $j$, starting at state $i$ by time $n$ is defined as
+
+    $$
+    N_{i,j}(n) = \sum_{k=1}^n I_{I,j}(k)
+    $$
+
+    By linearity of expectation
+
+    $$
+    E[N_{i,j}(n)] = \sum_{k=1}^n p_{i,j}^{(k)}
+    $$
+
+    The initial passage time from $i$ to $j$ is distributed according to $h_{i,j}^{(n)}$ and all the subsequent return times to state $j$ follow the distribution $h_{j,j}^{(n)}$.
+    Thanks to the Markov property, once the chain visits state $j$, it either returns to this state with probability $h_{j,j}$ or leaves it with probability $1 - h_{j,j}$.
+    If state $j$ is transient, then $h_{j,j}(n) < 1$ and $N_{j,j}(\infty)$ is geometric distributed.
+
+
+    \section*{Reversible absorbing probability}
+    The variable of interest is the joint probability that the chain was in transient state $j$ at step $n - 1$ and it entered absorbing state $k$ at time $n$
+
+    $$
+    P(X_{n-1} = j, X_n = k)
+    $$
+
+    Let $\tau = \text{min}\{t \geq 0: X_t=k\}$ be the first hitting time of state $k$.
+    Because $k$ is absorbing
+
+    $$
+    P(X_{n-1} = j, X_n = k) = P(X_{n-1} = j, X_n = k, \tau=n)
+    $$
+
+
+    By the definition of $\tau$, this is equivalent to
+
+    $$
+    P(X_0 \neq k, X_1 \neq k, ..., X_{n-1} = j, X_n = k)
+    $$
+
+    The probability of a conjunction is not affected by the order of the events.
+    By smart ordering and using the product rule
+
+    $$
+    P(X_{n-1} = j, X_n = k, \tau=n) = P(X_{n-1} = j, X_m \neq k  \forall m < n) \cdot P(X_n = k | X_{n-1} = j)
+    $$
+
+    Via the Markov property, the probability of going to $k$ from $j$ is determined solely by the transition matrix, $T$.
+    Hence
+
+    $$
+    P(X_{n-1} = j, X_n = k, \tau=n) = P(X_{n-1} = j, X_m \neq k  \forall m < n) \cdot T_{jk}
+    $$
+
+    Next, we need to determine $P(X_{n-1} = j, X_m \neq k  \forall m < n)$.
+    Let $S'$ be the set of states in $S$ excluding $k$.
+    Furthermore, let $Q^{(k)}$ be the restricted transition matrix where transitions between non-$k$ states are kept, and transitions to and from $k$ are removed and $\mu$ be the initial distribution restricted to non-$k$ states.
+    Each multiplication by $Q^{(k)}$ simulates a one-step transition while avoing state $k$:
+
+    $$
+    P(X_{n-1} = j, X_m \neq k  \forall m < n) = \mu \cdot (Q^{(k)})^{n-1}
+    $$
+
+    All of the above implies that
+
+    $$
+    P(X_{n-1} = j, X_n = k, \tau = n) = \mu \cdot (Q^{(k)})^{n-1} \cdot P_{jk}
+    $$
+
+    For any fixed time $n$, the events:
+
+    $$
+    X_{n-1} = j,\ X_n = k,\ \tau = n \right\}, \quad \text{for } j \in S'
+    $$
+
+    are mutually exclusive, because the chain can only be in one state at time $\tau - 1$, and it can only enter $k$ once.
+    Therefore, these events cannot occur simultaneously.
+    Hence, the sum of their probabilities gives the total probability that the chain is absorbed in $k$ at time $n$:
+
+    $$
+    \sum_{j \in S'} P(X_{n-1} = j,\ X_n = k,\ \tau = n) = P(X_n = k, \tau = n)
+    $$
+\end{document}

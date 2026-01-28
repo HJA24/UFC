@@ -1,0 +1,32 @@
+<div class="fight-menu">
+
+  <!-- LEFT ARROW -->
+  <div class="side">
+    <button
+      *ngIf="hasPrev()"
+      mat-icon-button
+      aria-label="Previous section"
+      (click)="prev()"
+    >
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+  </div>
+
+  <!-- CURRENT SECTION -->
+  <span class="label">
+    {{ activeItem().category }}
+  </span>
+
+  <!-- RIGHT ARROW -->
+  <div class="side">
+    <button
+      *ngIf="hasNext()"
+      mat-icon-button
+      aria-label="Next section"
+      (click)="next()"
+    >
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+
+</div>

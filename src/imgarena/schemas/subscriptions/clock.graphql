@@ -1,0 +1,8 @@
+subscription SubscribeToUfcFightRoundTime($input: FightInput!) {
+    subscribeToUfcFightRoundTime(input: $input) {
+        time
+        paused
+        currentRound
+        timestamp
+    }
+}
