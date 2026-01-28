@@ -4,7 +4,7 @@
       Explore our tiers
     </h2>
     <p>
-      Altogether, <strong>MMARKOV</strong> generates ... estimates per fight. All the estimates can be divided into the following categories:
+      Altogether, <strong>MMARKOV</strong> generates <b>TBD</b> estimates per fight. All the estimates can be divided into the following categories:
     </p>
     <ul>
       <li><i>winner</i></li>
@@ -37,12 +37,14 @@
         }
       </div>
 
-      <div class="tier-tree" #tierTree>
-        <app-indented-tree
-          jsonUrl="assets/tree.json"
-          [selectedTierIndex]="selectedIndex()"
-          (tierClick)="onTierClick($event)"
-        />
-      </div>
+      @if (selectedIndex() > 0) {
+        <div class="tier-tree" #tierTree>
+          <app-indented-tree
+            jsonUrl="assets/tree.json"
+            [selectedTierIndex]="selectedIndex() - 1"
+            (tierClick)="onTierClick($event + 1)"
+          />
+        </div>
+      }
     </div>
   </div></div>
