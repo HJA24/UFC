@@ -1,10 +1,13 @@
-import { Component, inject, signal, OnInit } from '@angular/core';
+import { Component, inject, signal, computed, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 import { FightcardTabsComponent } from '../../../components/tabs/fightcard/fightcard-tabs.component';
 import { FightCardComponent } from '../../../components/cards/fight/fight-card.component';
 import { EventsService, AllFightsForEvent } from '../../../services/events.service';
+import { FightDto } from '../../../models/fight.dto';
 
 export type FightcardTab = 'early-prelim' | 'prelim' | 'main';
 
@@ -15,11 +18,13 @@ const VALID_TABS: FightcardTab[] = ['early-prelim', 'prelim', 'main'];
   standalone: true,
   imports: [
     CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
     FightcardTabsComponent,
     FightCardComponent
   ],
   templateUrl: './fightcards-page.component.html',
-  styleUrl: './fightcards-page.component.css',
+  styleUrl: './fightcards-page.component.scss',
 })
 export class FightcardsPageComponent implements OnInit {
   private route = inject(ActivatedRoute);
@@ -27,9 +32,32 @@ export class FightcardsPageComponent implements OnInit {
   private eventsService = inject(EventsService);
 
   activeTab = signal<FightcardTab>('main');
-  eventId = '';
-  allFights: AllFightsForEvent | null = null;
+  allFights = signal<AllFightsForEvent | null>(null);
+  searchQuery = signal<string>('');
   isLoading = true;
+  eventId = '';
+
+  activeFights = computed<FightDto[]>(() => {
+    const fights = this.allFights();
+    if (!fights) return [];
+
+    const list = fights[this.activeTab()] ?? [];
+    const query = this.searchQuery().toLowerCase().trim();
+
+    if (!query) return list;
+
+    return list.filter(fight => {
+      const blueFirst = fight.fighterBlue.firstName.toLowerCase();
+      const blueLast = fight.fighterBlue.lastName.toLowerCase();
+      const redFirst = fight.fighterRed.firstName.toLowerCase();
+      const redLast = fight.fighterRed.lastName.toLowerCase();
+
+      return blueFirst.includes(query) ||
+             blueLast.includes(query) ||
+             redFirst.includes(query) ||
+             redLast.includes(query);
+    });
+  });
 
   ngOnInit(): void {
     // Get eventId from parent route
@@ -51,16 +79,18 @@ export class FightcardsPageComponent implements OnInit {
 
     // Fetch all fights once
     this.eventsService.getAllFightsForEvent(this.eventId).subscribe(fights => {
-      this.allFights = fights;
+      this.allFights.set(fights);
       this.isLoading = false;
     });
   }
 
   onTabChange(tab: FightcardTab): void {
+    this.searchQuery.set('');
     this.router.navigate(['/events', this.eventId, tab]);
   }
 
-  get activeFights() {
-    return this.allFights?.[this.activeTab()] ?? [];
+  onSearchInput(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    this.searchQuery.set(value);
   }
 }

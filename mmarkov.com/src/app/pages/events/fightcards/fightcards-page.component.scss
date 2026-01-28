@@ -1,0 +1,48 @@
+@use 'styles/inputs' as inputs;
+
+.tabs-and-search {
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto 10px;
+}
+
+.tabs-and-search app-fightcard-tabs {
+  display: block;
+  width: 100%;
+}
+
+.tabs-and-search mat-form-field {
+  @include inputs.segmented-input;
+}
+
+.tabs-and-search ::ng-deep .mat-mdc-form-field-infix {
+  @include inputs.segmented-input-infix;
+}
+
+.tabs-and-search ::ng-deep input.mat-mdc-input-element {
+  @include inputs.segmented-input-element;
+}
+
+.tabs-and-search ::ng-deep .mdc-text-field--outlined {
+  @include inputs.segmented-input-field;
+}
+
+.tabs-and-search ::ng-deep .mdc-notched-outline__leading,
+.tabs-and-search ::ng-deep .mdc-notched-outline__notch,
+.tabs-and-search ::ng-deep .mdc-notched-outline__trailing {
+  @include inputs.segmented-input-no-border;
+}
+
+.tabs-and-search ::ng-deep .mdc-text-field--focused {
+  @include inputs.segmented-input-field-focused;
+}
+
+.fight-cards {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}

@@ -1,13 +1,22 @@
 <div class="page">
-  <app-fightcard-tabs
-    [activeTab]="activeTab()"
-    (tabChange)="onTabChange($event)"
-  ></app-fightcard-tabs>
+  <div class="tabs-and-search">
+    <app-fightcard-tabs
+      [activeTab]="activeTab()"
+      (tabChange)="onTabChange($event)"
+    ></app-fightcard-tabs>
+
+    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+      <input matInput
+             placeholder="Search ... "
+             [value]="searchQuery()"
+             (input)="onSearchInput($event)">
+    </mat-form-field>
+  </div>
 
   <ng-container *ngIf="!isLoading; else loading">
-    <div *ngIf="activeFights.length; else empty" class="fight-cards">
+    <div *ngIf="activeFights().length; else empty" class="fight-cards">
       <app-fight-card
-        *ngFor="let fight of activeFights"
+        *ngFor="let fight of activeFights()"
         [fight]="fight"
         [eventId]="eventId"
         [fightCard]="activeTab()"
