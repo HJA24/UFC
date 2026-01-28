@@ -56,16 +56,6 @@ mat-toolbar .mat-mdc-button {
   color: rgb(50, 50, 50)
 }
 
-/* Signup emphasis */
-.signup-item {
-  background-color: rgba(200, 200, 200, 0.3);
-  color: #ffffff;
-}
-
-mat-toolbar .signup-item.mat-mdc-button:hover {
-  background-color: rgba(150, 150, 150, 0.3);
-}
-
 /* Hover */
 mat-toolbar .mat-mdc-button:hover {
   background-color: rgba(200, 200, 200, 0.3);
@@ -130,18 +120,6 @@ mat-toolbar button.mat-mdc-button {
 }
 
 
-/* =========================
-   Auth buttons
-========================= */
-.auth-item {
-  flex: 0 0 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px solid rgba(200, 200, 200, 0.3);
-  margin-right: 4px;
-}
 
 
 .nav-dropdown-menu.mat-mdc-menu-panel {
@@ -158,4 +136,12 @@ mat-toolbar button.mat-mdc-button {
   min-height: 34px;
   height: 32px;
   line-height: 32px;
+}
+
+/* =========================
+   Auth buttons container
+========================= */
+.auth-buttons {
+  display: flex;
+  gap: 12px;
 }

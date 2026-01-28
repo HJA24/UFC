@@ -1,4 +1,4 @@
-// Segmented control tabs mixin
+// Segmented control tabs with 3D stacked effect
 // Usage: @include segmented-tabs(2) for 2 tabs, @include segmented-tabs(4) for 4, etc.
 
 @mixin segmented-tabs($tab-count: 2) {
@@ -7,7 +7,8 @@
   position: relative;
   display: grid;
   grid-template-columns: repeat(#{$tab-count}, 1fr);
-  background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(230, 230, 230));
+  background-color: #e0e0e0;
+  box-shadow: 1px 1px 0 0 #a0a0a0;
   border-radius: 5px;
   padding: var(--padding);
   margin-top: 10px;
@@ -20,11 +21,9 @@
   bottom: var(--padding);
   left: var(--padding);
   width: calc((100% - var(--padding) * 2) / #{$tab-count});
-  background: white;
+  background-color: #ffffff;
   border-radius: 4px;
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.12),
-    0 1px 2px rgba(0, 0, 0, 0.08);
+  box-shadow: 1px 1px 0 0 #c0c0c0;
   transition: transform 0.2s ease-out;
   transform: translateX(calc(var(--active-index, 0) * 100%));
 }
@@ -44,7 +43,6 @@
   transition: color 0.2s ease;
   text-decoration: none;
   text-align: center;
-
   &.active {
     color: rgb(30, 30, 30);
   }
