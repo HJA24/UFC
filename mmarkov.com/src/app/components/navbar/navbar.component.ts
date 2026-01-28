@@ -1,11 +1,10 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
-import { Router, RouterLink } from "@angular/router";
-import { TiersService } from "../../services/tiers.service";
+import { RouterLink } from "@angular/router";
 
 @Component({
     selector: 'app-navbar',
@@ -20,16 +19,29 @@ import { TiersService } from "../../services/tiers.service";
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
-  private router = inject(Router);
-  private tiersService = inject(TiersService);
+export class NavbarComponent implements OnInit {
+  private isAnimationBlocked = signal(true); // Blocks new animations during any running animation
+  isLogoReady = signal(false); // Controls the .ready class (static expanded state)
+  isHoverAnimating = signal(false); // Controls the .animating class for hover animation
 
-  eventsMenuOpen = signal(false);
-  tiersMenuOpen = signal(false);
+  ngOnInit(): void {
+    // Initial animation: 1s delay + 2s duration = 3s
+    setTimeout(() => {
+      this.isLogoReady.set(true);
+      this.isAnimationBlocked.set(false);
+    }, 3000);
+  }
 
-  navigateToTier(index: number): void {
-    this.tiersService.selectTier(index);
-    this.router.navigate(['/tiers']);
+  onLogoHover(): void {
+    if (this.isAnimationBlocked()) return;
+
+    this.isAnimationBlocked.set(true);
+    this.isHoverAnimating.set(true);
+  }
+
+  onLogoAnimationEnd(): void {
+    this.isHoverAnimating.set(false);
+    this.isAnimationBlocked.set(false);
   }
 }
 

@@ -1,8 +1,11 @@
 <mat-toolbar>
 
   <!-- App title -->
-  <div class="logo-wrapper">
-    <div class="logo">
+  <div class="logo-wrapper" (mouseenter)="onLogoHover()">
+    <div class="logo"
+         [class.ready]="isLogoReady() && !isHoverAnimating()"
+         [class.animating]="isHoverAnimating()"
+         (animationend)="onLogoAnimationEnd()">
     <i></i><i></i><i></i><i></i>
     <i></i><i></i><i></i><i></i>
     </div>
@@ -14,60 +17,20 @@
   <!-- Push navigation items to the right -->
   <span class="example-spacer"></span>
 
-  <!-- EVENTS (dropdown) -->
-  <button
-    mat-button
-    class="nav-item"
-    [matMenuTriggerFor]="eventsMenu"
-    (menuOpened)="eventsMenuOpen.set(true)"
-    (menuClosed)="eventsMenuOpen.set(false)"
-  >
-    <span class="nav-content">
-      <span class="nav-text">EVENTS</span>
-      <mat-icon class="nav-dropdown-icon" [class.open]="eventsMenuOpen()">
-        expand_more
-      </mat-icon>
-    </span>
+  <!-- EVENTS -->
+  <button mat-button class="nav-item" routerLink="/events">
+    EVENTS
   </button>
-
-  <mat-menu
-    #eventsMenu="matMenu"
-    (closed)="eventsMenuOpen.set(false)"
-  >
-    <button mat-menu-item routerLink="/events/upcoming">Upcoming</button>
-    <button mat-menu-item routerLink="/events/past">Past</button>
-  </mat-menu>
 
   <!-- ABOUT -->
   <button mat-button class="nav-item" routerLink="/about">
     ABOUT
   </button>
 
-  <!-- TIERS (dropdown) -->
-  <button
-    mat-button
-    class="nav-item"
-    [matMenuTriggerFor]="tiersMenu"
-    (menuOpened)="tiersMenuOpen.set(true)"
-    (menuClosed)="tiersMenuOpen.set(false)"
-  >
-    <span class="nav-content">
-      <span class="nav-text">TIERS</span>
-      <mat-icon class="nav-dropdown-icon" [class.open]="tiersMenuOpen()">
-        expand_more
-      </mat-icon>
-    </span>
+  <!-- TIERS -->
+  <button mat-button class="nav-item" routerLink="/tiers">
+    TIERS
   </button>
-
-  <mat-menu
-    #tiersMenu="matMenu"
-    (closed)="tiersMenuOpen.set(false)"
-  >
-    <button mat-menu-item (click)="navigateToTier(0)">Strawweight</button>
-    <button mat-menu-item (click)="navigateToTier(1)">Lightweight</button>
-    <button mat-menu-item (click)="navigateToTier(2)">Middleweight</button>
-    <button mat-menu-item (click)="navigateToTier(3)">Heavyweight</button>
-  </mat-menu>
 
   <!-- PRICING -->
   <button mat-button class="nav-item" routerLink="/pricing">

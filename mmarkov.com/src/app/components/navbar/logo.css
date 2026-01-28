@@ -28,7 +28,7 @@
     calc(100% - var(--o)) 50%,
     50% calc(100% - var(--o))
   );
-  animation: move 2s 1s alternate linear both; /* <- add 'both' (or 'backwards') */
+  animation: move 2s 1s alternate linear both;
   will-change: transform;
 }
 
@@ -89,11 +89,56 @@
 .logo i:nth-child(7) {--i:7}
 .logo i:nth-child(8) {--i:8}
 
+/* =========================
+   Ready state (after initial animation)
+========================= */
+.logo.ready i {
+  transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
+             rotate(calc(var(--i) * -45deg - 22.5deg));
+  animation: none;
+}
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: grid;
-  place-content: center;
-  color: white;
+.logo.ready:after {
+  --_p: 360deg;
+  animation: none;
+}
+
+/* =========================
+   Hover animation (reverse and expand)
+========================= */
+.logo.animating i {
+  transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
+             rotate(calc(var(--i) * -45deg - 22.5deg));
+  animation: moveHover 4s linear both;
+}
+
+@keyframes moveHover {
+  0%, 25% {
+    transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
+      rotate(calc(var(--i) * -45deg - 22.5deg));
+  }
+  50% {
+    transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(0)
+      rotate(calc(var(--i) * -45deg - 22.5deg));
+  }
+  75%, 100% {
+    transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
+      rotate(calc(var(--i) * -45deg - 22.5deg));
+  }
+}
+
+.logo.animating:after {
+  animation: fillHover 4s linear both;
+}
+
+@keyframes fillHover {
+  0% {
+    --_p: 360deg;
+  }
+  25%, 75% {
+    --_p: 0deg;
+  }
+  100% {
+    --_p: 360deg;
+  }
 }
