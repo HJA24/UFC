@@ -3,7 +3,6 @@ import { HomePageComponent } from "./pages/home/home-page.component";
 import { TiersPageComponent } from "./pages/tiers/tiers-page.component";
 import { VerifyAccountPageComponent } from "./pages/auth/verify-account/verify-account-page.component";
 import { EventsPageComponent } from "./pages/events/events-page.component";
-import { FightsPageComponent } from "./pages/events/fights/fights-page.component";
 import { NetworkPageComponent } from "./pages/fight/network/network-page.component";
 import { JudgingPageComponent } from "./pages/fight/judging/judging-page.component";
 import { PredictionsPageComponent } from "./pages/fight/predictions/predictions-page.component";
@@ -46,10 +45,9 @@ export const routes: Routes = [
       { path: 'historical', component: EventsPageComponent, data: { tab: 'historical' } },
       {
         path: ':eventId',
-        component: FightcardsPageComponent,
         children: [
-          { path: '', redirectTo: 'main/fights', pathMatch: 'full' },
-          { path: ':fightCard/fights', component: FightsPageComponent },
+          { path: '', redirectTo: 'main', pathMatch: 'full' },
+          { path: ':fightCard', component: FightcardsPageComponent },
         ],
       },
     ],

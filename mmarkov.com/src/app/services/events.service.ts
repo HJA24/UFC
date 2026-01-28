@@ -10,12 +10,19 @@ export interface AllEvents {
   historical: EventDto[];
 }
 
+export type AllFightsForEvent = {
+  'early-prelim': FightDto[];
+  'prelim': FightDto[];
+  'main': FightDto[];
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
   private baseUrl = '/api/events';
   private allEvents$: Observable<AllEvents> | null = null;
+  private allFightsCache = new Map<string, Observable<AllFightsForEvent>>();
 
   constructor(private http: HttpClient) {}
 
@@ -43,5 +50,18 @@ export class EventsService {
   /** GET /api/events/{eventId}/{fightCard}/fights */
   getFightsOfEventByFightCard(eventId: string, fightCard: string) {
     return this.http.get<FightDto[]>(`${this.baseUrl}/${eventId}/${fightCard}/fights`);
+  }
+
+  /** GET all fights for an event grouped by fightcard (cached) */
+  getAllFightsForEvent(eventId: string): Observable<AllFightsForEvent> {
+    if (!this.allFightsCache.has(eventId)) {
+      const fights$ = forkJoin({
+        'early-prelim': this.http.get<FightDto[]>(`${this.baseUrl}/${eventId}/EARLY_PRELIM/fights`),
+        'prelim': this.http.get<FightDto[]>(`${this.baseUrl}/${eventId}/PRELIM/fights`),
+        'main': this.http.get<FightDto[]>(`${this.baseUrl}/${eventId}/MAIN/fights`)
+      }).pipe(shareReplay(1));
+      this.allFightsCache.set(eventId, fights$);
+    }
+    return this.allFightsCache.get(eventId)!;
   }
 }

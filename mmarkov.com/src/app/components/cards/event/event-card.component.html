@@ -1,4 +1,4 @@
-<mat-card class="event-card" [routerLink]="['/events', event.eventId, 'main', 'fights']">
+<mat-card class="event-card" [routerLink]="['/events', event.eventId, 'main']">
 
   <div class="event-header">
     <h3 class="event-title">{{ event.name }}</h3>
@@ -12,21 +12,21 @@
   <mat-card-actions>
     <a
       mat-button
-      [routerLink]="['/events', event.eventId, 'early-prelim', 'fights']"
+      [routerLink]="['/events', event.eventId, 'early-prelim']"
       (click)="$event.stopPropagation()"
     >
       EARLY PRELIM
     </a>
     <a
       mat-button
-      [routerLink]="['/events', event.eventId, 'prelim', 'fights']"
+      [routerLink]="['/events', event.eventId, 'prelim']"
       (click)="$event.stopPropagation()"
     >
       PRELIM
     </a>
-        <a
+    <a
       mat-button
-      [routerLink]="['/events', event.eventId, 'main', 'fights']"
+      [routerLink]="['/events', event.eventId, 'main']"
       (click)="$event.stopPropagation()"
     >
       MAIN

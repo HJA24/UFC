@@ -1,38 +1,25 @@
-import { Component, inject, signal } from '@angular/core';
-import { Router, RouterModule, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Component, input, output } from '@angular/core';
 
 type FightcardTab = 'early-prelim' | 'prelim' | 'main';
 
-const TAB_ORDER: FightcardTab[] = ['early-prelim', 'prelim', 'main'];
+const TABS: FightcardTab[] = ['early-prelim', 'prelim', 'main'];
 
 @Component({
   selector: 'app-fightcard-tabs',
   standalone: true,
-  imports: [RouterModule],
+  imports: [],
   templateUrl: './fightcard-tabs.component.html',
   styleUrl: './fightcard-tabs.component.scss',
 })
 export class FightcardTabsComponent {
-  private router = inject(Router);
-  readonly route = inject(ActivatedRoute);
+  activeTab = input.required<FightcardTab>();
+  tabChange = output<FightcardTab>();
 
-  activeIndex = signal(0);
-
-  constructor() {
-    this.updateActiveIndex(this.router.url);
-
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        this.updateActiveIndex(event.urlAfterRedirects);
-      });
+  get activeIndex(): number {
+    return TABS.indexOf(this.activeTab());
   }
 
-  private updateActiveIndex(url: string): void {
-    const index = TAB_ORDER.findIndex(tab => url.includes(`/${tab}/`));
-    if (index !== -1) {
-      this.activeIndex.set(index);
-    }
+  onTabClick(tab: FightcardTab): void {
+    this.tabChange.emit(tab);
   }
 }

@@ -1,4 +1,25 @@
 <div class="page">
-  <app-fightcard-tabs></app-fightcard-tabs>
-  <router-outlet></router-outlet>
+  <app-fightcard-tabs
+    [activeTab]="activeTab()"
+    (tabChange)="onTabChange($event)"
+  ></app-fightcard-tabs>
+
+  <ng-container *ngIf="!isLoading; else loading">
+    <div *ngIf="activeFights.length; else empty" class="fight-cards">
+      <app-fight-card
+        *ngFor="let fight of activeFights"
+        [fight]="fight"
+        [eventId]="eventId"
+        [fightCard]="activeTab()"
+      ></app-fight-card>
+    </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <p>Loading fights…</p>
+  </ng-template>
+
+  <ng-template #empty>
+    <p>No fights found</p>
+  </ng-template>
 </div>

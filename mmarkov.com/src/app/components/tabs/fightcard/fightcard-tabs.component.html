@@ -1,27 +1,27 @@
 <div class="fightcard-tabs">
-  <div class="slider" [style.--active-index]="activeIndex()"></div>
-  <a
+  <div class="slider" [style.--active-index]="activeIndex"></div>
+  <button
+    type="button"
     class="tab"
-    [routerLink]="['early-prelim', 'fights']"
-    [relativeTo]="route"
-    routerLinkActive="active"
+    [class.active]="activeTab() === 'early-prelim'"
+    (click)="onTabClick('early-prelim')"
   >
     Early Prelim
-  </a>
-  <a
+  </button>
+  <button
+    type="button"
     class="tab"
-    [routerLink]="['prelim', 'fights']"
-    [relativeTo]="route"
-    routerLinkActive="active"
+    [class.active]="activeTab() === 'prelim'"
+    (click)="onTabClick('prelim')"
   >
     Prelim
-  </a>
-  <a
+  </button>
+  <button
+    type="button"
     class="tab"
-    [routerLink]="['main', 'fights']"
-    [relativeTo]="route"
-    routerLinkActive="active"
+    [class.active]="activeTab() === 'main'"
+    (click)="onTabClick('main')"
   >
     Main
-  </a>
+  </button>
 </div>
