@@ -105,21 +105,23 @@ mat-card-actions {
 }
 
 
-mat-card-actions a {
+mat-card-actions button {
   width: 100%;
   min-width: 0;
   padding: 4px 0;
-  font-size: 0.6rem;
-  font-weight: 600;
+  font-family: "UFCSans", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
   line-height: 1;
   color: rgb(50, 50, 50);
-  border: 1px solid rgb(100, 100, 100, 0.3);
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  border-radius: 5px;
   background-color: rgba(200, 200, 200, 0.3);
 }
 
 
-mat-card-actions a:hover {
-  background-color: rgba(100, 100, 100, 0.3);
+mat-card-actions button:hover {
+  background-color: rgba(150, 150, 150, 0.3);
 }
 
 .fight-card mat-divider {
