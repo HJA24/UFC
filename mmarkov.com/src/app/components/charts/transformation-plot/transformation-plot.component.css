@@ -4,23 +4,26 @@
 }
 
 ::ng-deep .domain {
-  stroke: rgb(200, 200, 200);
+  stroke: black;
 }
 
 ::ng-deep .tick line {
-  stroke: rgb(200, 200, 200);
+  stroke: black;
 }
 
 ::ng-deep .tick text {
-  fill: rgb(120, 120, 120);
+  fill: black;
   font-size: 11px;
 }
 
-::ng-deep .grid line {
-  stroke: rgb(200, 200, 200);
-  stroke-dasharray: 2, 2;
-}
 
 ::ng-deep .grid .domain {
   stroke: none;
+}
+
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
 }

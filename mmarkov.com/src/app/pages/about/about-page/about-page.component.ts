@@ -6,7 +6,7 @@ import { TransitionMatrixTableComponent } from "src/app/components/tables/transi
 import { MarkovChainSimulatorComponent } from "src/app/components/simulations/markov-chain-simulator/markov-chain-simulator.component";
 import { TheoryFundamentalMatrixAccordionComponent } from "src/app/components/accordions/theory-fundamental-matrix-accordion/theory-fundamental-matrix-accordion.component";
 import { MatrixTableComponent } from "src/app/components/tables/matrix/matrix-table.component";
-import { InvLogitChartComponent, invLogit } from "src/app/components/charts/inv-logit-chart/inv-logit-chart.component";
+import { TransformationPlotComponent, invLogit } from "src/app/components/charts/transformation-plot/transformation-plot.component";
 import { StackedMatricesComponent } from "src/app/components/stacked-matrices/stacked-matrices.component";
 import { SkillSliderComponent } from "src/app/components/sliders/skill-slider/skill-slider.component";
 
@@ -21,7 +21,7 @@ import { SkillSliderComponent } from "src/app/components/sliders/skill-slider/sk
     MarkovChainSimulatorComponent,
     TheoryFundamentalMatrixAccordionComponent,
     MatrixTableComponent,
-    InvLogitChartComponent,
+    TransformationPlotComponent,
     StackedMatricesComponent,
     SkillSliderComponent,
   ],

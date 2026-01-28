@@ -4,12 +4,12 @@ import * as d3 from 'd3';
 export const invLogit = (x: number): number => 1 / (1 + Math.exp(-x));
 
 @Component({
-  selector: 'app-inv-logit-chart',
+  selector: 'app-transformation-plot',
   standalone: true,
-  templateUrl: './inv-logit-chart.component.html',
-  styleUrl: './inv-logit-chart.component.css'
+  templateUrl: './transformation-plot.component.html',
+  styleUrl: './transformation-plot.component.css'
 })
-export class InvLogitChartComponent implements AfterViewInit, OnChanges {
+export class TransformationPlotComponent implements AfterViewInit, OnChanges {
   @ViewChild('chart') chartRef!: ElementRef<SVGSVGElement>;
   @Input() deltaSkill: number = 0;
   @Input() width: number = 400;

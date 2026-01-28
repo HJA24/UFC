@@ -27,7 +27,7 @@
     <span class="T">T</span>
     <span class="equals">=</span>
     <app-transition-matrix-table [Q]="Q" [R]="R" [labels]="labels" [showTooltips]="true" [highlightRegion]="highlightRegion" [highlightCell]="highlightCell"></app-transition-matrix-table>
-  </div>
+   </div>
   <p>
     The first column represents the transition probabilities from <i>standing</i> to other states.
     There are two absorbing states; <i>knockout landed by <span class="fighter-blue">blue</span></i> and <i>knockout landed by <span class="fighter-red">red</span></i>. When the chain
@@ -131,6 +131,7 @@
       </tr>
     </tbody>
   </table>
+  <hr>
 <h2>Bayesian inference</h2>
   <p>With the help of Bayesian inference, attack- and defence parameters are estimated for each of the fighters' skills.
     These posterior estimates form the foundation of the probabilities in the transition matrix.</p>
@@ -150,7 +151,7 @@
         <app-skill-slider label="blue" color="blue" [(value)]="lambdaBlue"></app-skill-slider>
         <app-skill-slider label="red" color="red" [(value)]="lambdaRed"></app-skill-slider>
       </div>
-      <app-inv-logit-chart [deltaSkill]="deltaSkill"></app-inv-logit-chart>
+      <app-transformation-plot [deltaSkill]="deltaSkill"></app-transformation-plot>
     </div>
   </div>
   <div class="equation">
