@@ -38,7 +38,7 @@
       </div>
 
       @if (selectedIndex() > 0) {
-        <div class="tier-tree" #tierTree>
+        <div class="tier-tree">
           <app-indented-tree
             jsonUrl="assets/tree.json"
             [selectedTierIndex]="selectedIndex() - 1"

@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { StrawweightPageComponent } from './strawweight/strawweight-page.component';
 import { LightweightPageComponent } from './lightweight/lightweight-page.component';
 import { MiddleweightPageComponent } from './middleweight/middleweight-page.component';
@@ -22,8 +22,6 @@ import {IndentedTreeComponent} from "src/app/components/tree/indented-tree/inden
 })
 export class TiersPageComponent {
   private tiersService = inject(TiersService);
-
-  @ViewChild('tierTree') tierTreeRef!: ElementRef<HTMLDivElement>;
 
   readonly selectedIndex = this.tiersService.selectedIndex;
 
