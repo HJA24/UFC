@@ -1,18 +1,15 @@
 <mat-card
   class="fight-card"
-  [routerLink]="['/fights', fight.fightId]"
-  [state]="{ fighterNameBlue: fight.fighterBlue.lastName, fighterNameRed: fight.fighterRed.lastName }"
-  [style.view-transition-name]="cardContainerTransition"
-  (click)="$event.stopPropagation()"
+  (click)="openFight()"
 >
   <mat-card-header>
     <mat-card-title>
       <div class="fighter-names">
-        <div class="fighter-name blue" [style.view-transition-name]="fighterNameBlueTransition">
+        <div class="fighter-name blue">
           {{ fight.fighterBlue.lastName }}
         </div>
 
-        <div class="fighter-name red" [style.view-transition-name]="fighterNameRedTransition">
+        <div class="fighter-name red">
           {{ fight.fighterRed.lastName }}
         </div>
       </div>
@@ -21,7 +18,7 @@
 
   <mat-card-subtitle class="weight-class">
     <span *ngIf="fight.fighterBlue.gender === 'FEMALE'">
-      WOMEN’S
+      WOMEN'S
     </span>
     {{ fight.weightClass.split('_').join(' ') }}
   </mat-card-subtitle>
@@ -42,40 +39,32 @@
     </div>
   </mat-card-content>
 
-  <mat-divider [style.view-transition-name]="dividerTransition"></mat-divider>
+  <mat-divider></mat-divider>
 
   <mat-card-actions>
-    <a
+    <button
       mat-button
-      [routerLink]="['/fights', fight.fightId, 'network']"
-      [state]="{ fighterNameBlue: fight.fighterBlue.lastName, fighterNameRed: fight.fighterRed.lastName }"
-      (click)="$event.stopPropagation()"
+      (click)="openFight('network'); $event.stopPropagation()"
     >
       NETWORK
-    </a>
-    <a
+    </button>
+    <button
       mat-button
-      [routerLink]="['/fights', fight.fightId, 'stats']"
-      [state]="{ fighterNameBlue: fight.fighterBlue.lastName, fighterNameRed: fight.fighterRed.lastName }"
-      (click)="$event.stopPropagation()"
+      (click)="openFight('stats'); $event.stopPropagation()"
     >
       STATS
-    </a>
-    <a
+    </button>
+    <button
       mat-button
-      [routerLink]="['/fights', fight.fightId, 'predictions']"
-      [state]="{ fighterNameBlue: fight.fighterBlue.lastName, fighterNameRed: fight.fighterRed.lastName }"
-      (click)="$event.stopPropagation()"
+      (click)="openFight('predictions'); $event.stopPropagation()"
     >
       PREDICTIONS
-    </a>
-    <a
+    </button>
+    <button
       mat-button
-      [routerLink]="['/fights', fight.fightId, 'judges']"
-      [state]="{ fighterNameBlue: fight.fighterBlue.lastName, fighterNameRed: fight.fighterRed.lastName }"
-      (click)="$event.stopPropagation()"
+      (click)="openFight('judging'); $event.stopPropagation()"
     >
       JUDGES
-    </a>
+    </button>
   </mat-card-actions>
 </mat-card>

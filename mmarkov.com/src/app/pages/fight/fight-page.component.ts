@@ -1,7 +1,7 @@
-import {Component, inject, OnInit, OnDestroy, signal} from '@angular/core';
-import {RouterOutlet, ActivatedRoute} from "@angular/router";
-import {CommonModule, Location} from "@angular/common";
-import {finalize, take, Subscription} from "rxjs";
+import {Component, inject, OnInit} from '@angular/core';
+import {RouterOutlet, ActivatedRoute, Router} from "@angular/router";
+import {CommonModule} from "@angular/common";
+import {finalize} from "rxjs";
 
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
@@ -9,9 +9,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {FightDto} from "../../models/fight.dto";
 import {FightService} from "../../services/fight.service";
 import {FightTabsComponent} from "../../components/tabs/fight/fight-tabs.component";
-import { DualProgressBarComponent} from "../../components/loaders/dual-progress-bar/dual-progress-bar.component";
-import { FightLoadingService } from '../../services/fight-loading.service';
-import { ViewTransitionService } from '../../services/view-transition.service';
+import {DualProgressBarComponent} from "../../components/loaders/dual-progress-bar/dual-progress-bar.component";
+import {FightLoadingService} from '../../services/fight-loading.service';
 
 
 @Component({
@@ -28,46 +27,17 @@ import { ViewTransitionService } from '../../services/view-transition.service';
   templateUrl: './fight-page.component.html',
   styleUrl: './fight-page.component.css',
 })
-export class FightPageComponent implements OnInit, OnDestroy {
+export class FightPageComponent implements OnInit {
   private route = inject(ActivatedRoute)
-  private location = inject(Location)
+  private router = inject(Router)
   private fightService = inject(FightService)
-  private viewTransitionService = inject(ViewTransitionService)
   loadingService = inject(FightLoadingService)
 
-  private subscription?: Subscription;
   fight: FightDto | null = null;
-
-  // Read fightId immediately so transition names are available on first render
   private fightId = this.route.snapshot.paramMap.get('fightId');
-  cardContainerTransition = `fight-card-${this.fightId}`;
-  fighterNameBlueTransition = `fighter-blue-${this.fightId}`;
-  fighterNameRedTransition = `fighter-red-${this.fightId}`;
-  progressBarTransition = `progress-bar-${this.fightId}`;
-
-  // Get fighter names from router state for immediate display during transition
-  fighterNameBlue = history.state?.fighterNameBlue ?? '';
-  fighterNameRed = history.state?.fighterNameRed ?? '';
-
-  // Content visibility - hidden during transition, shown after
-  contentVisible = signal(!this.fighterNameBlue); // Visible immediately if direct navigation
 
   ngOnInit() {
-    // If navigated directly (no router state), load immediately
-    if (!this.fighterNameBlue) {
-      this.loadFight();
-      return;
-    }
-
-    // Wait for view transition to complete before showing content
-    this.subscription = this.viewTransitionService.finished$.pipe(take(1)).subscribe(() => {
-      this.contentVisible.set(true);
-      this.loadFight();
-    });
-  }
-
-  ngOnDestroy() {
-    this.subscription?.unsubscribe();
+    this.loadFight();
   }
 
   private loadFight() {
@@ -87,6 +57,6 @@ export class FightPageComponent implements OnInit, OnDestroy {
   }
 
   close(): void {
-    this.location.back();
+    this.router.navigate([{ outlets: { fight: null } }]);
   }
 }

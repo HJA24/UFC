@@ -1,28 +1,25 @@
-<div class="page" [style.view-transition-name]="cardContainerTransition">
-  @if (contentVisible()) {
+<div class="backdrop" (click)="close()">
+  <div class="page" (click)="$event.stopPropagation()">
     <button class="close-button" mat-icon-button (click)="close()">
       <mat-icon>close</mat-icon>
     </button>
-  }
 
-  <div class="fight-container">
-    <div class="fight-header">
-      <div class="fighter-name blue" [style.view-transition-name]="fighterNameBlueTransition">
-        {{ fight?.fighterBlue?.lastName ?? fighterNameBlue }}
+    <div class="fight-container">
+      <div class="fight-header">
+        <div class="fighter-name blue">
+          {{ fight?.fighterBlue?.lastName }}
+        </div>
+        <div class="fighter-name red">
+          {{ fight?.fighterRed?.lastName }}
+        </div>
+        <app-dual-progress-bar
+          [loading]="loadingService.loading()"
+        ></app-dual-progress-bar>
       </div>
-      <div class="fighter-name red" [style.view-transition-name]="fighterNameRedTransition">
-        {{ fight?.fighterRed?.lastName ?? fighterNameRed }}
-      </div>
-      <app-dual-progress-bar
-        [loading]="loadingService.loading()"
-        [style.view-transition-name]="progressBarTransition"
-      ></app-dual-progress-bar>
     </div>
-  </div>
 
-  @if (contentVisible()) {
     <router-outlet></router-outlet>
     <app-fight-tabs></app-fight-tabs>
-  }
+  </div>
 </div>
 
