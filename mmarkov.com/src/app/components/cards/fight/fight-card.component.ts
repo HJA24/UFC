@@ -30,8 +30,14 @@ export class FightCardComponent {
   @Input({ required: true }) fightCard!: string;
 
   openFight(tab: string = 'stats'): void {
-    this.router.navigate([
-      '/events', this.eventId, this.fightCard, 'fights', this.fight.fightId, tab
-    ]);
+    this.router.navigate(
+      ['/events', this.eventId, this.fightCard, 'fights', this.fight.fightId, tab],
+      {
+        state: {
+          fighterNameBlue: this.fight.fighterBlue.lastName,
+          fighterNameRed: this.fight.fighterRed.lastName
+        }
+      }
+    );
   }
 }

@@ -7,10 +7,10 @@
     <div class="fight-container">
       <div class="fight-header">
         <div class="fighter-name blue">
-          {{ fight?.fighterBlue?.lastName }}
+          {{ fight?.fighterBlue?.lastName ?? fighterNameBlue }}
         </div>
         <div class="fighter-name red">
-          {{ fight?.fighterRed?.lastName }}
+          {{ fight?.fighterRed?.lastName ?? fighterNameRed }}
         </div>
         <app-dual-progress-bar
           [loading]="loadingService.loading()"

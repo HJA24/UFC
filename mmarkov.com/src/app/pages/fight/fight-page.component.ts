@@ -50,6 +50,10 @@ export class FightPageComponent implements OnInit {
   fight: FightDto | null = null;
   private fightId = this.route.snapshot.paramMap.get('fightId');
 
+  // Fighter names from router state for immediate display
+  fighterNameBlue = history.state?.fighterNameBlue ?? '';
+  fighterNameRed = history.state?.fighterNameRed ?? '';
+
   ngOnInit() {
     this.loadFight();
   }
