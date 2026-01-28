@@ -9,16 +9,16 @@ import { HDI_CONFIG } from "../../../config/hdi.config";
 
 const HDI_COLORS = {
   blue: {
-    '50': '#0045b9ff',
-    '75': '#0045b999',
-    '90': '#0045b960',
-    '95': '#0045b940',
+    '50': { main: '#0045b9', shadow: '#002a70' },
+    '75': { main: '#668fd5', shadow: '#3d5a8a' },
+    '90': { main: '#9fb9e5', shadow: '#6a8cb8' },
+    '95': { main: '#bfd0ed', shadow: '#8fa8c4' },
   },
   red: {
-    '50': '#bf0700ff',
-    '75': '#bf0700aa',
-    '90': '#bf070050',
-    '95': '#bf070030',
+    '50': { main: '#bf0700', shadow: '#7a0400' },
+    '75': { main: '#d46b66', shadow: '#8a3d3a' },
+    '90': { main: '#e5a19f', shadow: '#b86a68' },
+    '95': { main: '#edc0bf', shadow: '#c48f8e' },
   }
 } as const;
 
@@ -26,6 +26,7 @@ interface HdiInterval {
   lower: number;
   upper: number;
   color: string;
+  shadowColor: string;
   zIndex: number;
   level: string;
 }
@@ -113,7 +114,7 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
     // Dimensions
     const width = 800;
     const height = 100;
-    const margin = { top: 5, right: 20, bottom: 25, left: 20 };
+    const margin = { top: 5, right: 20, bottom: 28, left: 20 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
@@ -170,8 +171,25 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
       // Sort HDIs by zIndex (lowest first = render first = background)
       const sortedHdis = [...row.hdis].sort((a, b) => a.zIndex - b.zIndex);
 
-      // Render overlapping HDI bars
+      // Render overlapping HDI bars with 3D stacked offset effect
       sortedHdis.forEach(hdi => {
+        const offsetX = 1;
+        const offsetY = 1;
+
+        // Shadow rectangle (offset behind)
+        rowG.append('rect')
+          .attr('class', `hdi-shadow hdi-level-${hdi.level}`)
+          .attr('data-level', hdi.level)
+          .attr('x', xScale(hdi.lower) + offsetX)
+          .attr('y', offsetY)
+          .attr('width', xScale(hdi.upper) - xScale(hdi.lower))
+          .attr('height', rowHeight)
+          .attr('rx', 5)
+          .attr('ry', 5)
+          .attr('fill', hdi.shadowColor)
+          .style('transition', 'opacity 0.2s ease');
+
+        // Main rectangle (on top)
         rowG.append('rect')
           .attr('class', `hdi-rect hdi-level-${hdi.level}`)
           .attr('data-level', hdi.level)
@@ -182,17 +200,16 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
           .attr('rx', 5)
           .attr('ry', 5)
           .attr('fill', hdi.color)
-          .attr('filter', 'url(#drop-shadow)')
           .style('cursor', 'pointer')
           .style('transition', 'opacity 0.2s ease')
           .on('mouseenter', function() {
             const level = d3.select(this).attr('data-level');
-            d3.selectAll('.hdi-rect').filter(function() {
+            d3.selectAll('.hdi-rect, .hdi-shadow').filter(function() {
               return d3.select(this).attr('data-level') !== level;
             }).style('opacity', 0);
           })
           .on('mouseleave', function() {
-            d3.selectAll('.hdi-rect').style('opacity', 1);
+            d3.selectAll('.hdi-rect, .hdi-shadow').style('opacity', 1);
           });
       });
     });
@@ -201,10 +218,12 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
   private transformHdis(hdis: Record<string, { min: number; max: number }>, color: 'blue' | 'red'): HdiInterval[] {
     return Object.entries(HDI_CONFIG).map(([label, config]) => {
       const levelKey = label.replace('%', '') as keyof typeof HDI_COLORS['blue'];
+      const colors = HDI_COLORS[color][levelKey];
       return {
         lower: hdis[config.level]?.min ?? 0,
         upper: hdis[config.level]?.max ?? 0,
-        color: HDI_COLORS[color][levelKey],
+        color: colors.main,
+        shadowColor: colors.shadow,
         zIndex: config.zIndex,
         level: levelKey,
       };
