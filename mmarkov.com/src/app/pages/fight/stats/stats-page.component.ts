@@ -27,6 +27,7 @@ interface HdiInterval {
   upper: number;
   color: string;
   zIndex: number;
+  level: string;
 }
 
 @Component({
@@ -172,6 +173,8 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
       // Render overlapping HDI bars
       sortedHdis.forEach(hdi => {
         rowG.append('rect')
+          .attr('class', `hdi-rect hdi-level-${hdi.level}`)
+          .attr('data-level', hdi.level)
           .attr('x', xScale(hdi.lower))
           .attr('y', 0)
           .attr('width', xScale(hdi.upper) - xScale(hdi.lower))
@@ -179,7 +182,18 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
           .attr('rx', 5)
           .attr('ry', 5)
           .attr('fill', hdi.color)
-          .attr('filter', 'url(#drop-shadow)');
+          .attr('filter', 'url(#drop-shadow)')
+          .style('cursor', 'pointer')
+          .style('transition', 'opacity 0.2s ease')
+          .on('mouseenter', function() {
+            const level = d3.select(this).attr('data-level');
+            d3.selectAll('.hdi-rect').filter(function() {
+              return d3.select(this).attr('data-level') !== level;
+            }).style('opacity', 0);
+          })
+          .on('mouseleave', function() {
+            d3.selectAll('.hdi-rect').style('opacity', 1);
+          });
       });
     });
   }
@@ -192,6 +206,7 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
         upper: hdis[config.level]?.max ?? 0,
         color: HDI_COLORS[color][levelKey],
         zIndex: config.zIndex,
+        level: levelKey,
       };
     });
   }
