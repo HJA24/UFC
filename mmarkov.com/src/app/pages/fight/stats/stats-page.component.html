@@ -1,13 +1,20 @@
 <div class="stats-container">
-  @for (chart of chartData(); track chart.stat) {
-    <div class="stat-chart">
-      <span class="stat-label">{{ chart.label }}</span>
-      <app-hdis-chart
-        [rows]="chart.rows"
-        [domain]="chart.domain"
-        [width]="400"
-      />
-      <span class="stat-spacer"></span>
-    </div>
-  }
+  <span class="stat-label">Number of strikes attempted</span>
+  <svg #numberOfStrikesAttempted></svg>
+  <span></span>
+
+  <span class="stat-label">Number of strikes landed</span>
+  <svg #numberOfStrikesLanded></svg>
+  <span></span>
+
+  <span class="stat-label">Number of submissions attempted</span>
+  <svg #numberOfSubmissionsAttempted></svg>
+  <span></span>
+  <span class="stat-label">Number of takedowns landed</span>
+  <svg #numberOfTakedownsLanded></svg>
+  <span></span>
+
+  <span class="stat-label">Time spent in ground control</span>
+  <svg #timeSpentInControl></svg>
+  <span></span>
 </div>
