@@ -12,8 +12,6 @@
   display: inline-grid;
   margin-left: 25px;
   --_d: calc(100% / (2 * sin(22.5deg)) + var(--g));
-  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15))
-          drop-shadow(0 4px 6px rgba(0,0,0,0.1));
 }
 
 .logo i {
@@ -98,6 +96,51 @@
   transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
              rotate(calc(var(--i) * -45deg - 22.5deg));
   animation: none;
+  background: transparent;
+  clip-path: none;
+  position: relative;
+}
+
+/* Shadow octagon (behind, darker) */
+.logo.ready i::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #a0a0a0;
+  z-index: 1;
+  --o: calc(50% * tan(-22.5deg));
+  clip-path: polygon(
+    var(--o) 50%,
+    50% var(--o),
+    calc(100% - var(--o)) 50%,
+    50% calc(100% - var(--o))
+  );
+  animation: shadowOffset 0.3s ease-out forwards;
+}
+
+/* Main octagon (on top) */
+.logo.ready i::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #c0c0c0;
+  z-index: 2;
+  --o: calc(50% * tan(-22.5deg));
+  clip-path: polygon(
+    var(--o) 50%,
+    50% var(--o),
+    calc(100% - var(--o)) 50%,
+    50% calc(100% - var(--o))
+  );
+}
+
+@keyframes shadowOffset {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(1px, 1px);
+  }
 }
 
 .logo.ready:after {
