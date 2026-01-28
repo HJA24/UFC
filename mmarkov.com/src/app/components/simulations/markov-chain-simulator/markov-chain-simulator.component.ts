@@ -139,6 +139,19 @@ export class MarkovChainSimulatorComponent {
     }
   }
 
+  fastForward(): void {
+    this.stopSimulation();
+    while (!this.isAbsorbed) {
+      const nextState = this.sampleNextState(this.currentStateIndex);
+      this.simulationStates.push(nextState);
+      if (this.isAbsorbingState(nextState)) {
+        this.isAbsorbed = true;
+      }
+    }
+    this.emitHighlightCell();
+    this.scrollToEnd();
+  }
+
   resetSimulation(): void {
     this.stopSimulation();
     this.simulationStates = [];

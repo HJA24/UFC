@@ -35,7 +35,9 @@
     The other states can be defined as transient states. Let's simulate a fight using this Markov chain.
 @if (isSimulating) {
       <mat-icon class="simulation-icon" (click)="onReplayClick()">replay</mat-icon>
-      <mat-icon class="simulation-icon" (click)="onFastForwardClick()">fast_forward</mat-icon>
+      @if (!simulatorRef.isAbsorbed) {
+        <mat-icon class="simulation-icon" (click)="onFastForwardClick()">fast_forward</mat-icon>
+      }
     } @else {
       <mat-icon class="simulation-icon" (click)="onSimulationIconClick()">play_arrow</mat-icon>
     }

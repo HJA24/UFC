@@ -136,10 +136,7 @@ export class AboutPageComponent {
   }
 
   onFastForwardClick(): void {
-    this.simulatorRef.stopSimulation();
-    while (!this.simulatorRef.isAbsorbed) {
-      this.simulatorRef.step();
-    }
+    this.simulatorRef.fastForward();
   }
 
   onStackedMatrixIndexChange(index: number): void {
