@@ -310,9 +310,9 @@ hr {
    VIEW TRANSITIONS (Card Expansion)
 ========================= */
 
-/* Named elements: position animates over 600ms */
+/* Named elements: position animates */
 ::view-transition-group(*) {
-  animation-duration: 600ms !important;
+  animation-duration: 1s !important;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
@@ -336,13 +336,14 @@ hr {
 }
 
 ::view-transition-new(root) {
-  animation: fade-in-delayed 700ms ease-out forwards !important;
+  animation: fade-in-delayed 1.1s ease-out forwards !important;
 }
 
 @keyframes fade-in-delayed {
-  0%, 85% { opacity: 0; }
+  0%, 90% { opacity: 0; }
   100% { opacity: 1; }
 }
+
 
 
 

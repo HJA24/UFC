@@ -48,6 +48,7 @@
     <a
       mat-button
       [routerLink]="['/fights', fight.fightId, 'network']"
+      [state]="{ fighterNameBlue: fight.fighterBlue.lastName, fighterNameRed: fight.fighterRed.lastName }"
       (click)="$event.stopPropagation()"
     >
       NETWORK
@@ -55,6 +56,7 @@
     <a
       mat-button
       [routerLink]="['/fights', fight.fightId, 'stats']"
+      [state]="{ fighterNameBlue: fight.fighterBlue.lastName, fighterNameRed: fight.fighterRed.lastName }"
       (click)="$event.stopPropagation()"
     >
       STATS
@@ -62,6 +64,7 @@
     <a
       mat-button
       [routerLink]="['/fights', fight.fightId, 'predictions']"
+      [state]="{ fighterNameBlue: fight.fighterBlue.lastName, fighterNameRed: fight.fighterRed.lastName }"
       (click)="$event.stopPropagation()"
     >
       PREDICTIONS
@@ -69,6 +72,7 @@
     <a
       mat-button
       [routerLink]="['/fights', fight.fightId, 'judges']"
+      [state]="{ fighterNameBlue: fight.fighterBlue.lastName, fighterNameRed: fight.fighterRed.lastName }"
       (click)="$event.stopPropagation()"
     >
       JUDGES
