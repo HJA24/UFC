@@ -1,0 +1,144 @@
+@font-face {
+  font-family: "UFCSans";
+  src: url("/assets/fonts/UFCSans-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "UFCSans";
+  src: url("/assets/fonts/UFCSans-Bold.woff2") format("woff2");
+  font-weight: bold;
+}
+
+
+:root {
+  --color-red:  #bf0700ff;
+  --color-blue: #0045b9ff;
+
+  --hdi-50-color-blue:  #0045b9ff;
+  --hdi-75-color-blue:  #0045b999;
+  --hdi-90-color-blue:  #0045b960;
+  --hdi-95-color-blue:  #0045b940;
+  --hdi-100-color-blue: #0045b920;
+
+  --hdi-50-color-red:   #bf0700ff;
+  --hdi-75-color-red:   #bf0700aa;
+  --hdi-90-color-red:   #bf070050;
+  --hdi-95-color-red:   #bf070030;
+  --hdi-100-color-red:  #bf070010;
+
+  --hdi-50-zindex:  5;
+  --hdi-75-zindex:  4;
+  --hdi-90-zindex:  3;
+  --hdi-95-zindex:  2;
+  --hdi-100-zindex: 1;
+}
+
+body {
+  font-family: "UFCSans", sans-serif;
+  background-color: white;
+}
+
+.page {
+  min-height: calc(100vh - 64px);
+  max-width: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: rgba(150, 150, 150, 0.8);
+}
+
+p, li {
+  line-height: 1.75;
+  color: rgb(50, 50, 50);
+}
+
+
+h2 {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* =========================
+   MAT-MENU PANEL (overlay)
+========================= */
+.cdk-overlay-pane .mat-mdc-menu-panel {
+  background-color: #ffffff !important;
+  color: #111111;
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  border-radius: 6px !important;
+  box-shadow: none;
+  font-family: "UFCSans", sans-serif;
+
+  /* Critical for exact width math */
+  box-sizing: border-box;
+
+  /* Remove Material min width */
+  min-width: unset !important;
+}
+
+
+/* =========================
+   Menu content spacing
+========================= */
+.mat-mdc-menu-content {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* =========================
+   Menu items (base)
+========================= */
+.mat-mdc-menu-item {
+  position: relative;
+  overflow: hidden;
+  height: 32px;
+  line-height: 32px;
+  margin: 0 !important;
+  padding-left: 8px;
+  padding-right: 4px;
+}
+
+/* Text inside menu items */
+.cdk-overlay-pane .mat-mdc-menu-item-text,
+.cdk-overlay-pane .mdc-list-item__primary-text {
+  font-family: "UFCSans", sans-serif !important;
+  font-size: 17px !important;
+  color: rgb(50, 50, 50);
+}
+
+/* Hover background */
+.cdk-overlay-pane .mat-mdc-menu-item:hover {
+  background-color: rgba(200, 200, 200, 0.33) !important;
+}
+
+
+.mat-mdc-form-field {
+  --mat-form-field-filled-container-color: rgba(200, 200, 200, 0.3) !important;
+  --mat-form-field-filled-focus-active-indicator-color: rgb(50, 50, 50, 0.3);
+  --mat-form-field-filled-hover-active-indicator-color: rgba(100, 100, 100, 0.3);
+  --mat-form-field-filled-caret-color: rgba(50, 50, 50, 0.3);
+}
+
+.mat-mdc-form-field * {
+    color: rgb(50, 50, 50) !important;
+    font-family: "UFCSans", sans-serif;
+}
+
+.mat-mdc-form-field input  {
+  font-weight: bold !important;
+}
+
+
+
+:host {
+  display: block;
+  background: white;
+  color: black;
+}
+
+
+.sum {
+  font-size: 1.3em;
+  vertical-align: middle;
+}
+

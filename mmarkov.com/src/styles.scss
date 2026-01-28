@@ -14,8 +14,8 @@
 
 
 :root {
-  --red:  #bf0700ff;
-  --blue: #0045b9ff;
+  --color-red:  #bf0700ff;
+  --color-blue: #0045b9ff;
 }
 
 body {
@@ -182,12 +182,12 @@ app-graph-data-table th.mat-mdc-header-cell {
 }
 
 app-graph-data-table th.mat-mdc-header-cell.mat-column-fighter {
-  border-bottom: 2px solid var(--blue);
+  border-bottom: 2px solid var(--color-blue);
 }
 
 /* Opponent column → RED */
 app-graph-data-table th.mat-mdc-header-cell.mat-column-opponent {
-  border-bottom: 2px solid var(--red);
+  border-bottom: 2px solid var(--color-red);
 }
 
 /* All other columns → GRAY */
@@ -274,7 +274,7 @@ app-matrix-table {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 0.85rem;
-  color: var(--blue);
+  color: var(--color-blue);
 }
 
 .fighter-red {
@@ -282,7 +282,7 @@ app-matrix-table {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 0.85rem;
-  color: var(--red);
+  color: var(--color-red);
 }
 
 @include mat.chips-overrides((

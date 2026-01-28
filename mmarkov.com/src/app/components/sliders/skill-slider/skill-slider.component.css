@@ -37,19 +37,19 @@
 }
 
 .slider-blue ::ng-deep .mdc-slider__track--active_fill {
-  border-color: var(--blue);
+  border-color: var(--color-blue);
 }
 
 .slider-blue ::ng-deep .mdc-slider__thumb-knob {
-  background-color: var(--blue);
-  border-color: var(--blue);
+  background-color: var(--color-blue);
+  border-color: var(--color-blue);
 }
 
 .slider-red ::ng-deep .mdc-slider__track--active_fill {
-  border-color: var(--red);
+  border-color: var(--color-red);
 }
 
 .slider-red ::ng-deep .mdc-slider__thumb-knob {
-  background-color: var(--red);
-  border-color: var(--red);
+  background-color: var(--color-red);
+  border-color: var(--color-red);
 }
