@@ -55,6 +55,7 @@ export const routes: Routes = [
   {
     path: 'fights/:fightId',
     component: FightPageComponent,
+    data: { hideNavbar: true },
     children:[
       { path: '', redirectTo: 'stats', pathMatch: 'full' },
       { path: 'network', component: NetworkPageComponent },

@@ -1,4 +1,8 @@
 <div class="page" [style.view-transition-name]="cardContainerTransition">
+  <button class="close-button" mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+
   <div class="fight-container">
     <div class="fight-header">
       <div class="fighter-name blue" [style.view-transition-name]="fighterNameBlueTransition">

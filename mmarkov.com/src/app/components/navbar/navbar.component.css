@@ -1,8 +1,7 @@
-@import '../../../../styles/logo.css';
+@import '../../../styles/logo.css';
 
-/* Keep navbar visible during view transitions */
 :host {
-  view-transition-name: navbar;
+  display: block;
 }
 
 /* =========================
