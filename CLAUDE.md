@@ -256,6 +256,18 @@ Works closely with TechnicalWriter on API documentation.
 
 Use via `/api-engineer endpoint <design>` or `/api-engineer blob <format>`.
 
+#### QuantitativeAnalyst (`.claude/agents/quantitative-analyst.md`)
+Predictive performance measurement and evaluation specialist:
+- **Brier Score**: Overall accuracy, decomposition (reliability, resolution, uncertainty), skill scores vs. market
+- **Calibration**: Calibration curves, Expected Calibration Error (ECE), overconfidence detection
+- **Separation Plots**: Discrimination ability visualization
+- **Edge Analysis**: CLV measurement, edge identification accuracy
+- **Reporting**: Performance summaries for clients and marketing
+
+Works with TechnicalWriter on methodology docs, D3Specialist on visualizations.
+
+Use via `/quantitative-analyst evaluate <period>` or `/quantitative-analyst calibration <analysis>`.
+
 ### Architects (Structure & Design)
 
 #### InformationArchitect (`.claude/agents/information-architect.md`)
