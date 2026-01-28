@@ -234,6 +234,28 @@ Polymarket API integration developer. **Goal: MMarkov becomes an official Polyma
 
 Use via `/polymarket-developer implement <feature>` or `/polymarket-developer api <question>`.
 
+#### MarketArbitrageur (`.claude/agents/market-arbitrageur.md`)
+Senior quantitative trader with Susquehanna-level expertise in arbitrage and mispricings:
+- **Logical Operations**: XOR, XNOR, AND, OR, NAND, NOR truth tables for market relationships
+- **Relationship Mapping**: MUTUALLY_EXCLUSIVE, EXHAUSTIVE, IMPLIES, SUBSET, COMPLEMENT between predictions
+- **Arbitrage Detection**: Two-way, three-way, cross-market, and cross-venue arbitrage
+- **Venue Comparison**: Polymarket, DraftKings, FanDuel, Pinnacle, Betfair price analysis
+- **Dutch Book Analysis**: Identifying constraint violations and guaranteed profit opportunities
+
+Use via `/market-arbitrageur analyze <fight>` or `/market-arbitrageur relationships <markets>`.
+
+#### APIEngineer (`.claude/agents/api-engineer.md`)
+Premium API specialist for Heavyweight tier subscribers:
+- **Posterior Distributions**: Full MCMC samples as downloadable BLOBs
+- **Formats**: NumPy arrays, Parquet, JSON for posterior data
+- **Tier Enforcement**: Heavyweight-only endpoints with access control
+- **BLOB Storage**: Compressed binary storage and retrieval patterns
+- **Rate Limiting**: Tiered limits (1000 req/hour for Heavyweight)
+
+Works closely with TechnicalWriter on API documentation.
+
+Use via `/api-engineer endpoint <design>` or `/api-engineer blob <format>`.
+
 ### Architects (Structure & Design)
 
 #### InformationArchitect (`.claude/agents/information-architect.md`)
