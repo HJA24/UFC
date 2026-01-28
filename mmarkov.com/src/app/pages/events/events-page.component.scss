@@ -1,0 +1,43 @@
+@use 'styles/inputs' as inputs;
+
+.events-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.tabs-and-search {
+  width: 80%;
+  margin: 0 auto 10px;
+}
+
+.tabs-and-search app-event-tabs {
+  display: block;
+  width: 100%;
+}
+
+.tabs-and-search mat-form-field {
+  @include inputs.segmented-input;
+}
+
+.tabs-and-search ::ng-deep .mat-mdc-form-field-infix {
+  @include inputs.segmented-input-infix;
+}
+
+.tabs-and-search ::ng-deep input.mat-mdc-input-element {
+  @include inputs.segmented-input-element;
+}
+
+.tabs-and-search ::ng-deep .mdc-text-field--outlined {
+  @include inputs.segmented-input-field;
+}
+
+.tabs-and-search ::ng-deep .mdc-notched-outline__leading,
+.tabs-and-search ::ng-deep .mdc-notched-outline__notch,
+.tabs-and-search ::ng-deep .mdc-notched-outline__trailing {
+  @include inputs.segmented-input-no-border;
+}
+
+.tabs-and-search ::ng-deep .mdc-text-field--focused {
+  @include inputs.segmented-input-field-focused;
+}

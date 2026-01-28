@@ -19,7 +19,7 @@ import { EventDto } from '../../models/event.dto';
     EventListComponent
   ],
   templateUrl: './events-page.component.html',
-  styleUrl: './events-page.component.css',
+  styleUrl: './events-page.component.scss',
 })
 export class EventsPageComponent {
   activeTab = signal<EventTabType>('upcoming');
