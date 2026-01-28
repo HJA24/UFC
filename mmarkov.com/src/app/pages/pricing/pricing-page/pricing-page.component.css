@@ -13,7 +13,7 @@
 .tiers-container {
   display: flex;
   flex-direction: row;
-  gap: 5px;
+  gap: 8px;
 }
 
 .strawweight-container,
@@ -47,6 +47,16 @@
   color: rgb(50, 50, 50);
 }
 
+.price-amount .currency {
+  font-size: 1rem;
+  vertical-align: top;
+  line-height: 1;
+  margin-top: 5px;
+  margin-right: 2px;
+  color: rgb(50, 50, 50);
+  display: inline-block;
+}
+
 
 /* "per month" text */
 .price span {
@@ -68,10 +78,10 @@ mat-button-toggle {
   background: transparent;
   font-family: "UFCSans", sans-serif;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 0.02em;
   color: rgb(80, 80, 80);
-  padding: 10px 16px;
+  padding: 6px 12px;
   border: none;
   border-radius: 4px;
 }
@@ -88,8 +98,8 @@ mat-button-toggle.mat-button-toggle-checked {
 }
 
 mat-card {
-  width: 300px;
-  background-color: rgba(250, 250, 250, 1);
+  width: 250px;
+  background-color: rgba(240, 240, 240, 10.3);
   border: 1px solid rgba(200, 200, 200, 0.3);
   border-radius: 5px;
   padding: 10px 12px;
@@ -120,9 +130,10 @@ mat-card-title {
   align-items: flex-start;
   font-family: "UFCSans", sans-serif;
   font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: rgb(50, 50, 50);
   margin-bottom: 25px;
-
 }
 
 mat-card-subtitle {
@@ -142,7 +153,7 @@ mat-card-content {
 }
 
 mat-card-content ul {
-  padding-left: 16px;
+  padding: 0;
   list-style: none;
 }
 
@@ -151,6 +162,11 @@ mat-card-content li {
   display: flex;
   align-items: flex-start;
   gap: 8px;
+  margin-bottom: 8px;
+}
+
+mat-card-content li:last-child {
+  margin-bottom: 0;
 }
 
 mat-card-content li mat-icon {
@@ -159,6 +175,8 @@ mat-card-content li mat-icon {
   height: 18px;
   flex-shrink: 0;
   margin-top: 2px;
+  color: rgb(50, 50, 50);
+  font-variation-settings: 'FILL' 0, 'wght' 600;
 }
 
 mat-card-actions button {
@@ -172,8 +190,42 @@ mat-card-actions button {
   cursor: pointer;
 }
 
-mat-card-actions button:hover {
+mat-card-actions button:hover:not(:disabled) {
   background-color: rgba(150, 150, 150, 0.3);
+}
+
+mat-card-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+mat-card mat-divider {
+  width: 80%;
+  margin: 12px auto;
+  opacity: 0.3;
+}
+
+/* Recommended tier highlight */
+.middleweight-container mat-card {
+  border-color: rgba(100, 100, 100, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.popular-badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgb(50, 50, 50);
+  color: white;
+  font-family: "UFCSans", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 12px;
 }
 
 /* Carousel wrapper */
@@ -189,17 +241,14 @@ mat-card-actions button:hover {
   display: none;
   align-items: center;
   justify-content: center;
-  background: rgba(200, 200, 200, 0.3);
-  border: 1px solid rgba(200, 200, 200, 0.3);
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  background: none;
+  border: none;
   cursor: pointer;
   flex-shrink: 0;
 }
 
-.carousel-arrow:hover {
-  background: rgba(150, 150, 150, 0.3);
+.carousel-arrow:hover mat-icon {
+  color: rgb(30, 30, 30);
 }
 
 .carousel-arrow.hidden {
@@ -239,9 +288,14 @@ mat-card-actions button:hover {
   .heavyweight-container {
     flex: 0 0 100%;
     scroll-snap-align: start;
+    padding-top: 10px;
   }
 
   mat-card {
     width: 100%;
+  }
+
+  mat-card:hover {
+    transform: none;
   }
 }
