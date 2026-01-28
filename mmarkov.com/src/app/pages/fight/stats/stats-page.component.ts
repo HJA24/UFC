@@ -111,8 +111,8 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
 
     // Dimensions
     const width = 800;
-    const height = 80;
-    const margin = { top: 5, right: 20, bottom: 25, left: 20 };
+    const height = 100;
+    const margin = { top: 5, right: 10, bottom: 25, left: 10 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
@@ -122,12 +122,28 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
       .attr('height', height)
       .attr('viewBox', [0, 0, width, height]);
 
+    // Add drop shadow filter
+    const defs = svgSelection.append('defs');
+    const filter = defs.append('filter')
+      .attr('id', 'drop-shadow')
+      .attr('x', '-20%')
+      .attr('y', '-20%')
+      .attr('width', '140%')
+      .attr('height', '140%');
+
+    filter.append('feDropShadow')
+      .attr('dx', 0)
+      .attr('dy', 2)
+      .attr('stdDeviation', 2)
+      .attr('flood-color', 'rgba(0, 0, 0, 0.15)');
+
     const g = svgSelection.append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
 
     // Scales
     const xScale = d3.scaleLinear()
       .domain(domain)
+      .nice()
       .range([0, innerWidth]);
 
     const yScale = d3.scaleBand<number>()
@@ -160,7 +176,10 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
           .attr('y', 0)
           .attr('width', xScale(hdi.upper) - xScale(hdi.lower))
           .attr('height', rowHeight)
-          .attr('fill', hdi.color);
+          .attr('rx', 5)
+          .attr('ry', 5)
+          .attr('fill', hdi.color)
+          .attr('filter', 'url(#drop-shadow)');
       });
     });
   }
