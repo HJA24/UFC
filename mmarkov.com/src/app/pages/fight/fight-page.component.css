@@ -63,7 +63,7 @@ router-outlet + * {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 48px;
+  padding-top: 30px;
 }
 
 .fight-header {

@@ -112,7 +112,7 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
     // Dimensions
     const width = 800;
     const height = 100;
-    const margin = { top: 5, right: 10, bottom: 25, left: 10 };
+    const margin = { top: 5, right: 20, bottom: 25, left: 20 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
