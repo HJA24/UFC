@@ -268,6 +268,19 @@ Works with TechnicalWriter on methodology docs, D3Specialist on visualizations.
 
 Use via `/quantitative-analyst evaluate <period>` or `/quantitative-analyst calibration <analysis>`.
 
+#### AuthAndSecurityAdministrator (`.claude/agents/auth-security-administrator.md`)
+Identity, authorization, and abuse prevention specialist:
+- **Authentication**: JWT tokens, session management, secure token storage
+- **Authorization**: RBAC with tier-based permissions, consistent enforcement across API/UI
+- **Rate Limiting**: Multi-layer throttling (IP, user, endpoint) with tier-specific limits
+- **Brute-Force Protection**: Login attempt tracking, progressive delays, account lockouts
+- **Input Validation**: SQL injection prevention, XSS guards, request sanitization
+- **Security Headers**: CSP, HSTS, X-Frame-Options, audit logging
+
+Works with BackendArchitect, PaymentIntegrator, and APIEngineer on security patterns.
+
+Use via `/auth-security-administrator review <endpoint>` or `/auth-security-administrator audit <feature>`.
+
 ### Architects (Structure & Design)
 
 #### InformationArchitect (`.claude/agents/information-architect.md`)
