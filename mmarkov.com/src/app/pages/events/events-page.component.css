@@ -1,11 +1,13 @@
 .events-container {
   width: 100%;
   max-width: 400px;
+  margin: 0 auto;
 }
 
 .events-container app-event-tabs {
   display: block;
   width: 50%;
+  margin: 0 auto;
 }
 
 
