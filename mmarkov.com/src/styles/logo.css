@@ -12,11 +12,13 @@
   display: inline-grid;
   margin-left: 25px;
   --_d: calc(100% / (2 * sin(22.5deg)) + var(--g));
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15))
+          drop-shadow(0 4px 6px rgba(0,0,0,0.1));
 }
 
 .logo i {
   grid-area: 1/1;
-  background: rgb(100, 100, 100, 0.3);
+  background: rgba(160, 160, 160, 0.5);
 
   /* start centered, matching the 0% keyframe */
   transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(0)
@@ -28,16 +30,16 @@
     calc(100% - var(--o)) 50%,
     50% calc(100% - var(--o))
   );
-  animation: move 2s 1s alternate linear both;
+  animation: move 2s 1s linear both;
   will-change: transform;
 }
 
 @keyframes move {
   0% {
-    transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(0px)
+    transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(0)
       rotate(calc(var(--i) * -45deg - 22.5deg));
   }
-  50%,100% {
+  50%, 100% {
     transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
       rotate(calc(var(--i) * -45deg - 22.5deg));
   }
@@ -46,7 +48,7 @@
 .logo:after {
   content: "";
   grid-area: 1/1;
-  background: rgba(255, 255, 255, 1);
+  background: linear-gradient(180deg, #ffffff 0%, #f2f2f2 100%);
   margin: calc(50% - (var(--_d) + var(--b) / 2) * cos(22.5deg));
   mask: conic-gradient(from 22.5deg, #000 var(--_p), #0000 0);
   animation: fill 2s 1s linear both;
@@ -72,7 +74,7 @@
 }
 
 @keyframes fill {
-  0%,50% {
+  0%, 50% {
     --_p: 0deg;
   }
   100% {
