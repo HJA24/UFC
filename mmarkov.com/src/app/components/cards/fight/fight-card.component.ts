@@ -31,7 +31,7 @@ export class FightCardComponent {
 
   openFight(tab: string = 'stats'): void {
     this.router.navigate([
-      { outlets: { fight: ['fights', this.fight.fightId, tab] } }
+      '/events', this.eventId, this.fightCard, 'fights', this.fight.fightId, tab
     ]);
   }
 }

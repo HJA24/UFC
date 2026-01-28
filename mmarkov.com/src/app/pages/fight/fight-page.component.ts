@@ -71,6 +71,7 @@ export class FightPageComponent implements OnInit {
   }
 
   close(): void {
-    this.router.navigate([{ outlets: { fight: null } }]);
+    // Navigate to parent (fightcards page)
+    this.router.navigate(['../..'], { relativeTo: this.route });
   }
 }

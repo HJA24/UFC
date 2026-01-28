@@ -47,22 +47,26 @@ export const routes: Routes = [
         path: ':eventId',
         children: [
           { path: '', redirectTo: 'main', pathMatch: 'full' },
-          { path: ':fightCard', component: FightcardsPageComponent },
+          {
+            path: ':fightCard',
+            component: FightcardsPageComponent,
+            children: [
+              {
+                path: 'fights/:fightId',
+                component: FightPageComponent,
+                children: [
+                  { path: '', redirectTo: 'stats', pathMatch: 'full' },
+                  { path: 'network', component: NetworkPageComponent },
+                  { path: 'stats', component: StatsPageComponent },
+                  { path: 'predictions', component: PredictionsPageComponent },
+                  { path: 'judging', component: JudgingPageComponent },
+                ]
+              }
+            ]
+          },
         ],
       },
     ],
-  },
-  {
-    path: 'fights/:fightId',
-    outlet: 'fight',
-    component: FightPageComponent,
-    children:[
-      { path: '', redirectTo: 'stats', pathMatch: 'full' },
-      { path: 'network', component: NetworkPageComponent },
-      { path: 'stats', component: StatsPageComponent },
-      { path: 'predictions', component: PredictionsPageComponent },
-      { path: 'judging', component: JudgingPageComponent },
-    ]
   },
   { path: 'pricing', component: PricingPageComponent }
 ]

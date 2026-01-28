@@ -1,6 +1,6 @@
 import { Component, inject, signal, computed, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
@@ -18,6 +18,7 @@ const VALID_TABS: FightcardTab[] = ['early-prelim', 'prelim', 'main'];
   standalone: true,
   imports: [
     CommonModule,
+    RouterOutlet,
     MatFormFieldModule,
     MatInputModule,
     FightcardTabsComponent,
