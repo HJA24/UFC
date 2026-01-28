@@ -1,9 +1,18 @@
 <div class="page">
   <div class="events-container">
-    <app-event-tabs
-      [activeTab]="activeTab()"
-      (tabChange)="onTabChange($event)"
-    ></app-event-tabs>
+    <div class="tabs-and-search">
+      <app-event-tabs
+        [activeTab]="activeTab()"
+        (tabChange)="onTabChange($event)"
+      ></app-event-tabs>
+
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <input matInput
+               placeholder="Search ... "
+               [value]="searchQuery()"
+               (input)="onSearchInput($event)">
+      </mat-form-field>
+    </div>
 
     @if (events().length > 0) {
       <app-event-list [events]="events()"></app-event-list>

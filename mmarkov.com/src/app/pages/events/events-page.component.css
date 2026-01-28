@@ -4,10 +4,61 @@
   margin: 0 auto;
 }
 
-.events-container app-event-tabs {
+.tabs-and-search {
+  width: 80%;
+  margin: 0 auto 10px;
+}
+
+.tabs-and-search app-event-tabs {
   display: block;
-  width: 50%;
-  margin: 0 auto;
+  width: 100%;
+}
+
+.tabs-and-search mat-form-field {
+  width: 100%;
+
+  --mdc-outlined-text-field-container-shape: 5px;
+  --mdc-outlined-text-field-outline-color: transparent;
+  --mdc-outlined-text-field-hover-outline-color: transparent;
+  --mdc-outlined-text-field-focus-outline-color: transparent;
+  --mdc-outlined-text-field-focus-outline-width: 1px;
+  --mat-form-field-container-text-font: "UFCSans", sans-serif;
+  --mat-form-field-container-text-size: 14px;
+  --mat-form-field-container-text-weight: 500;
+  --mat-form-field-container-text-color: rgb(80, 80, 80);
+  --mdc-outlined-text-field-input-text-placeholder-color: rgb(140, 140, 140);
+}
+
+.tabs-and-search ::ng-deep .mat-mdc-form-field-infix {
+  min-height: 36px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.tabs-and-search ::ng-deep input.mat-mdc-input-element {
+  color: rgb(80, 80, 80);
+  padding-left: 12px;
+}
+
+/* Default state: gray gradient (like tabs container) */
+.tabs-and-search ::ng-deep .mdc-text-field--outlined {
+  background: linear-gradient(to bottom, rgb(240, 240, 240), rgb(230, 230, 230));
+  box-shadow: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tabs-and-search ::ng-deep .mdc-notched-outline__leading,
+.tabs-and-search ::ng-deep .mdc-notched-outline__notch,
+.tabs-and-search ::ng-deep .mdc-notched-outline__trailing {
+  border: none !important;
+}
+
+/* Focused state: white background with shadow (like tabs slider) */
+.tabs-and-search ::ng-deep .mdc-text-field--focused {
+  background: white;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 
