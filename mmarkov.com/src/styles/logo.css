@@ -101,6 +101,7 @@
   background: transparent;
   clip-path: none;
   position: relative;
+  z-index: 1;
 }
 
 /* Shadow octagon - base (hidden during init) */
@@ -146,8 +147,10 @@
 }
 
 .logo.ready:after {
-  --_p: 360deg;
   animation: none;
+  --_p: 360deg;
+  position: relative;
+  z-index: 10;
 }
 
 /* =========================
