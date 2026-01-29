@@ -1,14 +1,39 @@
-<div class="network-layout">
-  <app-graph-data-chart
-    class="network-chart"
-    [nodes]="nodes"
-    [edges]="edges"
-    (activeNodeIds)="onActiveNodeIdsChange($event)">
-  ></app-graph-data-chart>
+<div class="network-container">
+  <div class="network-chart-container">
+    <div class="network-chart-layout-container">
+      <div class="network-chart-buttons">
+        <button mat-icon-button>
+          <mat-icon>graph_5</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>graph_3</mat-icon>
+        </button>
+      </div>
+    <app-graph-data-chart
+      class="network-chart"
+      [nodes]="nodes"
+      [edges]="edges"
+      (activeNodeIds)="onActiveNodeIdsChange($event)">
+    </app-graph-data-chart>
+    </div>
+  </div>
+  <div class="network-data-container">
+    <app-network-tabs
+      [activeTab]="activeTab()"
+      (tabChange)="onTabChange($event)">
+    </app-network-tabs>
 
-  <app-graph-data-table
-    class='network-table'
-    [data]="matchups"
-    [activeNodeIds]="activeNodeIds()">
-  ></app-graph-data-table>
+    @if (activeTab() === 'data') {
+      <app-graph-data-table
+        class="network-table"
+        [data]="matchups"
+        [activeNodeIds]="activeNodeIds()">
+      </app-graph-data-table>
+    } @else {
+      <app-network-properties
+        [properties]="properties"
+        [nodes]="nodes">
+      </app-network-properties>
+    }
+  </div>
 </div>
