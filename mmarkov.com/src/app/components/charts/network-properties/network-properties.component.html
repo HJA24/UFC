@@ -1,0 +1,11 @@
+<div class="properties-container">
+  <div class="properties-chart" #propertiesChart>
+    <svg #chartSvg></svg>
+  </div>
+
+  <div class="property-description-container" [class.active]="hoveredProperty()">
+    <p class="property-description-text">
+      <span class="property-name">{{ propertyLabel }}</span> {{ description }}
+    </p>
+  </div>
+</div>
