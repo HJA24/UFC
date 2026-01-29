@@ -5,7 +5,7 @@
 }
 
 .logo {
-  --b: 2px; /* the border thickness */
+  --b: 1px; /* the border thickness */
   --g: 5%; /* control the gap */
   width: 23px; /* control the size */
   aspect-ratio: 1;
@@ -16,7 +16,7 @@
 
 .logo i {
   grid-area: 1/1;
-  background: rgba(160, 160, 160, 0.5);
+  background: rgba(100, 100, 100, 0.3);
 
   /* start centered, matching the 0% keyframe */
   transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(0)
@@ -36,17 +36,19 @@
   0% {
     transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(0)
       rotate(calc(var(--i) * -45deg - 22.5deg));
+    background: rgba(100, 100, 100, 0.3);
   }
   50%, 100% {
     transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
       rotate(calc(var(--i) * -45deg - 22.5deg));
+    background: #D1D1D1;
   }
 }
 
 .logo:after {
   content: "";
   grid-area: 1/1;
-  background: linear-gradient(180deg, #ffffff 0%, #f2f2f2 100%);
+  background: white;
   margin: calc(50% - (var(--_d) + var(--b) / 2) * cos(22.5deg));
   mask: conic-gradient(from 22.5deg, #000 var(--_p), #0000 0);
   animation: fill 2s 1s linear both;
@@ -106,7 +108,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: #a0a0a0;
+  background: #6D6D6D;
   z-index: 1;
   --o: calc(50% * tan(-22.5deg));
   clip-path: polygon(
@@ -115,7 +117,7 @@
     calc(100% - var(--o)) 50%,
     50% calc(100% - var(--o))
   );
-  animation: shadowOffset 0.3s ease-out forwards;
+  animation: shadowOffset 1s ease-out forwards;
 }
 
 /* Main octagon (on top) */
@@ -123,7 +125,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: #c0c0c0;
+  background: #D1D1D1;
   z-index: 2;
   --o: calc(50% * tan(-22.5deg));
   clip-path: polygon(
@@ -154,11 +156,59 @@
 .logo.animating i {
   transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
              rotate(calc(var(--i) * -45deg - 22.5deg));
-  animation: moveHover 4s linear both;
+  animation: moveHover 5s linear both;
+  background: transparent;
+  clip-path: none;
+  position: relative;
+}
+
+/* Shadow octagon during hover - animate back first */
+.logo.animating i::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #6D6D6D;
+  z-index: 1;
+  --o: calc(50% * tan(-22.5deg));
+  clip-path: polygon(
+    var(--o) 50%,
+    50% var(--o),
+    calc(100% - var(--o)) 50%,
+    50% calc(100% - var(--o))
+  );
+  animation: shadowHover 5s linear both;
+}
+
+/* Main octagon during hover */
+.logo.animating i::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #D1D1D1;
+  z-index: 2;
+  --o: calc(50% * tan(-22.5deg));
+  clip-path: polygon(
+    var(--o) 50%,
+    50% var(--o),
+    calc(100% - var(--o)) 50%,
+    50% calc(100% - var(--o))
+  );
+}
+
+@keyframes shadowHover {
+  0% {
+    transform: translate(1px, 1px);
+  }
+  10%, 90% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(1px, 1px);
+  }
 }
 
 @keyframes moveHover {
-  0%, 25% {
+  0%, 10% {
     transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
       rotate(calc(var(--i) * -45deg - 22.5deg));
   }
@@ -166,21 +216,21 @@
     transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(0)
       rotate(calc(var(--i) * -45deg - 22.5deg));
   }
-  75%, 100% {
+  90%, 100% {
     transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
       rotate(calc(var(--i) * -45deg - 22.5deg));
   }
 }
 
 .logo.animating:after {
-  animation: fillHover 4s linear both;
+  animation: fillHover 5s linear both;
 }
 
 @keyframes fillHover {
   0% {
     --_p: 360deg;
   }
-  25%, 75% {
+  10%, 90% {
     --_p: 0deg;
   }
   100% {
