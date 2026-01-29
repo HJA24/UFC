@@ -25,7 +25,7 @@ import { createGraphChart, GraphChartInstance } from './graph-chart.d3';
 export class GraphChartComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() nodes: NodeDto[] | null = null;
   @Input() edges: EdgeDto[] | null = null;
-  @Input() pos: 'circular' | 'spring' = 'spring';
+  @Input() pos: 'circular' | 'spring' = 'circular';
 
   @Output() activeNodeIds = new EventEmitter<number[]>();
 

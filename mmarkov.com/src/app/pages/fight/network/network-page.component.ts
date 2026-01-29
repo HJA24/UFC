@@ -41,7 +41,7 @@ export class NetworkPageComponent implements OnInit {
 
   activeNodeIds = signal<number[]>([]);
   activeTab = signal<NetworkTabType>('data');
-  activePos = signal<'circular' | 'spring'>('spring');
+  activePos = signal<'circular' | 'spring'>('circular');
 
   onActiveNodeIdsChange(ids: number[]) {
     this.activeNodeIds.set(ids);

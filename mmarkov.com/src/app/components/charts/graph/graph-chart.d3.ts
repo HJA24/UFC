@@ -32,6 +32,13 @@ export function createGraphChart(
   const pos = new Map<number, XY>();       // fighterId -> current pixel position
   const activeIds = new Set<number>();     // active nodes (ids)
 
+  // Track current state for transitions
+  let currentPosType: PosType | null = null;
+  let currentNodes: NodeDto[] = [];
+  let currentEdges: EdgeDto[] = [];
+  let nodeSelection: d3.Selection<SVGGElement, NodeDto, SVGGElement, unknown> | null = null;
+  let edgeSelection: d3.Selection<SVGLineElement, EdgeDto, SVGGElement, unknown> | null = null;
+
   // Emit current active ids as a plain array (stable contract)
   const emitActiveIds = () => {
     callbacks.onActiveNodeIds(Array.from(activeIds));
@@ -54,23 +61,20 @@ export function createGraphChart(
     const distToDown = Math.abs(t - down);
     const dist = Math.min(distToUp, distToDown);
 
-    const BASE = 5;
     const EXTRA = 15;
-    const WIDTH = Math.PI / 6;
+    const WIDTH = Math.PI / 4;
 
     const strength = Math.max(0, 1 - dist / WIDTH);
 
-    const OUT = 5;
-    const dy = (Math.sin(t) >= 0 ? -1 : 1) * (BASE + EXTRA * strength);
+    const dy = (Math.sin(t) >= 0 ? 1 : -1) * (EXTRA * strength);
 
     if (center1 || center2) {
       return { anchor: 'middle', dx: 0, dy };
     }
 
     const anchor: 'start' | 'end' = Math.cos(t) >= 0 ? 'start' : 'end';
-    const dx = anchor === 'start' ? OUT : -OUT;
 
-    return { anchor, dx, dy };
+    return { anchor, dx: 0, dy };
   }
 
   function baseX(d: NodeDto, labelOffset: number): number {
@@ -79,6 +83,70 @@ export function createGraphChart(
 
   function baseY(d: NodeDto, labelOffset: number): number {
     return labelOffset * Math.sin(d.pos.theta);
+  }
+
+  // --- center point for circular layout ---
+  const centerX = config.width / 2;
+  const centerY = config.height / 2;
+  const circularRadius = Math.min(config.width, config.height) / 2 - config.padding - 40;
+
+  // Position getter factory based on layout type
+  function createPositionGetters(nodes: NodeDto[], posType: PosType) {
+    // Fixed coordinate system [-1, 1] centered at (0, 0)
+    const xScale = d3.scaleLinear().domain([-1, 1]).range([config.padding, config.width - config.padding]);
+    const yScale = d3.scaleLinear().domain([-1, 1]).range([config.height - config.padding, config.padding]);
+
+    const getX = (n: NodeDto) => {
+      if (posType === 'circular') {
+        return centerX + circularRadius * Math.cos(n.pos.theta);
+      }
+      return xScale(n.pos.x);
+    };
+    const getY = (n: NodeDto) => {
+      if (posType === 'circular') {
+        return centerY + circularRadius * Math.sin(n.pos.theta);
+      }
+      return yScale(n.pos.y);
+    };
+
+    return { getX, getY };
+  }
+
+  // Transition to new layout positions
+  function transitionToLayout(posType: PosType, duration: number = 1000) {
+    if (!nodeSelection || !edgeSelection || currentNodes.length === 0) return;
+
+    const { getX, getY } = createPositionGetters(currentNodes, posType);
+
+    // Update position maps
+    originPos.clear();
+    pos.clear();
+    for (const n of currentNodes) {
+      const id = n.fighter.fighterId;
+      const xy = { x: getX(n), y: getY(n) };
+      originPos.set(id, xy);
+      pos.set(id, xy);
+    }
+
+    const getPX = (id: number) => pos.get(id)!.x;
+    const getPY = (id: number) => pos.get(id)!.y;
+
+    // Animate nodes
+    nodeSelection
+      .transition()
+      .duration(duration)
+      .attr('transform', (d) => `translate(${getPX(d.fighter.fighterId)}, ${getPY(d.fighter.fighterId)})`);
+
+    // Animate edges
+    edgeSelection
+      .transition()
+      .duration(duration)
+      .attr('x1', (e) => getPX(e.source))
+      .attr('y1', (e) => getPY(e.source))
+      .attr('x2', (e) => getPX(e.target))
+      .attr('y2', (e) => getPY(e.target));
+
+    currentPosType = posType;
   }
 
   // -------------------------
@@ -95,37 +163,12 @@ export function createGraphChart(
 
     const root = svg.append('g').attr('class', 'chart-root');
 
-    // --- center point for circular layout ---
-    const centerX = config.width / 2;
-    const centerY = config.height / 2;
-    const circularRadius = Math.min(config.width, config.height) / 2 - config.padding - 40;
+    // Store current state
+    currentNodes = nodes;
+    currentEdges = edges;
+    currentPosType = posType;
 
-    // --- scales (used for spring layout) ---
-    const xs = nodes.map((n) => n.pos.x);
-    const ys = nodes.map((n) => n.pos.y);
-
-    let xExtent = d3.extent(xs) as [number, number];
-    let yExtent = d3.extent(ys) as [number, number];
-
-    if (xExtent[0] === xExtent[1]) xExtent = [xExtent[0] - 1, xExtent[1] + 1];
-    if (yExtent[0] === yExtent[1]) yExtent = [yExtent[0] - 1, yExtent[1] + 1];
-
-    const xScale = d3.scaleLinear().domain(xExtent).range([config.padding, config.width - config.padding]);
-    const yScale = d3.scaleLinear().domain(yExtent).range([config.height - config.padding, config.padding]);
-
-    // --- position getters based on layout type ---
-    const getX = (n: NodeDto) => {
-      if (posType === 'circular') {
-        return centerX + circularRadius * Math.cos(n.pos.theta);
-      }
-      return xScale(n.pos.x);
-    };
-    const getY = (n: NodeDto) => {
-      if (posType === 'circular') {
-        return centerY + circularRadius * Math.sin(n.pos.theta);
-      }
-      return yScale(n.pos.y);
-    };
+    const { getX, getY } = createPositionGetters(nodes, posType);
 
     // Clear and reset positions for new layout
     originPos.clear();
@@ -150,7 +193,7 @@ export function createGraphChart(
     const edgeWeight = d3.scaleLinear().domain(wDomain).range([1, 6]).clamp(true);
 
     // --- edges (no filtering) ---
-    const edgesSelection = root
+    edgeSelection = root
       .append('g')
       .attr('class', 'edges')
       .selectAll<SVGLineElement, EdgeDto>('line')
@@ -166,7 +209,7 @@ export function createGraphChart(
       .attr('class', 'edge');
 
     const updateEdges = () => {
-      edgesSelection
+      edgeSelection!
         .attr('x1', (e) => getPX(e.source))
         .attr('y1', (e) => getPY(e.source))
         .attr('x2', (e) => getPX(e.target))
@@ -174,7 +217,7 @@ export function createGraphChart(
     };
 
     // --- nodes ---
-    const nodeG = root
+    nodeSelection = root
       .append('g')
       .attr('class', 'nodes')
       .selectAll<SVGGElement, NodeDto>('g.node')
@@ -183,7 +226,7 @@ export function createGraphChart(
       .attr('class', 'node')
       .attr('transform', (d) => `translate(${getPX(d.fighter.fighterId)}, ${getPY(d.fighter.fighterId)})`);
 
-    nodeG
+    nodeSelection
       .append('circle')
       .attr('r', 5)
       .attr('fill', (d) => (d.color == null ? 'gray' : String(d.color)))
@@ -191,7 +234,7 @@ export function createGraphChart(
 
     // labels (anchor computed once per label)
     const labelOffset = 15; // pixel offset for circular layout
-    nodeG
+    nodeSelection
       .append('text')
       .attr('class', 'node-label')
       .attr('dominant-baseline', 'middle')
@@ -206,9 +249,9 @@ export function createGraphChart(
 
     // --- active styles (nodes + edges) ---
     const applyActiveStyles = () => {
-      nodeG.classed('active', (d) => activeIds.has(d.fighter.fighterId));
+      nodeSelection!.classed('active', (d) => activeIds.has(d.fighter.fighterId));
 
-      edgesSelection.attr('stroke-opacity', (e) => {
+      edgeSelection!.attr('stroke-opacity', (e) => {
         if (activeIds.size === 0) return 0.1;
         return activeIds.has(e.source) || activeIds.has(e.target) ? 1 : 0.1;
       });
@@ -238,7 +281,7 @@ export function createGraphChart(
     };
 
     // click toggles active
-    nodeG.on('click', (event, d) => {
+    nodeSelection!.on('click', (event, d) => {
       event.stopPropagation();
       toggleActive(d.fighter.fighterId);
     });
@@ -256,7 +299,7 @@ export function createGraphChart(
         updateEdges();
       });
 
-    nodeG.call(dragBehavior as any);
+    nodeSelection!.call(dragBehavior as any);
 
     // reset positions (background click)
     const resetToOriginalPositions = () => {
@@ -264,12 +307,12 @@ export function createGraphChart(
         pos.set(id, { x: xy.x, y: xy.y });
       }
 
-      nodeG
+      nodeSelection!
         .transition()
         .duration(500)
         .attr('transform', (d) => `translate(${getPX(d.fighter.fighterId)}, ${getPY(d.fighter.fighterId)})`);
 
-      edgesSelection
+      edgeSelection!
         .transition()
         .duration(350)
         .attr('x1', (e) => getPX(e.source))
@@ -294,8 +337,20 @@ export function createGraphChart(
   // Public API
   // -------------------------
   return {
-    update(nodes: NodeDto[], edges: EdgeDto[], pos: PosType = 'spring') {
-      render(nodes, edges, pos);
+    update(nodes: NodeDto[], edges: EdgeDto[], posType: PosType = 'circular') {
+      // Check if only position type changed (same data)
+      const sameData =
+        currentNodes.length === nodes.length &&
+        currentEdges.length === edges.length &&
+        currentNodes.every((n, i) => n.fighter.fighterId === nodes[i]?.fighter.fighterId);
+
+      if (sameData && currentPosType !== null && currentPosType !== posType) {
+        // Only position type changed - animate transition
+        transitionToLayout(posType);
+      } else {
+        // Data changed or first render - full rebuild
+        render(nodes, edges, posType);
+      }
     },
     destroy() {
       const svg = d3.select(svgEl);
