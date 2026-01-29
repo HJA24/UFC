@@ -1,21 +1,24 @@
 <div class="network-container">
   <div class="network-chart-container">
-    <div class="network-chart-layout-container">
-      <div class="network-chart-buttons">
-        <button mat-icon-button>
-          <mat-icon>graph_5</mat-icon>
-        </button>
-        <button mat-icon-button>
-          <mat-icon>graph_3</mat-icon>
-        </button>
-      </div>
+    <div class="network-chart-buttons">
+      <button mat-icon-button
+        [class.active]="activePos() === 'circular'"
+        (click)="onPosChange('circular')">
+        <mat-icon>graph_5</mat-icon>
+      </button>
+      <button mat-icon-button
+        [class.active]="activePos() === 'spring'"
+        (click)="onPosChange('spring')">
+        <mat-icon>graph_3</mat-icon>
+      </button>
+    </div>
     <app-graph-data-chart
       class="network-chart"
       [nodes]="nodes"
       [edges]="edges"
+      [pos]="activePos()"
       (activeNodeIds)="onActiveNodeIdsChange($event)">
     </app-graph-data-chart>
-    </div>
   </div>
   <div class="network-data-container">
     <app-network-tabs

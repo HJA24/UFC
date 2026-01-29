@@ -2,7 +2,7 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { map, switchMap, distinctUntilChanged, finalize  } from 'rxjs/operators'
 import { MatIconButton } from "@angular/material/button";
-import { MatIcon } from "@angular/material/icon";
+import { MatIconModule } from "@angular/material/icon";
 
 import { FightMatchupDto } from "src/app/models/fight-matchup.dto";
 import { EdgeDto, NodeDto } from "src/app/models/network/graph.dto";
@@ -24,7 +24,7 @@ import { FightLoadingService } from "src/app/services/fight-loading.service";
     NetworkPropertiesComponent,
     NetworkTabsComponent,
     MatIconButton,
-    MatIcon
+    MatIconModule
   ],
   templateUrl: './network-page.component.html',
   styleUrl: './network-page.component.css',
@@ -41,6 +41,7 @@ export class NetworkPageComponent implements OnInit {
 
   activeNodeIds = signal<number[]>([]);
   activeTab = signal<NetworkTabType>('data');
+  activePos = signal<'circular' | 'spring'>('spring');
 
   onActiveNodeIdsChange(ids: number[]) {
     this.activeNodeIds.set(ids);
@@ -48,6 +49,10 @@ export class NetworkPageComponent implements OnInit {
 
   onTabChange(tab: NetworkTabType) {
     this.activeTab.set(tab);
+  }
+
+  onPosChange(pos: 'circular' | 'spring') {
+    this.activePos.set(pos);
   }
 
     ngOnInit(): void {

@@ -12,10 +12,38 @@
 }
 
 .network-chart-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: auto 1fr;
   min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.network-chart-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  height: 48px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.network-chart-buttons button {
+  color: rgba(0, 0, 0, 0.54);
+  background: transparent;
+}
+
+.network-chart-buttons button:hover {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.network-chart-buttons button.active {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.network-chart-buttons mat-icon {
+  font-family: 'Material Symbols Outlined';
 }
 
 .network-data-container {
@@ -26,21 +54,18 @@
   min-width: 0;
 }
 
-.network-chart-layout-container {
-  position: relative;
-}
-
-.network-chart-buttons {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  display: flex;
-  gap: 4px;
-  z-index: 1;
-}
-
 .network-chart {
-  margin-left: 10px;
+  align-self: center;
+  justify-self: center;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.network-chart ::ng-deep svg {
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
 }
 
 .network-table {

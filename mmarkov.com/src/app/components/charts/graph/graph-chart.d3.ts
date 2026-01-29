@@ -1,5 +1,4 @@
 import * as d3 from 'd3';
-import { polarToCartesian } from '../../../utils/coordinates-convert';
 import { NodeDto, EdgeDto } from '../../../models/network/graph.dto';
 
 type XY = { x: number; y: number };
@@ -12,11 +11,12 @@ export type GraphChartConfig = {
   width: number;
   height: number;
   padding: number;
-  labelR: number; // data-space radius for label placement
 };
 
+export type PosType = 'circular' | 'spring';
+
 export type GraphChartInstance = {
-  update: (nodes: NodeDto[], edges: EdgeDto[]) => void;
+  update: (nodes: NodeDto[], edges: EdgeDto[], pos: PosType) => void;
   destroy: () => void;
 };
 
@@ -73,22 +73,18 @@ export function createGraphChart(
     return { anchor, dx, dy };
   }
 
-  function baseX(d: NodeDto, xScale: d3.ScaleLinear<number, number>, labelR: number): number {
-    const target = polarToCartesian(labelR, d.pos.theta);
-    const dxData = target.x - d.pos.x;
-    return xScale(d.pos.x + dxData) - xScale(d.pos.x);
+  function baseX(d: NodeDto, labelOffset: number): number {
+    return labelOffset * Math.cos(d.pos.theta);
   }
 
-  function baseY(d: NodeDto, yScale: d3.ScaleLinear<number, number>, labelR: number): number {
-    const target = polarToCartesian(labelR, d.pos.theta);
-    const dyData = target.y - d.pos.y;
-    return yScale(d.pos.y + dyData) - yScale(d.pos.y);
+  function baseY(d: NodeDto, labelOffset: number): number {
+    return labelOffset * Math.sin(d.pos.theta);
   }
 
   // -------------------------
   // Render (rebuilds SVG each update; state persists via maps/sets)
   // -------------------------
-  function render(nodes: NodeDto[], edges: EdgeDto[]) {
+  function render(nodes: NodeDto[], edges: EdgeDto[], posType: PosType) {
     const svg = d3.select(svgEl);
     svg.selectAll('*').remove();
 
@@ -99,7 +95,12 @@ export function createGraphChart(
 
     const root = svg.append('g').attr('class', 'chart-root');
 
-    // --- scales ---
+    // --- center point for circular layout ---
+    const centerX = config.width / 2;
+    const centerY = config.height / 2;
+    const circularRadius = Math.min(config.width, config.height) / 2 - config.padding - 40;
+
+    // --- scales (used for spring layout) ---
     const xs = nodes.map((n) => n.pos.x);
     const ys = nodes.map((n) => n.pos.y);
 
@@ -112,16 +113,30 @@ export function createGraphChart(
     const xScale = d3.scaleLinear().domain(xExtent).range([config.padding, config.width - config.padding]);
     const yScale = d3.scaleLinear().domain(yExtent).range([config.height - config.padding, config.padding]);
 
-    // --- init/keep pixel positions ---
-    const getX = (n: NodeDto) => xScale(n.pos.x);
-    const getY = (n: NodeDto) => yScale(n.pos.y);
+    // --- position getters based on layout type ---
+    const getX = (n: NodeDto) => {
+      if (posType === 'circular') {
+        return centerX + circularRadius * Math.cos(n.pos.theta);
+      }
+      return xScale(n.pos.x);
+    };
+    const getY = (n: NodeDto) => {
+      if (posType === 'circular') {
+        return centerY + circularRadius * Math.sin(n.pos.theta);
+      }
+      return yScale(n.pos.y);
+    };
+
+    // Clear and reset positions for new layout
+    originPos.clear();
+    pos.clear();
 
     for (const n of nodes) {
       const id = n.fighter.fighterId;
       const xy = { x: getX(n), y: getY(n) };
 
-      if (!originPos.has(id)) originPos.set(id, xy);
-      if (!pos.has(id)) pos.set(id, xy);
+      originPos.set(id, xy);
+      pos.set(id, xy);
     }
 
     const getPX = (id: number) => pos.get(id)!.x;
@@ -175,14 +190,15 @@ export function createGraphChart(
       .attr('class', 'node-circle');
 
     // labels (anchor computed once per label)
+    const labelOffset = 15; // pixel offset for circular layout
     nodeG
       .append('text')
       .attr('class', 'node-label')
       .attr('dominant-baseline', 'middle')
       .each((d, i, els) => {
         const a = labelAnchor(d.pos.theta);
-        const x = baseX(d, xScale, config.labelR) + a.dx;
-        const y = baseY(d, yScale, config.labelR) + a.dy;
+        const x = baseX(d, labelOffset) + a.dx;
+        const y = baseY(d, labelOffset) + a.dy;
 
         d3.select(els[i]).attr('text-anchor', a.anchor).attr('x', x).attr('y', y);
       })
@@ -278,8 +294,8 @@ export function createGraphChart(
   // Public API
   // -------------------------
   return {
-    update(nodes: NodeDto[], edges: EdgeDto[]) {
-      render(nodes, edges);
+    update(nodes: NodeDto[], edges: EdgeDto[], pos: PosType = 'spring') {
+      render(nodes, edges, pos);
     },
     destroy() {
       const svg = d3.select(svgEl);

@@ -25,6 +25,7 @@ import { createGraphChart, GraphChartInstance } from './graph-chart.d3';
 export class GraphChartComponent implements AfterViewInit, OnChanges, OnDestroy {
   @Input() nodes: NodeDto[] | null = null;
   @Input() edges: EdgeDto[] | null = null;
+  @Input() pos: 'circular' | 'spring' = 'spring';
 
   @Output() activeNodeIds = new EventEmitter<number[]>();
 
@@ -34,10 +35,9 @@ export class GraphChartComponent implements AfterViewInit, OnChanges, OnDestroy 
   private chart: GraphChartInstance | null = null;
 
   // unchanged values
-  private readonly width = 600;
-  private readonly height = 600;
+  private readonly width = 650;
+  private readonly height = 650;
   private readonly padding = 50;
-  private readonly labelR = 1.02;
 
   ngAfterViewInit(): void {
     this.initialized = true;
@@ -51,17 +51,16 @@ export class GraphChartComponent implements AfterViewInit, OnChanges, OnDestroy 
         width: this.width,
         height: this.height,
         padding: this.padding,
-        labelR: this.labelR,
       }
     );
 
-    this.chart.update(this.nodes ?? [], this.edges ?? []);
+    this.chart.update(this.nodes ?? [], this.edges ?? [], this.pos);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.initialized || !this.chart) return;
-    if (changes['nodes'] || changes['edges']) {
-      this.chart.update(this.nodes ?? [], this.edges ?? []);
+    if (changes['nodes'] || changes['edges'] || changes['pos']) {
+      this.chart.update(this.nodes ?? [], this.edges ?? [], this.pos);
     }
   }
 
