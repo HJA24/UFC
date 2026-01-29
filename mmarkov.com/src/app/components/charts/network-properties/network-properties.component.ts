@@ -33,8 +33,8 @@ export class NetworkPropertiesComponent implements AfterViewInit, OnChanges {
   PropertyType = NetworkPropertyType;
 
   private viewReady = false;
-  private readonly rowHeight = 24;
-  private readonly rowGap = 8;
+  private readonly rowHeight = 14;
+  private readonly rowGap = 12;
   private readonly labelWidth = 90;
   private readonly valueWidth = 40;
   private readonly axisHeight = 20;
@@ -141,7 +141,7 @@ export class NetworkPropertiesComponent implements AfterViewInit, OnChanges {
         .attr('dy', '0.35em')
         .attr('text-anchor', 'end')
         .attr('fill', 'rgb(50, 50, 50)')
-        .attr('font-size', '12px')
+        .attr('font-size', '11px')
         .attr('font-weight', 'bold')
         .attr('font-family', 'UFCSans, sans-serif')
         .style('pointer-events', 'none')
@@ -149,28 +149,22 @@ export class NetworkPropertiesComponent implements AfterViewInit, OnChanges {
 
       const duration = 1000;
 
-      // Shadow bar
+      // Background track
       svg.append('rect')
-        .attr('x', this.labelWidth + 1)
-        .attr('y', y + 1)
-        .attr('width', 0)
-        .attr('height', this.rowHeight - 2)
-        .attr('rx', 3)
-        .attr('fill', '#a0a0a0')
-        .style('pointer-events', 'none')
-        .transition()
-        .duration(duration)
-        .ease(d3.easeCubicOut)
-        .attr('width', xScale(value));
+        .attr('x', this.labelWidth)
+        .attr('y', y)
+        .attr('width', barWidth)
+        .attr('height', this.rowHeight)
+        .attr('fill', '#f0f0f0')
+        .style('pointer-events', 'none');
 
-      // Main bar
+      // Value bar
       svg.append('rect')
         .attr('x', this.labelWidth)
         .attr('y', y)
         .attr('width', 0)
-        .attr('height', this.rowHeight - 2)
-        .attr('rx', 3)
-        .attr('fill', '#c0c0c0')
+        .attr('height', this.rowHeight)
+        .attr('fill', '#a0a0a0')
         .style('pointer-events', 'none')
         .transition()
         .duration(duration)
@@ -182,8 +176,8 @@ export class NetworkPropertiesComponent implements AfterViewInit, OnChanges {
         .attr('x', this.labelWidth + 6)
         .attr('y', y + this.rowHeight / 2)
         .attr('dy', '0.35em')
-        .attr('fill', 'rgb(100, 100, 100)')
-        .attr('font-size', '12px')
+        .attr('fill', 'rgb(80, 80, 80)')
+        .attr('font-size', '11px')
         .attr('font-family', 'UFCSans, sans-serif')
         .style('pointer-events', 'none')
         .style('opacity', 0)
