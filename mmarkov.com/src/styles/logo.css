@@ -103,8 +103,8 @@
   position: relative;
 }
 
-/* Shadow octagon (behind, darker) */
-.logo.ready i::before {
+/* Shadow octagon - base (hidden during init) */
+.logo i::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -117,7 +117,16 @@
     calc(100% - var(--o)) 50%,
     50% calc(100% - var(--o))
   );
-  animation: shadowOffset 1s ease-out forwards;
+  transform: translate(0, 0);
+  opacity: 0;
+  transition: transform 1s ease-out 3s, opacity 0s 3s;
+}
+
+/* Shadow octagon - ready (visible, slides out via transition) */
+.logo.ready i::before {
+  transform: translate(1px, 1px);
+  opacity: 1;
+  transition: transform 1s ease-out, opacity 0s;
 }
 
 /* Main octagon (on top) */
@@ -136,33 +145,27 @@
   );
 }
 
-@keyframes shadowOffset {
-  from {
-    transform: translate(0, 0);
-  }
-  to {
-    transform: translate(1px, 1px);
-  }
-}
-
 .logo.ready:after {
   --_p: 360deg;
   animation: none;
 }
 
 /* =========================
-   Hover animation (reverse and expand)
+   Hover animation (4 components, 6s total)
+   1. 0-1s (0-16.7%): Shadow slides back
+   2. 1-2s (16.7-33.3%): Line reverts + color darkens
+   3. 2-3s (33.3-50%): Octagons collapse to center
+   4. 3-6s (50-100%): Init effect (expand + line + shadow)
 ========================= */
 .logo.animating i {
   transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
              rotate(calc(var(--i) * -45deg - 22.5deg));
-  animation: moveHover 5s linear both;
+  animation: hover-move 6s linear both;
   background: transparent;
   clip-path: none;
   position: relative;
 }
 
-/* Shadow octagon during hover - animate back first */
 .logo.animating i::before {
   content: "";
   position: absolute;
@@ -176,15 +179,13 @@
     calc(100% - var(--o)) 50%,
     50% calc(100% - var(--o))
   );
-  animation: shadowHover 5s linear both;
+  animation: hover-shadow 6s linear both;
 }
 
-/* Main octagon during hover */
 .logo.animating i::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: #D1D1D1;
   z-index: 2;
   --o: calc(50% * tan(-22.5deg));
   clip-path: polygon(
@@ -193,22 +194,57 @@
     calc(100% - var(--o)) 50%,
     50% calc(100% - var(--o))
   );
+  animation: hover-color 6s linear both;
 }
 
-@keyframes shadowHover {
+.logo.animating:after {
+  animation: hover-line 6s linear both;
+}
+
+/* Component 1: Shadow slides back (0-16.7%), instantly hidden at 16.7%, slides out (83.3-100%) */
+@keyframes hover-shadow {
   0% {
     transform: translate(1px, 1px);
+    opacity: 1;
+    visibility: visible;
+    background: #6D6D6D;
   }
-  10%, 90% {
+  15.7% {
     transform: translate(0, 0);
+    opacity: 1;
+    visibility: visible;
+    background: #6D6D6D;
+  }
+  16.7%, 83.3% {
+    transform: translate(0, 0);
+    opacity: 0;
+    visibility: hidden;
+    background: transparent;
   }
   100% {
     transform: translate(1px, 1px);
+    opacity: 1;
+    visibility: visible;
+    background: #6D6D6D;
   }
 }
 
-@keyframes moveHover {
-  0%, 10% {
+/* Component 2: Line reverts (16.7-33.3%) then draws (66.7-83.3%) */
+@keyframes hover-line {
+  0%, 16.7% {
+    --_p: 360deg;
+  }
+  33.3%, 66.7% {
+    --_p: 0deg;
+  }
+  83.3%, 100% {
+    --_p: 360deg;
+  }
+}
+
+/* Component 3: Octagons collapse (33.3-50%) then expand (50-66.7%) */
+@keyframes hover-move {
+  0%, 33.3% {
     transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
       rotate(calc(var(--i) * -45deg - 22.5deg));
   }
@@ -216,24 +252,21 @@
     transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(0)
       rotate(calc(var(--i) * -45deg - 22.5deg));
   }
-  90%, 100% {
+  66.7%, 100% {
     transform: rotate(calc(var(--i) * 45deg + 22.5deg)) translate(var(--_d))
       rotate(calc(var(--i) * -45deg - 22.5deg));
   }
 }
 
-.logo.animating:after {
-  animation: fillHover 5s linear both;
-}
-
-@keyframes fillHover {
-  0% {
-    --_p: 360deg;
+/* Component 2+3: Color darkens with line (16.7-33.3%) then lightens with expand (50-66.7%) */
+@keyframes hover-color {
+  0%, 16.7% {
+    background: #D1D1D1;
   }
-  10%, 90% {
-    --_p: 0deg;
+  33.3%, 50% {
+    background: rgba(100, 100, 100, 0.3);
   }
-  100% {
-    --_p: 360deg;
+  66.7%, 100% {
+    background: #D1D1D1;
   }
 }
