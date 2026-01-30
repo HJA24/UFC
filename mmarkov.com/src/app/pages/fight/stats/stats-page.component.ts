@@ -180,12 +180,12 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
       const sortedHdis = [...row.hdis].sort((a, b) => a.zIndex - b.zIndex);
 
       // Animation settings
-      const animationDuration = 2000;
+      const animationDuration = 1000;
 
       // Render overlapping HDI bars with 3D stacked offset effect
       sortedHdis.forEach(hdi => {
-        const offsetX = 1;
-        const offsetY = 1;
+        const offsetX = 2;
+        const offsetY = 2;
         const targetWidth = xScale(hdi.upper) - xScale(hdi.lower);
 
         // Shadow rectangle (offset behind)
