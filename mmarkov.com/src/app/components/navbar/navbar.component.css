@@ -1,4 +1,4 @@
-@import '../../../styles/logo.css';
+@import '../../../styles/logo_2.css';
 
 :host {
   display: block;
@@ -31,6 +31,7 @@ mat-toolbar::after {
   display: flex;
   align-items: center;
   gap: 45px;                 /* space between logo and text */
+  padding-left: 24px;        /* space from left edge of screen */
 }
 
 

@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+/* it starts here */
+@property --_p {
+  syntax: "<angle>";
+  initial-value: 1turn;
+  inherits: false;
+}
+@property --_d {
+  syntax: "<length-percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+
+.logo {
+  --b: 2px; /* the border thickness */
+  --g: 7%;  /* control the gap */
+  width: 20px; /* control the size */
+  aspect-ratio: 1;
+  display: inline-grid;
+  --_d: calc(100% / (2 * sin(22.5deg)) + var(--g));
+}
+
+.logo i {
+  grid-area: 1/1;
+  display: grid;
+  transform:
+     rotate(calc(var(--i) * 45deg - 5*22.5deg)) translate(var(--_d))
+     rotate(calc(var(--i) * -45deg + 5*22.5deg));
+  transition: --_d 1s 1s linear;
+  mix-blend-mode: multiply;
+  @starting-style {
+    --_d: 0%;
+  }
+}
+.logo i:nth-child(1) {--i:1}
+.logo i:nth-child(2) {--i:2}
+.logo i:nth-child(3) {--i:3}
+.logo i:nth-child(4) {--i:4}
+.logo i:nth-child(5) {--i:5}
+.logo i:nth-child(6) {--i:6}
+.logo i:nth-child(7) {--i:7}
+.logo i:nth-child(8) {--i:8}
+
+/* to increase the area of the hover effect */
+.logo:before {
+  content: "";
+  grid-area: 1/1;
+  margin: calc(0% - (var(--_d) + var(--b) / 2) * cos(22.5deg));
+  border-radius: 50%;
+}
+/* lined octagon */
+.logo:after {
+  content: "";
+  grid-area: 1/1;
+  background: white;
+  margin: calc(50% - (var(--_d) + var(--b) / 2) * cos(22.5deg));
+  mask: conic-gradient(from 22.5deg, #000 var(--_p), #0000 0);
+  transition: --_p 1s 2s linear;
+  @starting-style {--_p: 0deg;}
+  --o: calc(50% * tan(-22.5deg));
+  --x: calc(var(--b) * cos(22.5deg));
+  --y: calc(var(--b) * sin(22.5deg));
+  clip-path: polygon(
+    var(--o) 50%,
+    50% var(--o),
+    calc(100% - var(--o)) 50%,
+    50% calc(100% - var(--o)),
+    var(--o) 50%,
+    calc(50% + var(--o) + var(--y)) var(--x),
+    var(--x) calc(50% + var(--o) + var(--y)),
+    var(--x) calc(50% - var(--o) - var(--y)),
+    calc(50% + var(--o) + var(--y)) calc(100% - var(--x)),
+    calc(50% - var(--o) - var(--y)) calc(100% - var(--x)),
+    calc(100% - var(--x)) calc(50% - var(--o) - var(--y)),
+    calc(100% - var(--x)) calc(50% + var(--o) + var(--y)),
+    calc(50% - var(--o) - var(--y)) var(--x),
+    calc(50% + var(--o) + var(--y)) var(--x)
+  );
+}
+
+.logo i::before,
+.logo i::after {
+  content: "";
+  grid-area: 1/1;
+  --o: calc(50% * tan(-22.5deg));
+  clip-path: polygon(
+    var(--o) 50%,
+    50% var(--o),
+    calc(100% - var(--o)) 50%,
+    50% calc(100% - var(--o))
+  );
+}
+/* shadow */
+.logo i::before {
+  background: #6D6D6D;
+  translate: 2px 2px;
+  transition:
+    translate 0.125s ease-out,
+    opacity   0.01s ease-out;
+  transition-delay: calc(2s + (var(--i) - 1)*.125s);
+  @starting-style {
+    translate: 0 0;
+    opacity: 0;
+  }
+}
+
+/* Main octagon on top of shadow */
+.logo i::after {
+  background: #D1D1D1;
+}
+
+.logo.animating i:before {
+  translate: 0 0;
+  opacity: 0;
+  animation:
+    shadow-off .125s calc((9 - var(--i) - 1)*.125s) ease-out backwards,
+    shadow-on .125s calc(3.5s + (var(--i) - 1)*.125s) ease-out forwards;
+}
+@keyframes shadow-on {
+  to {translate: 2px 2px;opacity: 1}
+}
+@keyframes shadow-off {
+  0% {translate: 2px 2px;opacity: 1}
+}
+.logo.animating::after {
+  --_p: 0deg;
+  transition: --_p 1s linear;
+  animation: line 1s 3.5s forwards linear;
+}
+@keyframes line {
+  to {--_p: 1turn}
+}
+.logo.animating i {
+  --_d: 0;
+  transition: 1s 1s linear;
+  animation: expand 1.5s 2s forwards;
+}
+@keyframes expand {
+  to {--_d: calc(100% / (2 * sin(22.5deg)) + var(--g))}
+}

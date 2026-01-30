@@ -4,8 +4,7 @@
   <div class="logo-wrapper" (mouseenter)="onLogoHover()">
     <div class="logo"
          [class.ready]="isLogoReady() && !isHoverAnimating()"
-         [class.animating]="isHoverAnimating()"
-         (animationend)="onLogoAnimationEnd()">
+         [class.animating]="isHoverAnimating()">
     <i></i><i></i><i></i><i></i>
     <i></i><i></i><i></i><i></i>
     </div>

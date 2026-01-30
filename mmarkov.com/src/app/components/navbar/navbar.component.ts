@@ -37,11 +37,12 @@ export class NavbarComponent implements OnInit {
 
     this.isAnimationBlocked.set(true);
     this.isHoverAnimating.set(true);
-  }
 
-  onLogoAnimationEnd(): void {
-    this.isHoverAnimating.set(false);
-    this.isAnimationBlocked.set(false);
+    // Animation takes ~4.5s to complete
+    setTimeout(() => {
+      this.isHoverAnimating.set(false);
+      this.isAnimationBlocked.set(false);
+    }, 4500);
   }
 }
 
