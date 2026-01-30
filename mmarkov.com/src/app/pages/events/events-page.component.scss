@@ -6,9 +6,15 @@
   margin: 0 auto;
 }
 
-.tabs-and-search {
+.tabs-and-search,
+app-event-list {
+  display: block;
   width: 80%;
-  margin: 0 auto 10px;
+  margin: 0 auto;
+}
+
+.tabs-and-search {
+  margin-bottom: 10px;
 }
 
 .tabs-and-search app-event-tabs {

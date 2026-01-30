@@ -15,4 +15,5 @@
 
 .tab {
   @include tabs.segmented-tabs-tab;
+  text-transform: uppercase;
 }

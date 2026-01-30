@@ -1,6 +1,7 @@
 <mat-card class="event-card">
 
   <div class="event-meta">
+    <div class="event-date">{{ event.date | date }}</div>
     <div class="event-venue">{{ event.venue }}</div>
     <div class="event-location">{{ event.city }}, {{ event.country }}</div>
   </div>
