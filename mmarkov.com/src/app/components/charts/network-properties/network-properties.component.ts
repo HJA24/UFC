@@ -4,7 +4,8 @@ import {
   ElementRef,
   Input,
   OnChanges,
-  signal,
+  Output,
+  EventEmitter,
   SimpleChanges,
   ViewChild
 } from '@angular/core';
@@ -25,19 +26,17 @@ import {
 })
 export class NetworkPropertiesComponent implements AfterViewInit, OnChanges {
   @Input() properties: PropertiesDto | null = null;
+  @Output() propertySelect = new EventEmitter<NetworkPropertyType | null>();
 
   @ViewChild('propertiesChart') propertiesChartRef!: ElementRef<HTMLDivElement>;
   @ViewChild('chartSvg') chartSvgRef!: ElementRef<SVGSVGElement>;
 
-  expandedProperty = signal<NetworkPropertyType | null>(null);
-
+  private selectedProperty: NetworkPropertyType | null = null;
   private viewReady = false;
   private readonly rowHeight = 20;
   private readonly rowGap = 8;
   private readonly labelWidth = 0;
   private readonly valueWidth = 0;
-  private readonly descriptionHeight = 40;
-  private readonly animationDuration = 300;
 
   private readonly propertyOrder: NetworkPropertyType[] = [
     NetworkPropertyType.DENSITY,
@@ -61,30 +60,16 @@ export class NetworkPropertiesComponent implements AfterViewInit, OnChanges {
   }
 
   onPropertyClick(property: NetworkPropertyType): void {
-    const current = this.expandedProperty();
-    this.expandedProperty.set(current === property ? null : property);
-    this.updateChart();
+    this.selectedProperty = this.selectedProperty === property ? null : property;
+    this.propertySelect.emit(this.selectedProperty);
   }
 
   private getRowY(index: number): number {
-    const expanded = this.expandedProperty();
-    let y = 0;
-    for (let i = 0; i < index; i++) {
-      y += this.rowHeight + this.rowGap;
-      if (this.propertyOrder[i] === expanded) {
-        y += this.descriptionHeight + this.rowGap;
-      }
-    }
-    return y;
+    return index * (this.rowHeight + this.rowGap);
   }
 
   private getTotalHeight(): number {
-    const expanded = this.expandedProperty();
-    let height = this.propertyOrder.length * (this.rowHeight + this.rowGap) - this.rowGap;
-    if (expanded) {
-      height += this.descriptionHeight + this.rowGap;
-    }
-    return height;
+    return this.propertyOrder.length * (this.rowHeight + this.rowGap) - this.rowGap;
   }
 
   private renderChart(): void {
@@ -195,67 +180,9 @@ export class NetworkPropertiesComponent implements AfterViewInit, OnChanges {
         .attr('x', this.labelWidth + xScale(value) + 6)
         .style('opacity', 1)
         .text(value.toFixed(2));
-
-      // Description container (hidden initially)
-      const descGroup = rowGroup.append('g')
-        .attr('class', 'description')
-        .attr('transform', `translate(0, ${this.rowHeight + this.rowGap})`)
-        .style('opacity', 0);
-
-      // Description background
-      descGroup.append('rect')
-        .attr('x', 0)
-        .attr('y', 0)
-        .attr('width', barWidth)
-        .attr('height', this.descriptionHeight)
-        .attr('fill', 'white')
-        .attr('rx', 3);
-
-      // Description text using foreignObject
-      descGroup.append('foreignObject')
-        .attr('x', 8)
-        .attr('y', 4)
-        .attr('width', barWidth - 16)
-        .attr('height', this.descriptionHeight - 8)
-        .append('xhtml:div')
-        .style('font-family', 'UFCSans, sans-serif')
-        .style('font-size', '13px')
-        .style('font-style', 'italic')
-        .style('line-height', '1.4')
-        .style('color', 'rgb(100, 100, 100)')
-        .style('white-space', 'pre-line')
-        .style('overflow', 'hidden')
-        .text(description);
     });
 
-    this.updateChart();
-  }
-
-  private updateChart(): void {
-    if (!this.chartSvgRef) return;
-
-    const svg = d3.select(this.chartSvgRef.nativeElement);
-    const expanded = this.expandedProperty();
-
-    // Update SVG height
-    svg.transition()
-      .duration(this.animationDuration)
-      .attr('height', this.getTotalHeight());
-
-    // Update row positions and description visibility
-    this.propertyOrder.forEach((propertyType, index) => {
-      const y = this.getRowY(index);
-      const isExpanded = propertyType === expanded;
-
-      svg.select(`.row-${propertyType}`)
-        .transition()
-        .duration(this.animationDuration)
-        .attr('transform', `translate(0, ${y})`);
-
-      svg.select(`.row-${propertyType} .description`)
-        .transition()
-        .duration(this.animationDuration)
-        .style('opacity', isExpanded ? 1 : 0);
-    });
+    // Set final SVG height
+    svg.attr('height', this.getTotalHeight());
   }
 }

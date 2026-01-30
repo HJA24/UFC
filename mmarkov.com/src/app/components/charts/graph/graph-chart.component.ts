@@ -27,7 +27,7 @@ export class GraphChartComponent implements AfterViewInit, OnChanges, OnDestroy 
   @Input() edges: EdgeDto[] | null = null;
   @Input() pos: 'circular' | 'spring' = 'circular';
 
-  @Output() activeNodeIds = new EventEmitter<number[]>();
+  @Output() activeNodeId = new EventEmitter<number | null>();
 
   @ViewChild('svg', { static: true }) private svgRef!: ElementRef<SVGSVGElement>;
 
@@ -45,7 +45,7 @@ export class GraphChartComponent implements AfterViewInit, OnChanges, OnDestroy 
     this.chart = createGraphChart(
       this.svgRef.nativeElement,
       {
-        onActiveNodeIds: (ids) => this.activeNodeIds.emit(ids),
+        onActiveNodeId: (id) => this.activeNodeId.emit(id),
       },
       {
         width: this.width,

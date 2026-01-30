@@ -4,7 +4,7 @@ import { NodeDto, EdgeDto } from '../../../models/network/graph.dto';
 type XY = { x: number; y: number };
 
 export type GraphChartCallbacks = {
-  onActiveNodeIds: (ids: number[]) => void;
+  onActiveNodeId: (id: number | null) => void;
 };
 
 export type GraphChartConfig = {
@@ -30,7 +30,7 @@ export function createGraphChart(
   // -------------------------
   const originPos = new Map<number, XY>(); // fighterId -> original pixel position
   const pos = new Map<number, XY>();       // fighterId -> current pixel position
-  const activeIds = new Set<number>();     // active nodes (ids)
+  let activeId: number | null = null;      // active node (single)
 
   // Track current state for transitions
   let currentPosType: PosType | null = null;
@@ -39,9 +39,9 @@ export function createGraphChart(
   let nodeSelection: d3.Selection<SVGGElement, NodeDto, SVGGElement, unknown> | null = null;
   let edgeSelection: d3.Selection<SVGLineElement, EdgeDto, SVGGElement, unknown> | null = null;
 
-  // Emit current active ids as a plain array (stable contract)
-  const emitActiveIds = () => {
-    callbacks.onActiveNodeIds(Array.from(activeIds));
+  // Emit current active id
+  const emitActiveId = () => {
+    callbacks.onActiveNodeId(activeId);
   };
 
   // -------------------------
@@ -249,35 +249,33 @@ export function createGraphChart(
 
     // --- active styles (nodes + edges) ---
     const applyActiveStyles = () => {
-      nodeSelection!.classed('active', (d) => activeIds.has(d.fighter.fighterId));
+      nodeSelection!.classed('active', (d) => d.fighter.fighterId === activeId);
 
       edgeSelection!.attr('stroke-opacity', (e) => {
-        if (activeIds.size === 0) return 0.1;
-        return activeIds.has(e.source) || activeIds.has(e.target) ? 1 : 0.1;
+        if (activeId === null) return 0.1;
+        return e.source === activeId || e.target === activeId ? 1 : 0.1;
       });
     };
 
     const toggleActive = (id: number) => {
-      if (activeIds.has(id)) activeIds.delete(id);
-      else activeIds.add(id);
-
+      activeId = activeId === id ? null : id;
       applyActiveStyles();
-      emitActiveIds();
+      emitActiveId();
     };
 
-    const addActive = (id: number) => {
-      if (!activeIds.has(id)) {
-        activeIds.add(id);
+    const setActive = (id: number) => {
+      if (activeId !== id) {
+        activeId = id;
         applyActiveStyles();
-        emitActiveIds();
+        emitActiveId();
       }
     };
 
     const clearActive = () => {
-      if (activeIds.size === 0) return;
-      activeIds.clear();
+      if (activeId === null) return;
+      activeId = null;
       applyActiveStyles();
-      emitActiveIds();
+      emitActiveId();
     };
 
     // click toggles active
@@ -295,7 +293,7 @@ export function createGraphChart(
         pos.set(id, { x: event.x, y: event.y });
         d3.select(this).attr('transform', `translate(${event.x}, ${event.y})`);
 
-        addActive(id);
+        setActive(id);
         updateEdges();
       });
 
@@ -328,9 +326,9 @@ export function createGraphChart(
       resetToOriginalPositions();
     });
 
-    // initial render style + initial emit (so table can start with “no filter”)
+    // initial render style + initial emit (so table can start with "no filter")
     applyActiveStyles();
-    emitActiveIds();
+    emitActiveId();
   }
 
   // -------------------------

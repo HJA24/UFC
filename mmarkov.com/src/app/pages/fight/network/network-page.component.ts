@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { map, switchMap, distinctUntilChanged, finalize  } from 'rxjs/operators'
 import { MatIconButton } from "@angular/material/button";
@@ -6,13 +6,12 @@ import { MatIconModule } from "@angular/material/icon";
 
 import { FightMatchupDto } from "src/app/models/fight-matchup.dto";
 import { EdgeDto, NodeDto } from "src/app/models/network/graph.dto";
-import { PropertiesDto } from "src/app/models/network/properties.dto";
+import { PropertiesDto, NetworkPropertyType, NetworkPropertyMeta } from "src/app/models/network/properties.dto";
 import { NetworkDto } from "src/app/models/network/network.dto";
 import { GraphDataTableComponent } from "src/app/components/tables/graph-data/graph-data-table.component";
 import { NetworkService } from "src/app/services/network.service";
 import { GraphChartComponent } from "src/app/components/charts/graph/graph-chart.component";
 import { NetworkPropertiesComponent } from "src/app/components/charts/network-properties/network-properties.component";
-import { NetworkTabsComponent, NetworkTabType } from "src/app/components/tabs/network/network-tabs.component";
 import { FightLoadingService } from "src/app/services/fight-loading.service";
 
 @Component({
@@ -22,7 +21,6 @@ import { FightLoadingService } from "src/app/services/fight-loading.service";
     GraphDataTableComponent,
     GraphChartComponent,
     NetworkPropertiesComponent,
-    NetworkTabsComponent,
     MatIconButton,
     MatIconModule
   ],
@@ -39,20 +37,26 @@ export class NetworkPageComponent implements OnInit {
   edges: EdgeDto[] = []
   properties: PropertiesDto | null = null
 
-  activeNodeIds = signal<number[]>([]);
-  activeTab = signal<NetworkTabType>('data');
+  activeNodeId = signal<number | null>(null);
   activePos = signal<'circular' | 'spring'>('circular');
+  selectedProperty = signal<NetworkPropertyType | null>(null);
 
-  onActiveNodeIdsChange(ids: number[]) {
-    this.activeNodeIds.set(ids);
-  }
+  propertyDescription = computed(() => {
+    const property = this.selectedProperty();
+    if (!property) return null;
+    return NetworkPropertyMeta[property]?.description || null;
+  });
 
-  onTabChange(tab: NetworkTabType) {
-    this.activeTab.set(tab);
+  onActiveNodeIdChange(id: number | null) {
+    this.activeNodeId.set(id);
   }
 
   onPosChange(pos: 'circular' | 'spring') {
     this.activePos.set(pos);
+  }
+
+  onPropertySelect(property: NetworkPropertyType | null) {
+    this.selectedProperty.set(property);
   }
 
     ngOnInit(): void {

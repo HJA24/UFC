@@ -33,7 +33,7 @@ export class GraphDataTableComponent implements OnChanges {
   loading = signal(true);
 
   @Input() data: FightMatchupDto[] | null = null;
-  @Input() activeNodeIds: number[] | null = null;
+  @Input() activeNodeId: number | null = null;
 
   dataSource = new MatTableDataSource<FightMatchupDto>();
 
@@ -76,12 +76,12 @@ export class GraphDataTableComponent implements OnChanges {
   // -------------------------
 
   constructor() {
-    // ✅ Filter rows by active node IDs (fighterBlue OR fighterRed)
+    // ✅ Filter rows by active node ID (fighterBlue OR fighterRed)
     this.dataSource.filterPredicate = (row, filter) => {
-      const ids: number[] = JSON.parse(filter || '[]');
-      if (ids.length === 0) return true;
+      const id = filter ? parseInt(filter, 10) : null;
+      if (id === null || isNaN(id)) return true;
 
-      return ids.includes(row.fighterBlue.fighterId) || ids.includes(row.fighterRed.fighterId);
+      return row.fighterBlue.fighterId === id || row.fighterRed.fighterId === id;
     };
 
     // ✅ Sort ONLY on fighter/opponent columns
@@ -119,13 +119,13 @@ export class GraphDataTableComponent implements OnChanges {
     // If sort exists already, re-attach (safe). Helps in some timing cases.
     if (this._sort) this.dataSource.sort = this._sort;
 
-    if (changes['activeNodeIds'] || changes['data']) {
+    if (changes['activeNodeId'] || changes['data']) {
       this.applyFilter();
     }
   }
 
   private applyFilter(): void {
-    this.dataSource.filter = JSON.stringify(this.activeNodeIds ?? []);
+    this.dataSource.filter = this.activeNodeId !== null ? String(this.activeNodeId) : '';
   }
 
   // -------------------------

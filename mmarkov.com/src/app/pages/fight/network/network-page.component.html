@@ -1,41 +1,44 @@
 <div class="network-container">
+  <div class="network-chart-buttons">
+    <button mat-icon-button
+      [class.active]="activePos() === 'circular'"
+      (click)="onPosChange('circular')">
+      <mat-icon>graph_5</mat-icon>
+    </button>
+    <span class="button-divider"></span>
+    <button mat-icon-button
+      [class.active]="activePos() === 'spring'"
+      (click)="onPosChange('spring')">
+      <mat-icon>graph_3</mat-icon>
+    </button>
+  </div>
   <div class="network-chart-container">
-    <div class="network-chart-buttons">
-      <button mat-icon-button
-        [class.active]="activePos() === 'circular'"
-        (click)="onPosChange('circular')">
-        <mat-icon>graph_5</mat-icon>
-      </button>
-      <button mat-icon-button
-        [class.active]="activePos() === 'spring'"
-        (click)="onPosChange('spring')">
-        <mat-icon>graph_3</mat-icon>
-      </button>
-    </div>
     <app-graph-data-chart
       class="network-chart"
       [nodes]="nodes"
       [edges]="edges"
       [pos]="activePos()"
-      (activeNodeIds)="onActiveNodeIdsChange($event)">
+      (activeNodeId)="onActiveNodeIdChange($event)">
     </app-graph-data-chart>
   </div>
   <div class="network-data-container">
-    <app-network-tabs
-      [activeTab]="activeTab()"
-      (tabChange)="onTabChange($event)">
-    </app-network-tabs>
+    <app-graph-data-table
+      class="network-table"
+      [data]="matchups"
+      [activeNodeId]="activeNodeId()"
+      [hidden]="activePos() !== 'circular'">
+    </app-graph-data-table>
 
-    @if (activeTab() === 'data') {
-      <app-graph-data-table
-        class="network-table"
-        [data]="matchups"
-        [activeNodeIds]="activeNodeIds()">
-      </app-graph-data-table>
-    } @else {
-      <app-network-properties
-        [properties]="properties">
-      </app-network-properties>
+    <app-network-properties
+      [properties]="properties"
+      [hidden]="activePos() !== 'spring'"
+      (propertySelect)="onPropertySelect($event)">
+    </app-network-properties>
+
+    @if (activePos() === 'spring' && propertyDescription()) {
+      <div class="property-description">
+        {{ propertyDescription() }}
+      </div>
     }
   </div>
 </div>
