@@ -23,22 +23,14 @@
   </div>
 
   <div class="data-container">
-    <app-graph-data-table
-      [data]="matchups"
-      [activeNodeId]="activeNodeId()"
-      [hidden]="activePos() !== 'circular'">
-    </app-graph-data-table>
-
     <app-network-properties
       [properties]="properties"
-      (propertySelect)="onPropertySelect($event)"
-      [hidden]="activePos() !== 'cluster'">
+      (propertySelect)="onPropertySelect($event)">
     </app-network-properties>
 
-    @if (activePos() === 'cluster' && propertyDescription()) {
-      <div class="property-description">
-        {{ propertyDescription() }}
-      </div>
-    }
+    <app-graph-data-table
+      [data]="matchups"
+      [activeNodeId]="activeNodeId()">
+    </app-graph-data-table>
   </div>
 </div>

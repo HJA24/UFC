@@ -78,10 +78,16 @@ export class NetworkPropertiesComponent implements AfterViewInit, OnChanges {
     const svg = d3.select(this.chartSvgRef.nativeElement);
     svg.selectAll('*').remove();
 
-    const containerWidth = this.propertiesChartRef?.nativeElement?.clientWidth || 300;
-    const barWidth = containerWidth - this.labelWidth - this.valueWidth;
+    const chartWidth = 800;
+    const barWidth = chartWidth - this.labelWidth - this.valueWidth;
+    const chartHeight = this.getTotalHeight();
 
-    svg.attr('width', '100%');
+    svg
+      .attr('viewBox', `0 0 ${chartWidth} ${chartHeight}`)
+      .attr('preserveAspectRatio', 'xMinYMin meet')
+      .attr('width', '100%');
+
+    const containerWidth = chartWidth;
 
     const xScale = d3.scaleLinear()
       .domain([0, 1])
@@ -182,7 +188,5 @@ export class NetworkPropertiesComponent implements AfterViewInit, OnChanges {
         .text(value.toFixed(2));
     });
 
-    // Set final SVG height
-    svg.attr('height', this.getTotalHeight());
   }
 }
