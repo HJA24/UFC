@@ -3,6 +3,12 @@ import { NodeDto, EdgeDto } from '../../../models/network/graph.dto';
 
 type XY = { x: number; y: number };
 
+// Color palette for groups
+const clusterColors = [
+  '#e41a1c', '#377eb8', '#4daf4a', '#984ea3', '#ff7f00',
+  '#ffff33', '#a65628', '#f781bf', '#999999', '#66c2a5'
+];
+
 export type GraphChartCallbacks = {
   onActiveNodeId: (id: number | null) => void;
 };
@@ -13,7 +19,7 @@ export type GraphChartConfig = {
   padding: number;
 };
 
-export type PosType = 'circular' | 'spring';
+export type PosType = 'circular' | 'cluster';
 
 export type GraphChartInstance = {
   update: (nodes: NodeDto[], edges: EdgeDto[], pos: PosType) => void;
@@ -112,6 +118,12 @@ export function createGraphChart(
     return { getX, getY };
   }
 
+  // Track hit areas for layout transitions
+  let hitAreaSelection: d3.Selection<SVGCircleElement, NodeDto, SVGGElement, unknown> | null = null;
+
+  // Track voronoi cells for cluster layout
+  let voronoiSelection: d3.Selection<SVGPathElement, NodeDto, SVGGElement, unknown> | null = null;
+
   // Transition to new layout positions
   function transitionToLayout(posType: PosType, duration: number = 1000) {
     if (!nodeSelection || !edgeSelection || currentNodes.length === 0) return;
@@ -131,20 +143,32 @@ export function createGraphChart(
     const getPX = (id: number) => pos.get(id)!.x;
     const getPY = (id: number) => pos.get(id)!.y;
 
-    // Animate nodes
+    // Animate nodes with smooth easing
     nodeSelection
       .transition()
       .duration(duration)
+      .ease(d3.easeCubicInOut)
       .attr('transform', (d) => `translate(${getPX(d.fighter.fighterId)}, ${getPY(d.fighter.fighterId)})`);
 
-    // Animate edges
+    // Animate edges with smooth easing
     edgeSelection
       .transition()
       .duration(duration)
+      .ease(d3.easeCubicInOut)
       .attr('x1', (e) => getPX(e.source))
       .attr('y1', (e) => getPY(e.source))
       .attr('x2', (e) => getPX(e.target))
       .attr('y2', (e) => getPY(e.target));
+
+    // Animate hit areas with smooth easing
+    if (hitAreaSelection) {
+      hitAreaSelection
+        .transition()
+        .duration(duration)
+        .ease(d3.easeCubicInOut)
+        .attr('cx', (d) => getPX(d.fighter.fighterId))
+        .attr('cy', (d) => getPY(d.fighter.fighterId));
+    }
 
     currentPosType = posType;
   }
@@ -190,9 +214,31 @@ export function createGraphChart(
     const wDomain: [number, number] =
       wExtent[0] === wExtent[1] ? [wExtent[0] - 1, wExtent[1] + 1] : wExtent;
 
-    const edgeWeight = d3.scaleLinear().domain(wDomain).range([1, 6]).clamp(true);
+    const edgeWeight = d3.scaleLinear().domain(wDomain).range([1, 3]).clamp(true);
 
-    // --- edges (no filtering) ---
+    // --- Voronoi diagram for cluster layout ---
+    if (posType === 'cluster' && nodes.length >= 3) {
+      const points = nodes.map(n => [getPX(n.fighter.fighterId), getPY(n.fighter.fighterId)] as [number, number]);
+      const delaunay = d3.Delaunay.from(points);
+      const voronoi = delaunay.voronoi([0, 0, config.width, config.height]);
+
+      voronoiSelection = root
+        .append('g')
+        .attr('class', 'voronoi')
+        .selectAll<SVGPathElement, NodeDto>('path')
+        .data(nodes)
+        .join('path')
+        .attr('d', (d, i) => voronoi.renderCell(i))
+        .attr('fill', (d) => clusterColors[d.cluster % clusterColors.length])
+        .attr('fill-opacity', 0.15)
+        .attr('stroke', (d) => clusterColors[d.cluster % clusterColors.length])
+        .attr('stroke-opacity', 0.3)
+        .attr('stroke-width', 1);
+    } else {
+      voronoiSelection = null;
+    }
+
+    // --- edges ---
     edgeSelection = root
       .append('g')
       .attr('class', 'edges')
@@ -218,10 +264,18 @@ export function createGraphChart(
       .attr('class', 'node')
       .attr('transform', (d) => `translate(${getPX(d.fighter.fighterId)}, ${getPY(d.fighter.fighterId)})`);
 
+    // Color nodes: by corner in circular mode, by group in cluster mode
+    const getNodeColor = (d: NodeDto) => {
+      if (posType === 'cluster') {
+        return clusterColors[d.cluster % clusterColors.length];
+      }
+      return d.color == null ? 'gray' : String(d.color);
+    };
+
     nodeSelection
       .append('circle')
       .attr('r', 5)
-      .attr('fill', (d) => (d.color == null ? 'gray' : String(d.color)))
+      .attr('fill', getNodeColor)
       .attr('class', 'node-circle');
 
     // labels (anchor computed once per label)
@@ -249,8 +303,8 @@ export function createGraphChart(
       });
     };
 
-    // Create invisible hit areas that don't move (for hover detection)
-    const hitAreas = root
+    // Create invisible hit areas that move with layout transitions (for hover detection)
+    hitAreaSelection = root
       .append('g')
       .attr('class', 'hit-areas')
       .selectAll<SVGCircleElement, NodeDto>('circle')
@@ -263,6 +317,8 @@ export function createGraphChart(
       .style('cursor', 'pointer');
 
     const activateNode = (id: number) => {
+      // Only activate in circular mode
+      if (currentPosType !== 'circular') return;
       if (activeId === id) return;
 
       activeId = id;
@@ -274,13 +330,13 @@ export function createGraphChart(
       nodeSelection!
         .filter((n) => n.fighter.fighterId === id)
         .transition()
-        .duration(500)
+        .duration(1000)
         .attr('transform', `translate(${centerX}, ${centerY})`);
 
       // Move edges and hide non-connected
       edgeSelection!
         .transition()
-        .duration(500)
+        .duration(1000)
         .attr('x1', (e) => getPX(e.source))
         .attr('y1', (e) => getPY(e.source))
         .attr('x2', (e) => getPX(e.target))
@@ -306,13 +362,13 @@ export function createGraphChart(
       nodeSelection!
         .filter((n) => n.fighter.fighterId === id)
         .transition()
-        .duration(500)
+        .duration(1000)
         .attr('transform', `translate(${original.x}, ${original.y})`);
 
       // Reset edges
       edgeSelection!
         .transition()
-        .duration(500)
+        .duration(1000)
         .attr('x1', (e) => originPos.get(e.source)!.x)
         .attr('y1', (e) => originPos.get(e.source)!.y)
         .attr('x2', (e) => originPos.get(e.target)!.x)
@@ -322,8 +378,8 @@ export function createGraphChart(
       emitActiveId();
     };
 
-    // Hover on invisible hit areas (which don't move)
-    hitAreas
+    // Hover on invisible hit areas (only in circular mode)
+    hitAreaSelection
       .on('mouseenter', (event, d) => {
         activateNode(d.fighter.fighterId);
       })
@@ -352,10 +408,12 @@ export function createGraphChart(
         currentEdges.length === edges.length &&
         currentNodes.every((n, i) => n.fighter.fighterId === nodes[i]?.fighter.fighterId);
 
+      // Always re-render when switching layout types (circular <-> cluster)
+      // because visual elements differ (Voronoi cells, node colors)
       if (sameData && currentPosType !== null && currentPosType !== posType) {
-        // Only position type changed - animate transition
-        transitionToLayout(posType);
-      } else {
+        // Full re-render for layout type change
+        render(nodes, edges, posType);
+      } else if (!sameData || currentPosType === null) {
         // Data changed or first render - full rebuild
         render(nodes, edges, posType);
       }

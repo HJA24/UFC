@@ -14,6 +14,7 @@ export interface NodeDto {
   fighter: FighterDto
   pos: Coordinate
   color?: Corner | null
+  cluster: number
 }
 
 export interface EdgeDto {

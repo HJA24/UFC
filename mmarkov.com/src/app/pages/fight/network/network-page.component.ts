@@ -38,7 +38,7 @@ export class NetworkPageComponent implements OnInit {
   properties: PropertiesDto | null = null
 
   activeNodeId = signal<number | null>(null);
-  activePos = signal<'circular' | 'spring'>('circular');
+  activePos = signal<'circular' | 'cluster'>('circular');
   selectedProperty = signal<NetworkPropertyType | null>(null);
 
   propertyDescription = computed(() => {
@@ -51,7 +51,7 @@ export class NetworkPageComponent implements OnInit {
     this.activeNodeId.set(id);
   }
 
-  onPosChange(pos: 'circular' | 'spring') {
+  onPosChange(pos: 'circular' | 'cluster') {
     this.activePos.set(pos);
   }
 

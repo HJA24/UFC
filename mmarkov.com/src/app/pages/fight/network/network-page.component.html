@@ -1,5 +1,5 @@
 <div class="network-container">
-  <div class="network-chart-buttons">
+  <div class="network-buttons">
     <button mat-icon-button
       [class.active]="activePos() === 'circular'"
       (click)="onPosChange('circular')">
@@ -7,23 +7,23 @@
     </button>
     <span class="button-divider"></span>
     <button mat-icon-button
-      [class.active]="activePos() === 'spring'"
-      (click)="onPosChange('spring')">
+      [class.active]="activePos() === 'cluster'"
+      (click)="onPosChange('cluster')">
       <mat-icon>graph_3</mat-icon>
     </button>
   </div>
-  <div class="network-chart-container">
+
+  <div class="chart-container">
     <app-graph-data-chart
-      class="network-chart"
       [nodes]="nodes"
       [edges]="edges"
       [pos]="activePos()"
       (activeNodeId)="onActiveNodeIdChange($event)">
     </app-graph-data-chart>
   </div>
-  <div class="network-data-container">
+
+  <div class="data-container">
     <app-graph-data-table
-      class="network-table"
       [data]="matchups"
       [activeNodeId]="activeNodeId()"
       [hidden]="activePos() !== 'circular'">
@@ -31,11 +31,11 @@
 
     <app-network-properties
       [properties]="properties"
-      [hidden]="activePos() !== 'spring'"
-      (propertySelect)="onPropertySelect($event)">
+      (propertySelect)="onPropertySelect($event)"
+      [hidden]="activePos() !== 'cluster'">
     </app-network-properties>
 
-    @if (activePos() === 'spring' && propertyDescription()) {
+    @if (activePos() === 'cluster' && propertyDescription()) {
       <div class="property-description">
         {{ propertyDescription() }}
       </div>

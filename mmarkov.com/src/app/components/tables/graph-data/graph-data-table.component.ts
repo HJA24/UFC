@@ -86,16 +86,13 @@ export class GraphDataTableComponent implements OnChanges {
 
     // ✅ Sort ONLY on fighter/opponent columns
     // IMPORTANT: must return a primitive value (string/number), NOT objects.
-    this.dataSource.sortingDataAccessor = (row: any, column: string) => {
+    this.dataSource.sortingDataAccessor = (row: FightMatchupDto, column: string) => {
       if (column === 'fighter') {
-        // fighter column = blue
-        // pick whatever you render in the table cell (lastName, fullName, etc.)
-        return (row.fighterBlue?.lastName ?? '').toLowerCase();
+        return (this.getFighter(row)?.lastName ?? '').toLowerCase();
       }
 
       if (column === 'opponent') {
-        // opponent column = red
-        return (row.fighterRed?.lastName ?? '').toLowerCase();
+        return (this.getOpponent(row)?.lastName ?? '').toLowerCase();
       }
 
       // all other columns are not sortable (no mat-sort-header on them)
@@ -113,7 +110,8 @@ export class GraphDataTableComponent implements OnChanges {
       return;
     }
 
-    this.dataSource.data = this.data;
+    // Always reassign to trigger change detection
+    this.dataSource.data = [...this.data];
     this.loading.set(false);
 
     // If sort exists already, re-attach (safe). Helps in some timing cases.
@@ -132,7 +130,55 @@ export class GraphDataTableComponent implements OnChanges {
   // Template helpers
   // -------------------------
 
-  iconName(outcome: string, winner: string | null) {
+  /**
+   * Get fighter from active node's perspective.
+   * If active node is in the row, show them as the fighter.
+   * Otherwise default to blue.
+   */
+  getFighter(row: FightMatchupDto) {
+    if (this.activeNodeId === null) {
+      return row.fighterBlue;
+    }
+    if (row.fighterRed.fighterId === this.activeNodeId) {
+      return row.fighterRed;
+    }
+    return row.fighterBlue;
+  }
+
+  /**
+   * Get opponent from active node's perspective.
+   */
+  getOpponent(row: FightMatchupDto) {
+    if (this.activeNodeId === null) {
+      return row.fighterRed;
+    }
+    if (row.fighterRed.fighterId === this.activeNodeId) {
+      return row.fighterBlue;
+    }
+    return row.fighterRed;
+  }
+
+  /**
+   * Get winner from active node's perspective.
+   * Returns 'fighter', 'opponent', or null (draw/NC).
+   */
+  getWinnerPerspective(row: FightMatchupDto): string | null {
+    if (row.winner === null) return null;
+
+    const isSwapped = this.activeNodeId !== null && row.fighterRed.fighterId === this.activeNodeId;
+
+    if (isSwapped) {
+      // Perspective is swapped: red is now "fighter"
+      return row.winner === 'red' ? 'fighter' : 'opponent';
+    } else {
+      // Normal: blue is "fighter"
+      return row.winner === 'blue' ? 'fighter' : 'opponent';
+    }
+  }
+
+  iconName(outcome: string, winnerPerspective: string | null) {
+    // Map perspective back to blue/red for icon lookup
+    const winner = winnerPerspective === 'fighter' ? 'blue' : winnerPerspective === 'opponent' ? 'red' : null;
     return iconNameFromFightDetails(outcome, winner);
   }
 

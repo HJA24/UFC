@@ -15,7 +15,7 @@
           fighter
         </th>
         <td mat-cell *matCellDef="let row">
-          {{ row.fighterBlue.lastName }}
+          {{ getFighter(row).lastName }}
         </td>
       </ng-container>
 
@@ -28,7 +28,7 @@
           opponent
         </th>
         <td mat-cell *matCellDef="let row">
-          {{ row.fighterRed.lastName }}
+          {{ getOpponent(row).lastName }}
         </td>
       </ng-container>
 
@@ -37,7 +37,7 @@
         <th mat-header-cell *matHeaderCellDef> outcome</th>
 
         <td mat-cell *matCellDef="let row">
-          <ng-container *ngIf="iconName(row.outcome, row.winner) as icon; else noIcon">
+          <ng-container *ngIf="iconName(row.outcome, getWinnerPerspective(row)) as icon; else noIcon">
             <mat-icon
               class="outcome-icon"
               [svgIcon]="icon"
