@@ -106,20 +106,19 @@ export function createGraphChart(
       if (posType === 'circular') {
         return centerX + circularRadius * Math.cos(n.pos.theta);
       }
+      // Cluster mode uses the backend x,y positions
       return xScale(n.pos.x);
     };
     const getY = (n: NodeDto) => {
       if (posType === 'circular') {
         return centerY + circularRadius * Math.sin(n.pos.theta);
       }
+      // Cluster mode uses the backend x,y positions
       return yScale(n.pos.y);
     };
 
     return { getX, getY };
   }
-
-  // Track hit areas for layout transitions
-  let hitAreaSelection: d3.Selection<SVGCircleElement, NodeDto, SVGGElement, unknown> | null = null;
 
   // Track cluster boxes for layout transitions
   let clusterBoxesGroup: d3.Selection<SVGGElement, unknown, null, undefined> | null = null;
@@ -161,89 +160,50 @@ export function createGraphChart(
       .attr('x2', (e) => getPX(e.target))
       .attr('y2', (e) => getPY(e.target));
 
-    // Animate hit areas with smooth easing
-    if (hitAreaSelection) {
-      hitAreaSelection
-        .transition()
-        .duration(duration)
-        .ease(d3.easeCubicInOut)
-        .attr('cx', (d) => getPX(d.fighter.fighterId))
-        .attr('cy', (d) => getPY(d.fighter.fighterId));
+    // Animate cluster boxes to new positions
+    if (clusterBoxesGroup) {
+      updateClusterBoxes(getPX, getPY, duration);
     }
 
-    // Animate cluster boxes: fade in for cluster mode, fade out for circular
-    if (clusterBoxesGroup) {
-      if (posType === 'cluster') {
-        // Update cluster box positions and fade in
-        updateClusterBoxes(getPX, getPY, duration);
-        clusterBoxesGroup
-          .transition()
-          .duration(duration)
-          .ease(d3.easeCubicInOut)
-          .style('opacity', 1);
-      } else {
-        // Fade out cluster boxes
-        clusterBoxesGroup
-          .transition()
-          .duration(duration)
-          .ease(d3.easeCubicInOut)
-          .style('opacity', 0);
-      }
-    }
+    // Animate labels to new positions
+    const labelOffset = 15;
+    nodeSelection
+      .selectAll<SVGTextElement, NodeDto>('text.node-label')
+      .transition()
+      .duration(duration)
+      .ease(d3.easeCubicInOut)
+      .attr('dominant-baseline', posType === 'cluster' ? 'auto' : 'middle')
+      .attr('text-anchor', (d) => {
+        if (posType === 'cluster') return 'middle';
+        return labelAnchor(d.pos.theta).anchor;
+      })
+      .attr('x', (d) => {
+        if (posType === 'cluster') return 0;
+        const a = labelAnchor(d.pos.theta);
+        return baseX(d, labelOffset) + a.dx;
+      })
+      .attr('y', (d) => {
+        if (posType === 'cluster') return -10;
+        const a = labelAnchor(d.pos.theta);
+        return baseY(d, labelOffset) + a.dy;
+      });
 
     currentPosType = posType;
   }
 
-  // Update cluster box positions
+  // Update node shadow positions
   function updateClusterBoxes(getPX: (id: number) => number, getPY: (id: number) => number, duration: number) {
-    if (!clusterBoxesGroup || currentNodes.length < 3) return;
+    if (!clusterBoxesGroup) return;
 
-    // Group nodes by cluster
-    const clusterMap = new Map<number, NodeDto[]>();
-    for (const n of currentNodes) {
-      const clusterId = n.cluster ?? 0;
-      if (!clusterMap.has(clusterId)) {
-        clusterMap.set(clusterId, []);
-      }
-      clusterMap.get(clusterId)!.push(n);
-    }
-
-    const numClusters = clusterMap.size;
-    if (numClusters <= 1) return;
-
-    // Compute new bounding boxes
-    const clusterBoxes: { cluster: number; x: number; y: number; width: number; height: number }[] = [];
-    const boxPadding = 5;
-
-    for (const [clusterId, clusterNodes] of clusterMap) {
-      const xs = clusterNodes.map(n => getPX(n.fighter.fighterId));
-      const ys = clusterNodes.map(n => getPY(n.fighter.fighterId));
-
-      const minX = Math.min(...xs) - boxPadding;
-      const maxX = Math.max(...xs) + boxPadding;
-      const minY = Math.min(...ys) - boxPadding;
-      const maxY = Math.max(...ys) + boxPadding;
-
-      clusterBoxes.push({
-        cluster: clusterId,
-        x: minX,
-        y: minY,
-        width: maxX - minX,
-        height: maxY - minY
-      });
-    }
-
-    // Animate rectangles to new positions
+    // Animate shadows to new positions
     clusterBoxesGroup
-      .selectAll('rect')
-      .data(clusterBoxes, (d: any) => d.cluster)
+      .selectAll('circle')
+      .data(currentNodes, (d: any) => d.fighter.fighterId)
       .transition()
       .duration(duration)
       .ease(d3.easeCubicInOut)
-      .attr('x', d => d.x)
-      .attr('y', d => d.y)
-      .attr('width', d => d.width)
-      .attr('height', d => d.height);
+      .attr('cx', d => getPX(d.fighter.fighterId))
+      .attr('cy', d => getPY(d.fighter.fighterId));
   }
 
   // -------------------------
@@ -289,69 +249,6 @@ export function createGraphChart(
 
     const edgeWeight = d3.scaleLinear().domain(wDomain).range([1, 3]).clamp(true);
 
-    // --- Cluster bounding boxes (always create, but hidden in circular mode) ---
-    clusterBoxesGroup = null;
-    if (nodes.length >= 3) {
-      // Group nodes by cluster (default to 0 if undefined)
-      const clusterMap = new Map<number, NodeDto[]>();
-      for (const n of nodes) {
-        const clusterId = n.cluster ?? 0;
-        if (!clusterMap.has(clusterId)) {
-          clusterMap.set(clusterId, []);
-        }
-        clusterMap.get(clusterId)!.push(n);
-      }
-
-      const numClusters = clusterMap.size;
-
-      // Only create rectangles if there are multiple clusters
-      if (numClusters > 1) {
-        // Compute bounding boxes using cluster layout positions
-        const { getX: getClusterX, getY: getClusterY } = createPositionGetters(nodes, 'cluster');
-        const clusterBoxes: { cluster: number; x: number; y: number; width: number; height: number }[] = [];
-        const boxPadding = 5;
-
-        for (const [clusterId, clusterNodes] of clusterMap) {
-          const xs = clusterNodes.map(n => getClusterX(n));
-          const ys = clusterNodes.map(n => getClusterY(n));
-
-          const minX = Math.min(...xs) - boxPadding;
-          const maxX = Math.max(...xs) + boxPadding;
-          const minY = Math.min(...ys) - boxPadding;
-          const maxY = Math.max(...ys) + boxPadding;
-
-          clusterBoxes.push({
-            cluster: clusterId,
-            x: minX,
-            y: minY,
-            width: maxX - minX,
-            height: maxY - minY
-          });
-        }
-
-        // Draw rectangles (hidden initially if circular mode)
-        clusterBoxesGroup = root
-          .append('g')
-          .attr('class', 'cluster-boxes')
-          .style('opacity', posType === 'cluster' ? 1 : 0);
-
-        clusterBoxesGroup
-          .selectAll('rect')
-          .data(clusterBoxes, (d: any) => d.cluster)
-          .join('rect')
-          .attr('x', d => d.x)
-          .attr('y', d => d.y)
-          .attr('width', d => d.width)
-          .attr('height', d => d.height)
-          .attr('rx', 8)
-          .attr('ry', 8)
-          .attr('fill', '#e0e0e0')
-          .attr('fill-opacity', 0.5)
-          .attr('stroke', '#c0c0c0')
-          .attr('stroke-width', 1);
-      }
-    }
-
     // --- edges ---
     edgeSelection = root
       .append('g')
@@ -387,20 +284,27 @@ export function createGraphChart(
       .append('circle')
       .attr('r', 5)
       .attr('fill', getNodeColor)
+      .attr('stroke', 'white')
+      .attr('stroke-width', 1.5)
       .attr('class', 'node-circle');
 
-    // labels (anchor computed once per label)
-    const labelOffset = 15; // pixel offset for circular layout
+    // labels (positioning depends on layout mode)
+    const labelOffset = 15;
     nodeSelection
       .append('text')
       .attr('class', 'node-label')
-      .attr('dominant-baseline', 'middle')
+      .attr('dominant-baseline', posType === 'cluster' ? 'auto' : 'middle')
       .each((d, i, els) => {
-        const a = labelAnchor(d.pos.theta);
-        const x = baseX(d, labelOffset) + a.dx;
-        const y = baseY(d, labelOffset) + a.dy;
-
-        d3.select(els[i]).attr('text-anchor', a.anchor).attr('x', x).attr('y', y);
+        if (posType === 'cluster') {
+          // Cluster mode: always above the node
+          d3.select(els[i]).attr('text-anchor', 'middle').attr('x', 0).attr('y', -10);
+        } else {
+          // Circular mode: position based on theta
+          const a = labelAnchor(d.pos.theta);
+          const x = baseX(d, labelOffset) + a.dx;
+          const y = baseY(d, labelOffset) + a.dy;
+          d3.select(els[i]).attr('text-anchor', a.anchor).attr('x', x).attr('y', y);
+        }
       })
       .text((d) => `${d.fighter.lastName ?? ''}`);
 
@@ -414,19 +318,6 @@ export function createGraphChart(
       });
     };
 
-    // Create invisible hit areas that move with layout transitions (for hover detection)
-    hitAreaSelection = root
-      .append('g')
-      .attr('class', 'hit-areas')
-      .selectAll<SVGCircleElement, NodeDto>('circle')
-      .data(nodes, (d: any) => d.fighter.fighterId)
-      .join('circle')
-      .attr('cx', (d) => originPos.get(d.fighter.fighterId)!.x)
-      .attr('cy', (d) => originPos.get(d.fighter.fighterId)!.y)
-      .attr('r', 20)
-      .attr('fill', 'transparent')
-      .style('cursor', 'pointer');
-
     const activateNode = (id: number) => {
       // Only activate in circular mode
       if (currentPosType !== 'circular') return;
@@ -435,26 +326,10 @@ export function createGraphChart(
       activeId = id;
       nodeSelection!.classed('active', (n) => n.fighter.fighterId === id);
 
-      // Move to center
-      pos.set(id, { x: centerX, y: centerY });
-
-      nodeSelection!
-        .filter((n) => n.fighter.fighterId === id)
-        .transition()
-        .duration(1000)
-        .attr('transform', `translate(${centerX}, ${centerY})`);
-
-      // Move edges and hide non-connected
-      edgeSelection!
-        .transition()
-        .duration(1000)
-        .attr('x1', (e) => getPX(e.source))
-        .attr('y1', (e) => getPY(e.source))
-        .attr('x2', (e) => getPX(e.target))
-        .attr('y2', (e) => getPY(e.target))
-        .attr('stroke-opacity', (e) =>
-          e.source === id || e.target === id ? 1 : 0
-        );
+      // Hide non-connected edges
+      edgeSelection!.attr('stroke-opacity', (e) =>
+        e.source === id || e.target === id ? 1 : 0
+      );
 
       emitActiveId();
     };
@@ -462,35 +337,18 @@ export function createGraphChart(
     const deactivateNode = () => {
       if (activeId === null) return;
 
-      const id = activeId;
       activeId = null;
       nodeSelection!.classed('active', false);
 
-      // Return to original position
-      const original = originPos.get(id)!;
-      pos.set(id, { x: original.x, y: original.y });
-
-      nodeSelection!
-        .filter((n) => n.fighter.fighterId === id)
-        .transition()
-        .duration(1000)
-        .attr('transform', `translate(${original.x}, ${original.y})`);
-
-      // Reset edges
-      edgeSelection!
-        .transition()
-        .duration(1000)
-        .attr('x1', (e) => originPos.get(e.source)!.x)
-        .attr('y1', (e) => originPos.get(e.source)!.y)
-        .attr('x2', (e) => originPos.get(e.target)!.x)
-        .attr('y2', (e) => originPos.get(e.target)!.y)
-        .attr('stroke-opacity', 1);
+      // Show all edges
+      edgeSelection!.attr('stroke-opacity', 1);
 
       emitActiveId();
     };
 
-    // Hover on invisible hit areas (only in circular mode)
-    hitAreaSelection
+    // Hover on node groups (includes both circle and label)
+    nodeSelection
+      .style('cursor', 'pointer')
       .on('mouseenter', (event, d) => {
         activateNode(d.fighter.fighterId);
       })
