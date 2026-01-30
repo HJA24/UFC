@@ -1,6 +1,13 @@
 <div class="event-list">
-  <app-event-card
-    *ngFor="let event of events"
-    [event]="event"
-  />
+  @for (event of events; track event.eventId) {
+    <div class="event-item" [class.expanded]="isExpanded(event.eventId)">
+      <div class="event-header" (click)="toggleEvent(event.eventId)">
+        <span class="event-name">{{ event.name }}</span>
+        <span class="event-date">{{ event.date | date }}</span>
+      </div>
+      <div class="event-content">
+        <app-event-card [event]="event" />
+      </div>
+    </div>
+  }
 </div>

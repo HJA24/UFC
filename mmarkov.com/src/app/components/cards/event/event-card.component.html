@@ -1,34 +1,18 @@
-<mat-card class="event-card" [routerLink]="['/events', event.eventId, 'main']">
+<mat-card class="event-card">
 
-  <div class="event-header">
-    <h3 class="event-title">{{ event.name }}</h3>
-
-    <div class="event-meta">
-      <div class="event-date">{{ event.date | date }}</div>
-      <div class="event-venue">{{ event.venue }}</div>
-      <div class="event-location">{{ event.city }}, {{ event.country }}</div>
-    </div>
+  <div class="event-meta">
+    <div class="event-venue">{{ event.venue }}</div>
+    <div class="event-location">{{ event.city }}, {{ event.country }}</div>
   </div>
+
   <mat-card-actions>
-    <a
-      mat-button
-      [routerLink]="['/events', event.eventId, 'early-prelim']"
-      (click)="$event.stopPropagation()"
-    >
+    <a mat-button [routerLink]="['/events', event.eventId, 'early-prelim']">
       EARLY PRELIM
     </a>
-    <a
-      mat-button
-      [routerLink]="['/events', event.eventId, 'prelim']"
-      (click)="$event.stopPropagation()"
-    >
+    <a mat-button [routerLink]="['/events', event.eventId, 'prelim']">
       PRELIM
     </a>
-    <a
-      mat-button
-      [routerLink]="['/events', event.eventId, 'main']"
-      (click)="$event.stopPropagation()"
-    >
+    <a mat-button [routerLink]="['/events', event.eventId, 'main']">
       MAIN
     </a>
   </mat-card-actions>
