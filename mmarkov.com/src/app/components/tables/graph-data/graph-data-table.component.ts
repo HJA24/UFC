@@ -9,7 +9,6 @@ import {
 
 import { CommonModule, DatePipe } from '@angular/common';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 
@@ -23,11 +22,11 @@ import { FightMatchupDto } from '../../../models/fight-matchup.dto';
     CommonModule,
     DatePipe,
     MatTableModule,
-    MatPaginatorModule,
     MatIconModule,
     MatSortModule
   ],
-  templateUrl: './graph-data-table.component.html'
+  templateUrl: './graph-data-table.component.html',
+  styleUrl: './graph-data-table.component.css'
 })
 export class GraphDataTableComponent implements OnChanges {
   loading = signal(true);
@@ -46,20 +45,6 @@ export class GraphDataTableComponent implements OnChanges {
     'event',
     'date'
   ];
-
-  // -------------------------
-  // Robust ViewChild setters
-  // -------------------------
-
-  private _paginator: MatPaginator | null = null;
-  @ViewChild(MatPaginator)
-  set paginator(p: MatPaginator) {
-    this._paginator = p;
-    this.dataSource.paginator = p;
-  }
-  get paginator(): MatPaginator | null {
-    return this._paginator;
-  }
 
   private _sort: MatSort | null = null;
   @ViewChild(MatSort)

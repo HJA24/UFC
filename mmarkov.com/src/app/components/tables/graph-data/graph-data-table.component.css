@@ -1,0 +1,85 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.table-card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.table-wrap {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.table-wrap table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* Fixed column widths */
+.mat-column-fighter {
+  width: 15%;
+}
+
+.mat-column-opponent {
+  width: 15%;
+}
+
+.mat-column-outcome {
+  width: 10%;
+}
+
+.mat-column-rounds {
+  width: 10%;
+  text-align: center;
+}
+
+.mat-column-clock {
+  width: 10%;
+  text-align: center;
+}
+
+.mat-column-event {
+  width: 25%;
+}
+
+.mat-column-date {
+  width: 15%;
+}
+
+/* Sticky header */
+.table-wrap :is(th, .mat-header-cell, .mat-mdc-header-cell) {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #f0f0f0 !important;
+}
+
+/* Loading state */
+.table-wrap.is-loading {
+  position: relative;
+  min-height: 200px;
+}
+
+.loading-overlay-body {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 2;
+}
+
+.loading-pill {
+  padding: 8px 16px;
+  background: #f0f0f0;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  color: #666;
+}
