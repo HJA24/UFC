@@ -1,9 +1,6 @@
-<div class="table-card mat-elevation-z2">
+<div class="table-card mat-elevation-z2" *ngIf="!loading()">
 
-  <div class="table-wrap" [class.is-loading]="loading()">
-    <div class="loading-overlay-body" *ngIf="loading()">
-      <div class="loading-pill">Loading fights</div>
-    </div>
+  <div class="table-wrap">
     <table mat-table [dataSource]="dataSource" matSort class="fixed-table">
 
       <!-- Fighter -->
