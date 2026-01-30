@@ -1,4 +1,5 @@
-import { Component, inject, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, inject, OnInit, ElementRef, ViewChild, AfterViewInit, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from "@angular/router";
 import { map, switchMap } from "rxjs";
 import * as d3 from 'd3';
@@ -34,7 +35,7 @@ interface HdiInterval {
 @Component({
   selector: 'app-stats-page',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './stats-page.component.html',
   styleUrl: './stats-page.component.css',
 })
@@ -48,6 +49,7 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
   @ViewChild('numberOfTakedownsLanded') numberOfTakedownsLandedSvg!: ElementRef<SVGSVGElement>;
   @ViewChild('timeSpentInControl') timeSpentInControlSvg!: ElementRef<SVGSVGElement>;
 
+  loading = signal(true);
   private statsData: StatsDto | null = null;
   private viewReady = false;
 
@@ -73,23 +75,29 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
   private renderAllCharts(): void {
     if (!this.statsData?.stats) return;
 
-    const { stats } = this.statsData;
+    // Set loading to false first, then render after DOM updates
+    this.loading.set(false);
 
-    if (stats.numberOfStrikesAttempted) {
-      this.renderChart(this.numberOfStrikesAttemptedSvg, stats.numberOfStrikesAttempted);
-    }
-    if (stats.numberOfStrikesLanded) {
-      this.renderChart(this.numberOfStrikesLandedSvg, stats.numberOfStrikesLanded);
-    }
-    if (stats.numberOfSubmissionsAttempted) {
-      this.renderChart(this.numberOfSubmissionsAttemptedSvg, stats.numberOfSubmissionsAttempted);
-    }
-    if (stats.numberOfTakedownsLanded) {
-      this.renderChart(this.numberOfTakedownsLandedSvg, stats.numberOfTakedownsLanded);
-    }
-    if (stats.timeSpentInControl) {
-      this.renderChart(this.timeSpentInControlSvg, stats.timeSpentInControl);
-    }
+    // Wait for Angular to update the DOM before rendering
+    setTimeout(() => {
+      const { stats } = this.statsData!;
+
+      if (stats.numberOfStrikesAttempted) {
+        this.renderChart(this.numberOfStrikesAttemptedSvg, stats.numberOfStrikesAttempted);
+      }
+      if (stats.numberOfStrikesLanded) {
+        this.renderChart(this.numberOfStrikesLandedSvg, stats.numberOfStrikesLanded);
+      }
+      if (stats.numberOfSubmissionsAttempted) {
+        this.renderChart(this.numberOfSubmissionsAttemptedSvg, stats.numberOfSubmissionsAttempted);
+      }
+      if (stats.numberOfTakedownsLanded) {
+        this.renderChart(this.numberOfTakedownsLandedSvg, stats.numberOfTakedownsLanded);
+      }
+      if (stats.timeSpentInControl) {
+        this.renderChart(this.timeSpentInControlSvg, stats.timeSpentInControl);
+      }
+    });
   }
 
   private renderChart(svgRef: ElementRef<SVGSVGElement>, data: StatsPerFighterDto): void {
@@ -113,7 +121,7 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
 
     // Dimensions
     const width = 800;
-    const height = 100;
+    const height = 90;
     const margin = { top: 5, right: 20, bottom: 28, left: 20 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
@@ -171,10 +179,14 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
       // Sort HDIs by zIndex (lowest first = render first = background)
       const sortedHdis = [...row.hdis].sort((a, b) => a.zIndex - b.zIndex);
 
+      // Animation settings
+      const animationDuration = 2000;
+
       // Render overlapping HDI bars with 3D stacked offset effect
       sortedHdis.forEach(hdi => {
         const offsetX = 1;
         const offsetY = 1;
+        const targetWidth = xScale(hdi.upper) - xScale(hdi.lower);
 
         // Shadow rectangle (offset behind)
         rowG.append('rect')
@@ -182,12 +194,13 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
           .attr('data-level', hdi.level)
           .attr('x', xScale(hdi.lower) + offsetX)
           .attr('y', offsetY)
-          .attr('width', xScale(hdi.upper) - xScale(hdi.lower))
+          .attr('width', 0)
           .attr('height', rowHeight)
-          .attr('rx', 5)
-          .attr('ry', 5)
           .attr('fill', hdi.shadowColor)
-          .style('transition', 'opacity 0.2s ease');
+          .transition()
+          .duration(animationDuration)
+          .ease(d3.easeCubicOut)
+          .attr('width', targetWidth);
 
         // Main rectangle (on top)
         rowG.append('rect')
@@ -195,22 +208,14 @@ export class StatsPageComponent implements OnInit, AfterViewInit {
           .attr('data-level', hdi.level)
           .attr('x', xScale(hdi.lower))
           .attr('y', 0)
-          .attr('width', xScale(hdi.upper) - xScale(hdi.lower))
+          .attr('width', 0)
           .attr('height', rowHeight)
-          .attr('rx', 5)
-          .attr('ry', 5)
           .attr('fill', hdi.color)
-          .style('cursor', 'pointer')
-          .style('transition', 'opacity 0.2s ease')
-          .on('mouseenter', function() {
-            const level = d3.select(this).attr('data-level');
-            d3.selectAll('.hdi-rect, .hdi-shadow').filter(function() {
-              return d3.select(this).attr('data-level') !== level;
-            }).style('opacity', 0);
-          })
-          .on('mouseleave', function() {
-            d3.selectAll('.hdi-rect, .hdi-shadow').style('opacity', 1);
-          });
+          .style('cursor', 'default')
+          .transition()
+          .duration(animationDuration)
+          .ease(d3.easeCubicOut)
+          .attr('width', targetWidth);
       });
     });
   }

@@ -1,4 +1,4 @@
-<div class="stats-container">
+<div class="stats-container" *ngIf="!loading()">
   <div class="stat-item">
     <span class="stat-label">Number of strikes attempted</span>
     <svg #numberOfStrikesAttempted></svg>
