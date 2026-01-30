@@ -323,12 +323,21 @@ export function createGraphChart(
     };
 
     const activateNode = (id: number) => {
-      // Only activate in circular mode
-      if (currentPosType !== 'circular') return;
       if (activeId === id) return;
 
       activeId = id;
-      nodeSelection!.classed('active', (n) => n.fighter.fighterId === id);
+
+      // Find connected node IDs
+      const connectedIds = new Set<number>([id]);
+      edges.forEach(e => {
+        if (e.source === id) connectedIds.add(e.target);
+        if (e.target === id) connectedIds.add(e.source);
+      });
+
+      // Show only active node and connected nodes
+      nodeSelection!
+        .classed('active', (n) => n.fighter.fighterId === id)
+        .style('opacity', (n) => connectedIds.has(n.fighter.fighterId) ? 1 : 0);
 
       // Hide non-connected edges
       edgeSelection!.attr('stroke-opacity', (e) =>
@@ -342,7 +351,7 @@ export function createGraphChart(
       if (activeId === null) return;
 
       activeId = null;
-      nodeSelection!.classed('active', false);
+      nodeSelection!.classed('active', false).style('opacity', 1);
 
       // Show all edges
       edgeSelection!.attr('stroke-opacity', 1);
