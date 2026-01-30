@@ -9,6 +9,8 @@ import { MatrixTableComponent } from "src/app/components/tables/matrix/matrix-ta
 import { TransformationPlotComponent, invLogit } from "src/app/components/charts/transformation-plot/transformation-plot.component";
 import { StackedMatricesComponent } from "src/app/components/stacked-matrices/stacked-matrices.component";
 import { SkillSliderComponent } from "src/app/components/sliders/skill-slider/skill-slider.component";
+import { ArcDiagramComponent } from "src/app/components/charts/arc-diagram/arc-diagram.component";
+import { NodeDto, EdgeDto } from "src/app/models/network/graph.dto";
 
 @Component({
   selector: 'app-about-page',
@@ -24,6 +26,7 @@ import { SkillSliderComponent } from "src/app/components/sliders/skill-slider/sk
     TransformationPlotComponent,
     StackedMatricesComponent,
     SkillSliderComponent,
+    ArcDiagramComponent,
   ],
   templateUrl: './about-page.component.html',
   styleUrl: './about-page.component.css',
@@ -148,4 +151,34 @@ export class AboutPageComponent {
     if (this.stackedMatrixIndex === 11) return '5000';
     return String(this.stackedMatrixIndex + 1);
   }
+
+  // Arc diagram data for Markov chain visualization
+  // Order: KO blue - Strike landed blue - Strike attempt blue - Standing - Strike attempt red - Strike landed red - KO red
+  arcNodes: NodeDto[] = [
+    { nodeId: 0, fighter: { lastName: 'knockout landed by blue' } as any, pos: { x: 0, y: 0, theta: 0 }, color: 'BLUE', cluster: 0 },
+    { nodeId: 1, fighter: { lastName: 'strike landed by blue' } as any, pos: { x: 0, y: 0, theta: 0 }, color: 'BLUE', cluster: 0 },
+    { nodeId: 2, fighter: { lastName: 'strike attempt by blue' } as any, pos: { x: 0, y: 0, theta: 0 }, color: 'BLUE', cluster: 0 },
+    { nodeId: 3, fighter: { lastName: 'standing' } as any, pos: { x: 0, y: 0, theta: 0 }, color: null, cluster: 0 },
+    { nodeId: 4, fighter: { lastName: 'strike attempt by red' } as any, pos: { x: 0, y: 0, theta: 0 }, color: 'RED', cluster: 0 },
+    { nodeId: 5, fighter: { lastName: 'strike landed by red' } as any, pos: { x: 0, y: 0, theta: 0 }, color: 'RED', cluster: 0 },
+    { nodeId: 6, fighter: { lastName: 'knockout landed by red' } as any, pos: { x: 0, y: 0, theta: 0 }, color: 'RED', cluster: 0 },
+  ];
+
+  arcEdges: EdgeDto[] = [
+    // From standing (3)
+    { source: 3, target: 2, weight: 0.25 },  // standing -> strike attempt blue
+    { source: 3, target: 4, weight: 0.10 },  // standing -> strike attempt red
+    // From strike attempt blue (2)
+    { source: 2, target: 3, weight: 0.70 },  // strike attempt blue -> standing
+    { source: 2, target: 1, weight: 0.30 },  // strike attempt blue -> strike landed blue
+    // From strike attempt red (4)
+    { source: 4, target: 3, weight: 0.50 },  // strike attempt red -> standing
+    { source: 4, target: 5, weight: 0.50 },  // strike attempt red -> strike landed red
+    // From strike landed blue (1)
+    { source: 1, target: 3, weight: 0.80 },  // strike landed blue -> standing
+    { source: 1, target: 0, weight: 0.20 },  // strike landed blue -> KO blue
+    // From strike landed red (5)
+    { source: 5, target: 3, weight: 0.90 },  // strike landed red -> standing
+    { source: 5, target: 6, weight: 0.10 },  // strike landed red -> KO red
+  ];
 }

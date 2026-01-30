@@ -121,8 +121,9 @@ export function createGraphChart(
   // Track hit areas for layout transitions
   let hitAreaSelection: d3.Selection<SVGCircleElement, NodeDto, SVGGElement, unknown> | null = null;
 
-  // Track voronoi cells for cluster layout
-  let voronoiSelection: d3.Selection<SVGPathElement, NodeDto, SVGGElement, unknown> | null = null;
+  // Track cluster boxes for layout transitions
+  let clusterBoxesGroup: d3.Selection<SVGGElement, unknown, null, undefined> | null = null;
+
 
   // Transition to new layout positions
   function transitionToLayout(posType: PosType, duration: number = 1000) {
@@ -170,7 +171,79 @@ export function createGraphChart(
         .attr('cy', (d) => getPY(d.fighter.fighterId));
     }
 
+    // Animate cluster boxes: fade in for cluster mode, fade out for circular
+    if (clusterBoxesGroup) {
+      if (posType === 'cluster') {
+        // Update cluster box positions and fade in
+        updateClusterBoxes(getPX, getPY, duration);
+        clusterBoxesGroup
+          .transition()
+          .duration(duration)
+          .ease(d3.easeCubicInOut)
+          .style('opacity', 1);
+      } else {
+        // Fade out cluster boxes
+        clusterBoxesGroup
+          .transition()
+          .duration(duration)
+          .ease(d3.easeCubicInOut)
+          .style('opacity', 0);
+      }
+    }
+
     currentPosType = posType;
+  }
+
+  // Update cluster box positions
+  function updateClusterBoxes(getPX: (id: number) => number, getPY: (id: number) => number, duration: number) {
+    if (!clusterBoxesGroup || currentNodes.length < 3) return;
+
+    // Group nodes by cluster
+    const clusterMap = new Map<number, NodeDto[]>();
+    for (const n of currentNodes) {
+      const clusterId = n.cluster ?? 0;
+      if (!clusterMap.has(clusterId)) {
+        clusterMap.set(clusterId, []);
+      }
+      clusterMap.get(clusterId)!.push(n);
+    }
+
+    const numClusters = clusterMap.size;
+    if (numClusters <= 1) return;
+
+    // Compute new bounding boxes
+    const clusterBoxes: { cluster: number; x: number; y: number; width: number; height: number }[] = [];
+    const boxPadding = 5;
+
+    for (const [clusterId, clusterNodes] of clusterMap) {
+      const xs = clusterNodes.map(n => getPX(n.fighter.fighterId));
+      const ys = clusterNodes.map(n => getPY(n.fighter.fighterId));
+
+      const minX = Math.min(...xs) - boxPadding;
+      const maxX = Math.max(...xs) + boxPadding;
+      const minY = Math.min(...ys) - boxPadding;
+      const maxY = Math.max(...ys) + boxPadding;
+
+      clusterBoxes.push({
+        cluster: clusterId,
+        x: minX,
+        y: minY,
+        width: maxX - minX,
+        height: maxY - minY
+      });
+    }
+
+    // Animate rectangles to new positions
+    clusterBoxesGroup
+      .selectAll('rect')
+      .data(clusterBoxes, (d: any) => d.cluster)
+      .transition()
+      .duration(duration)
+      .ease(d3.easeCubicInOut)
+      .attr('x', d => d.x)
+      .attr('y', d => d.y)
+      .attr('width', d => d.width)
+      .attr('height', d => d.height);
   }
 
   // -------------------------
@@ -216,26 +289,67 @@ export function createGraphChart(
 
     const edgeWeight = d3.scaleLinear().domain(wDomain).range([1, 3]).clamp(true);
 
-    // --- Voronoi diagram for cluster layout ---
-    if (posType === 'cluster' && nodes.length >= 3) {
-      const points = nodes.map(n => [getPX(n.fighter.fighterId), getPY(n.fighter.fighterId)] as [number, number]);
-      const delaunay = d3.Delaunay.from(points);
-      const voronoi = delaunay.voronoi([0, 0, config.width, config.height]);
+    // --- Cluster bounding boxes (always create, but hidden in circular mode) ---
+    clusterBoxesGroup = null;
+    if (nodes.length >= 3) {
+      // Group nodes by cluster (default to 0 if undefined)
+      const clusterMap = new Map<number, NodeDto[]>();
+      for (const n of nodes) {
+        const clusterId = n.cluster ?? 0;
+        if (!clusterMap.has(clusterId)) {
+          clusterMap.set(clusterId, []);
+        }
+        clusterMap.get(clusterId)!.push(n);
+      }
 
-      voronoiSelection = root
-        .append('g')
-        .attr('class', 'voronoi')
-        .selectAll<SVGPathElement, NodeDto>('path')
-        .data(nodes)
-        .join('path')
-        .attr('d', (d, i) => voronoi.renderCell(i))
-        .attr('fill', (d) => clusterColors[d.cluster % clusterColors.length])
-        .attr('fill-opacity', 0.15)
-        .attr('stroke', (d) => clusterColors[d.cluster % clusterColors.length])
-        .attr('stroke-opacity', 0.3)
-        .attr('stroke-width', 1);
-    } else {
-      voronoiSelection = null;
+      const numClusters = clusterMap.size;
+
+      // Only create rectangles if there are multiple clusters
+      if (numClusters > 1) {
+        // Compute bounding boxes using cluster layout positions
+        const { getX: getClusterX, getY: getClusterY } = createPositionGetters(nodes, 'cluster');
+        const clusterBoxes: { cluster: number; x: number; y: number; width: number; height: number }[] = [];
+        const boxPadding = 5;
+
+        for (const [clusterId, clusterNodes] of clusterMap) {
+          const xs = clusterNodes.map(n => getClusterX(n));
+          const ys = clusterNodes.map(n => getClusterY(n));
+
+          const minX = Math.min(...xs) - boxPadding;
+          const maxX = Math.max(...xs) + boxPadding;
+          const minY = Math.min(...ys) - boxPadding;
+          const maxY = Math.max(...ys) + boxPadding;
+
+          clusterBoxes.push({
+            cluster: clusterId,
+            x: minX,
+            y: minY,
+            width: maxX - minX,
+            height: maxY - minY
+          });
+        }
+
+        // Draw rectangles (hidden initially if circular mode)
+        clusterBoxesGroup = root
+          .append('g')
+          .attr('class', 'cluster-boxes')
+          .style('opacity', posType === 'cluster' ? 1 : 0);
+
+        clusterBoxesGroup
+          .selectAll('rect')
+          .data(clusterBoxes, (d: any) => d.cluster)
+          .join('rect')
+          .attr('x', d => d.x)
+          .attr('y', d => d.y)
+          .attr('width', d => d.width)
+          .attr('height', d => d.height)
+          .attr('rx', 8)
+          .attr('ry', 8)
+          .attr('fill', '#e0e0e0')
+          .attr('fill-opacity', 0.5)
+          .attr('stroke', '#c0c0c0')
+          .attr('stroke-width', 1);
+      }
     }
 
     // --- edges ---
@@ -264,11 +378,8 @@ export function createGraphChart(
       .attr('class', 'node')
       .attr('transform', (d) => `translate(${getPX(d.fighter.fighterId)}, ${getPY(d.fighter.fighterId)})`);
 
-    // Color nodes: by corner in circular mode, by group in cluster mode
+    // Color nodes by corner (blue/red/gray)
     const getNodeColor = (d: NodeDto) => {
-      if (posType === 'cluster') {
-        return clusterColors[d.cluster % clusterColors.length];
-      }
       return d.color == null ? 'gray' : String(d.color);
     };
 
@@ -408,11 +519,9 @@ export function createGraphChart(
         currentEdges.length === edges.length &&
         currentNodes.every((n, i) => n.fighter.fighterId === nodes[i]?.fighter.fighterId);
 
-      // Always re-render when switching layout types (circular <-> cluster)
-      // because visual elements differ (Voronoi cells, node colors)
       if (sameData && currentPosType !== null && currentPosType !== posType) {
-        // Full re-render for layout type change
-        render(nodes, edges, posType);
+        // Same data, different layout - animate transition
+        transitionToLayout(posType, 1000);
       } else if (!sameData || currentPosType === null) {
         // Data changed or first render - full rebuild
         render(nodes, edges, posType);

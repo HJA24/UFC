@@ -22,7 +22,6 @@ def insert_network(fight_id: int, network: Dict) -> None:
     parent_table = sql.Identifier('networks')
     parent_pk    = sql.Identifier('network_id')
     child_fk     = sql.Identifier('network_id')
-    node_fk      = sql.Identifier('node_id')
 
     NETWORK_QUERY = sql.SQL("""
         INSERT INTO {parent_table} (
@@ -57,9 +56,10 @@ def insert_network(fight_id: int, network: Dict) -> None:
                  pos_x,
                  pos_y,
                  pos_theta,
-                 color
+                 color,
+                 cluster
              )
-             VALUES (%s, %s, %s, %s, %s, %s)
+             VALUES (%s, %s, %s, %s, %s, %s, %s)
          """).format(
             child_table=child_table,
             child_fk=child_fk
@@ -72,7 +72,8 @@ def insert_network(fight_id: int, network: Dict) -> None:
                 node['pos_x'],
                 node['pos_y'],
                 node['pos_theta'],
-                node['color']
+                node['color'],
+                node['cluster']
             ) for node in nodes
         ]
 
@@ -106,61 +107,34 @@ def insert_network(fight_id: int, network: Dict) -> None:
         cur.executemany(EDGES_QUERY, rows)
         logger.info(f"fight: {fight_id} - successfully inserted edges")
 
-        for category in ['graph-data', 'node']:
-            properties = network['properties'][category]
+        properties = network['properties']
 
-            type_fk = sql.Identifier(f"{category}_property_type")
-            child_table = sql.Identifier(f"{category}_properties")
+        type_fk = sql.Identifier(f"graph_property_type")
+        child_table = sql.Identifier(f"graph_properties")
 
-            if category == 'graph-data':
-                PROPERTIES_QUERY = sql.SQL("""
-                    INSERT INTO {child_table} (
-                        {child_fk},
-                        {type_fk},
-                        value
-                    )
-                    VALUES (%s, %s, %s)
-                """).format(
-                    child_table=child_table,
-                    child_fk=child_fk,
-                    type_fk=type_fk
-                )
+        PROPERTIES_QUERY = sql.SQL("""
+            INSERT INTO {child_table} (
+                {child_fk},
+                {type_fk},
+                value
+            )
+            VALUES (%s, %s, %s)
+        """).format(
+            child_table=child_table,
+            child_fk=child_fk,
+            type_fk=type_fk
+        )
 
-                rows = [
-                    (
-                        parent_id,
-                        property['property_type_id'].value,
-                        property['value']
-                    ) for property in properties
-                ]
+        rows = [
+            (
+                parent_id,
+                property['property_type_id'].value,
+                property['value']
+            ) for property in properties
+        ]
 
-            else:
-                PROPERTIES_QUERY = sql.SQL("""
-                    INSERT INTO {child_table} (
-                        {child_fk},
-                        {node_fk},
-                        {type_fk},
-                        value
-                    )
-                    VALUES (%s, %s, %s, %s)
-                """).format(
-                    child_table=child_table,
-                    child_fk=child_fk,
-                    node_fk=node_fk,
-                    type_fk=type_fk
-                )
-
-                rows = [
-                    (
-                        parent_id,
-                        property['node_id'],
-                        property['property_type_id'],
-                        property['value']
-                    ) for property in properties
-                ]
-
-            cur.executemany(PROPERTIES_QUERY, rows)
-            logger.info(f"fight: {fight_id} - successfully inserted {category}-properties")
+        cur.executemany(PROPERTIES_QUERY, rows)
+        logger.info(f"fight: {fight_id} - successfully inserted properties")
 
         conn.commit()
 
