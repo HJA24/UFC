@@ -1,21 +1,4 @@
-<mat-card
-  class="fight-card"
-  (click)="openFight()"
->
-  <mat-card-header>
-    <mat-card-title>
-      <div class="fighter-names">
-        <div class="fighter-name blue">
-          {{ fight.fighterBlue.lastName }}
-        </div>
-
-        <div class="fighter-name red">
-          {{ fight.fighterRed.lastName }}
-        </div>
-      </div>
-    </mat-card-title>
-  </mat-card-header>
-
+<mat-card class="fight-card">
   <mat-card-subtitle class="weight-class">
     <span *ngIf="fight.fighterBlue.gender === 'FEMALE'">
       WOMEN'S
@@ -42,28 +25,16 @@
   <mat-divider></mat-divider>
 
   <mat-card-actions>
-    <button
-      mat-button
-      (click)="openFight('network'); $event.stopPropagation()"
-    >
+    <button mat-button (click)="openFight('network')">
       NETWORK
     </button>
-    <button
-      mat-button
-      (click)="openFight('stats'); $event.stopPropagation()"
-    >
+    <button mat-button (click)="openFight('stats')">
       STATS
     </button>
-    <button
-      mat-button
-      (click)="openFight('predictions'); $event.stopPropagation()"
-    >
+    <button mat-button (click)="openFight('predictions')">
       PREDICTIONS
     </button>
-    <button
-      mat-button
-      (click)="openFight('judging'); $event.stopPropagation()"
-    >
+    <button mat-button (click)="openFight('judging')">
       JUDGES
     </button>
   </mat-card-actions>

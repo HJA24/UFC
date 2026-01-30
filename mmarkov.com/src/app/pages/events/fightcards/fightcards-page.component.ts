@@ -5,7 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import { FightcardTabsComponent } from '../../../components/tabs/fightcard/fightcard-tabs.component';
-import { FightCardComponent } from '../../../components/cards/fight/fight-card.component';
+import { FightListComponent } from '../../../components/fight-list/fight-list.component';
 import { EventsService, AllFightsForEvent } from '../../../services/events.service';
 import { FightDto } from '../../../models/fight.dto';
 
@@ -22,7 +22,7 @@ const VALID_TABS: FightcardTab[] = ['early-prelim', 'prelim', 'main'];
     MatFormFieldModule,
     MatInputModule,
     FightcardTabsComponent,
-    FightCardComponent
+    FightListComponent
   ],
   templateUrl: './fightcards-page.component.html',
   styleUrl: './fightcards-page.component.scss',

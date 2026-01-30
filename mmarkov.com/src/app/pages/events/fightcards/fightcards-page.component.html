@@ -14,14 +14,12 @@
   </div>
 
   <ng-container *ngIf="!isLoading; else loading">
-    <div *ngIf="activeFights().length; else empty" class="fight-cards">
-      <app-fight-card
-        *ngFor="let fight of activeFights()"
-        [fight]="fight"
-        [eventId]="eventId"
-        [fightCard]="activeTab()"
-      ></app-fight-card>
-    </div>
+    <app-fight-list
+      *ngIf="activeFights().length; else empty"
+      [fights]="activeFights()"
+      [eventId]="eventId"
+      [fightCard]="activeTab()"
+    ></app-fight-list>
   </ng-container>
 
   <ng-template #loading>

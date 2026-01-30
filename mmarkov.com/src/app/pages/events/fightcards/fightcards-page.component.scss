@@ -37,12 +37,9 @@
   @include inputs.segmented-input-field-focused;
 }
 
-.fight-cards {
-  display: grid;
-  gap: 16px;
-  width: 100%;
-  max-width: 500px;
+app-fight-list {
+  display: block;
+  width: 80%;
+  max-width: 400px;
   margin: 0 auto;
-  padding: 0 16px;
-  box-sizing: border-box;
 }

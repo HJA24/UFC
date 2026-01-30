@@ -1,0 +1,20 @@
+<div class="fight-list">
+  @for (fight of fights; track fight.fightId; let i = $index) {
+    <div class="fight-item"
+         [class.expanded]="isExpanded(fight.fightId)"
+         [style.--i]="i">
+      <div class="fight-header" (click)="toggleFight(fight.fightId)">
+        <span class="fighter-name blue">{{ fight.fighterBlue.lastName }}</span>
+        <span class="vs">vs</span>
+        <span class="fighter-name red">{{ fight.fighterRed.lastName }}</span>
+      </div>
+      <div class="fight-content">
+        <app-fight-card
+          [fight]="fight"
+          [eventId]="eventId"
+          [fightCard]="fightCard"
+        />
+      </div>
+    </div>
+  }
+</div>

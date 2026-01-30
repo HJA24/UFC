@@ -1,22 +1,12 @@
 .fight-card {
   position: relative;
-  cursor: pointer;
+  cursor: default;
   padding: 10px 12px;
-  border-radius: 5px;
+  border-radius: 0;
   width: 100%;
-  background-color: rgba(250, 250, 250, 0.3);
-  border: 1px solid rgba(200, 200, 200, 0.4);
-}
-
-
-
-.fight-card:hover,
-.fight-card:focus-within {
-  cursor: pointer;
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.12),
-    0 1px 3px rgba(0, 0, 0, 0.08);
-  transform: translateY(-1px);
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 mat-card-header,
@@ -104,24 +94,27 @@ mat-card-actions {
   padding: 0;
 }
 
-
-mat-card-actions button {
+mat-card-actions button[mat-button] {
   width: 100%;
   min-width: 0;
-  padding: 4px 0;
+  padding: 5px 0;
+  font-size: 0.75rem;
+  font-weight: 700;
   font-family: "UFCSans", sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 1;
+  line-height: 1.2;
+  background-color: rgb(245, 245, 245);
   color: rgb(50, 50, 50);
-  border: 1px solid rgba(200, 200, 200, 0.3);
-  border-radius: 5px;
-  background-color: rgba(200, 200, 200, 0.3);
+  border: 1px solid rgba(180, 180, 180, 0.5);
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
 }
 
+mat-card-actions button[mat-button]:hover {
+  background-color: rgb(235, 235, 235);
+}
 
-mat-card-actions button:hover {
-  background-color: rgba(150, 150, 150, 0.3);
+mat-card-actions button[mat-button]:active {
+  background-color: rgb(220, 220, 220);
 }
 
 .fight-card mat-divider {
