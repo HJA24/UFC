@@ -32,7 +32,7 @@ export class NetworkPageComponent implements OnInit {
   private loadingService = inject(FightLoadingService)
   private networkService = inject(NetworkService)
 
-  matchups: FightMatchupDto[] = []
+  matchups: FightMatchupDto[] | null = null
   nodes: NodeDto[] = []
   edges: EdgeDto[] = []
   properties: PropertiesDto | null = null
