@@ -69,7 +69,7 @@ export class NetworkPropertiesComponent implements AfterViewInit, OnChanges {
   }
 
   private getTotalHeight(): number {
-    return this.propertyOrder.length * (this.rowHeight + this.rowGap) - this.rowGap;
+    return this.propertyOrder.length * (this.rowHeight + this.rowGap) - this.rowGap + 10;
   }
 
   private renderChart(): void {
@@ -78,8 +78,9 @@ export class NetworkPropertiesComponent implements AfterViewInit, OnChanges {
     const svg = d3.select(this.chartSvgRef.nativeElement);
     svg.selectAll('*').remove();
 
+    const rightPadding = 40;
     const chartWidth = 800;
-    const barWidth = chartWidth - this.labelWidth - this.valueWidth;
+    const barWidth = chartWidth - this.labelWidth - this.valueWidth - rightPadding;
     const chartHeight = this.getTotalHeight();
 
     svg
@@ -114,7 +115,7 @@ export class NetworkPropertiesComponent implements AfterViewInit, OnChanges {
         .attr('width', containerWidth)
         .attr('height', this.rowHeight)
         .attr('fill', 'transparent')
-        .style('cursor', 'pointer')
+        .style('cursor', 'default')
         .on('click', () => this.onPropertyClick(propertyType));
 
       // Background track

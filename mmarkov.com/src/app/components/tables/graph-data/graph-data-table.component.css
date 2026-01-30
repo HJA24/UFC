@@ -9,6 +9,8 @@
   background: white;
   border-radius: 4px;
   overflow: hidden;
+  padding-right: 5%;
+  font-family: 'UFCSans', sans-serif;
 }
 
 .table-wrap {
@@ -35,12 +37,12 @@
 }
 
 .mat-column-rounds {
-  width: 10%;
+  width: 9%;
   text-align: center;
 }
 
 .mat-column-clock {
-  width: 10%;
+  width: 8%;
   text-align: center;
 }
 
@@ -49,7 +51,7 @@
 }
 
 .mat-column-date {
-  width: 15%;
+  width: 12%;
 }
 
 /* Sticky header */

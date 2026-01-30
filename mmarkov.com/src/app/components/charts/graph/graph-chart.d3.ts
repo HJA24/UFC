@@ -45,6 +45,10 @@ export function createGraphChart(
   let nodeSelection: d3.Selection<SVGGElement, NodeDto, SVGGElement, unknown> | null = null;
   let edgeSelection: d3.Selection<SVGLineElement, EdgeDto, SVGGElement, unknown> | null = null;
 
+  // Hover delay
+  let hoverTimeout: ReturnType<typeof setTimeout> | null = null;
+  const hoverDelay = 150;
+
   // Emit current active id
   const emitActiveId = () => {
     callbacks.onActiveNodeId(activeId);
@@ -350,9 +354,14 @@ export function createGraphChart(
     nodeSelection
       .style('cursor', 'pointer')
       .on('mouseenter', (event, d) => {
-        activateNode(d.fighter.fighterId);
+        if (hoverTimeout) clearTimeout(hoverTimeout);
+        hoverTimeout = setTimeout(() => {
+          activateNode(d.fighter.fighterId);
+        }, hoverDelay);
       })
       .on('mouseleave', () => {
+        if (hoverTimeout) clearTimeout(hoverTimeout);
+        hoverTimeout = null;
         deactivateNode();
       });
 
@@ -386,6 +395,7 @@ export function createGraphChart(
       }
     },
     destroy() {
+      if (hoverTimeout) clearTimeout(hoverTimeout);
       const svg = d3.select(svgEl);
       svg.on('.drag', null);
       svg.on('click', null);
