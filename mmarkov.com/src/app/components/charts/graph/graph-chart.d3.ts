@@ -203,18 +203,10 @@ export function createGraphChart(
       .attr('y1', (e) => getPY(e.source))
       .attr('x2', (e) => getPX(e.target))
       .attr('y2', (e) => getPY(e.target))
-      .attr('stroke', 'gray')
-      .attr('stroke-opacity', 0.1)
+      .attr('stroke', '#c0c0c0')
+      .attr('stroke-opacity', 1)
       .attr('stroke-width', (e) => edgeWeight(e.weight))
       .attr('class', 'edge');
-
-    const updateEdges = () => {
-      edgeSelection!
-        .attr('x1', (e) => getPX(e.source))
-        .attr('y1', (e) => getPY(e.source))
-        .attr('x2', (e) => getPX(e.target))
-        .attr('y2', (e) => getPY(e.target));
-    };
 
     // --- nodes ---
     nodeSelection = root
@@ -252,78 +244,96 @@ export function createGraphChart(
       nodeSelection!.classed('active', (d) => d.fighter.fighterId === activeId);
 
       edgeSelection!.attr('stroke-opacity', (e) => {
-        if (activeId === null) return 0.1;
-        return e.source === activeId || e.target === activeId ? 1 : 0.1;
+        if (activeId === null) return 1;
+        return e.source === activeId || e.target === activeId ? 1 : 0;
       });
     };
 
-    const toggleActive = (id: number) => {
-      activeId = activeId === id ? null : id;
-      applyActiveStyles();
-      emitActiveId();
-    };
+    // Create invisible hit areas that don't move (for hover detection)
+    const hitAreas = root
+      .append('g')
+      .attr('class', 'hit-areas')
+      .selectAll<SVGCircleElement, NodeDto>('circle')
+      .data(nodes, (d: any) => d.fighter.fighterId)
+      .join('circle')
+      .attr('cx', (d) => originPos.get(d.fighter.fighterId)!.x)
+      .attr('cy', (d) => originPos.get(d.fighter.fighterId)!.y)
+      .attr('r', 20)
+      .attr('fill', 'transparent')
+      .style('cursor', 'pointer');
 
-    const setActive = (id: number) => {
-      if (activeId !== id) {
-        activeId = id;
-        applyActiveStyles();
-        emitActiveId();
-      }
-    };
+    const activateNode = (id: number) => {
+      if (activeId === id) return;
 
-    const clearActive = () => {
-      if (activeId === null) return;
-      activeId = null;
-      applyActiveStyles();
-      emitActiveId();
-    };
+      activeId = id;
+      nodeSelection!.classed('active', (n) => n.fighter.fighterId === id);
 
-    // click toggles active
-    nodeSelection!.on('click', (event, d) => {
-      event.stopPropagation();
-      toggleActive(d.fighter.fighterId);
-    });
-
-    // drag updates pos + edges; also ensures dragged node becomes active
-    const dragBehavior = d3
-      .drag<SVGGElement, NodeDto>()
-      .on('drag', function (event, d) {
-        const id = d.fighter.fighterId;
-
-        pos.set(id, { x: event.x, y: event.y });
-        d3.select(this).attr('transform', `translate(${event.x}, ${event.y})`);
-
-        setActive(id);
-        updateEdges();
-      });
-
-    nodeSelection!.call(dragBehavior as any);
-
-    // reset positions (background click)
-    const resetToOriginalPositions = () => {
-      for (const [id, xy] of originPos.entries()) {
-        pos.set(id, { x: xy.x, y: xy.y });
-      }
+      // Move to center
+      pos.set(id, { x: centerX, y: centerY });
 
       nodeSelection!
+        .filter((n) => n.fighter.fighterId === id)
         .transition()
         .duration(500)
-        .attr('transform', (d) => `translate(${getPX(d.fighter.fighterId)}, ${getPY(d.fighter.fighterId)})`);
+        .attr('transform', `translate(${centerX}, ${centerY})`);
 
+      // Move edges and hide non-connected
       edgeSelection!
         .transition()
-        .duration(350)
+        .duration(500)
         .attr('x1', (e) => getPX(e.source))
         .attr('y1', (e) => getPY(e.source))
         .attr('x2', (e) => getPX(e.target))
-        .attr('y2', (e) => getPY(e.target));
+        .attr('y2', (e) => getPY(e.target))
+        .attr('stroke-opacity', (e) =>
+          e.source === id || e.target === id ? 1 : 0
+        );
 
-      clearActive();
+      emitActiveId();
     };
 
-    // background click clears active + resets positions
+    const deactivateNode = () => {
+      if (activeId === null) return;
+
+      const id = activeId;
+      activeId = null;
+      nodeSelection!.classed('active', false);
+
+      // Return to original position
+      const original = originPos.get(id)!;
+      pos.set(id, { x: original.x, y: original.y });
+
+      nodeSelection!
+        .filter((n) => n.fighter.fighterId === id)
+        .transition()
+        .duration(500)
+        .attr('transform', `translate(${original.x}, ${original.y})`);
+
+      // Reset edges
+      edgeSelection!
+        .transition()
+        .duration(500)
+        .attr('x1', (e) => originPos.get(e.source)!.x)
+        .attr('y1', (e) => originPos.get(e.source)!.y)
+        .attr('x2', (e) => originPos.get(e.target)!.x)
+        .attr('y2', (e) => originPos.get(e.target)!.y)
+        .attr('stroke-opacity', 1);
+
+      emitActiveId();
+    };
+
+    // Hover on invisible hit areas (which don't move)
+    hitAreas
+      .on('mouseenter', (event, d) => {
+        activateNode(d.fighter.fighterId);
+      })
+      .on('mouseleave', () => {
+        deactivateNode();
+      });
+
+    // background click deactivates node
     svg.on('click', () => {
-      resetToOriginalPositions();
+      deactivateNode();
     });
 
     // initial render style + initial emit (so table can start with "no filter")

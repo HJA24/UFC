@@ -91,6 +91,7 @@ app-network-properties[hidden] {
 }
 
 .property-description {
+  width: 100%;
   padding: 12px 16px;
   font-family: 'UFCSans', sans-serif;
   font-size: 0.9rem;
@@ -99,5 +100,5 @@ app-network-properties[hidden] {
   color: rgb(100, 100, 100);
   background-color: rgba(240, 240, 240, 0.5);
   border-radius: 4px;
-  max-width: 100%;
+  box-sizing: border-box;
 }
